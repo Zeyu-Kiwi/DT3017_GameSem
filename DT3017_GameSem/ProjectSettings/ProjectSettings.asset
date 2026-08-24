@@ -850,8 +850,8 @@ PlayerSettings:
   editorAssembliesCompatibilityLevel: 1
   m_RenderingPath: 1
   m_MobileRenderingPath: 1
-  metroPackageName: DT3017_GameSem
-  metroPackageVersion: 
+  metroPackageName: DT3017GameSem
+  metroPackageVersion: 1.0.0.0
   metroCertificatePath: 
   metroCertificatePassword: 
   metroCertificateSubject: 
@@ -859,7 +859,7 @@ PlayerSettings:
   metroCertificateNotAfter: 0000000000000000
   metroApplicationDescription: DT3017_GameSem
   wsaImages: {}
-  metroTileShortName: 
+  metroTileShortName: DT3017_GameSem
   metroTileShowName: 0
   metroMediumTileShowName: 0
   metroLargeTileShowName: 0
