@@ -47,8 +47,6 @@ public class PlayerInteractor : MonoBehaviour
         {
             currentInteractable.Interact(gameObject);
         }
-
-        Debug.Log(currentInteractable);
     }
 
     private void FindInteractable()
