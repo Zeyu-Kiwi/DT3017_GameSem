@@ -9,6 +9,16 @@ public class NPC_ConversationStart : MonoBehaviour, IInteractable
 
     public void Interact(GameObject player)
     {
-        ConversationManager.Instance.StartConversation(npcConversation);
+        if (DialogueVariableBridge.Instance != null)
+        {
+            DialogueVariableBridge.Instance.StartConversation(npcConversation);
+        }
+        else
+        {
+            Debug.LogWarning(
+                "No DialogueVariableBridge exists. Starting the conversation without global variables.",
+                this);
+            ConversationManager.Instance.StartConversation(npcConversation);
+        }
     }
 }
