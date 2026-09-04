@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
+using DialogueEditor;
 
 public class FirstPersonController : MonoBehaviour
 {
@@ -15,14 +16,30 @@ public class FirstPersonController : MonoBehaviour
 
     private bool canMove = true;
 
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void OnEnable()
+    {
+        ConversationManager.OnConversationStarted += DisableController;
+        ConversationManager.OnConversationEnded += EnableController;
+    }
+
+    private void OnDisable()
+    {
+        ConversationManager.OnConversationStarted -= DisableController;
+        ConversationManager.OnConversationEnded -= EnableController;
+    }
+
+    void Start()
+    {
+        
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
-    
     void FixedUpdate()
     {
         if (canMove)
