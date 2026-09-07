@@ -21,6 +21,9 @@ public class InventoryManager : MonoBehaviour
     private readonly Dictionary<ItemData, int> quantities = new Dictionary<ItemData, int>();
     private readonly Dictionary<string, ItemData> itemsById = new Dictionary<string, ItemData>();
 
+    // Exposes a read-only view for debugging tools without allowing them to change the inventory.
+    public IReadOnlyDictionary<ItemData, int> RuntimeQuantities => quantities;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
