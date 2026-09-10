@@ -402,9 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7515663bf9153342a104194030ec8fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryTransaction
-  costs:
-  - item: {fileID: 0}
-    amount: 0
+  costs: []
   rewards:
   - item: {fileID: 11400000, guid: 3b615d5d53bd6394c918758538ecfbdc, type: 2}
     amount: 1
