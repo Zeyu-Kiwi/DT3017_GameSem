@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e9341db4d91dc04eb776e59e737ad83, type: 3}
-  m_Name: Received Sugar
-  m_EditorClassIdentifier: Assembly-CSharp::GameFlagData
-  flagId: received_sugar
-  displayName: 
-  startingValue: 0
+  m_Script: {fileID: 11500000, guid: e6716932433219a43becf5ee58539a41, type: 3}
+  m_Name: New Item
+  m_EditorClassIdentifier: Assembly-CSharp::ItemData
+  itemId: new_item
+  displayName: New Item
+  stackLimit: 1
+  icon: {fileID: 0}

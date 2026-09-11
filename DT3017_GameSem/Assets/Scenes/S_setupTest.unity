@@ -1663,6 +1663,10 @@ MonoBehaviour:
     quantity: 0
   - item: {fileID: 11400000, guid: 182d59327ac79bb489f31a3372fc5710, type: 2}
     quantity: 0
+  - item: {fileID: 11400000, guid: 182d59327ac79bb489f31a3372fc5710, type: 2}
+    quantity: 0
+  - item: {fileID: 11400000, guid: 182d59327ac79bb489f31a3372fc5710, type: 2}
+    quantity: 0
 --- !u!1 &538665525
 GameObject:
   m_ObjectHideFlags: 0
@@ -3547,12 +3551,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 6
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-275.399963,"yPos":168.4},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"This
-    option only appear once.","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":5.600067,"yPos":171.200012},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"This
-    option on the second conversation with the NPC","parentUIDs":[0],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":259.199951,"yPos":167.800018},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"Give
-    NPC ","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":503.999939,"yPos":165.4},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Trade
-    items","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"received_sugar","BoolValue":false},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"cloth","IntValue":0}],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"received_sugar","CheckType":0,"RequiredValue":false}],"NodeUID":1},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"received_sugar","CheckType":0,"RequiredValue":true}],"NodeUID":2},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"cloth","CheckType":2,"RequiredValue":0}],"NodeUID":5}],"EditorInfo":{"isRoot":true,"xPos":-131.399933,"yPos":23.5999756},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"This
-    is the greeting txt.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"NPC_Red","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":264.800018,"yPos":268.799866},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Give
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":94.19998,"yPos":166.8003},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"This
+    option only appear once.","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":375.2,"yPos":169.600281},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"This
+    option on the second conversation with the NPC","parentUIDs":[0],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":628.7999,"yPos":166.200317},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"Give
+    NPC ","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":873.599854,"yPos":163.800262},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Trade
+    items","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"received_sugar","BoolValue":false},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"cloth","IntValue":0}],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"received_sugar","CheckType":0,"RequiredValue":false}],"NodeUID":1},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"received_sugar","CheckType":0,"RequiredValue":true}],"NodeUID":2},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"cloth","CheckType":2,"RequiredValue":0}],"NodeUID":5}],"EditorInfo":{"isRoot":true,"xPos":238.200012,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"This
+    is the greeting txt.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"NPC_Red","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":634.4,"yPos":267.199829},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Give
     Player","parentUIDs":[3],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: 
@@ -3569,19 +3573,7 @@ MonoBehaviour:
   EndConversationFont: {fileID: 0}
   Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 53087818}
-        m_TargetAssemblyTypeName: InventoryTransaction, Assembly-CSharp
-        m_MethodName: Execute
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &1402297869
 GameObject:
   m_ObjectHideFlags: 0
