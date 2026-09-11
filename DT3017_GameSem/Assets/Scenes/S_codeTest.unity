@@ -369,7 +369,7 @@ GameObject:
   - component: {fileID: 136288569}
   - component: {fileID: 136288570}
   m_Layer: 3
-  m_Name: Gift_Sugar
+  m_Name: IT_Get_sugar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -402,9 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7515663bf9153342a104194030ec8fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryTransaction
-  costs:
-  - item: {fileID: 0}
-    amount: 0
+  costs: []
   rewards:
   - item: {fileID: 11400000, guid: 3b615d5d53bd6394c918758538ecfbdc, type: 2}
     amount: 1
@@ -474,8 +472,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -513,7 +511,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -163.43237, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -543,7 +541,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 842, y: 491}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &183027880
@@ -1081,6 +1079,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 391292643}
   m_CullTransparentMesh: 1
+--- !u!1 &574212845
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 574212847}
+  - component: {fileID: 574212846}
+  m_Layer: 3
+  m_Name: IT_Give_chocolate
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &574212846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574212845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7515663bf9153342a104194030ec8fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryTransaction
+  costs:
+  - item: {fileID: 11400000, guid: 084b8554363c6d5479f4d33f466aec8b, type: 2}
+    amount: 1
+  rewards: []
+  requireSpaceForAllRewards: 0
+--- !u!4 &574212847
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574212845}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 7.17, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1438486527}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &737759944
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,6 +2284,7 @@ GameObject:
   - component: {fileID: 1213209945}
   - component: {fileID: 1213209944}
   - component: {fileID: 1213209952}
+  - component: {fileID: 1213209953}
   m_Layer: 0
   m_Name: ConversationEventInfo
   m_TagString: Untagged
@@ -2314,6 +2362,18 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1649161202}
         m_TargetAssemblyTypeName: SetGameFlagAction, Assembly-CSharp
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 574212846}
+        m_TargetAssemblyTypeName: InventoryTransaction, Assembly-CSharp
         m_MethodName: Execute
         m_Mode: 1
         m_Arguments:
@@ -2478,6 +2538,25 @@ MonoBehaviour:
   TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
+--- !u!114 &1213209953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1213209940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 11
+  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  Icon: {fileID: 21300000, guid: f71c0dc03d067a342aa16a51674f6507, type: 3}
+  Audio: {fileID: 0}
 --- !u!1 &1283446546
 GameObject:
   m_ObjectHideFlags: 0
@@ -2489,7 +2568,7 @@ GameObject:
   - component: {fileID: 1283446548}
   - component: {fileID: 1283446547}
   m_Layer: 3
-  m_Name: Received_Sugar
+  m_Name: GF_ReceivedSugar_T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2667,6 +2746,7 @@ Transform:
   m_Children:
   - {fileID: 1823729278}
   - {fileID: 136288569}
+  - {fileID: 574212847}
   - {fileID: 1649161203}
   - {fileID: 1283446548}
   m_Father: {fileID: 0}
@@ -3272,7 +3352,7 @@ GameObject:
   - component: {fileID: 1649161203}
   - component: {fileID: 1649161202}
   m_Layer: 3
-  m_Name: Gave_02_Chocolate
+  m_Name: GF_Gave02Chocolate_T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3318,7 +3398,7 @@ GameObject:
   - component: {fileID: 1750328354}
   - component: {fileID: 1750328353}
   m_Layer: 3
-  m_Name: Trade_Cloth_For_Scrap
+  m_Name: IT_Trade_cloth_to_metalScrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3403,17 +3483,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
-  CurrentIDCounter: 11
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":478.500061,"yPos":98.79935},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Just
-    taking a break. Bye~","parentUIDs":[0],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":3}],"EditorInfo":{"isRoot":false,"xPos":223.299927,"yPos":96.39932},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"I
-    wanna make friends.","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":216.099976,"yPos":333.998749},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"You
-    are too nice. I will pay back!","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":-19.8999939,"yPos":95.59857},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Chocolate
-    for you. A return from me <3","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":733,"yPos":98},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"When
-    BOSS is drunk, he walks slower and patrol less often. That happens every 3 days.","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"chocolate","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"gave_02_chocolate","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"received_sugar","BoolValue":false}],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"received_sugar","CheckType":0,"RequiredValue":false}],"NodeUID":2},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"chocolate","CheckType":2,"RequiredValue":0}],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"gave_02_chocolate","CheckType":0,"RequiredValue":true}],"NodeUID":10}],"EditorInfo":{"isRoot":true,"xPos":359.5,"yPos":-71},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Hi~
-    Why are you not at your seat?","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"NPC_02","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":223.300049,"yPos":211.99881},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"I
-    like to make friends too. Here, sugar for a friend <3","parentUIDs":[2],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"NPC_02","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":-19.8999939,"yPos":210.998108},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"0.0
-    I haven''t had chocolate for years!","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"NPC_02","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-20.6999817,"yPos":336.5986},"ID":7,"ParamActions":[{"__type":"EditableSetBoolParamAction:#DialogueEditor","ParameterName":"gave_02_chocolate","Value":true}],"TMPFontGUID":null,"Text":"Thank
-    you so much! Take this XXX, you are my best friend from now on!","parentUIDs":[6],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"NPC_02","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+  CurrentIDCounter: 12
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":230.500061,"yPos":180.799347},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Just
+    taking a break. Bye~","parentUIDs":[0],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":3}],"EditorInfo":{"isRoot":false,"xPos":-24.7000732,"yPos":178.399323},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    wanna make friends.","parentUIDs":[0],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-31.9000244,"yPos":415.998749},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"You
+    are too nice. I will pay back!","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":-267.9,"yPos":177.598572},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Chocolate
+    for you. A return from me <3","parentUIDs":[0],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":11}],"EditorInfo":{"isRoot":false,"xPos":485,"yPos":180},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"Anything
+    new today?","parentUIDs":[0],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"chocolate","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"gave_02_chocolate","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"received_sugar","BoolValue":false}],"SpeechNodes":[{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":1},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"received_sugar","CheckType":0,"RequiredValue":false}],"NodeUID":2},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"chocolate","CheckType":2,"RequiredValue":0}],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"gave_02_chocolate","CheckType":0,"RequiredValue":true}],"NodeUID":10}],"EditorInfo":{"isRoot":true,"xPos":111.5,"yPos":11},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Hi~
+    Why are you not at your seat?","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"NPC_02","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":4}],"EditorInfo":{"isRoot":false,"xPos":-24.6999512,"yPos":293.9988},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    like to make friends too. Here, sugar for a friend <3","parentUIDs":[2],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"NPC_02","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":-267.9,"yPos":292.9981},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"0.0
+    I haven''t had chocolate for years!","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"NPC_02","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-268.699982,"yPos":418.5986},"ID":7,"ParamActions":[{"__type":"EditableSetBoolParamAction:#DialogueEditor","ParameterName":"gave_02_chocolate","Value":true}],"TMPFontGUID":null,"Text":"Thank
+    you so much! Take this XXX, you are my best friend from now on!","parentUIDs":[6],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"NPC_02","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":488,"yPos":282},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"When
+    BOSS is drunk, he walks slower and patrol less often. That happens every 3 days.","parentUIDs":[10],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"NPC_02","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: NPC_02
   DefaultSprite: {fileID: 0}
@@ -3428,23 +3509,12 @@ MonoBehaviour:
   - {fileID: 1213209945}
   - {fileID: 1213209944}
   - {fileID: 1213209952}
+  - {fileID: 1213209953}
   ContinueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   EndConversationFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1649161202}
-        m_TargetAssemblyTypeName: SetGameFlagAction, Assembly-CSharp
-        m_MethodName: Execute
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!224 &1893391653 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3900108755196472087, guid: d9fa78e8c3c4f2b4b8f7f77ca8426cca, type: 3}
@@ -3651,6 +3721,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
   flags:
   - {fileID: 11400000, guid: 818b70acc35fc6d4db0831733e25b425, type: 2}
+  - {fileID: 11400000, guid: da75e96e0a70656479f2b82d47d115c9, type: 2}
 --- !u!114 &2051834759
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3714,10 +3785,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 75757056612065288, guid: 4775239ae3e607444adfd981d325e705, type: 3}
-      propertyPath: interactableLayers.m_Bits
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1074984017580167467, guid: 4775239ae3e607444adfd981d325e705, type: 3}
       propertyPath: m_Name
       value: CharacterController
