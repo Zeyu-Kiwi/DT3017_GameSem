@@ -157,6 +157,11 @@ public class CraftingStation : MonoBehaviour, IInteractable
 
         if (stationUI != null)
         {
+            Camera uiCamera = cameraController != null &&
+                              cameraController.CraftingCamera != null
+                ? cameraController.CraftingCamera
+                : playerCamera;
+            stationUI.SetRenderCamera(uiCamera);
             stationUI.SetOpen(false);
         }
 
@@ -323,6 +328,11 @@ public class CraftingStation : MonoBehaviour, IInteractable
             playerInteractor.enabled = true;
         }
 
+        if (stationUI != null)
+        {
+            stationUI.SetRenderCamera(playerCamera);
+        }
+
         playerController = null;
         playerInteractor = null;
         playerInteractUI = null;
@@ -439,11 +449,10 @@ public class CraftingStation : MonoBehaviour, IInteractable
                 continue;
             }
 
-            GameObject model = Instantiate(
-                section.ModelPrefab,
-                spawnPoint.position,
-                spawnPoint.rotation,
-                spawnPoint);
+            // Preserve the prefab's world scale even when the centre hierarchy is scaled.
+            GameObject model = Instantiate(section.ModelPrefab);
+            model.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
+            model.transform.SetParent(spawnPoint, true);
 
             CraftingItemView view = model.GetComponent<CraftingItemView>();
             if (view == null)

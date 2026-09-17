@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b4d48565d9f5d644a235319af24cf2a, type: 3}
+  m_Name: Recipe_Hammer
+  m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipeData
+  displayName: Hammer
+  ingredients:
+  - item: {fileID: 11400000, guid: 7ce056aef7bfef34abacbf7a370a24d5, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 2cc802e0568494c449c2b5fb6c253a15, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: ff3402cf6f49d554c84a0aaaddc1f59a, type: 2}
+    amount: 1
+  result: {fileID: 11400000, guid: aeb54d50f3b7fe946acf7334085c2a44, type: 2}
+  resultAmount: 1
+  startsUnlocked: 0
+  unlockFlag: {fileID: 11400000, guid: 72401c810c90be649b5f6663582e8d39, type: 2}
+  displayOrder: 0

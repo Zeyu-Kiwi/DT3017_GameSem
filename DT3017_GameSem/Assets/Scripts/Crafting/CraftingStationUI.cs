@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class CraftingStationUI : MonoBehaviour
 {
+    [SerializeField] private Canvas craftingCanvas;
     [SerializeField] private GameObject interfaceRoot;
 
     [Header("Gear")]
@@ -25,6 +26,33 @@ public class CraftingStationUI : MonoBehaviour
 
     private void Awake()
     {
+        if (craftingCanvas == null)
+        {
+            craftingCanvas = GetComponentInParent<Canvas>();
+        }
+
+        if (interfaceRoot == null)
+        {
+            Debug.LogError("CraftingStationUI has no Interface Root assigned.", this);
+        }
+        else if (interfaceRoot == gameObject)
+        {
+            Debug.LogWarning(
+                "Interface Root should be a separate child object, not the object that owns " +
+                "CraftingStationUI.",
+                this);
+        }
+
+        if (closeButton == null)
+        {
+            Debug.LogWarning("CraftingStationUI has no Close Button assigned.", this);
+        }
+
+        if (gearButton == null || gearImage == null)
+        {
+            Debug.LogWarning("CraftingStationUI gear references are incomplete.", this);
+        }
+
         if (gearButton != null)
         {
             gearButton.onClick.AddListener(OnGearClicked);
@@ -46,6 +74,15 @@ public class CraftingStationUI : MonoBehaviour
     public void Initialize(CraftingStation owningStation)
     {
         station = owningStation;
+    }
+
+    public void SetRenderCamera(Camera renderCamera)
+    {
+        if (craftingCanvas != null &&
+            craftingCanvas.renderMode != RenderMode.ScreenSpaceOverlay)
+        {
+            craftingCanvas.worldCamera = renderCamera;
+        }
     }
 
     public void SetOpen(bool open)
