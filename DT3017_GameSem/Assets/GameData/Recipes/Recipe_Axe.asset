@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b4d48565d9f5d644a235319af24cf2a, type: 3}
+  m_Name: Recipe_Axe
+  m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipeData
+  displayName: New Recipe
+  ingredients:
+  - item: {fileID: 11400000, guid: 7ce056aef7bfef34abacbf7a370a24d5, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: ff3402cf6f49d554c84a0aaaddc1f59a, type: 2}
+    amount: 1
+  - item: {fileID: 11400000, guid: 182d59327ac79bb489f31a3372fc5710, type: 2}
+    amount: 1
+  result: {fileID: 11400000, guid: 8b30a2c29948d404ab21ecc67ffd0f76, type: 2}
+  resultAmount: 1
+  startsUnlocked: 0
+  unlockFlag: {fileID: 11400000, guid: fe03b5a9b82b33b409a7a756379fb8da, type: 2}
+  displayOrder: 0
