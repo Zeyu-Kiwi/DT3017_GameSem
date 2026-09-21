@@ -15,4 +15,4 @@ MonoBehaviour:
   itemId: metal_scrap
   displayName: Metal Scrap
   stackLimit: 20
-  icon: {fileID: 0}
+  icon: {fileID: 21300000, guid: fdf83937d556c6d4e8e5e99bc009c95c, type: 3}
