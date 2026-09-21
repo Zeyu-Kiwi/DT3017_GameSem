@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b4d48565d9f5d644a235319af24cf2a, type: 3}
   m_Name: Recipe_Axe
   m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipeData
-  displayName: New Recipe
+  displayName: Axe
   ingredients:
   - item: {fileID: 11400000, guid: 7ce056aef7bfef34abacbf7a370a24d5, type: 2}
     amount: 1
