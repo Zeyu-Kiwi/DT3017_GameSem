@@ -6178,7 +6178,7 @@ MonoBehaviour:
   drawerController: {fileID: 1788109924}
   isDrawerOpenDebug: 0
   isPlayerInsideWorkstationDebug: 0
-  logStateChanges: 0
+  logStateChanges: 1
   centerSpawnPoints:
   - {fileID: 1486466644}
   - {fileID: 528105012}
