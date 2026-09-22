@@ -11,6 +11,17 @@ public class CraftingStation : MonoBehaviour, IInteractable
         new List<CraftingMaterialSection>();
     [SerializeField] private CraftingEquipmentDisplay equipmentDisplay;
 
+    [Header("Drawer")]
+    [SerializeField] private CraftingDrawerController drawerController;
+
+    [Header("Runtime State (Debug)")]
+    [Tooltip("Display only. Shows the current drawer state while the game is running.")]
+    [SerializeField] private bool isDrawerOpenDebug;
+    [Tooltip("Display only. Shows whether the player is inside the workstation range.")]
+    [SerializeField] private bool isPlayerInsideWorkstationDebug;
+    [Tooltip("Write to the Console only when either runtime state changes.")]
+    [SerializeField] private bool logStateChanges;
+
     [Header("Centre Display")]
     [SerializeField] private List<Transform> centerSpawnPoints = new List<Transform>();
 
@@ -35,12 +46,28 @@ public class CraftingStation : MonoBehaviour, IInteractable
     private bool inputReady;
     private bool inventorySubscribed;
     private bool flagsSubscribed;
+    private bool isClosing;
+    private bool cameraTransitionComplete;
+    private bool drawerTransitionComplete;
+    private bool isPlayerInsideWorkstation;
+    private bool runtimeStateInitialized;
 
-    public bool CanInteract => canInteract && !isOpen;
+    public bool CanInteract => canInteract &&
+                               !isOpen &&
+                               (drawerController == null || !drawerController.IsMoving);
     public IReadOnlyDictionary<ItemData, int> Selection => selection;
+    public bool IsDrawerOpen => drawerController != null && drawerController.IsDrawerOpen;
+    public bool IsPlayerInsideWorkstation => isPlayerInsideWorkstation;
 
     private void Awake()
     {
+        if (drawerController == null)
+        {
+            drawerController = GetComponent<CraftingDrawerController>();
+        }
+
+        RefreshRuntimeState(false);
+
         if (stationUI != null)
         {
             stationUI.Initialize(this);
@@ -74,6 +101,8 @@ public class CraftingStation : MonoBehaviour, IInteractable
 
     private void Update()
     {
+        RefreshRuntimeState();
+
         if (!isOpen || !inputReady)
         {
             return;
@@ -128,6 +157,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
         }
 
         isOpen = true;
+        isClosing = false;
         inputReady = false;
         SetHoveredItem(null);
         ClearSelection();
@@ -165,14 +195,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
             stationUI.SetOpen(false);
         }
 
-        if (cameraController != null)
-        {
-            cameraController.Open(playerCamera, FinishOpening);
-        }
-        else
-        {
-            FinishOpening();
-        }
+        BeginOpeningTransitions();
     }
 
     public void CloseCrafting()
@@ -183,6 +206,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
         }
 
         inputReady = false;
+        isClosing = true;
         SetHoveredItem(null);
         ClearSelection();
 
@@ -191,14 +215,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
             stationUI.SetOpen(false);
         }
 
-        if (cameraController != null)
-        {
-            cameraController.Close(FinishClosing);
-        }
-        else
-        {
-            FinishClosing();
-        }
+        BeginClosingTransitions();
     }
 
     public void TryAddIngredient(ItemData item)
@@ -292,9 +309,76 @@ public class CraftingStation : MonoBehaviour, IInteractable
                GameStateManager.Instance.GetFlag(recipe.UnlockFlag);
     }
 
-    private void FinishOpening()
+    internal void SetPlayerInsideWorkstation(bool value)
     {
-        if (!isOpen)
+        isPlayerInsideWorkstation = value;
+        RefreshRuntimeState();
+    }
+
+    private void RefreshRuntimeState(bool allowLogging = true)
+    {
+        bool drawerOpen = IsDrawerOpen;
+        bool playerInside = IsPlayerInsideWorkstation;
+
+        if (runtimeStateInitialized && allowLogging && logStateChanges)
+        {
+            if (isDrawerOpenDebug != drawerOpen)
+            {
+                Debug.Log(
+                    "Crafting drawer state changed: " +
+                    (drawerOpen ? "OPEN" : "CLOSED"),
+                    this);
+            }
+
+            if (isPlayerInsideWorkstationDebug != playerInside)
+            {
+                Debug.Log(
+                    playerInside
+                        ? "Player entered the workstation range."
+                        : "Player left the workstation range.",
+                    this);
+            }
+        }
+
+        isDrawerOpenDebug = drawerOpen;
+        isPlayerInsideWorkstationDebug = playerInside;
+        runtimeStateInitialized = true;
+    }
+
+    private void BeginOpeningTransitions()
+    {
+        cameraTransitionComplete = cameraController == null;
+        drawerTransitionComplete = drawerController == null;
+
+        if (cameraController != null)
+        {
+            cameraController.Open(playerCamera, OnOpeningCameraComplete);
+        }
+
+        if (drawerController != null)
+        {
+            drawerController.OpenDrawer(OnOpeningDrawerComplete);
+        }
+
+        TryFinishOpening();
+    }
+
+    private void OnOpeningCameraComplete()
+    {
+        cameraTransitionComplete = true;
+        TryFinishOpening();
+    }
+
+    private void OnOpeningDrawerComplete()
+    {
+        drawerTransitionComplete = true;
+        TryFinishOpening();
+    }
+
+    private void TryFinishOpening()
+    {
+        if (!isOpen || isClosing ||
+            !cameraTransitionComplete || !drawerTransitionComplete)
         {
             return;
         }
@@ -308,9 +392,46 @@ public class CraftingStation : MonoBehaviour, IInteractable
         RefreshUI();
     }
 
-    private void FinishClosing()
+    private void BeginClosingTransitions()
     {
+        cameraTransitionComplete = cameraController == null;
+        drawerTransitionComplete = drawerController == null;
+
+        if (cameraController != null)
+        {
+            cameraController.Close(OnClosingCameraComplete);
+        }
+
+        if (drawerController != null)
+        {
+            drawerController.CloseDrawer(OnClosingDrawerComplete);
+        }
+
+        TryFinishClosing();
+    }
+
+    private void OnClosingCameraComplete()
+    {
+        cameraTransitionComplete = true;
+        TryFinishClosing();
+    }
+
+    private void OnClosingDrawerComplete()
+    {
+        drawerTransitionComplete = true;
+        TryFinishClosing();
+    }
+
+    private void TryFinishClosing()
+    {
+        if (!isOpen || !isClosing ||
+            !cameraTransitionComplete || !drawerTransitionComplete)
+        {
+            return;
+        }
+
         isOpen = false;
+        isClosing = false;
 
         if (playerController != null)
         {
