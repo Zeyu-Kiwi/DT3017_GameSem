@@ -53,6 +53,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
     private bool runtimeStateInitialized;
 
     public bool CanInteract => canInteract &&
+                               isPlayerInsideWorkstation &&
                                !isOpen &&
                                (drawerController == null || !drawerController.IsMoving);
     public IReadOnlyDictionary<ItemData, int> Selection => selection;
