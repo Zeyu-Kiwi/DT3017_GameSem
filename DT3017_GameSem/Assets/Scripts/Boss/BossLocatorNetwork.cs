@@ -145,7 +145,7 @@ public class BossLocatorNetwork : MonoBehaviour
             out _,
             distance,
             obstacleLayers,
-            QueryTriggerInteraction.Ignore);
+            QueryTriggerInteraction.Collide);
     }
 
     [ContextMenu("Rebuild Connections")]
