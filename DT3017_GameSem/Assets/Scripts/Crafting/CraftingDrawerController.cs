@@ -81,6 +81,28 @@ public class CraftingDrawerController : MonoBehaviour
         StartMovement(closedLocalPosition, true, completed);
     }
 
+    public void SnapClosed()
+    {
+        if (movementRoutine != null)
+        {
+            StopCoroutine(movementRoutine);
+            movementRoutine = null;
+        }
+
+        if (movingTransform == null)
+        {
+            movingTransform = transform;
+        }
+
+        movingTransform.localPosition = closedLocalPosition;
+        IsDrawerOpen = false;
+
+        if (sectionsContainer != null)
+        {
+            sectionsContainer.SetActive(false);
+        }
+    }
+
     private void StartMovement(
         Vector3 targetLocalPosition,
         bool finishingClosed,
