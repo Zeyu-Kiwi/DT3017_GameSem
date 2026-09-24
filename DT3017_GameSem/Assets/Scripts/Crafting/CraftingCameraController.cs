@@ -83,6 +83,31 @@ public class CraftingCameraController : MonoBehaviour
             true));
     }
 
+    public void ResetImmediately()
+    {
+        if (transitionRoutine != null)
+        {
+            StopCoroutine(transitionRoutine);
+            transitionRoutine = null;
+        }
+
+        if (playerCamera != null)
+        {
+            playerCamera.enabled = true;
+        }
+
+        if (craftingCamera != null)
+        {
+            craftingCamera.transform.SetPositionAndRotation(
+                craftingPosition,
+                craftingRotation);
+            craftingCamera.fieldOfView = craftingFieldOfView;
+            craftingCamera.enabled = false;
+        }
+
+        playerCamera = null;
+    }
+
     private IEnumerator Transition(
         Vector3 targetPosition,
         Quaternion targetRotation,

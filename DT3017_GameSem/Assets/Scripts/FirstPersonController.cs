@@ -108,4 +108,14 @@ public class FirstPersonController : MonoBehaviour
         rb.constraints = RigidbodyConstraints.None;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
+
+    public void ResetLook()
+    {
+        rotationX = 0f;
+
+        if (cameraTransform != null)
+        {
+            cameraTransform.localRotation = Quaternion.identity;
+        }
+    }
 }

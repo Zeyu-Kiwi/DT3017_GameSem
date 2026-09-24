@@ -53,6 +53,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
     private bool runtimeStateInitialized;
 
     public bool CanInteract => canInteract &&
+                               isPlayerInsideWorkstation &&
                                !isOpen &&
                                (drawerController == null || !drawerController.IsMoving);
     public IReadOnlyDictionary<ItemData, int> Selection => selection;
@@ -216,6 +217,54 @@ public class CraftingStation : MonoBehaviour, IInteractable
         }
 
         BeginClosingTransitions();
+    }
+
+    public void ResetStationImmediately(bool restorePlayerControl = false)
+    {
+        inputReady = false;
+        isOpen = false;
+        isClosing = false;
+        cameraTransitionComplete = true;
+        drawerTransitionComplete = true;
+
+        SetHoveredItem(null);
+        ClearSelection();
+
+        if (stationUI != null)
+        {
+            stationUI.SetOpen(false);
+            stationUI.SetRenderCamera(playerCamera);
+        }
+
+        if (cameraController != null)
+        {
+            cameraController.ResetImmediately();
+        }
+
+        if (drawerController != null)
+        {
+            drawerController.SnapClosed();
+        }
+
+        if (restorePlayerControl)
+        {
+            if (playerController != null)
+            {
+                playerController.enabled = true;
+                playerController.EnableController();
+            }
+
+            if (playerInteractor != null)
+            {
+                playerInteractor.enabled = true;
+            }
+        }
+
+        playerController = null;
+        playerInteractor = null;
+        playerInteractUI = null;
+        playerCamera = null;
+        RefreshRuntimeState();
     }
 
     public void TryAddIngredient(ItemData item)
