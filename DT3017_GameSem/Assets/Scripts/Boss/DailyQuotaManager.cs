@@ -15,22 +15,23 @@ public class DailyQuotaManager : MonoBehaviour
     [SerializeField] private TMP_Text quotaText;
 
     [Header("Runtime State (Debug)")]
-    [SerializeField] private int submittedShirts;
+    [SerializeField] private int currentInventoryShirts;
     [SerializeField] private int currentRequiredQuota;
-    [SerializeField] private bool dayComplete;
 
     public event Action QuotaChanged;
-    public event Action QuotaCompleted;
 
     public ItemData ShirtItem => shirtItem;
-    public int SubmittedShirts => submittedShirts;
+    public int CurrentInventoryShirts => currentInventoryShirts;
+    public int DisplayedQuotaAmount => Mathf.Min(
+        currentInventoryShirts,
+        currentRequiredQuota);
     public int CurrentRequiredQuota => currentRequiredQuota;
-    public int RemainingQuota => Mathf.Max(0, currentRequiredQuota - submittedShirts);
-    public bool IsDayComplete => dayComplete;
-    public bool CanSubmit => !dayComplete &&
-                             shirtItem != null &&
-                             InventoryManager.Instance != null &&
-                             InventoryManager.Instance.GetQuantity(shirtItem) > 0;
+    public int MissingShirts => Mathf.Max(
+        0,
+        currentRequiredQuota - currentInventoryShirts);
+    public bool HasMetQuota => shirtItem != null &&
+                               InventoryManager.Instance != null &&
+                               currentInventoryShirts >= currentRequiredQuota;
 
     private void Awake()
     {
@@ -45,61 +46,78 @@ public class DailyQuotaManager : MonoBehaviour
         StartNewDay();
     }
 
+    private void Start()
+    {
+        SubscribeToInventory();
+        RefreshFromInventory();
+    }
+
     private void OnDestroy()
     {
+        if (InventoryManager.Instance != null)
+        {
+            InventoryManager.Instance.QuantityChanged -= OnQuantityChanged;
+        }
+
         if (Instance == this)
         {
             Instance = null;
         }
     }
 
-    public int SubmitAvailableShirts()
+    public bool ConsumeRequiredShirtsForDayEnd()
     {
-        if (!CanSubmit)
+        if (!HasMetQuota || InventoryManager.Instance == null)
         {
-            return 0;
+            return false;
         }
 
-        InventoryManager inventory = InventoryManager.Instance;
-        int amountToSubmit = Mathf.Min(
-            inventory.GetQuantity(shirtItem),
-            RemainingQuota);
-
-        if (amountToSubmit <= 0 || !inventory.TryRemoveItem(shirtItem, amountToSubmit))
-        {
-            return 0;
-        }
-
-        submittedShirts += amountToSubmit;
-        RefreshUI();
-        QuotaChanged?.Invoke();
-
-        if (submittedShirts >= currentRequiredQuota)
-        {
-            dayComplete = true;
-            QuotaCompleted?.Invoke();
-        }
-
-        return amountToSubmit;
+        return InventoryManager.Instance.TryRemoveItem(
+            shirtItem,
+            currentRequiredQuota);
     }
 
     public void AddCaughtPenalty()
     {
-        if (dayComplete)
-        {
-            return;
-        }
-
         currentRequiredQuota += caughtPenalty;
-        RefreshUI();
-        QuotaChanged?.Invoke();
+        RefreshFromInventory();
     }
 
     public void StartNewDay()
     {
-        submittedShirts = 0;
         currentRequiredQuota = Mathf.Max(1, defaultQuota);
-        dayComplete = false;
+        RefreshFromInventory();
+    }
+
+    private void SubscribeToInventory()
+    {
+        if (InventoryManager.Instance == null)
+        {
+            Debug.LogError(
+                "DailyQuotaManager needs an InventoryManager in the scene.",
+                this);
+            return;
+        }
+
+        InventoryManager.Instance.QuantityChanged -= OnQuantityChanged;
+        InventoryManager.Instance.QuantityChanged += OnQuantityChanged;
+    }
+
+    private void OnQuantityChanged(ItemData changedItem, int newQuantity)
+    {
+        if (changedItem == shirtItem)
+        {
+            RefreshFromInventory();
+        }
+    }
+
+    private void RefreshFromInventory()
+    {
+        currentInventoryShirts =
+            shirtItem != null && InventoryManager.Instance != null
+                ? InventoryManager.Instance.GetQuantity(shirtItem)
+                : 0;
+
         RefreshUI();
         QuotaChanged?.Invoke();
     }
@@ -108,7 +126,7 @@ public class DailyQuotaManager : MonoBehaviour
     {
         if (quotaText != null)
         {
-            quotaText.text = submittedShirts + "/" + currentRequiredQuota;
+            quotaText.text = DisplayedQuotaAmount + "/" + currentRequiredQuota;
         }
     }
 

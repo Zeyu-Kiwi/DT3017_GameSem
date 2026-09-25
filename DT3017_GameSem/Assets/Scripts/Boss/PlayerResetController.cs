@@ -54,30 +54,40 @@ public class PlayerResetController : MonoBehaviour
 
     public void ResetPlayerAndStation()
     {
+        ResetStationAndReturnPlayerTo(workstationReturnPoint);
+    }
+
+    public void ResetStationAndReturnPlayerTo(Transform returnPoint)
+    {
         if (craftingStation != null)
         {
             craftingStation.ResetStationImmediately(false);
         }
 
-        ReturnPlayerToWorkstation();
+        ReturnPlayerTo(returnPoint);
     }
 
     public void ReturnPlayerToWorkstation()
     {
+        ReturnPlayerTo(workstationReturnPoint);
+    }
+
+    public void ReturnPlayerTo(Transform returnPoint)
+    {
         CachePlayerComponents();
 
-        if (player == null || workstationReturnPoint == null)
+        if (player == null || returnPoint == null)
         {
             Debug.LogError(
-                "PlayerResetController needs a Player and Workstation Return Point.",
+                "PlayerResetController needs a Player and Return Point.",
                 this);
             return;
         }
 
         StopPlayerMotion();
         player.transform.SetPositionAndRotation(
-            workstationReturnPoint.position,
-            workstationReturnPoint.rotation);
+            returnPoint.position,
+            returnPoint.rotation);
 
         if (firstPersonController != null)
         {
@@ -86,8 +96,8 @@ public class PlayerResetController : MonoBehaviour
 
         if (playerRigidbody != null)
         {
-            playerRigidbody.position = workstationReturnPoint.position;
-            playerRigidbody.rotation = workstationReturnPoint.rotation;
+            playerRigidbody.position = returnPoint.position;
+            playerRigidbody.rotation = returnPoint.rotation;
         }
 
         Physics.SyncTransforms();

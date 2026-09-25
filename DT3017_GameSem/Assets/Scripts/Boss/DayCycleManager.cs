@@ -12,6 +12,7 @@ public class DayCycleManager : MonoBehaviour
     [Header("Day")]
     [SerializeField, Min(1)] private int startingDay = 1;
     [SerializeField] private TMP_Text dayText;
+    [SerializeField] private Transform bedWakeUpPoint;
 
     [Header("Black Screen")]
     [SerializeField] private CanvasGroup blackScreen;
@@ -45,28 +46,17 @@ public class DayCycleManager : MonoBehaviour
         RefreshDayUI();
     }
 
-    private void OnEnable()
+    public bool TryBeginNextDay()
     {
-        if (quotaManager != null)
+        if (transitionRunning ||
+            quotaManager == null ||
+            !quotaManager.HasMetQuota)
         {
-            quotaManager.QuotaCompleted += BeginNextDay;
+            return false;
         }
-    }
 
-    private void OnDisable()
-    {
-        if (quotaManager != null)
-        {
-            quotaManager.QuotaCompleted -= BeginNextDay;
-        }
-    }
-
-    public void BeginNextDay()
-    {
-        if (!transitionRunning)
-        {
-            StartCoroutine(NextDayRoutine());
-        }
+        StartCoroutine(NextDayRoutine());
+        return true;
     }
 
     private IEnumerator NextDayRoutine()
@@ -90,9 +80,19 @@ public class DayCycleManager : MonoBehaviour
             yield return FadeBlackScreen(0f, 1f, fadeOutDuration);
         }
 
+        if (quotaManager == null ||
+            !quotaManager.ConsumeRequiredShirtsForDayEnd())
+        {
+            Debug.LogError(
+                "Day transition started, but the required shirts could not be removed.",
+                this);
+            yield return CancelTransitionRoutine();
+            yield break;
+        }
+
         if (playerResetController != null)
         {
-            playerResetController.ResetPlayerAndStation();
+            playerResetController.ResetStationAndReturnPlayerTo(bedWakeUpPoint);
         }
 
         if (bossController != null)
@@ -117,6 +117,28 @@ public class DayCycleManager : MonoBehaviour
         if (blackScreen != null)
         {
             yield return FadeBlackScreen(1f, 0f, fadeInDuration);
+            blackScreen.blocksRaycasts = false;
+            blackScreen.interactable = false;
+        }
+
+        if (playerResetController != null)
+        {
+            playerResetController.UnlockPlayer();
+        }
+
+        if (bossController != null)
+        {
+            bossController.SetSequencePaused(false);
+        }
+
+        transitionRunning = false;
+    }
+
+    private IEnumerator CancelTransitionRoutine()
+    {
+        if (blackScreen != null)
+        {
+            yield return FadeBlackScreen(blackScreen.alpha, 0f, fadeInDuration);
             blackScreen.blocksRaycasts = false;
             blackScreen.interactable = false;
         }
