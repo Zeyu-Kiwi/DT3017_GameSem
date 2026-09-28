@@ -54,6 +54,11 @@ public class CaughtSequenceController : MonoBehaviour
         sequenceRunning = true;
         activeBoss = boss;
 
+        if (ToolSelectionUI.Instance != null && ToolSelectionUI.Instance.IsOpen)
+        {
+            ToolSelectionUI.Instance.CloseForExternalSequence();
+        }
+
         // End through the dialogue package's public API before locking controls.
         // Its OnConversationEnded event may temporarily re-enable the player.
         if (ConversationManager.Instance != null &&
