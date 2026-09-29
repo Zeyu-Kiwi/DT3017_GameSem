@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,8 @@ public class ToolSelectionUI : MonoBehaviour
     [SerializeField] private Transform buttonContainer;
     [SerializeField] private ToolSelectionButtonUI buttonPrefab;
     [SerializeField] private Button closeButton;
+    [SerializeField] private TMP_Text hoveredToolNameText;
+    [SerializeField] private Sprite missingIconSprite;
 
     private readonly List<ToolSelectionButtonUI> spawnedButtons =
         new List<ToolSelectionButtonUI>();
@@ -55,6 +58,8 @@ public class ToolSelectionUI : MonoBehaviour
         {
             interfaceRoot.SetActive(false);
         }
+
+        ClearHoveredToolName();
     }
 
     private void OnDestroy()
@@ -142,11 +147,6 @@ public class ToolSelectionUI : MonoBehaviour
             return;
         }
 
-        for (int i = 0; i < spawnedButtons.Count; i++)
-        {
-            spawnedButtons[i].SetSelected(spawnedButtons[i] == selectedButton);
-        }
-
         if (activeDoor.IsCorrectTool(selectedTool))
         {
             DoorToolInteractable completedDoor = activeDoor;
@@ -183,6 +183,7 @@ public class ToolSelectionUI : MonoBehaviour
             interfaceRoot.SetActive(false);
         }
 
+        ClearHoveredToolName();
         DestroySpawnedButtons();
 
         if (restorePlayerControl)
@@ -243,8 +244,34 @@ public class ToolSelectionUI : MonoBehaviour
             }
 
             ToolSelectionButtonUI button = Instantiate(buttonPrefab, buttonContainer);
-            button.Initialize(this, item);
+            button.Initialize(this, item, missingIconSprite);
             spawnedButtons.Add(button);
+        }
+    }
+
+    public void ShowHoveredTool(ItemData item)
+    {
+        if (hoveredToolNameText != null)
+        {
+            hoveredToolNameText.text = item == null ? string.Empty : item.DisplayName;
+        }
+    }
+
+    public void ClearHoveredTool(ItemData item)
+    {
+        if (hoveredToolNameText != null &&
+            item != null &&
+            hoveredToolNameText.text == item.DisplayName)
+        {
+            ClearHoveredToolName();
+        }
+    }
+
+    private void ClearHoveredToolName()
+    {
+        if (hoveredToolNameText != null)
+        {
+            hoveredToolNameText.text = string.Empty;
         }
     }
 

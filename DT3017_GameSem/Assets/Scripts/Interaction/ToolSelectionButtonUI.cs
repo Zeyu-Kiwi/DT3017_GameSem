@@ -1,17 +1,11 @@
-using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ToolSelectionButtonUI : MonoBehaviour
+public class ToolSelectionButtonUI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Button button;
-    [SerializeField] private Image backgroundImage;
     [SerializeField] private Image toolIconImage;
-    [SerializeField] private TMP_Text toolNameText;
-
-    [Header("Selection Colours")]
-    [SerializeField] private Color normalBackgroundColor = Color.gray;
-    [SerializeField] private Color selectedBackgroundColor = Color.white;
 
     private ToolSelectionUI owner;
     private ItemData item;
@@ -25,13 +19,12 @@ public class ToolSelectionButtonUI : MonoBehaviour
             button = GetComponent<Button>();
         }
 
-        if (backgroundImage == null && button != null)
-        {
-            backgroundImage = button.targetGraphic as Image;
-        }
     }
 
-    public void Initialize(ToolSelectionUI owningUI, ItemData toolItem)
+    public void Initialize(
+        ToolSelectionUI owningUI,
+        ItemData toolItem,
+        Sprite missingIconSprite)
     {
         owner = owningUI;
         item = toolItem;
@@ -42,29 +35,30 @@ public class ToolSelectionButtonUI : MonoBehaviour
             button.onClick.AddListener(OnClicked);
         }
 
-        if (toolNameText != null)
-        {
-            toolNameText.text = item == null ? string.Empty : item.DisplayName;
-        }
-
         if (toolIconImage != null)
         {
-            bool hasIcon = item != null && item.Icon != null;
-            toolIconImage.enabled = hasIcon;
-            toolIconImage.sprite = hasIcon ? item.Icon : null;
+            Sprite displayedIcon = item != null && item.Icon != null
+                ? item.Icon
+                : missingIconSprite;
+            toolIconImage.sprite = displayedIcon;
+            toolIconImage.enabled = displayedIcon != null;
             toolIconImage.preserveAspect = true;
         }
-
-        SetSelected(false);
     }
 
-    public void SetSelected(bool selected)
+    public void OnPointerEnter(PointerEventData eventData)
     {
-        if (backgroundImage != null)
+        if (owner != null && item != null)
         {
-            backgroundImage.color = selected
-                ? selectedBackgroundColor
-                : normalBackgroundColor;
+            owner.ShowHoveredTool(item);
+        }
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        if (owner != null && item != null)
+        {
+            owner.ClearHoveredTool(item);
         }
     }
 
