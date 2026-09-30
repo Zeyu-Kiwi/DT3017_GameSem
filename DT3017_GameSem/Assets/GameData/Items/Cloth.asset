@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
   itemId: cloth
   displayName: Cloth
-  stackLimit: 100
+  stackLimit: 20
   icon: {fileID: 0}
