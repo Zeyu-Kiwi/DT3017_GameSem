@@ -418,7 +418,8 @@ public class BossController : MonoBehaviour
         }
 
         bool playerOutside = !workstation.IsPlayerInsideWorkstation;
-        bool playerVisible = playerVisionTarget != null &&
+        bool playerVisible = DeveloperGameOptions.PlayerVisionDetectionEnabled &&
+                             playerVisionTarget != null &&
                              vision.CanSee(playerVisionTarget);
         bool workstationVisible = workstationVisionTarget != null &&
                                   vision.CanSee(workstationVisionTarget);
