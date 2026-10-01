@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccbc10098377ea5489dc27cf29d61c83, type: 3}
   m_Name: PSXEffectsSettings
   m_EditorClassIdentifier: Assembly-CSharp::Game.Visuals.PSXEffectsSettings
-  effectsEnabled: 1
+  effectsEnabled: 0
