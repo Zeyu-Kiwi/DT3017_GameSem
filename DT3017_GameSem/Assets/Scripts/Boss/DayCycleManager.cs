@@ -48,18 +48,22 @@ public class DayCycleManager : MonoBehaviour
 
     public bool TryBeginNextDay()
     {
-        if (transitionRunning ||
-            quotaManager == null ||
-            !quotaManager.HasMetQuota)
+        return TryBeginNextDay(true);
+    }
+
+    public bool TryBeginNextDay(bool requireDailyQuota)
+    {
+        if (!isActiveAndEnabled || transitionRunning ||
+            (requireDailyQuota && (quotaManager == null || !quotaManager.HasMetQuota)))
         {
             return false;
         }
 
-        StartCoroutine(NextDayRoutine());
+        StartCoroutine(NextDayRoutine(requireDailyQuota));
         return true;
     }
 
-    private IEnumerator NextDayRoutine()
+    private IEnumerator NextDayRoutine(bool requireDailyQuota)
     {
         transitionRunning = true;
 
@@ -80,8 +84,8 @@ public class DayCycleManager : MonoBehaviour
             yield return FadeBlackScreen(0f, 1f, fadeOutDuration);
         }
 
-        if (quotaManager == null ||
-            !quotaManager.ConsumeRequiredShirtsForDayEnd())
+        if (requireDailyQuota && (quotaManager == null ||
+            !quotaManager.ConsumeRequiredShirtsForDayEnd()))
         {
             Debug.LogError(
                 "Day transition started, but the required shirts could not be removed.",

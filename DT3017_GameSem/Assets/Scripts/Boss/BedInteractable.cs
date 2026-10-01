@@ -5,6 +5,9 @@ public class BedInteractable : MonoBehaviour, IInteractable
     [SerializeField] private DailyQuotaManager quotaManager;
     [SerializeField] private DayCycleManager dayCycleManager;
 
+    [Tooltip("Require the daily shirt quota before ending the day.")]
+    [SerializeField] private bool requireDailyQuota = true;
+
     public bool CanInteract => dayCycleManager != null &&
                                !dayCycleManager.TransitionRunning;
 
@@ -23,12 +26,12 @@ public class BedInteractable : MonoBehaviour, IInteractable
 
     public void Interact(GameObject player)
     {
-        if (!CanInteract || quotaManager == null)
+        if (!CanInteract || (requireDailyQuota && quotaManager == null))
         {
             return;
         }
 
-        if (!quotaManager.HasMetQuota)
+        if (requireDailyQuota && !quotaManager.HasMetQuota)
         {
             int missing = quotaManager.MissingShirts;
             string itemName = missing == 1 ? "shirt" : "shirts";
@@ -38,7 +41,7 @@ public class BedInteractable : MonoBehaviour, IInteractable
             return;
         }
 
-        dayCycleManager.TryBeginNextDay();
+        dayCycleManager.TryBeginNextDay(requireDailyQuota);
     }
 
     private void ShowMessage(string message)
