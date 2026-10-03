@@ -26,12 +26,13 @@ public class BedInteractable : MonoBehaviour, IInteractable
 
     public void Interact(GameObject player)
     {
-        if (!CanInteract || (requireDailyQuota && quotaManager == null))
+        bool checkQuota = requireDailyQuota && !DeveloperGameOptions.SkipDailyQuotaEnabled;
+        if (!CanInteract || (checkQuota && quotaManager == null))
         {
             return;
         }
 
-        if (requireDailyQuota && !quotaManager.HasMetQuota)
+        if (checkQuota && !quotaManager.HasMetQuota)
         {
             int missing = quotaManager.MissingShirts;
             string itemName = missing == 1 ? "shirt" : "shirts";
@@ -41,7 +42,7 @@ public class BedInteractable : MonoBehaviour, IInteractable
             return;
         }
 
-        dayCycleManager.TryBeginNextDay(requireDailyQuota);
+        dayCycleManager.TryBeginNextDay(checkQuota);
     }
 
     private void ShowMessage(string message)

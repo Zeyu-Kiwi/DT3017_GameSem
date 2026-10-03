@@ -12,6 +12,20 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private PlayerInteractUI interactUI;
     private IInteractable currentInteractable;
     private bool interactionEnabled = true;
+    private readonly System.Collections.Generic.HashSet<object> interactionLocks =
+        new System.Collections.Generic.HashSet<object>();
+
+    public void LockInteraction(object owner)
+    {
+        if (owner == null) throw new System.ArgumentNullException(nameof(owner));
+        interactionLocks.Add(owner);
+        SetCurrentInteractable(null);
+    }
+
+    public void UnlockInteraction(object owner)
+    {
+        if (owner != null) interactionLocks.Remove(owner);
+    }
 
     private void Awake()
     {
@@ -37,7 +51,7 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Update()
     {
-        if (!interactionEnabled)
+        if (!interactionEnabled || interactionLocks.Count > 0)
             return;
 
         FindInteractable();

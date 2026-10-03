@@ -137,6 +137,7 @@ public class DayCycleManager : MonoBehaviour
 
     public bool TryBeginNextDay(bool requireDailyQuota)
     {
+        requireDailyQuota = requireDailyQuota && !DeveloperGameOptions.SkipDailyQuotaEnabled;
         if (!isActiveAndEnabled || transitionRunning ||
             (requireDailyQuota && (quotaManager == null || !quotaManager.HasMetQuota)))
         {
