@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc1fce708f50b2940a7fab84f90791cf, type: 3}
   m_Name: DeveloperGameOptions
   m_EditorClassIdentifier: Assembly-CSharp::DeveloperGameOptions
-  bossVisionTargetTriggersDetection: 1
+  bossVisionTargetTriggersDetection: 0
