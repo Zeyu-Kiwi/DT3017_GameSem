@@ -63,8 +63,17 @@ public class PlayerInteractor : MonoBehaviour
         if (currentInteractable != null &&
             Input.GetKeyDown(KeyCode.F))
         {
-            currentInteractable.Interact(gameObject);
+            InteractCurrent();
         }
+    }
+
+    private void InteractCurrent()
+    {
+        if (currentInteractable == null || !currentInteractable.CanInteract) return;
+        // Keep the inspected object even if its interaction clears the current target.
+        Component target = currentInteractable as Component;
+        currentInteractable.Interact(gameObject);
+        if (target != null) target.GetComponentInParent<EscapeRouteCheck>()?.MarkChecked();
     }
 
     private void FindInteractable()

@@ -48,6 +48,8 @@ public class DayCycleManager : MonoBehaviour
     private bool currentDayTimerEnabled = true;
     private float currentDayDurationSeconds;
 
+    public event System.Action<int> DayStarted;
+
     public int CurrentDay => currentDay;
     public bool TransitionRunning => transitionRunning;
     public float RemainingDayTimeSeconds => remainingDayTimeSeconds;
@@ -142,6 +144,8 @@ public class DayCycleManager : MonoBehaviour
 
     public bool TryBeginNextDay(bool requireDailyQuota)
     {
+        var tutorial = GetComponent<DayOneTutorial>();
+        if (tutorial != null && !tutorial.CanSleep) return false;
         requireDailyQuota = requireDailyQuota && !DeveloperGameOptions.SkipDailyQuotaEnabled;
         if (!isActiveAndEnabled || transitionRunning ||
             (requireDailyQuota && (quotaManager == null || !quotaManager.HasMetQuota)))
@@ -227,6 +231,7 @@ public class DayCycleManager : MonoBehaviour
         }
 
         transitionRunning = false;
+        DayStarted?.Invoke(currentDay);
     }
 
     private IEnumerator CancelTransitionRoutine()

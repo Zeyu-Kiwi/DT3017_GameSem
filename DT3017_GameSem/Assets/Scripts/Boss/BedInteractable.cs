@@ -42,6 +42,8 @@ public class BedInteractable : MonoBehaviour, IInteractable
             return;
         }
 
+        var tutorial = dayCycleManager.GetComponent<DayOneTutorial>();
+        if (tutorial != null && !tutorial.TryAllowSleep()) return;
         dayCycleManager.TryBeginNextDay(checkQuota);
     }
 
