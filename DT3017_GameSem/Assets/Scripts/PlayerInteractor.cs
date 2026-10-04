@@ -11,11 +11,14 @@ public class PlayerInteractor : MonoBehaviour
 
     [SerializeField] private PlayerInteractUI interactUI;
     private IInteractable currentInteractable;
+    private InteractionOutlineHighlighter outlineHighlighter;
     private bool interactionEnabled = true;
 
     private void Awake()
     {
         interactUI = GetComponent<PlayerInteractUI>();
+        outlineHighlighter = GetComponent<InteractionOutlineHighlighter>();
+        if (outlineHighlighter == null) outlineHighlighter = gameObject.AddComponent<InteractionOutlineHighlighter>();
 
         if (playerCamera == null)
         {
@@ -31,6 +34,7 @@ public class PlayerInteractor : MonoBehaviour
 
     private void OnDisable()
     {
+        SetCurrentInteractable(null);
         ConversationManager.OnConversationStarted -= DisableInteraction;
         ConversationManager.OnConversationEnded -= EnableInteraction;
     }
@@ -80,10 +84,12 @@ public class PlayerInteractor : MonoBehaviour
 
     private void SetCurrentInteractable(IInteractable interactable)
     {
+        outlineHighlighter?.SetTarget(interactable as Component);
         if (ReferenceEquals(currentInteractable, interactable))
             return;
 
         currentInteractable = interactable;
+
 
         if (currentInteractable != null)
         {
