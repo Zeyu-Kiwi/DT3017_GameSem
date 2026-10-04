@@ -13039,7 +13039,10 @@ MonoBehaviour:
   bedWakeUpPoint: {fileID: 1583807017}
   dailyTimerEnabled: 1
   defaultDayDurationSeconds: 600
-  dayTimerOverrides: []
+  dayTimerOverrides:
+  - day: 1
+    timerEnabled: 0
+    durationSeconds: 0
   onTimerExpired:
     m_PersistentCalls:
       m_Calls: []
