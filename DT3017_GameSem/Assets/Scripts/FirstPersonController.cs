@@ -9,6 +9,18 @@ public class FirstPersonController : MonoBehaviour
     public float walkSpeed = 6f;
     private Rigidbody rb;
 
+    [Header("Jump")]
+    public KeyCode jumpKey = KeyCode.Space;
+    [Min(0f)] public float jumpHeight = 1.25f;
+    [Tooltip("Layers that can support the player. Triggers and the player's own colliders are ignored.")]
+    public LayerMask groundLayers = Physics.DefaultRaycastLayers;
+    [Min(0.01f)] public float groundCheckDistance = 0.1f;
+    private CapsuleCollider playerCapsule;
+    private bool jumpQueued;
+    private readonly RaycastHit[] groundHits = new RaycastHit[16];
+    private readonly RaycastHit[] movementHits = new RaycastHit[16];
+    public bool IsGrounded => CheckGrounded();
+
     [Header("Sprint")]
     public KeyCode sprintKey = KeyCode.LeftShift;
     [Min(1f)] public float sprintSpeedMultiplier = 1.2f;
@@ -36,6 +48,7 @@ public class FirstPersonController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        playerCapsule = GetComponent<CapsuleCollider>();
         unlockedConstraints = rb.constraints;
         playerCamera = cameraTransform != null
             ? cameraTransform.GetComponentInChildren<Camera>(true)
@@ -54,6 +67,7 @@ public class FirstPersonController : MonoBehaviour
         ConversationManager.OnConversationStarted -= DisableController;
         ConversationManager.OnConversationEnded -= EnableController;
         ResetSprint();
+        jumpQueued = false;
     }
 
     void Start()
@@ -66,8 +80,10 @@ public class FirstPersonController : MonoBehaviour
     {
         if (CanMove)
         {
+            if (jumpQueued) TryJump();
             Move();
         }
+        jumpQueued = false;
     }
 
     private void Update()
@@ -83,6 +99,8 @@ public class FirstPersonController : MonoBehaviour
                 EnableController();
             }
         }
+
+        if (CanMove && Input.GetKeyDown(jumpKey)) jumpQueued = true;
 
         if (CanLook)
         {
@@ -104,9 +122,69 @@ public class FirstPersonController : MonoBehaviour
         Vector3 inputDir = (transform.forward * input.y + transform.right * input.x).normalized;
         float speed = walkSpeed * (IsSprinting ? Mathf.Max(1f, sprintSpeedMultiplier) : 1f);
         Vector3 moveVelocity = CanMove ? inputDir * speed : Vector3.zero;
+        if (!IsGrounded) moveVelocity = SlideAlongAirborneObstacles(moveVelocity);
         Vector3 currentVelocity = rb.linearVelocity;
 
         rb.linearVelocity = new Vector3(moveVelocity.x, currentVelocity.y, moveVelocity.z);
+    }
+
+    private Vector3 SlideAlongAirborneObstacles(Vector3 velocity)
+    {
+        if (playerCapsule == null || velocity.sqrMagnitude < 0.0001f) return velocity;
+        Bounds bounds = playerCapsule.bounds;
+        float radius = Mathf.Min(bounds.extents.x, bounds.extents.z);
+        float halfSegment = Mathf.Max(0f, bounds.extents.y - radius);
+        const float skin = 0.02f;
+        Vector3 direction = velocity.normalized;
+        // Sweep the body before driving it into an edge. Otherwise the collision
+        // solver can turn horizontal movement into additional upward velocity.
+        int count = Physics.CapsuleCastNonAlloc(bounds.center + Vector3.up * halfSegment,
+            bounds.center - Vector3.up * halfSegment, Mathf.Max(0.01f, radius - skin),
+            direction, movementHits, velocity.magnitude * Time.fixedDeltaTime + skin * 2f,
+            Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore);
+        for (int i = 0; i < count; i++)
+        {
+            RaycastHit hit = movementHits[i];
+            if (hit.collider.attachedRigidbody == rb ||
+                Physics.GetIgnoreLayerCollision(gameObject.layer, hit.collider.gameObject.layer) ||
+                Physics.GetIgnoreCollision(playerCapsule, hit.collider)) continue;
+            Vector3 sideNormal = new Vector3(hit.normal.x, 0f, hit.normal.z);
+            if (sideNormal.sqrMagnitude < 0.0001f) continue;
+            sideNormal.Normalize();
+            float inwardSpeed = Vector3.Dot(velocity, sideNormal);
+            if (inwardSpeed < 0f) velocity -= sideNormal * inwardSpeed;
+        }
+        return velocity;
+    }
+
+    private bool CheckGrounded()
+    {
+        if (playerCapsule == null || !playerCapsule.enabled || rb == null ||
+            rb.linearVelocity.y > 0.1f) return false;
+
+        Bounds bounds = playerCapsule.bounds;
+        float radius = Mathf.Max(0.01f, Mathf.Min(bounds.extents.x, bounds.extents.z) * 0.9f);
+        // Start just above the feet; a small sphere also supports the player near ledges.
+        Vector3 origin = new Vector3(bounds.center.x, bounds.min.y + radius + 0.05f, bounds.center.z);
+        int hits = Physics.SphereCastNonAlloc(origin, radius, Vector3.down, groundHits,
+            Mathf.Max(0.01f, groundCheckDistance) + 0.05f, groundLayers, QueryTriggerInteraction.Ignore);
+        for (int i = 0; i < hits; i++)
+        {
+            if (groundHits[i].collider.attachedRigidbody != rb && groundHits[i].normal.y >= 0.65f)
+                return true;
+        }
+        return false;
+    }
+
+    private bool TryJump()
+    {
+        if (!CanMove || rb.isKinematic || !rb.useGravity || jumpHeight <= 0f ||
+            Physics.gravity.y >= 0f || !IsGrounded) return false;
+
+        Vector3 velocity = rb.linearVelocity;
+        velocity.y = Mathf.Sqrt(2f * -Physics.gravity.y * jumpHeight);
+        rb.linearVelocity = velocity;
+        return true;
     }
 
     private void LateUpdate()
@@ -210,6 +288,7 @@ public class FirstPersonController : MonoBehaviour
     private void StopMotion()
     {
         ResetSprint();
+        jumpQueued = false;
         if (rb == null || rb.isKinematic)
             return;
 

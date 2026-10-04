@@ -7928,8 +7928,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonController
   walkSpeed: 6
+  jumpKey: 32
+  jumpHeight: 1.2
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 251
+  groundCheckDistance: 0.1
   sprintKey: 304
-  sprintSpeedMultiplier: 1.05
+  sprintSpeedMultiplier: 1.035
   sprintFovIncrease: 5
   sprintFovTransitionSpeed: 30
   cameraTransform: {fileID: 1363778797}
@@ -7942,7 +7948,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1271710718}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 1e26aa422f97bfc4db27ff99dda8de57, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
