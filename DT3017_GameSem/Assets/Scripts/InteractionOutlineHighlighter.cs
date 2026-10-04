@@ -46,6 +46,7 @@ public sealed class InteractionOutlineHighlighter : MonoBehaviour
 
         foreach (var source in target.GetComponentsInChildren<Renderer>())
         {
+            if (source.GetComponent<ItemShineVisual>() != null) continue;
             Mesh mesh = null;
             if (source is SkinnedMeshRenderer skin) mesh = skin.sharedMesh;
             else if (source is MeshRenderer && source.TryGetComponent<MeshFilter>(out var filter)) mesh = filter.sharedMesh;

@@ -5,6 +5,17 @@ public class ItemPickup : MonoBehaviour, IInteractable
     [SerializeField] private ItemData item;
     [SerializeField, Min(1)] private int quantity = 1;
 
+    [Header("Item Shine")]
+    [Tooltip("Show sparkles and a diagonal sheen while this pickup is in the world. Add Item Shine Effect to customize its appearance.")]
+    [SerializeField] private bool itemShineEnabled = true;
+
+    private void Awake()
+    {
+        var effect = GetComponent<ItemShineEffect>();
+        if (effect == null && itemShineEnabled) effect = gameObject.AddComponent<ItemShineEffect>();
+        if (effect != null) effect.enabled = itemShineEnabled;
+    }
+
     [Header("Interaction Outline")]
     [Tooltip("Use this item's outline color instead of the player's default highlight color.")]
     [SerializeField] private bool useCustomOutlineColor;
