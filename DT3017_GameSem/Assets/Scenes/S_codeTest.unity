@@ -827,6 +827,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   item: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
   quantity: 1
+  useCustomOutlineColor: 0
+  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
+  useCustomOutlineEmission: 0
+  outlineEmissionIntensity: 0
 --- !u!135 &183027882
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1318,6 +1322,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   item: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
   quantity: 1
+  useCustomOutlineColor: 0
+  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
+  useCustomOutlineEmission: 0
+  outlineEmissionIntensity: 0
 --- !u!135 &234659835
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2000,6 +2008,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   item: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
   quantity: 1
+  useCustomOutlineColor: 0
+  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
+  useCustomOutlineEmission: 0
+  outlineEmissionIntensity: 0
 --- !u!135 &350979045
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2404,7 +2416,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -3682,6 +3694,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   item: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
   quantity: 1
+  useCustomOutlineColor: 0
+  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
+  useCustomOutlineEmission: 0
+  outlineEmissionIntensity: 0
 --- !u!135 &737759946
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4505,6 +4521,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   item: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
   quantity: 1
+  useCustomOutlineColor: 0
+  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
+  useCustomOutlineEmission: 0
+  outlineEmissionIntensity: 0
 --- !u!135 &916681921
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5090,7 +5110,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &950950192
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5400,6 +5420,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   item: {fileID: 11400000, guid: 084b8554363c6d5479f4d33f466aec8b, type: 2}
   quantity: 1
+  useCustomOutlineColor: 0
+  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
+  useCustomOutlineEmission: 0
+  outlineEmissionIntensity: 0
 --- !u!1 &996310903
 GameObject:
   m_ObjectHideFlags: 0
@@ -5539,6 +5563,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   item: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
   quantity: 1
+  useCustomOutlineColor: 0
+  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
+  useCustomOutlineEmission: 0
+  outlineEmissionIntensity: 0
 --- !u!135 &1015452820
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8104,7 +8132,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -9140,6 +9168,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   item: {fileID: 11400000, guid: 7ce056aef7bfef34abacbf7a370a24d5, type: 2}
   quantity: 1
+  useCustomOutlineColor: 0
+  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
+  useCustomOutlineEmission: 0
+  outlineEmissionIntensity: 0
 --- !u!1 &1557383869
 GameObject:
   m_ObjectHideFlags: 0
@@ -9886,6 +9918,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   item: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
   quantity: 1
+  useCustomOutlineColor: 0
+  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
+  useCustomOutlineEmission: 0
+  outlineEmissionIntensity: 0
 --- !u!1 &1646407588
 GameObject:
   m_ObjectHideFlags: 0
@@ -9920,6 +9956,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   item: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
   quantity: 1
+  useCustomOutlineColor: 0
+  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
+  useCustomOutlineEmission: 0
+  outlineEmissionIntensity: 0
 --- !u!135 &1646407590
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -12263,6 +12303,55 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 523735580}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1983180326
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1983180328}
+  - component: {fileID: 1983180327}
+  m_Layer: 0
+  m_Name: Outline Glow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1983180327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983180326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 01c0a3037d772054198a3c04427c3bbf, type: 2}
+--- !u!4 &1983180328
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1983180326}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2006626241
 GameObject:

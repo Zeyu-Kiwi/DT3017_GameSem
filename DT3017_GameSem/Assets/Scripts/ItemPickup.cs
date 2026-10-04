@@ -5,6 +5,19 @@ public class ItemPickup : MonoBehaviour, IInteractable
     [SerializeField] private ItemData item;
     [SerializeField, Min(1)] private int quantity = 1;
 
+    [Header("Interaction Outline")]
+    [Tooltip("Use this item's outline color instead of the player's default highlight color.")]
+    [SerializeField] private bool useCustomOutlineColor;
+    [SerializeField, ColorUsage(true, true)] private Color outlineColor = new Color(1f, .75f, .15f, 1f);
+
+    [Tooltip("Override the player's default outline emission intensity for this item.")]
+    [SerializeField] private bool useCustomOutlineEmission;
+    [SerializeField, Min(0f)] private float outlineEmissionIntensity;
+
+    public bool UseCustomOutlineEmission => useCustomOutlineEmission;
+    public float OutlineEmissionIntensity => Mathf.Max(0f, outlineEmissionIntensity);
+    public bool UseCustomOutlineColor => useCustomOutlineColor;
+    public Color OutlineColor => outlineColor;
     public bool CanInteract => item != null && quantity > 0;
 
     public void Interact(GameObject player)

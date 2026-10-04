@@ -67,6 +67,7 @@ GameObject:
   - component: {fileID: 4260105694920508414}
   - component: {fileID: 75757056612065288}
   - component: {fileID: 6899269468027214366}
+  - component: {fileID: 5617805514577944235}
   m_Layer: 0
   m_Name: CharacterController
   m_TagString: Player
@@ -189,6 +190,7 @@ MonoBehaviour:
     m_Bits: 8
   interactUI: {fileID: 4260105694920508414}
 --- !u!114 &6899269468027214366
+--- !u!114 &5617805514577944235
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,6 +213,14 @@ MonoBehaviour:
   onTutorialEnded:
     m_PersistentCalls:
       m_Calls: []
+  m_Script: {fileID: 11500000, guid: 37ef4630152cb014dacc2c9898154d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractionOutlineHighlighter
+  outlineEnabled: 1
+  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
+  outlineWidthPixels: 3
+  outlineEmissionIntensity: 3
+  outlineMaterial: {fileID: 0}
 --- !u!1 &1531397734592150436
 GameObject:
   m_ObjectHideFlags: 0
@@ -327,7 +337,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
