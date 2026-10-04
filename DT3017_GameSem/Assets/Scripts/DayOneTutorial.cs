@@ -19,6 +19,8 @@ public class DayOneTutorial : MonoBehaviour
     [Header("Tutorial Points")]
     [SerializeField] private Transform tutorialPoint;
     [SerializeField] private Transform tutorialNpcPoint;
+    [Tooltip("Look at this point on the workbench while the screen is black. If empty, use Tutorial Point's facing.")]
+    [SerializeField] private Transform workbenchLookTarget;
     [SerializeField] private Transform npc;
     [Tooltip("NPC root offset from the marker. Use an upward offset if the marker is at floor level.")]
     [SerializeField] private Vector3 npcPositionOffset = new Vector3(0f, 1f, 0f);
@@ -88,6 +90,8 @@ public class DayOneTutorial : MonoBehaviour
         // Keep looking available while folding; dialogue itself handles its look lock.
         interactor?.LockInteraction(this);
         PlaceNpc();
+        var npcRenderer = npc.GetComponentInChildren<Renderer>();
+        player.FaceWorldPosition(npcRenderer != null ? npcRenderer.bounds.center : npc.position);
         if (pauseBossDuringTutorial && boss != null)
         {
             originalBossPaused = boss.IsSequencePaused;
@@ -139,13 +143,19 @@ public class DayOneTutorial : MonoBehaviour
     private IEnumerator AfterIntroduction()
     {
         while (fadeCutscene.IsPlaying) yield return null;
-        yield return fadeCutscene.PlayRoutine(RestoreNpc);
+        yield return fadeCutscene.PlayRoutine(PrepareWorkbenchView);
         if (stage != TutorialStage.Fade) yield break;
-        tutorialPosition.BeginTutorialAt(tutorialPoint);
         player.UnlockMovement(this);
         interactor?.UnlockInteraction(this);
         stage = TutorialStage.Folding;
         OnQuotaChanged();
+    }
+
+    private void PrepareWorkbenchView()
+    {
+        RestoreNpc();
+        tutorialPosition.BeginTutorialAt(tutorialPoint);
+        if (workbenchLookTarget != null) player.FaceWorldPosition(workbenchLookTarget.position);
     }
 
     private void OnQuotaChanged()

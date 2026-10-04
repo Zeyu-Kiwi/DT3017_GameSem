@@ -11,6 +11,10 @@ public class DayCycleManager : MonoBehaviour
     [SerializeField] private PlayerResetController playerResetController;
     [SerializeField] private BossController bossController;
 
+    [Header("Boss Availability")]
+    [Tooltip("Boss NPC is fully disabled on these day numbers. Other days enable normal boss behavior.")]
+    [SerializeField] private List<int> bossDisabledDays = new List<int> { 1, 2 };
+
     [Header("Day")]
     [SerializeField, Min(1)] private int startingDay = 1;
     [SerializeField] private TMP_Text dayText;
@@ -83,6 +87,7 @@ public class DayCycleManager : MonoBehaviour
         }
 
         RefreshDayUI();
+        ApplyBossDayAvailability();
     }
 
     private void Update()
@@ -200,6 +205,7 @@ public class DayCycleManager : MonoBehaviour
         }
 
         currentDay++;
+        ApplyBossDayAvailability();
         ResetDailyTimer();
         RefreshDayUI();
 
@@ -279,6 +285,15 @@ public class DayCycleManager : MonoBehaviour
         }
 
         blackScreen.alpha = to;
+    }
+
+    [ContextMenu("Refresh Boss Day Availability")]
+    public void ApplyBossDayAvailability()
+    {
+        if (!Application.isPlaying || bossController == null) return;
+        bool available = bossDisabledDays == null || !bossDisabledDays.Contains(CurrentDay);
+        if (!available) bossController.ResetOutsideAndRestartTimer();
+        bossController.gameObject.SetActive(available);
     }
 
     private void RefreshDayUI()

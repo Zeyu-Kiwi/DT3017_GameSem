@@ -6,6 +6,8 @@ public class CraftingStation : MonoBehaviour, IInteractable
 {
     [Header("Configuration")]
     [SerializeField] private bool canInteract = true;
+    [Tooltip("Workbench crafting is unavailable on Day 1. Shirt folding remains available.")]
+    [SerializeField] private DayCycleManager dayCycleManager;
     [SerializeField] private CraftingRecipeDatabase recipeDatabase;
     [SerializeField] private List<CraftingMaterialSection> materialSections =
         new List<CraftingMaterialSection>();
@@ -53,6 +55,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
     private bool runtimeStateInitialized;
 
     public bool CanInteract => canInteract &&
+                               (dayCycleManager == null || dayCycleManager.CurrentDay != 1) &&
                                isPlayerInsideWorkstation &&
                                !isOpen &&
                                (drawerController == null || !drawerController.IsMoving);
@@ -62,6 +65,9 @@ public class CraftingStation : MonoBehaviour, IInteractable
 
     private void Awake()
     {
+        if (dayCycleManager == null)
+            dayCycleManager = FindFirstObjectByType<DayCycleManager>();
+
         if (drawerController == null)
         {
             drawerController = GetComponent<CraftingDrawerController>();

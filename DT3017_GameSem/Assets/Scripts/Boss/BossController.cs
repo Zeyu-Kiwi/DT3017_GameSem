@@ -163,7 +163,7 @@ public class BossController : MonoBehaviour
     [ContextMenu("Start Visit Now")]
     public void StartVisitNow()
     {
-        if (sequencePaused)
+        if (!isActiveAndEnabled || sequencePaused)
         {
             return;
         }

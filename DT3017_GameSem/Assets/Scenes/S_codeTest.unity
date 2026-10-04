@@ -11697,7 +11697,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -143}
-  m_SizeDelta: {x: 0, y: 120}
+  m_SizeDelta: {x: 10, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1766270522
 MonoBehaviour:
@@ -11863,6 +11863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CraftingStation
   canInteract: 1
+  dayCycleManager: {fileID: 0}
   recipeDatabase: {fileID: 11400000, guid: 8bc4b552378cce24988c292d1678732a, type: 2}
   materialSections:
   - {fileID: 1347543190}
@@ -13698,7 +13699,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 650, y: 0}
+  m_SizeDelta: {x: 650, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2018757204
 MonoBehaviour:
@@ -14018,6 +14019,7 @@ MonoBehaviour:
   quotaManager: {fileID: 2051834763}
   playerResetController: {fileID: 2051834764}
   bossController: {fileID: 1915170357}
+  bossDisabledDays: 0100000002000000
   startingDay: 1
   dayText: {fileID: 1469617604}
   bedWakeUpPoint: {fileID: 1583807017}
@@ -14108,6 +14110,7 @@ MonoBehaviour:
   hud: {fileID: 1894068140}
   tutorialPoint: {fileID: 376617727}
   tutorialNpcPoint: {fileID: 740457471}
+  workbenchLookTarget: {fileID: 957975047}
   npc: {fileID: 1438486527}
   npcPositionOffset: {x: 0, y: 1.11, z: 0}
   introduction: {fileID: 1913450965}
