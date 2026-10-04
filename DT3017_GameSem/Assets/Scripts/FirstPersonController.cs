@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Scripting.APIUpdating;
 using DialogueEditor;
@@ -15,10 +16,16 @@ public class FirstPersonController : MonoBehaviour
     private float rotationX = 0f;
 
     private bool canMove = true;
+    private RigidbodyConstraints unlockedConstraints;
+    private readonly Dictionary<object, bool> movementLocks = new Dictionary<object, bool>();
+
+    public bool CanMove => canMove && movementLocks.Count == 0;
+    public bool CanLook => canMove && !movementLocks.ContainsValue(true);
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        unlockedConstraints = rb.constraints;
     }
 
     private void OnEnable()
@@ -36,13 +43,12 @@ public class FirstPersonController : MonoBehaviour
     void Start()
     {
         
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        ApplyControlState();
     }
 
     void FixedUpdate()
     {
-        if (canMove)
+        if (CanMove)
         {
             Move();
         }
@@ -62,7 +68,7 @@ public class FirstPersonController : MonoBehaviour
             }
         }
 
-        if (canMove)
+        if (CanLook)
         {
             Look();
         }
@@ -95,18 +101,76 @@ public class FirstPersonController : MonoBehaviour
     public void DisableController()
     {
         canMove = false;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        rb.constraints = RigidbodyConstraints.FreezeAll;
+        ApplyControlState();
     }
 
     public void EnableController()
     {
         canMove = true;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-        rb.constraints = RigidbodyConstraints.None;
-        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        ApplyControlState();
+    }
+
+    // Owners release only their own lock; dialogue, crafting, and Escape cannot
+    // accidentally remove a tutorial lock. Repeated requests update that lock.
+    public void LockMovement(object owner, bool blockLook = true)
+    {
+        if (owner == null)
+            throw new System.ArgumentNullException(nameof(owner));
+
+        movementLocks[owner] = blockLook;
+        ApplyControlState();
+    }
+
+    public void UnlockMovement(object owner)
+    {
+        if (owner != null && movementLocks.Remove(owner))
+            ApplyControlState();
+    }
+
+    public void TeleportTo(Transform destination, bool matchFacing = true)
+    {
+        if (destination == null)
+            throw new System.ArgumentNullException(nameof(destination));
+
+        StopMotion();
+        Quaternion facing = matchFacing
+            ? Quaternion.Euler(0f, destination.eulerAngles.y, 0f)
+            : transform.rotation;
+        transform.SetPositionAndRotation(destination.position, facing);
+        rb.position = destination.position;
+        rb.rotation = facing;
+
+        if (matchFacing)
+        {
+            rotationX = Mathf.Clamp(
+                Mathf.DeltaAngle(0f, destination.eulerAngles.x),
+                -maxLookAngle, maxLookAngle);
+            if (cameraTransform != null)
+                cameraTransform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
+        }
+
+        Physics.SyncTransforms();
+    }
+
+    private void ApplyControlState()
+    {
+        if (rb == null)
+            return;
+
+        if (!CanMove)
+            StopMotion();
+        rb.constraints = CanMove ? unlockedConstraints : RigidbodyConstraints.FreezeAll;
+        Cursor.lockState = CanLook ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = !CanLook;
+    }
+
+    private void StopMotion()
+    {
+        if (rb == null || rb.isKinematic)
+            return;
+
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
     }
 
     public void ResetLook()

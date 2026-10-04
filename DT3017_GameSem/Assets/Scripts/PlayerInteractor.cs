@@ -11,11 +11,28 @@ public class PlayerInteractor : MonoBehaviour
 
     [SerializeField] private PlayerInteractUI interactUI;
     private IInteractable currentInteractable;
+    private InteractionOutlineHighlighter outlineHighlighter;
     private bool interactionEnabled = true;
+    private readonly System.Collections.Generic.HashSet<object> interactionLocks =
+        new System.Collections.Generic.HashSet<object>();
+
+    public void LockInteraction(object owner)
+    {
+        if (owner == null) throw new System.ArgumentNullException(nameof(owner));
+        interactionLocks.Add(owner);
+        SetCurrentInteractable(null);
+    }
+
+    public void UnlockInteraction(object owner)
+    {
+        if (owner != null) interactionLocks.Remove(owner);
+    }
 
     private void Awake()
     {
         interactUI = GetComponent<PlayerInteractUI>();
+        outlineHighlighter = GetComponent<InteractionOutlineHighlighter>();
+        if (outlineHighlighter == null) outlineHighlighter = gameObject.AddComponent<InteractionOutlineHighlighter>();
 
         if (playerCamera == null)
         {
@@ -31,13 +48,14 @@ public class PlayerInteractor : MonoBehaviour
 
     private void OnDisable()
     {
+        SetCurrentInteractable(null);
         ConversationManager.OnConversationStarted -= DisableInteraction;
         ConversationManager.OnConversationEnded -= EnableInteraction;
     }
 
     private void Update()
     {
-        if (!interactionEnabled)
+        if (!interactionEnabled || interactionLocks.Count > 0)
             return;
 
         FindInteractable();
@@ -80,10 +98,12 @@ public class PlayerInteractor : MonoBehaviour
 
     private void SetCurrentInteractable(IInteractable interactable)
     {
+        outlineHighlighter?.SetTarget(interactable as Component);
         if (ReferenceEquals(currentInteractable, interactable))
             return;
 
         currentInteractable = interactable;
+
 
         if (currentInteractable != null)
         {
