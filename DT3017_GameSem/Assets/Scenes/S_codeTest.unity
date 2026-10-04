@@ -985,7 +985,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d03a0d0be89e90e42b605d5e620a2339, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::QuotaSubmissionInteractable
-  quotaManager: {fileID: 2051834763}
 --- !u!65 &189358188
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1441,7 +1440,6 @@ GameObject:
   - component: {fileID: 234659836}
   - component: {fileID: 234659835}
   - component: {fileID: 234659834}
-  - component: {fileID: 234659839}
   m_Layer: 3
   m_Name: Cloth (5)
   m_TagString: Untagged
@@ -5260,6 +5258,7 @@ Transform:
   - {fileID: 1788109920}
   - {fileID: 849255547}
   - {fileID: 657731157}
+  - {fileID: 189358186}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &946376180
@@ -8140,7 +8139,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonController
   walkSpeed: 6
-  jumpKey: 32
+  jumpKey: 0
   jumpHeight: 1.2
   groundLayers:
     serializedVersion: 2
@@ -12873,7 +12872,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 650, y: 10}
+  m_SizeDelta: {x: 650, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2018757204
 MonoBehaviour:
