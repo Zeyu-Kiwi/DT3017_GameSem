@@ -9,7 +9,7 @@ public sealed class InteractionOutlineHighlighter : MonoBehaviour
     [SerializeField, ColorUsage(true, true)] private Color outlineColor = new Color(1f, .75f, .15f, 1f);
     [SerializeField, Range(0f, 12f)] private float outlineWidthPixels = 3f;
     [Tooltip("Extra HDR brightness. Zero preserves the normal outline; higher values can glow when camera HDR and Bloom are enabled.")]
-    [SerializeField, Min(0f)] private float outlineEmissionIntensity;
+    [SerializeField, Min(0f)] private float outlineEmissionIntensity = 3f;
     [Tooltip("Optional replacement for the default Resources/InteractionOutline material.")]
     [SerializeField] private Material outlineMaterial;
 

@@ -7722,6 +7722,7 @@ GameObject:
   - component: {fileID: 1271710720}
   - component: {fileID: 1271710719}
   - component: {fileID: 1271710725}
+  - component: {fileID: 1271710726}
   m_Layer: 0
   m_Name: CharacterController
   m_TagString: Player
@@ -7866,6 +7867,23 @@ MonoBehaviour:
   onTutorialEnded:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1271710726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271710718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37ef4630152cb014dacc2c9898154d98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteractionOutlineHighlighter
+  outlineEnabled: 1
+  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
+  outlineWidthPixels: 3
+  outlineEmissionIntensity: 3
+  outlineMaterial: {fileID: 0}
 --- !u!1 &1283446546
 GameObject:
   m_ObjectHideFlags: 0
@@ -12741,12 +12759,20 @@ MonoBehaviour:
   startingDay: 1
   dayText: {fileID: 1469617604}
   bedWakeUpPoint: {fileID: 1583807017}
+  dailyTimerEnabled: 1
+  defaultDayDurationSeconds: 600
+  dayTimerOverrides: []
+  onTimerExpired:
+    m_PersistentCalls:
+      m_Calls: []
   blackScreen: {fileID: 950950193}
   fadeOutDuration: 0.5
   blackScreenDuration: 1
   fadeInDuration: 0.5
   currentDay: 0
   transitionRunning: 0
+  remainingDayTimeSeconds: 0
+  timerExpired: 0
 --- !u!114 &2051834766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13008,3 +13034,4 @@ SceneRoots:
   - {fileID: 1882340568}
   - {fileID: 1307426311}
   - {fileID: 376617727}
+  - {fileID: 1983180328}
