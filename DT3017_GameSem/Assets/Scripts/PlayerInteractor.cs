@@ -4,6 +4,9 @@ using DialogueEditor;
 //[RequireComponent(typeof(PlayerInteractUI))]
 public class PlayerInteractor : MonoBehaviour
 {
+    [Header("Input")]
+    [SerializeField] private KeyCode interactionKey = KeyCode.F;
+
     [Header("Detection")]
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float interactionDistance = 3f;
@@ -15,6 +18,8 @@ public class PlayerInteractor : MonoBehaviour
     private bool interactionEnabled = true;
     private readonly System.Collections.Generic.HashSet<object> interactionLocks =
         new System.Collections.Generic.HashSet<object>();
+
+    public KeyCode InteractionKey => interactionKey;
 
     public void LockInteraction(object owner)
     {
@@ -31,6 +36,7 @@ public class PlayerInteractor : MonoBehaviour
     private void Awake()
     {
         interactUI = GetComponent<PlayerInteractUI>();
+        interactUI?.SetInteractionKey(interactionKey);
         outlineHighlighter = GetComponent<InteractionOutlineHighlighter>();
         if (outlineHighlighter == null) outlineHighlighter = gameObject.AddComponent<InteractionOutlineHighlighter>();
 
@@ -61,7 +67,7 @@ public class PlayerInteractor : MonoBehaviour
         FindInteractable();
 
         if (currentInteractable != null &&
-            Input.GetKeyDown(KeyCode.F))
+            Input.GetKeyDown(interactionKey))
         {
             currentInteractable.Interact(gameObject);
         }
@@ -124,5 +130,15 @@ public class PlayerInteractor : MonoBehaviour
     private void EnableInteraction()
     {
         interactionEnabled = true;
+    }
+
+    private void OnValidate()
+    {
+        if (interactUI == null)
+        {
+            interactUI = GetComponent<PlayerInteractUI>();
+        }
+
+        interactUI?.SetInteractionKey(interactionKey);
     }
 }
