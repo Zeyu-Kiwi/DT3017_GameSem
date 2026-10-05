@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DayCycleManager : MonoBehaviour
 {
@@ -14,6 +16,23 @@ public class DayCycleManager : MonoBehaviour
     [SerializeField] private TMP_Text dayText;
     [SerializeField] private Transform bedWakeUpPoint;
 
+    [System.Serializable]
+    public sealed class DayTimerOverride
+    {
+        [Min(1)] public int day = 1;
+        public bool timerEnabled = true;
+        [Min(0f)] public float durationSeconds = 600f;
+    }
+
+    [Header("Daily Timer")]
+    [Tooltip("Disable to freeze the countdown on every day. Re-enabling resumes the remaining time.")]
+    [SerializeField] private bool dailyTimerEnabled = true;
+    [SerializeField, Min(0f)] private float defaultDayDurationSeconds = 600f;
+    [Tooltip("Optional settings for specific day numbers. Days without an entry use the default duration. The first matching entry is used.")]
+    [SerializeField] private List<DayTimerOverride> dayTimerOverrides = new List<DayTimerOverride>();
+    [Tooltip("Invoked once when an enabled day's countdown reaches zero. Connect the desired timeout behavior here.")]
+    [SerializeField] private UnityEvent onTimerExpired = new UnityEvent();
+
     [Header("Black Screen")]
     [SerializeField] private CanvasGroup blackScreen;
     [SerializeField, Min(0f)] private float fadeOutDuration = 0.5f;
@@ -23,13 +42,31 @@ public class DayCycleManager : MonoBehaviour
     [Header("Runtime State (Debug)")]
     [SerializeField] private int currentDay;
     [SerializeField] private bool transitionRunning;
+    [SerializeField] private float remainingDayTimeSeconds;
+    [SerializeField] private bool timerExpired;
+
+    private bool currentDayTimerEnabled = true;
+    private float currentDayDurationSeconds;
 
     public int CurrentDay => currentDay;
     public bool TransitionRunning => transitionRunning;
+    public float RemainingDayTimeSeconds => remainingDayTimeSeconds;
+    public float CurrentDayDurationSeconds => currentDayDurationSeconds;
+    public bool TimerExpired => timerExpired;
+    public bool IsDailyTimerEnabled => dailyTimerEnabled && currentDayTimerEnabled;
+    public bool IsDailyTimerRunning => isActiveAndEnabled && IsDailyTimerEnabled &&
+                                       !transitionRunning && !timerExpired;
+    public UnityEvent OnTimerExpired => onTimerExpired;
 
     private void Awake()
     {
         currentDay = Mathf.Max(1, startingDay);
+        ResetDailyTimer();
+
+        if (GetComponent<DailyTimerHUD>() == null)
+        {
+            gameObject.AddComponent<DailyTimerHUD>();
+        }
 
         if (quotaManager == null)
         {
@@ -46,20 +83,77 @@ public class DayCycleManager : MonoBehaviour
         RefreshDayUI();
     }
 
+    private void Update()
+    {
+        TickDailyTimer(Time.deltaTime);
+    }
+
+    private void TickDailyTimer(float deltaSeconds)
+    {
+        if (!IsDailyTimerRunning || deltaSeconds <= 0f)
+        {
+            return;
+        }
+
+        remainingDayTimeSeconds = Mathf.Max(0f, remainingDayTimeSeconds - deltaSeconds);
+        if (remainingDayTimeSeconds <= 0f)
+        {
+            // Set this before invoking events so callbacks cannot expire this timer twice.
+            timerExpired = true;
+            onTimerExpired?.Invoke();
+        }
+    }
+
+    public void SetDailyTimerEnabled(bool enabled)
+    {
+        dailyTimerEnabled = enabled;
+    }
+
+    [ContextMenu("Reset Daily Timer")]
+    public void ResetDailyTimer()
+    {
+        int dayNumber = currentDay > 0 ? currentDay : Mathf.Max(1, startingDay);
+        currentDayTimerEnabled = true;
+        currentDayDurationSeconds = Mathf.Max(0f, defaultDayDurationSeconds);
+
+        if (dayTimerOverrides != null)
+        {
+            foreach (DayTimerOverride settings in dayTimerOverrides)
+            {
+                if (settings == null || settings.day != dayNumber)
+                {
+                    continue;
+                }
+
+                currentDayTimerEnabled = settings.timerEnabled;
+                currentDayDurationSeconds = Mathf.Max(0f, settings.durationSeconds);
+                break;
+            }
+        }
+
+        remainingDayTimeSeconds = currentDayDurationSeconds;
+        timerExpired = false;
+    }
+
     public bool TryBeginNextDay()
     {
-        if (transitionRunning ||
-            quotaManager == null ||
-            !quotaManager.HasMetQuota)
+        return TryBeginNextDay(true);
+    }
+
+    public bool TryBeginNextDay(bool requireDailyQuota)
+    {
+        requireDailyQuota = requireDailyQuota && !DeveloperGameOptions.SkipDailyQuotaEnabled;
+        if (!isActiveAndEnabled || transitionRunning ||
+            (requireDailyQuota && (quotaManager == null || !quotaManager.HasMetQuota)))
         {
             return false;
         }
 
-        StartCoroutine(NextDayRoutine());
+        StartCoroutine(NextDayRoutine(requireDailyQuota));
         return true;
     }
 
-    private IEnumerator NextDayRoutine()
+    private IEnumerator NextDayRoutine(bool requireDailyQuota)
     {
         transitionRunning = true;
 
@@ -80,8 +174,8 @@ public class DayCycleManager : MonoBehaviour
             yield return FadeBlackScreen(0f, 1f, fadeOutDuration);
         }
 
-        if (quotaManager == null ||
-            !quotaManager.ConsumeRequiredShirtsForDayEnd())
+        if (requireDailyQuota && (quotaManager == null ||
+            !quotaManager.ConsumeRequiredShirtsForDayEnd()))
         {
             Debug.LogError(
                 "Day transition started, but the required shirts could not be removed.",
@@ -102,6 +196,7 @@ public class DayCycleManager : MonoBehaviour
         }
 
         currentDay++;
+        ResetDailyTimer();
         RefreshDayUI();
 
         if (quotaManager != null)
