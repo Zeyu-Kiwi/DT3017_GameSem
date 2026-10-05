@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Received Sugar
   m_EditorClassIdentifier: Assembly-CSharp::GameFlagData
   flagId: received_sugar
-  displayName: 
+  displayName: ReceivedSugar
   startingValue: 0

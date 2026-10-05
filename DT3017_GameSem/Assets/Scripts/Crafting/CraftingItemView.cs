@@ -3,9 +3,6 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class CraftingItemView : MonoBehaviour
 {
-    [Tooltip("Optional child object using a white outline material. It is enabled only while hovered.")]
-    [SerializeField] private GameObject hoverOutline;
-
     private CraftingStation station;
     private ItemData item;
     private bool isCenterItem;
@@ -25,15 +22,6 @@ public class CraftingItemView : MonoBehaviour
         item = itemData;
         isCenterItem = centerItem;
         canSelectIngredient = selectableIngredient;
-        SetHovered(false);
-    }
-
-    public void SetHovered(bool hovered)
-    {
-        if (hoverOutline != null)
-        {
-            hoverOutline.SetActive(hovered);
-        }
     }
 
     public void HandleLeftClick()

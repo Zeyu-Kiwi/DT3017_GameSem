@@ -40,6 +40,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
     private FirstPersonController playerController;
     private PlayerInteractor playerInteractor;
     private PlayerInteractUI playerInteractUI;
+    private InteractionOutlineHighlighter outlineHighlighter;
     private Camera playerCamera;
     private CraftingItemView hoveredItem;
     private bool isOpen;
@@ -150,6 +151,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
         playerController = player.GetComponent<FirstPersonController>();
         playerInteractor = player.GetComponent<PlayerInteractor>();
         playerInteractUI = player.GetComponent<PlayerInteractUI>();
+        outlineHighlighter = player.GetComponent<InteractionOutlineHighlighter>();
         playerCamera = player.GetComponentInChildren<Camera>(true);
 
         if (playerCamera == null)
@@ -263,6 +265,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
         playerController = null;
         playerInteractor = null;
         playerInteractUI = null;
+        outlineHighlighter = null;
         playerCamera = null;
         RefreshRuntimeState();
     }
@@ -506,6 +509,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
         playerController = null;
         playerInteractor = null;
         playerInteractUI = null;
+        outlineHighlighter = null;
         playerCamera = null;
     }
 
@@ -550,17 +554,8 @@ public class CraftingStation : MonoBehaviour, IInteractable
             return;
         }
 
-        if (hoveredItem != null)
-        {
-            hoveredItem.SetHovered(false);
-        }
-
         hoveredItem = itemView;
-
-        if (hoveredItem != null)
-        {
-            hoveredItem.SetHovered(true);
-        }
+        outlineHighlighter?.SetTarget(hoveredItem);
 
         if (stationUI != null)
         {
