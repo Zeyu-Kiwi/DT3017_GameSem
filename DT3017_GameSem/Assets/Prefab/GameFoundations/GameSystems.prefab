@@ -1,0 +1,230 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &880498257113415435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9032438460833785045}
+  - component: {fileID: 6099101263565619696}
+  - component: {fileID: 6289797121930636120}
+  - component: {fileID: 3405700102430660267}
+  - component: {fileID: 7601250464227937946}
+  - component: {fileID: 2103800464648912675}
+  - component: {fileID: 5496611127710979390}
+  - component: {fileID: 5407019507255862269}
+  - component: {fileID: 7833660600555416962}
+  - component: {fileID: 5487308697309699165}
+  m_Layer: 0
+  m_Name: GameSystems
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9032438460833785045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880498257113415435}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6099101263565619696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880498257113415435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 057111047088f5e4386b535d42e528e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
+  items:
+  - item: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
+    quantity: 0
+  - item: {fileID: 11400000, guid: aeb54d50f3b7fe946acf7334085c2a44, type: 2}
+    quantity: 0
+  - item: {fileID: 11400000, guid: 7ce056aef7bfef34abacbf7a370a24d5, type: 2}
+    quantity: 2
+  - item: {fileID: 11400000, guid: 182d59327ac79bb489f31a3372fc5710, type: 2}
+    quantity: 2
+  - item: {fileID: 11400000, guid: 3b615d5d53bd6394c918758538ecfbdc, type: 2}
+    quantity: 0
+  - item: {fileID: 11400000, guid: 084b8554363c6d5479f4d33f466aec8b, type: 2}
+    quantity: 0
+  - item: {fileID: 11400000, guid: 2cc802e0568494c449c2b5fb6c253a15, type: 2}
+    quantity: 2
+  - item: {fileID: 11400000, guid: ff3402cf6f49d554c84a0aaaddc1f59a, type: 2}
+    quantity: 2
+  - item: {fileID: 11400000, guid: 8b30a2c29948d404ab21ecc67ffd0f76, type: 2}
+    quantity: 0
+--- !u!114 &6289797121930636120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880498257113415435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ffe642ae7dd1264bae4dbcc7cee8484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameStateManager
+  flags:
+  - {fileID: 11400000, guid: 818b70acc35fc6d4db0831733e25b425, type: 2}
+  - {fileID: 11400000, guid: da75e96e0a70656479f2b82d47d115c9, type: 2}
+  - {fileID: 11400000, guid: 72401c810c90be649b5f6663582e8d39, type: 2}
+  - {fileID: 11400000, guid: fe03b5a9b82b33b409a7a756379fb8da, type: 2}
+--- !u!114 &3405700102430660267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880498257113415435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a08fc935eb1854488231358bff34fd2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueVariableBridge
+  warnAboutUnmatchedParameters: 1
+--- !u!114 &7601250464227937946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880498257113415435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2146f8216b0475740a367a453e392d96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NotificationManager
+  container: {fileID: 0}
+  messageText: {fileID: 0}
+  displayTime: 2
+--- !u!114 &2103800464648912675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880498257113415435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348eafb0e7e4e3b4090e033be9376810, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerResetController
+  player: {fileID: 0}
+  workstationReturnPoint: {fileID: 0}
+  craftingStation: {fileID: 0}
+--- !u!114 &5496611127710979390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880498257113415435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b291e1263438fce46aa66266ee891532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DailyQuotaManager
+  shirtItem: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
+  defaultQuota: 5
+  caughtPenalty: 5
+  quotaText: {fileID: 0}
+  currentInventoryShirts: 0
+  currentRequiredQuota: 0
+--- !u!114 &5407019507255862269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880498257113415435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e2340b9ac911db40b003dfbc2dfa204, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DayCycleManager
+  quotaManager: {fileID: 5496611127710979390}
+  playerResetController: {fileID: 2103800464648912675}
+  bossController: {fileID: 0}
+  startingDay: 1
+  dayText: {fileID: 0}
+  bedWakeUpPoint: {fileID: 0}
+  dailyTimerEnabled: 1
+  defaultDayDurationSeconds: 600
+  dayTimerOverrides:
+  - day: 1
+    timerEnabled: 0
+    durationSeconds: 0
+  onTimerExpired:
+    m_PersistentCalls:
+      m_Calls: []
+  blackScreen: {fileID: 0}
+  fadeOutDuration: 0.5
+  blackScreenDuration: 1
+  fadeInDuration: 0.5
+  currentDay: 0
+  transitionRunning: 0
+  remainingDayTimeSeconds: 0
+  timerExpired: 0
+--- !u!114 &7833660600555416962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880498257113415435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbb9f23775d667f4eacb00cbdff011c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CaughtSequenceController
+  playerResetController: {fileID: 2103800464648912675}
+  quotaManager: {fileID: 5496611127710979390}
+  videoPlayer: {fileID: 0}
+  videoRoot: {fileID: 0}
+  onSequenceStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  onSequenceFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  sequenceRunning: 0
+--- !u!114 &5487308697309699165
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880498257113415435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9c8b14f7f373ad4e96a3e80be663dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToolSelectionUI
+  toolItems:
+  - {fileID: 11400000, guid: aeb54d50f3b7fe946acf7334085c2a44, type: 2}
+  - {fileID: 11400000, guid: 8b30a2c29948d404ab21ecc67ffd0f76, type: 2}
+  interfaceRoot: {fileID: 0}
+  buttonContainer: {fileID: 0}
+  buttonPrefab: {fileID: 8623525194254847819, guid: 548196af562df0047a3e332073cb5e27, type: 3}
+  closeButton: {fileID: 0}
+  hoveredToolNameText: {fileID: 0}
+  missingIconSprite: {fileID: 21300000, guid: 70e433de46068504fa56fcf7f49b32b1, type: 3}
