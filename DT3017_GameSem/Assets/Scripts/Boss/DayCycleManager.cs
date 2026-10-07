@@ -63,11 +63,6 @@ public class DayCycleManager : MonoBehaviour
         currentDay = Mathf.Max(1, startingDay);
         ResetDailyTimer();
 
-        if (GetComponent<DailyTimerHUD>() == null)
-        {
-            gameObject.AddComponent<DailyTimerHUD>();
-        }
-
         if (quotaManager == null)
         {
             quotaManager = DailyQuotaManager.Instance;

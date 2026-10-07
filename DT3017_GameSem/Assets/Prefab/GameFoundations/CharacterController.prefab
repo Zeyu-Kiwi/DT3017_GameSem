@@ -306,7 +306,7 @@ MonoBehaviour:
   playerController: {fileID: 6774262352459514289}
   tutorialPoint: {fileID: 0}
   beginOnStart: 0
-  matchFacing: 1
+  matchFacing: 0
   blockLook: 0
   onTutorialStarted:
     m_PersistentCalls:
