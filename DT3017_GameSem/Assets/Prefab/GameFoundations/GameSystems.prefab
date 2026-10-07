@@ -170,7 +170,7 @@ MonoBehaviour:
   dailyTimerEnabled: 1
   defaultDayDurationSeconds: 600
   dayTimerOverrides:
-  - day: 1
+  - day: 2
     timerEnabled: 0
     durationSeconds: 0
   onTimerExpired:

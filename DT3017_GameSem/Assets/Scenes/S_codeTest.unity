@@ -3804,6 +3804,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1197335581489716167, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: dayManager
+      value: 
+      objectReference: {fileID: 2051834765}
     - target: {fileID: 1534198253662916250, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
