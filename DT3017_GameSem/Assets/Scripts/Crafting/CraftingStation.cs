@@ -42,6 +42,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
     private FirstPersonController playerController;
     private PlayerInteractor playerInteractor;
     private PlayerInteractUI playerInteractUI;
+    private InteractionOutlineHighlighter playerOutlineHighlighter;
     private Camera playerCamera;
     private CraftingItemView hoveredItem;
     private bool isOpen;
@@ -101,8 +102,14 @@ public class CraftingStation : MonoBehaviour, IInteractable
         RefreshUI();
     }
 
+    private void OnDisable()
+    {
+        SetHoveredItem(null);
+    }
+
     private void OnDestroy()
     {
+        SetHoveredItem(null);
         UnsubscribeFromManagers();
     }
 
@@ -156,6 +163,13 @@ public class CraftingStation : MonoBehaviour, IInteractable
         playerController = player.GetComponent<FirstPersonController>();
         playerInteractor = player.GetComponent<PlayerInteractor>();
         playerInteractUI = player.GetComponent<PlayerInteractUI>();
+        // The normal interaction ray is disabled while crafting; reuse its outline
+        // for mouse hover so drawer items share the player's colour, width and glow.
+        playerOutlineHighlighter = player.GetComponent<InteractionOutlineHighlighter>();
+        if (playerOutlineHighlighter == null)
+        {
+            playerOutlineHighlighter = player.AddComponent<InteractionOutlineHighlighter>();
+        }
         playerCamera = player.GetComponentInChildren<Camera>(true);
 
         if (playerCamera == null)
@@ -269,6 +283,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
         playerController = null;
         playerInteractor = null;
         playerInteractUI = null;
+        playerOutlineHighlighter = null;
         playerCamera = null;
         RefreshRuntimeState();
     }
@@ -512,6 +527,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
         playerController = null;
         playerInteractor = null;
         playerInteractUI = null;
+        playerOutlineHighlighter = null;
         playerCamera = null;
     }
 
@@ -565,8 +581,10 @@ public class CraftingStation : MonoBehaviour, IInteractable
 
         if (hoveredItem != null)
         {
-            hoveredItem.SetHovered(true);
+            hoveredItem.SetHovered(true, playerOutlineHighlighter == null);
         }
+
+        playerOutlineHighlighter?.SetTarget(hoveredItem);
 
         if (stationUI != null)
         {

@@ -28,11 +28,12 @@ public class CraftingItemView : MonoBehaviour
         SetHovered(false);
     }
 
-    public void SetHovered(bool hovered)
+    public void SetHovered(bool hovered, bool useLegacyOutline = true)
     {
         if (hoverOutline != null)
         {
-            hoverOutline.SetActive(hovered);
+            // Avoid drawing the old prefab outline over the shared shader outline.
+            hoverOutline.SetActive(hovered && useLegacyOutline);
         }
     }
 
