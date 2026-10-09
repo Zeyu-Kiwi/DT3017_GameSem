@@ -6,8 +6,6 @@ public class CraftingStation : MonoBehaviour, IInteractable
 {
     [Header("Configuration")]
     [SerializeField] private bool canInteract = true;
-    [Tooltip("Workbench crafting is unavailable on Day 1. Shirt folding remains available.")]
-    [SerializeField] private DayCycleManager dayCycleManager;
     [SerializeField] private CraftingRecipeDatabase recipeDatabase;
     [SerializeField] private List<CraftingMaterialSection> materialSections =
         new List<CraftingMaterialSection>();
@@ -42,7 +40,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
     private FirstPersonController playerController;
     private PlayerInteractor playerInteractor;
     private PlayerInteractUI playerInteractUI;
-    private InteractionOutlineHighlighter playerOutlineHighlighter;
+    private InteractionOutlineHighlighter outlineHighlighter;
     private Camera playerCamera;
     private CraftingItemView hoveredItem;
     private bool isOpen;
@@ -56,7 +54,6 @@ public class CraftingStation : MonoBehaviour, IInteractable
     private bool runtimeStateInitialized;
 
     public bool CanInteract => canInteract &&
-                               (dayCycleManager == null || dayCycleManager.CurrentDay != 1) &&
                                isPlayerInsideWorkstation &&
                                !isOpen &&
                                (drawerController == null || !drawerController.IsMoving);
@@ -66,9 +63,6 @@ public class CraftingStation : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        if (dayCycleManager == null)
-            dayCycleManager = FindFirstObjectByType<DayCycleManager>();
-
         if (drawerController == null)
         {
             drawerController = GetComponent<CraftingDrawerController>();
@@ -102,14 +96,8 @@ public class CraftingStation : MonoBehaviour, IInteractable
         RefreshUI();
     }
 
-    private void OnDisable()
-    {
-        SetHoveredItem(null);
-    }
-
     private void OnDestroy()
     {
-        SetHoveredItem(null);
         UnsubscribeFromManagers();
     }
 
@@ -163,13 +151,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
         playerController = player.GetComponent<FirstPersonController>();
         playerInteractor = player.GetComponent<PlayerInteractor>();
         playerInteractUI = player.GetComponent<PlayerInteractUI>();
-        // The normal interaction ray is disabled while crafting; reuse its outline
-        // for mouse hover so drawer items share the player's colour, width and glow.
-        playerOutlineHighlighter = player.GetComponent<InteractionOutlineHighlighter>();
-        if (playerOutlineHighlighter == null)
-        {
-            playerOutlineHighlighter = player.AddComponent<InteractionOutlineHighlighter>();
-        }
+        outlineHighlighter = player.GetComponent<InteractionOutlineHighlighter>();
         playerCamera = player.GetComponentInChildren<Camera>(true);
 
         if (playerCamera == null)
@@ -283,7 +265,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
         playerController = null;
         playerInteractor = null;
         playerInteractUI = null;
-        playerOutlineHighlighter = null;
+        outlineHighlighter = null;
         playerCamera = null;
         RefreshRuntimeState();
     }
@@ -527,7 +509,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
         playerController = null;
         playerInteractor = null;
         playerInteractUI = null;
-        playerOutlineHighlighter = null;
+        outlineHighlighter = null;
         playerCamera = null;
     }
 
@@ -573,13 +555,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
         }
 
         hoveredItem = itemView;
-
-        if (hoveredItem != null)
-        {
-            hoveredItem.SetHovered(true, playerOutlineHighlighter == null);
-        }
-
-        playerOutlineHighlighter?.SetTarget(hoveredItem);
+        outlineHighlighter?.SetTarget(hoveredItem);
 
         if (stationUI != null)
         {

@@ -273,23 +273,6 @@ public class FirstPersonController : MonoBehaviour
         Physics.SyncTransforms();
     }
 
-    // Update both body yaw and stored camera pitch so the next Look() preserves this view.
-    public void FaceWorldPosition(Vector3 target)
-    {
-        Vector3 origin = playerCamera != null ? playerCamera.transform.position :
-            cameraTransform != null ? cameraTransform.position : transform.position;
-        Vector3 direction = target - origin;
-        if (direction.sqrMagnitude < .0001f) return;
-        float horizontal = new Vector2(direction.x, direction.z).magnitude;
-        float yaw = horizontal > .0001f ? Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg : transform.eulerAngles.y;
-        Quaternion facing = Quaternion.Euler(0f, yaw, 0f);
-        transform.rotation = facing;
-        if (rb != null) rb.rotation = facing;
-        rotationX = Mathf.Clamp(-Mathf.Atan2(direction.y, horizontal) * Mathf.Rad2Deg, -maxLookAngle, maxLookAngle);
-        if (cameraTransform != null) cameraTransform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
-        Physics.SyncTransforms();
-    }
-
     private void ApplyControlState()
     {
         if (rb == null)

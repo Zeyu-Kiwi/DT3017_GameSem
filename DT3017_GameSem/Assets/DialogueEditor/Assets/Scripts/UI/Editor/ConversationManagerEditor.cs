@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEditor;
 
 namespace DialogueEditor
@@ -22,9 +22,6 @@ namespace DialogueEditor
         SerializedProperty ScrollTextProperty;
         SerializedProperty ScrollTextSpeedProperty;
         SerializedProperty AllowMouseInteractionProperty;
-        SerializedProperty FastForwardProperty;
-        SerializedProperty FastForwardMultiplierProperty;
-        SerializedProperty StopPointDelayProperty;
 
         private void OnEnable()
         {
@@ -35,9 +32,6 @@ namespace DialogueEditor
             ScrollTextProperty = serializedObject.FindProperty("ScrollText");
             ScrollTextSpeedProperty = serializedObject.FindProperty("ScrollSpeed");
             AllowMouseInteractionProperty = serializedObject.FindProperty("AllowMouseInteraction");
-            FastForwardProperty = serializedObject.FindProperty("AllowClickFastForward");
-            FastForwardMultiplierProperty = serializedObject.FindProperty("FastForwardMultiplier");
-            StopPointDelayProperty = serializedObject.FindProperty("StopPointInputDelay");
         }
 
         public override void OnInspectorGUI()
@@ -75,10 +69,6 @@ namespace DialogueEditor
             // Interaction options
             GUILayout.Label("Interaction options", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(AllowMouseInteractionProperty);
-            EditorGUILayout.PropertyField(FastForwardProperty);
-            if (t.AllowClickFastForward)
-                EditorGUILayout.PropertyField(FastForwardMultiplierProperty);
-            EditorGUILayout.PropertyField(StopPointDelayProperty);
 
             // Apply changes to the serializedProperty - always do this in the end of OnInspectorGUI.
             serializedObject.ApplyModifiedProperties();

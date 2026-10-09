@@ -49,17 +49,6 @@ public static class DevModeOptions
         RegisterToggle("boss-target", "Boss target detection", () => DeveloperGameOptions.PlayerVisionDetectionEnabled, DeveloperGameOptions.SetPlayerVisionDetectionEnabled);
         RegisterToggle("psx-effects", "PSX shader effects", () => Game.Visuals.PSXEffects.Enabled, Game.Visuals.PSXEffects.SetEnabled);
         RegisterToggle("skip-quota", "Sleep without quota", () => DeveloperGameOptions.SkipDailyQuotaEnabled, DeveloperGameOptions.SetSkipDailyQuotaEnabled);
-        RegisterAction("skip-tutorial", "Skip tutorial", () =>
-        {
-            var tutorial = UnityEngine.Object.FindFirstObjectByType<DayOneTutorial>();
-            if (tutorial == null || !tutorial.CanSkipTutorial) return;
-            UnityEngine.Object.FindFirstObjectByType<DevModeScreen>()?.SetOpen(false);
-            tutorial.SkipTutorial();
-        }, () =>
-        {
-            var tutorial = UnityEngine.Object.FindFirstObjectByType<DayOneTutorial>();
-            return tutorial != null && tutorial.CanSkipTutorial;
-        });
         RegisterAction("skip-day", "Skip day now (ignore quota)", () =>
         {
             var manager = UnityEngine.Object.FindFirstObjectByType<DayCycleManager>();
