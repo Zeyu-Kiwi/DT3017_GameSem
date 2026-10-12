@@ -7,6 +7,8 @@ public class DialogueVariableBridge : MonoBehaviour
     public static DialogueVariableBridge Instance { get; private set; }
 
     [SerializeField] private bool warnAboutUnmatchedParameters = true;
+    [SerializeField] private DayCycleManager dayCycleManager;
+    [SerializeField] private string currentDayParameterName = "CurrentDay";
 
     private readonly HashSet<string> activeIntParameters = new HashSet<string>();
     private readonly HashSet<string> activeBoolParameters = new HashSet<string>();
@@ -22,6 +24,8 @@ public class DialogueVariableBridge : MonoBehaviour
         }
 
         Instance = this;
+        if (dayCycleManager == null)
+            dayCycleManager = FindFirstObjectByType<DayCycleManager>();
     }
 
     private void Start()
@@ -102,7 +106,16 @@ public class DialogueVariableBridge : MonoBehaviour
             string parameterName = parameter.ParameterName;
             bool matched = false;
 
-            if (parameter is EditableIntParameter && InventoryManager.Instance != null)
+            if (parameter is EditableIntParameter &&
+                parameterName == currentDayParameterName &&
+                dayCycleManager != null)
+            {
+                ConversationManager.Instance.SetInt(
+                    parameterName,
+                    dayCycleManager.CurrentDay);
+                matched = true;
+            }
+            else if (parameter is EditableIntParameter && InventoryManager.Instance != null)
             {
                 if (InventoryManager.Instance.TryGetItemById(parameterName, out ItemData item))
                 {

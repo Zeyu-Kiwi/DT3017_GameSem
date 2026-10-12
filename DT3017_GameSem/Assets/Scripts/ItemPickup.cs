@@ -51,12 +51,12 @@ public class ItemPickup : MonoBehaviour, IInteractable
         if (quantity > 0)
         {
             ShowMessage(
-                "Picked up " + added + " " + item.DisplayName +
-                ". " + item.DisplayName + " is now full.");
+                "Added " + added + " " + item.DisplayName + " to the drawer. " +
+                item.DisplayName + " is now full.");
         }
         else
         {
-            ShowMessage("Picked up " + added + " " + item.DisplayName + ".");
+            ShowMessage("Added " + added + " " + item.DisplayName + " to the drawer.");
             Destroy(gameObject);
         }
     }

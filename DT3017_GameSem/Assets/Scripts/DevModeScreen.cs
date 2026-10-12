@@ -128,9 +128,16 @@ public sealed class DevModeScreen : MonoBehaviour
         dayText.text = "DAY " + dayManager.CurrentDay + "  /  DAILY TIMER";
         int seconds = Mathf.CeilToInt(dayManager.RemainingDayTimeSeconds);
         timerText.text = (seconds / 60).ToString("00") + ":" + (seconds % 60).ToString("00");
-        timerStateText.text = !dayManager.IsDailyTimerEnabled ? "Disabled" :
+        string timerState = !dayManager.IsDailyTimerEnabled ? "Disabled" :
             dayManager.TimerExpired ? "Expired" :
             dayManager.IsDailyTimerRunning ? "Running" : "Paused";
+        var plans = FindFirstObjectByType<DayPlanManager>();
+        var tutorial = FindFirstObjectByType<DayOneTutorial>();
+        var quota = FindFirstObjectByType<DailyQuotaManager>();
+        timerStateText.text = timerState +
+            (plans != null ? "  |  Plan: " + plans.CurrentPlanName : "") +
+            (tutorial != null ? "  |  Tutorial: " + tutorial.Stage : "") +
+            (quota != null ? "  |  Shirts: " + quota.CurrentInventoryShirts + "/" + quota.CurrentRequiredQuota : "");
     }
 
     private void EnsureEventSystem()

@@ -102,6 +102,7 @@ GameObject:
   - component: {fileID: 2867996724814790147}
   - component: {fileID: 8199887996033501338}
   - component: {fileID: 5750015664464066196}
+  - component: {fileID: 6529205420544458870}
   m_Layer: 3
   m_Name: LockedDoor
   m_TagString: Untagged
@@ -117,7 +118,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3924323103756121404}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.70098716, z: -0, w: 0.713174}
+  m_LocalRotation: {x: 0, y: -0.7009902, z: 0, w: 0.71317095}
   m_LocalPosition: {x: -7.13, y: 1.08, z: -0.11}
   m_LocalScale: {x: 1.0197, y: 2.2669, z: 0.24491}
   m_ConstrainProportionsScale: 0
@@ -202,3 +203,15 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6529205420544458870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3924323103756121404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf6093afb27d81479c4d679ca530408, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EscapeRouteCheck

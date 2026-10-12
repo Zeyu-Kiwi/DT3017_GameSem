@@ -10,6 +10,7 @@ public class BossController : MonoBehaviour
         Roaming,
         Pausing,
         Inspecting,
+        TutorialStaring,
         Leaving,
         MovingOutside
     }
@@ -71,9 +72,12 @@ public class BossController : MonoBehaviour
     private float inspectionElapsed;
     private Quaternion inspectionStartRotation;
     private bool caughtThisVisit;
+    private bool caughtSequenceSuppressed;
+    private Transform tutorialLookTarget;
 
     public bool IsInRoom => isInRoom;
     public bool IsSequencePaused => sequencePaused;
+    public string StateName => state.ToString();
 
     private void Awake()
     {
@@ -100,7 +104,7 @@ public class BossController : MonoBehaviour
             return;
         }
 
-        if (isInRoom && !caughtThisVisit)
+        if (isInRoom && !caughtThisVisit && !caughtSequenceSuppressed)
         {
             CheckForCaughtPlayer();
         }
@@ -125,6 +129,10 @@ public class BossController : MonoBehaviour
             case BossState.Inspecting:
                 UpdateInspection();
                 break;
+
+            case BossState.TutorialStaring:
+                UpdateTutorialStare();
+                break;
         }
     }
 
@@ -143,6 +151,8 @@ public class BossController : MonoBehaviour
         visitedRoamingLocators = 0;
         targetRoamingLocatorCount = 0;
         caughtThisVisit = false;
+        caughtSequenceSuppressed = false;
+        tutorialLookTarget = null;
         isInRoom = false;
         state = BossState.WaitingOutside;
         stateTimer = Random.Range(
@@ -158,6 +168,48 @@ public class BossController : MonoBehaviour
 
         SetWalking(false);
         SetBodyVisible(false);
+    }
+
+    public void BeginTutorialStare(
+        BossPatrolLocator stareLocator,
+        Transform lookTarget)
+    {
+        if (stareLocator == null)
+        {
+            Debug.LogError("Boss tutorial stare needs a locator.", this);
+            return;
+        }
+
+        if (locatorNetwork != null) locatorNetwork.BuildConnections();
+        exitRoute.Clear();
+        previousLocator = null;
+        currentLocator = stareLocator;
+        targetLocator = null;
+        caughtThisVisit = false;
+        caughtSequenceSuppressed = true;
+        tutorialLookTarget = lookTarget;
+        isInRoom = true;
+        state = BossState.TutorialStaring;
+        SetBodyVisible(true);
+        movementRoot.SetPositionAndRotation(
+            stareLocator.transform.position,
+            stareLocator.transform.rotation);
+        SetWalking(false);
+        UpdateTutorialStare();
+    }
+
+    public void EndTutorialStareAndLeave()
+    {
+        if (state != BossState.TutorialStaring) return;
+        caughtSequenceSuppressed = false;
+        tutorialLookTarget = null;
+        BeginLeaving();
+    }
+
+    public void CancelTutorialStare()
+    {
+        if (state == BossState.TutorialStaring)
+            ResetOutsideAndRestartTimer();
     }
 
     [ContextMenu("Start Visit Now")]
@@ -351,6 +403,19 @@ public class BossController : MonoBehaviour
             movementRoot.rotation = inspectionStartRotation;
             BeginLocatorPause();
         }
+    }
+
+    private void UpdateTutorialStare()
+    {
+        if (movementRoot == null || tutorialLookTarget == null) return;
+        Vector3 direction = Vector3.ProjectOnPlane(
+            tutorialLookTarget.position - movementRoot.position,
+            Vector3.up);
+        if (direction.sqrMagnitude <= 0.0001f) return;
+        movementRoot.rotation = Quaternion.RotateTowards(
+            movementRoot.rotation,
+            Quaternion.LookRotation(direction.normalized, Vector3.up),
+            turningSpeed * Time.deltaTime);
     }
 
     private void BeginLeaving()

@@ -71,6 +71,39 @@ public static class DevModeOptions
             var manager = UnityEngine.Object.FindFirstObjectByType<DayCycleManager>();
             return manager != null && manager.isActiveAndEnabled && !manager.TransitionRunning;
         });
+        RegisterAction("meet-quota", "Add missing shirts", () =>
+        {
+            var quota = UnityEngine.Object.FindFirstObjectByType<DailyQuotaManager>();
+            if (quota == null || quota.ShirtItem == null || InventoryManager.Instance == null) return;
+            InventoryManager.Instance.AddItem(quota.ShirtItem, quota.MissingShirts);
+        }, () =>
+        {
+            var quota = UnityEngine.Object.FindFirstObjectByType<DailyQuotaManager>();
+            return quota != null && !quota.HasMetQuota && quota.ShirtItem != null &&
+                   InventoryManager.Instance != null;
+        });
+        RegisterAction("restart-day-plan", "Restart current day plan", () =>
+        {
+            UnityEngine.Object.FindFirstObjectByType<DayPlanManager>()?.RestartCurrentPlan();
+        }, () => UnityEngine.Object.FindFirstObjectByType<DayPlanManager>() != null);
+        RegisterDayJump(1);
+        RegisterDayJump(2);
+        RegisterDayJump(3);
+    }
+
+    private static void RegisterDayJump(int day)
+    {
+        RegisterAction("jump-day-" + day, "Jump to Day " + day, () =>
+        {
+            var manager = UnityEngine.Object.FindFirstObjectByType<DayCycleManager>();
+            if (manager == null) return;
+            UnityEngine.Object.FindFirstObjectByType<DevModeScreen>()?.SetOpen(false);
+            manager.SetDayForDevelopment(day);
+        }, () =>
+        {
+            var manager = UnityEngine.Object.FindFirstObjectByType<DayCycleManager>();
+            return manager != null && !manager.TransitionRunning && manager.CurrentDay != day;
+        });
     }
 }
 #endif
