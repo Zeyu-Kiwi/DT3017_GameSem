@@ -1,9 +1,10 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 namespace DialogueEditor
 {
-    public class UIConversationButton : MonoBehaviour
+    public class UIConversationButton : MonoBehaviour, IPointerDownHandler
     {
         public enum eHoverState
         {
@@ -27,6 +28,7 @@ namespace DialogueEditor
         [SerializeField] private TMPro.TextMeshProUGUI TextMesh = null;
         [SerializeField] private Image OptionBackgroundImage = null;
         private RectTransform m_rect;
+        private bool m_pointerPressAllowed;
 
         // Node data
         private eButtonType m_buttonType;
@@ -104,10 +106,19 @@ namespace DialogueEditor
             }
         }
 
+        public void OnPointerDown(PointerEventData eventData)
+        {
+            // A press begun during fast-forward or the stop-point pause cannot select on release.
+            m_pointerPressAllowed = eventData.button == PointerEventData.InputButton.Left &&
+                ConversationManager.Instance != null && ConversationManager.Instance.CanSelectOptions;
+        }
+
         public void OnClick()
         {
             if (!ConversationManager.Instance.AllowMouseInteraction) { return; }
 
+            if (!m_pointerPressAllowed) return;
+            m_pointerPressAllowed = false;
             DoClickBehaviour();
         }
 

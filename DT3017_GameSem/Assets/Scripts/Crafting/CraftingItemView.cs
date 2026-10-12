@@ -3,6 +3,9 @@ using UnityEngine;
 [DisallowMultipleComponent]
 public class CraftingItemView : MonoBehaviour
 {
+    [Tooltip("Optional legacy prefab outline. Suppressed when the shared interaction outline is used.")]
+    [SerializeField] private GameObject hoverOutline;
+
     private CraftingStation station;
     private ItemData item;
     private bool isCenterItem;
@@ -22,6 +25,16 @@ public class CraftingItemView : MonoBehaviour
         item = itemData;
         isCenterItem = centerItem;
         canSelectIngredient = selectableIngredient;
+        SetHovered(false);
+    }
+
+    public void SetHovered(bool hovered, bool useLegacyOutline = true)
+    {
+        if (hoverOutline != null)
+        {
+            // Avoid drawing the old prefab outline over the shared shader outline.
+            hoverOutline.SetActive(hovered && useLegacyOutline);
+        }
     }
 
     public void HandleLeftClick()

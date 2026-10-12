@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -38,6 +38,20 @@ namespace DialogueEditor
         public Sprite OptionImage;
         public bool OptionImageSliced;
         public bool AllowMouseInteraction;
+        [Tooltip("Left click speeds up dialogue until Continue, a choice, or the end of a conversation.")]
+        public bool AllowClickFastForward = true;
+        [Min(1f)] public float FastForwardMultiplier = 10f;
+        [Tooltip("Minimum pause before Continue or choices accept input at a stop point.")]
+        [Min(0f)] public float StopPointInputDelay = .35f;
+        public bool IsFastForwarding => m_fastForward;
+        public bool CanSelectOptions => m_state == eState.Idle && !m_fastForward &&
+            Time.unscaledTime >= m_optionsUnlockTime && Time.frameCount > m_lastFastForwardFrame;
+        private bool m_fastForward;
+        private float m_optionsUnlockTime;
+        private int m_lastFastForwardFrame = -1;
+        private bool IsFastForwardStop => m_currentSpeech == null ||
+            !m_currentSpeech.AutomaticallyAdvance ||
+            m_currentSpeech.ConnectionType != Connection.eConnectionType.Speech;
 
         // Non-User facing 
         // Not exposed via custom inspector
@@ -109,6 +123,13 @@ namespace DialogueEditor
 
         private void Update()
         {
+#if ENABLE_INPUT_SYSTEM
+            bool fastForwardPressed = UnityEngine.InputSystem.Mouse.current != null &&
+                UnityEngine.InputSystem.Mouse.current.leftButton.wasPressedThisFrame;
+#else
+            bool fastForwardPressed = Input.GetMouseButtonDown(0);
+#endif
+            if (fastForwardPressed) TryFastForward();
             switch (m_state)
             {
                 case eState.TransitioningDialogueBoxOn:
@@ -145,6 +166,8 @@ namespace DialogueEditor
 
         public void StartConversation(NPCConversation conversation)
         {
+            m_fastForward = false;
+            m_lastFastForwardFrame = -1;
             m_conversation = conversation.Deserialize();
             if (OnConversationStarted != null)
                 OnConversationStarted.Invoke();
@@ -156,10 +179,23 @@ namespace DialogueEditor
 
         public void EndConversation()
         {
+            m_fastForward = false;
             SetState(eState.TransitioningDialogueOff);
 
             if (OnConversationEnded != null)
                 OnConversationEnded.Invoke();
+        }
+
+        public bool TryFastForward()
+        {
+            if (!AllowClickFastForward || !IsConversationActive || m_fastForward) return false;
+            bool scrolling = m_state == eState.ScrollingText;
+            bool automatic = !IsFastForwardStop &&
+                (m_state == eState.Idle || m_state == eState.TransitioningOptionsOn);
+            if (!scrolling && !automatic) return false;
+            m_fastForward = true;
+            m_lastFastForwardFrame = Time.frameCount;
+            return true;
         }
 
         public void SelectNextOption()
@@ -184,7 +220,7 @@ namespace DialogueEditor
 
         public void PressSelectedOption()
         {
-            if (m_state != eState.Idle) { return; }
+            if (!CanSelectOptions) { return; }
             if (m_currentSelectedIndex < 0) { return; }
             if (m_currentSelectedIndex >= m_uiOptions.Count) { return; }
             if (m_uiOptions.Count == 0) { return; }
@@ -302,6 +338,11 @@ namespace DialogueEditor
 
                 case eState.TransitioningOptionsOn:
                     {
+                        if (IsFastForwardStop)
+                        {
+                            m_fastForward = false;
+                            m_optionsUnlockTime = Time.unscaledTime + Mathf.Max(0f, StopPointInputDelay);
+                        }
                         SetColorAlpha(DialogueText, 1);
 
                         CreateUIOptions();
@@ -340,25 +381,23 @@ namespace DialogueEditor
 
         private void ScrollingText_Update()
         {
-            const float charactersPerSecond = 1500;
-            float timePerChar = (60.0f / charactersPerSecond);
-            timePerChar *= ScrollSpeed;
+            AdvanceScrollingText(Time.deltaTime);
+        }
 
-            m_elapsedScrollTime += Time.deltaTime;
-
-            if (m_elapsedScrollTime > timePerChar)
+        private void AdvanceScrollingText(float deltaTime)
+        {
+            float timePerChar = .04f * Mathf.Max(.001f, ScrollSpeed);
+            if (m_fastForward) timePerChar /= Mathf.Max(1f, FastForwardMultiplier);
+            m_elapsedScrollTime += Mathf.Max(0f, deltaTime);
+            int characters = Mathf.FloorToInt(m_elapsedScrollTime / timePerChar);
+            if (characters > 0)
             {
-                m_elapsedScrollTime = 0f;
-
+                m_elapsedScrollTime -= characters * timePerChar;
+                m_scrollIndex = Mathf.Min(m_targetScrollTextCount, m_scrollIndex + characters);
                 DialogueText.maxVisibleCharacters = m_scrollIndex;
-                m_scrollIndex++;
-
-                // Finished?
-                if (m_scrollIndex >= m_targetScrollTextCount)
-                {
-                    SetState(eState.TransitioningOptionsOn);
-                }
             }
+            if (m_scrollIndex >= m_targetScrollTextCount)
+                SetState(eState.TransitioningOptionsOn);
         }
 
         private void TransitionOptionsOn_Update()
@@ -378,7 +417,7 @@ namespace DialogueEditor
 
         private void Idle_Update()
         {
-            m_stateTime += Time.deltaTime;
+            m_stateTime += Time.deltaTime * (m_fastForward ? Mathf.Max(1f, FastForwardMultiplier) : 1f);
 
             if (m_currentSpeech.AutomaticallyAdvance)
             {
@@ -514,7 +553,8 @@ namespace DialogueEditor
                 if (ScrollText)
                 {
                     DialogueText.text = speech.Text;
-                    m_targetScrollTextCount = speech.Text.Length + 1;
+                    DialogueText.ForceMeshUpdate();
+                    m_targetScrollTextCount = DialogueText.textInfo.characterCount;
                     DialogueText.maxVisibleCharacters = 0;
                     m_elapsedScrollTime = 0f;
                     m_scrollIndex = 0;
@@ -559,11 +599,13 @@ namespace DialogueEditor
 
         public void SpeechSelected(SpeechNode speech)
         {
+            if (!CanSelectOptions) return;
             SetupSpeech(speech);
         }
 
         public void OptionSelected(OptionNode option)
         {
+            if (!CanSelectOptions) return;
             m_selectedOption = option;
             DoParamAction(option);
             if (option.Event != null)
@@ -573,6 +615,7 @@ namespace DialogueEditor
 
         public void EndButtonSelected()
         {
+            if (!CanSelectOptions) return;
             m_selectedOption = null;
             SetState(eState.TransitioningOptionsOff);
         }

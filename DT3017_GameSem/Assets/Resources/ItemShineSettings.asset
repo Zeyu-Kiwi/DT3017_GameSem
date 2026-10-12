@@ -15,18 +15,18 @@ MonoBehaviour:
   effectsEnabled: 1
   sheenEnabled: 1
   sheenColor: {r: 1, g: 1, b: 1, a: 1}
-  sheenIntensity: 1.5
-  sheenWidth: 0.122
-  sheenDuration: 1.39
-  sheenPause: 3
+  sheenIntensity: 1.2
+  sheenWidth: 0.059651997
+  sheenDuration: 0.96
+  sheenPause: 3.35
   sparklesEnabled: 1
   sparkleColor: {r: 1, g: 1, b: 1, a: 1}
-  sparkleIntensity: 2
-  sparkleCount: 7
+  sparkleIntensity: 1.5
+  sparkleCount: 3
   constantScreenSize: 0
   sparkleWorldSize: 0.19
   sparkleSizePixels: 8.6
-  sparkleLifetime: 0.8
-  sparkleRespawnDelay: 0.3
+  sparkleLifetime: 0.95
+  sparkleRespawnDelay: 0.57
   sparklePadding: 0.1
   pixelSize: 2
