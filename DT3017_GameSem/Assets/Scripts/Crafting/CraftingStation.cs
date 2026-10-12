@@ -6,8 +6,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
 {
     [Header("Configuration")]
     [SerializeField] private bool canInteract = true;
-    [Tooltip("Workbench crafting is unavailable on Day 1. Shirt folding remains available.")]
-    [SerializeField] private DayCycleManager dayCycleManager;
+    [SerializeField] private DayOneTutorial workstationTutorial;
     [SerializeField] private CraftingRecipeDatabase recipeDatabase;
     [SerializeField] private List<CraftingMaterialSection> materialSections =
         new List<CraftingMaterialSection>();
@@ -54,9 +53,10 @@ public class CraftingStation : MonoBehaviour, IInteractable
     private bool drawerTransitionComplete;
     private bool isPlayerInsideWorkstation;
     private bool runtimeStateInitialized;
+    private bool dayPlanInteractionEnabled = true;
 
     public bool CanInteract => canInteract &&
-                               (dayCycleManager == null || dayCycleManager.CurrentDay != 1) &&
+                               dayPlanInteractionEnabled &&
                                isPlayerInsideWorkstation &&
                                !isOpen &&
                                (drawerController == null || !drawerController.IsMoving);
@@ -66,8 +66,8 @@ public class CraftingStation : MonoBehaviour, IInteractable
 
     private void Awake()
     {
-        if (dayCycleManager == null)
-            dayCycleManager = FindFirstObjectByType<DayCycleManager>();
+        if (workstationTutorial == null)
+            workstationTutorial = FindFirstObjectByType<DayOneTutorial>();
 
         if (drawerController == null)
         {
@@ -152,6 +152,12 @@ public class CraftingStation : MonoBehaviour, IInteractable
             return;
         }
 
+        if (workstationTutorial != null &&
+            workstationTutorial.TryHandleDrawerAttempt())
+        {
+            return;
+        }
+
         if (InventoryManager.Instance == null)
         {
             ShowMessage("No InventoryManager exists in the scene.");
@@ -217,6 +223,13 @@ public class CraftingStation : MonoBehaviour, IInteractable
         }
 
         BeginOpeningTransitions();
+    }
+
+    public void SetDayPlanInteractionEnabled(bool enabled)
+    {
+        dayPlanInteractionEnabled = enabled;
+        if (!enabled && isOpen)
+            ResetStationImmediately(true);
     }
 
     public void CloseCrafting()

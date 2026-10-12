@@ -18,6 +18,9 @@ GameObject:
   - component: {fileID: 5407019507255862269}
   - component: {fileID: 7833660600555416962}
   - component: {fileID: 5487308697309699165}
+  - component: {fileID: 1195738970806064272}
+  - component: {fileID: 2145325709214167293}
+  - component: {fileID: 6976893978927954516}
   m_Layer: 0
   m_Name: GameSystems
   m_TagString: Untagged
@@ -101,6 +104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueVariableBridge
   warnAboutUnmatchedParameters: 1
+  dayCycleManager: {fileID: 5407019507255862269}
+  currentDayParameterName: CurrentDay
 --- !u!114 &7601250464227937946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,15 +169,13 @@ MonoBehaviour:
   quotaManager: {fileID: 5496611127710979390}
   playerResetController: {fileID: 2103800464648912675}
   bossController: {fileID: 0}
+  dayPlanManager: {fileID: 6976893978927954516}
   startingDay: 1
   dayText: {fileID: 0}
   bedWakeUpPoint: {fileID: 0}
   dailyTimerEnabled: 1
-  defaultDayDurationSeconds: 600
-  dayTimerOverrides:
-  - day: 2
-    timerEnabled: 0
-    durationSeconds: 0
+  defaultDayDurationSeconds: 300
+  dayTimerOverrides: []
   onTimerExpired:
     m_PersistentCalls:
       m_Calls: []
@@ -228,3 +231,90 @@ MonoBehaviour:
   closeButton: {fileID: 0}
   hoveredToolNameText: {fileID: 0}
   missingIconSprite: {fileID: 21300000, guid: 70e433de46068504fa56fcf7f49b32b1, type: 3}
+--- !u!114 &1195738970806064272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880498257113415435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4972d5296a4d3174daf4ef31625c0ce7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DayOneTutorial
+  dayCycle: {fileID: 5407019507255862269}
+  quota: {fileID: 5496611127710979390}
+  tutorialPosition: {fileID: 0}
+  player: {fileID: 0}
+  craftingStation: {fileID: 0}
+  boss: {fileID: 0}
+  tutorialPoint: {fileID: 0}
+  bossStareLocator: {fileID: 0}
+  bossLookTarget: {fileID: 0}
+  startingConversation: {fileID: 0}
+  leftWorkstationConversation: {fileID: 0}
+  drawerAttemptConversation: {fileID: 0}
+  violationQuotaPenalty: 1
+  onTutorialStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  onQuotaMet:
+    m_PersistentCalls:
+      m_Calls: []
+  onTutorialCompleted:
+    m_PersistentCalls:
+      m_Calls: []
+  stage: 0
+  planEnabled: 0
+  playerHasEnteredWorkstation: 0
+  violationInProgress: 0
+--- !u!114 &2145325709214167293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880498257113415435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd940a231210fd347af1391a15391532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScreenFadeCutscene
+  blackScreen: {fileID: 0}
+  fadeOutDuration: 0.25
+  blackDuration: 0
+  fadeInDuration: 0.25
+  onStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  onBlack:
+    m_PersistentCalls:
+      m_Calls: []
+  onFinished:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6976893978927954516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880498257113415435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5545c4ea683799e48a7d281d794c2936, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DayPlanManager
+  dayCycle: {fileID: 5407019507255862269}
+  boss: {fileID: 0}
+  craftingStation: {fileID: 0}
+  workstationTutorial: {fileID: 1195738970806064272}
+  bedIndicator: {fileID: 0}
+  workstationSpawnPoint: {fileID: 0}
+  bedSpawnPoint: {fileID: 0}
+  dayPlans:
+  - {fileID: 11400000, guid: 68501f1716ce1fb479cc4986fd2ccf78, type: 2}
+  - {fileID: 11400000, guid: 3a00363d6c159e54e801daa19e2f584c, type: 2}
+  defaultPlan: {fileID: 11400000, guid: d74e95d9572fcd642a6f105e5e86a9f5, type: 2}
+  developerJumpDay: 1

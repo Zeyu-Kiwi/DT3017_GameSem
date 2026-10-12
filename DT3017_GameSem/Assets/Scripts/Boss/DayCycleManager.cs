@@ -10,10 +10,7 @@ public class DayCycleManager : MonoBehaviour
     [SerializeField] private DailyQuotaManager quotaManager;
     [SerializeField] private PlayerResetController playerResetController;
     [SerializeField] private BossController bossController;
-
-    [Header("Boss Availability")]
-    [Tooltip("Boss NPC is fully disabled on these day numbers. Other days enable normal boss behavior.")]
-    [SerializeField] private List<int> bossDisabledDays = new List<int> { 1, 2 };
+    [SerializeField] private DayPlanManager dayPlanManager;
 
     [Header("Day")]
     [SerializeField, Min(1)] private int startingDay = 1;
@@ -67,6 +64,7 @@ public class DayCycleManager : MonoBehaviour
     private void Awake()
     {
         currentDay = Mathf.Max(1, startingDay);
+        if (dayPlanManager == null) dayPlanManager = GetComponent<DayPlanManager>();
         ResetDailyTimer();
 
         if (quotaManager == null)
@@ -82,7 +80,6 @@ public class DayCycleManager : MonoBehaviour
         }
 
         RefreshDayUI();
-        ApplyBossDayAvailability();
     }
 
     private void Update()
@@ -137,6 +134,20 @@ public class DayCycleManager : MonoBehaviour
         timerExpired = false;
     }
 
+    public void ApplyDayPlanTimer(
+        bool enabled,
+        bool overrideDuration,
+        float durationSeconds)
+    {
+        ResetDailyTimer();
+        currentDayTimerEnabled = enabled;
+        if (overrideDuration)
+        {
+            currentDayDurationSeconds = Mathf.Max(0f, durationSeconds);
+            remainingDayTimeSeconds = currentDayDurationSeconds;
+        }
+    }
+
     public bool TryBeginNextDay()
     {
         return TryBeginNextDay(true);
@@ -144,8 +155,6 @@ public class DayCycleManager : MonoBehaviour
 
     public bool TryBeginNextDay(bool requireDailyQuota)
     {
-        var tutorial = GetComponent<DayOneTutorial>();
-        if (tutorial != null && !tutorial.CanSleep) return false;
         requireDailyQuota = requireDailyQuota && !DeveloperGameOptions.SkipDailyQuotaEnabled;
         if (!isActiveAndEnabled || transitionRunning ||
             (requireDailyQuota && (quotaManager == null || !quotaManager.HasMetQuota)))
@@ -188,10 +197,11 @@ public class DayCycleManager : MonoBehaviour
             yield break;
         }
 
+        Transform nextSpawnPoint = dayPlanManager != null
+            ? dayPlanManager.GetSpawnPointForDay(currentDay + 1, bedWakeUpPoint)
+            : bedWakeUpPoint;
         if (playerResetController != null)
-        {
-            playerResetController.ResetStationAndReturnPlayerTo(bedWakeUpPoint);
-        }
+            playerResetController.ResetStationAndReturnPlayerTo(nextSpawnPoint);
 
         if (bossController != null)
         {
@@ -200,8 +210,8 @@ public class DayCycleManager : MonoBehaviour
         }
 
         currentDay++;
-        ApplyBossDayAvailability();
-        ResetDailyTimer();
+        if (dayPlanManager != null) dayPlanManager.ApplyDay(currentDay);
+        else ResetDailyTimer();
         RefreshDayUI();
 
         if (quotaManager != null)
@@ -285,11 +295,27 @@ public class DayCycleManager : MonoBehaviour
     [ContextMenu("Refresh Boss Day Availability")]
     public void ApplyBossDayAvailability()
     {
-        if (!Application.isPlaying || bossController == null) return;
-        bool available = bossDisabledDays == null || !bossDisabledDays.Contains(CurrentDay);
-        if (!available) bossController.ResetOutsideAndRestartTimer();
-        bossController.gameObject.SetActive(available);
+        if (!Application.isPlaying) return;
+        if (dayPlanManager != null) dayPlanManager.ApplyDay(CurrentDay);
     }
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    public void SetDayForDevelopment(int day)
+    {
+        if (!isActiveAndEnabled || transitionRunning) return;
+        currentDay = Mathf.Max(1, day);
+        bossController?.ResetOutsideAndRestartTimer();
+        quotaManager?.StartNewDay();
+        Transform spawnPoint = dayPlanManager != null
+            ? dayPlanManager.GetSpawnPointForDay(currentDay, bedWakeUpPoint)
+            : bedWakeUpPoint;
+        playerResetController?.ResetStationAndReturnPlayerTo(spawnPoint);
+        if (dayPlanManager != null) dayPlanManager.ApplyDay(currentDay);
+        else ResetDailyTimer();
+        RefreshDayUI();
+        DayStarted?.Invoke(currentDay);
+    }
+#endif
 
     private void RefreshDayUI()
     {

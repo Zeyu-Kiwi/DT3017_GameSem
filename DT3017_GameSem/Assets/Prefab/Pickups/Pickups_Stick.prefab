@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5274568913908498541}
   - component: {fileID: 8119251271444311103}
   m_Layer: 3
-  m_Name: Pickable_Stick
+  m_Name: Pickups_Stick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

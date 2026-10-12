@@ -66,6 +66,20 @@ public class PlayerTutorialPosition : MonoBehaviour
             onTutorialStarted.Invoke();
     }
 
+    /// <summary>Move the player to a marker without adding a movement or look lock.</summary>
+    public void TeleportWithoutLock(Transform point)
+    {
+        if (playerController == null)
+            playerController = GetComponent<FirstPersonController>();
+        if (playerController == null || point == null)
+        {
+            Debug.LogError("PlayerTutorialPosition requires a Player Controller and Tutorial Point.", this);
+            return;
+        }
+
+        playerController.TeleportTo(point, matchFacing);
+    }
+
     public void EndTutorial()
     {
         if (lockedController == null)

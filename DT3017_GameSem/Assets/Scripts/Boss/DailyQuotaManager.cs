@@ -79,7 +79,12 @@ public class DailyQuotaManager : MonoBehaviour
 
     public void AddCaughtPenalty()
     {
-        currentRequiredQuota += caughtPenalty;
+        AddPenalty(caughtPenalty);
+    }
+
+    public void AddPenalty(int amount)
+    {
+        currentRequiredQuota += Mathf.Max(0, amount);
         RefreshFromInventory();
     }
 
