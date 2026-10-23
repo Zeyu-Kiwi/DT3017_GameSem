@@ -15,4 +15,4 @@ MonoBehaviour:
   itemId: wood
   displayName: Wood
   stackLimit: 5
-  icon: {fileID: 21300000, guid: 28d312677b998234590ccf45ab966a42, type: 3}
+  icon: {fileID: 21300000, guid: 8d062524b2fc7dc44a76aae24fe38bef, type: 3}

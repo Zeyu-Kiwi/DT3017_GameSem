@@ -4148,17 +4148,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 419926373830541839, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
-      propertyPath: storageSpawnPoints.Array.size
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 729956758794990614, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
       propertyPath: m_Name
       value: CraftingSystem
-      objectReference: {fileID: 0}
-    - target: {fileID: 1118626729379841941, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
-      propertyPath: m_Name
-      value: CompressedMetalSection
       objectReference: {fileID: 0}
     - target: {fileID: 4676332224053991427, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
       propertyPath: quotaManager
@@ -4177,8 +4169,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3870596984072605440}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 6526673244702849386, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
@@ -4464,12 +4455,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
       propertyPath: items.Array.data[4].quantity
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
       propertyPath: items.Array.data[7].quantity
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6289797121930636120, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: flags.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289797121930636120, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: 'flags.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2fd46b1183dc09a4bbb5977bbfb68055, type: 2}
     - target: {fileID: 6976893978927954516, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
       propertyPath: boss
       value: 

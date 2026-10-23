@@ -15,4 +15,4 @@ MonoBehaviour:
   itemId: compressed_metal
   displayName: Compressed Metal
   stackLimit: 3
-  icon: {fileID: 21300000, guid: f27fdb6b1919cc94cb69494d7a88283f, type: 3}
+  icon: {fileID: 21300000, guid: 6e2a62e2ebd5f69419b752dcdcbdffd0, type: 3}
