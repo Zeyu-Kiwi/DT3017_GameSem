@@ -10,7 +10,8 @@ public class DialogueVariableBridge : MonoBehaviour
     [SerializeField] private DayCycleManager dayCycleManager;
     [SerializeField] private string currentDayParameterName = "CurrentDay";
 
-    private readonly HashSet<string> activeIntParameters = new HashSet<string>();
+    private readonly HashSet<string> activeInventoryIntParameters = new HashSet<string>();
+    private readonly HashSet<string> activeGameIntParameters = new HashSet<string>();
     private readonly HashSet<string> activeBoolParameters = new HashSet<string>();
     private bool conversationIsActive;
 
@@ -38,6 +39,7 @@ public class DialogueVariableBridge : MonoBehaviour
         if (GameStateManager.Instance != null)
         {
             GameStateManager.Instance.FlagChanged += OnFlagChanged;
+            GameStateManager.Instance.IntChanged += OnIntChanged;
         }
     }
 
@@ -61,6 +63,7 @@ public class DialogueVariableBridge : MonoBehaviour
         if (GameStateManager.Instance != null)
         {
             GameStateManager.Instance.FlagChanged -= OnFlagChanged;
+            GameStateManager.Instance.IntChanged -= OnIntChanged;
         }
 
         if (Instance == this)
@@ -83,7 +86,8 @@ public class DialogueVariableBridge : MonoBehaviour
             return;
         }
 
-        activeIntParameters.Clear();
+        activeInventoryIntParameters.Clear();
+        activeGameIntParameters.Clear();
         activeBoolParameters.Clear();
 
         // StartConversation deserializes the asset and creates its runtime parameters.
@@ -106,21 +110,34 @@ public class DialogueVariableBridge : MonoBehaviour
             string parameterName = parameter.ParameterName;
             bool matched = false;
 
-            if (parameter is EditableIntParameter &&
-                parameterName == currentDayParameterName &&
-                dayCycleManager != null)
+            if (parameter is EditableIntParameter)
             {
-                ConversationManager.Instance.SetInt(
-                    parameterName,
-                    dayCycleManager.CurrentDay);
-                matched = true;
-            }
-            else if (parameter is EditableIntParameter && InventoryManager.Instance != null)
-            {
-                if (InventoryManager.Instance.TryGetItemById(parameterName, out ItemData item))
+                if (parameterName == currentDayParameterName &&
+                    dayCycleManager != null)
                 {
-                    ConversationManager.Instance.SetInt(parameterName, InventoryManager.Instance.GetQuantity(item));
-                    activeIntParameters.Add(parameterName);
+                    ConversationManager.Instance.SetInt(
+                        parameterName,
+                        dayCycleManager.CurrentDay);
+                    matched = true;
+                }
+                else if (InventoryManager.Instance != null &&
+                         InventoryManager.Instance.TryGetItemById(
+                             parameterName, out ItemData item))
+                {
+                    ConversationManager.Instance.SetInt(
+                        parameterName,
+                        InventoryManager.Instance.GetQuantity(item));
+                    activeInventoryIntParameters.Add(parameterName);
+                    matched = true;
+                }
+                else if (GameStateManager.Instance != null &&
+                         GameStateManager.Instance.TryGetIntById(
+                             parameterName, out GameIntData variable))
+                {
+                    ConversationManager.Instance.SetInt(
+                        parameterName,
+                        GameStateManager.Instance.GetInt(variable));
+                    activeGameIntParameters.Add(parameterName);
                     matched = true;
                 }
             }
@@ -138,7 +155,8 @@ public class DialogueVariableBridge : MonoBehaviour
             {
                 Debug.LogWarning(
                     "Dialogue parameter '" + parameterName +
-                    "' does not match a registered item or game flag. It will remain local to this conversation.",
+                    "' does not match CurrentDay, a registered item, game integer, or game flag. " +
+                    "It will remain local to this conversation.",
                     npcConversation);
             }
         }
@@ -146,9 +164,19 @@ public class DialogueVariableBridge : MonoBehaviour
 
     private void OnQuantityChanged(ItemData item, int newQuantity)
     {
-        if (conversationIsActive && activeIntParameters.Contains(item.ItemId))
+        if (conversationIsActive &&
+            activeInventoryIntParameters.Contains(item.ItemId))
         {
             ConversationManager.Instance.SetInt(item.ItemId, newQuantity);
+        }
+    }
+
+    private void OnIntChanged(GameIntData variable, int newValue)
+    {
+        if (conversationIsActive &&
+            activeGameIntParameters.Contains(variable.VariableId))
+        {
+            ConversationManager.Instance.SetInt(variable.VariableId, newValue);
         }
     }
 
@@ -163,7 +191,8 @@ public class DialogueVariableBridge : MonoBehaviour
     private void OnConversationEnded()
     {
         conversationIsActive = false;
-        activeIntParameters.Clear();
+        activeInventoryIntParameters.Clear();
+        activeGameIntParameters.Clear();
         activeBoolParameters.Clear();
     }
 }

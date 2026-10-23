@@ -79,7 +79,15 @@ public class PlayerInteractor : MonoBehaviour
         // Keep the inspected object even if its interaction clears the current target.
         Component target = currentInteractable as Component;
         currentInteractable.Interact(gameObject);
-        if (target != null) target.GetComponentInParent<EscapeRouteCheck>()?.MarkChecked();
+        if (target != null)
+        {
+            GameVariableAction[] variableActions =
+                target.GetComponents<GameVariableAction>();
+            for (int i = 0; i < variableActions.Length; i++)
+                variableActions[i].ExecuteFromInteraction();
+
+            target.GetComponentInParent<EscapeRouteCheck>()?.MarkChecked();
+        }
     }
 
     private void FindInteractable()
