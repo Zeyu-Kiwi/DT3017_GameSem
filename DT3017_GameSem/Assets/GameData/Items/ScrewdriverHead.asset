@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6716932433219a43becf5ee58539a41, type: 3}
-  m_Name: Chocolate
+  m_Name: ScrewdriverHead
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: chocolate
-  displayName: Chocolate
-  stackLimit: 5
-  icon: {fileID: 0}
+  itemId: screwdriver_head
+  displayName: Screwdriver Head
+  stackLimit: 1
+  icon: {fileID: 21300000, guid: 1dc0b604e9613c8488200654a1f8c3b3, type: 3}
