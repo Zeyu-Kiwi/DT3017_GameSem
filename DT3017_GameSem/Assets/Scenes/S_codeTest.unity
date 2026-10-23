@@ -1350,6 +1350,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
+--- !u!4 &549976612 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 587477610993162982, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
+  m_PrefabInstance: {fileID: 248426132340461813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &557554657
 GameObject:
   m_ObjectHideFlags: 0
@@ -5391,6 +5396,7 @@ Transform:
   - {fileID: 1646407593}
   - {fileID: 916681924}
   - {fileID: 1546591437}
+  - {fileID: 549976612}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1915170357 stripped
@@ -5810,6 +5816,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bae5fe672c7377a4a81dac4ed5e47034, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CraftingStationUI
+--- !u!1001 &248426132340461813
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1912368228}
+    m_Modifications:
+    - target: {fileID: 587477610992862918, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
+      propertyPath: m_Name
+      value: Pickups_Wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 587477610993162982, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.2439318
+      objectReference: {fileID: 0}
+    - target: {fileID: 587477610993162982, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.016
+      objectReference: {fileID: 0}
+    - target: {fileID: 587477610993162982, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.605928
+      objectReference: {fileID: 0}
+    - target: {fileID: 587477610993162982, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 587477610993162982, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.000000021855694
+      objectReference: {fileID: 0}
+    - target: {fileID: 587477610993162982, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587477610993162982, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587477610993162982, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587477610993162982, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 587477610993162982, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
 --- !u!1001 &2475658960873960499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6023,7 +6086,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3924323103756121404, guid: 76d1e06de40038e468cbf0b9d4ac4aec, type: 3}
       propertyPath: m_Name
-      value: LockedDoor
+      value: Vent
       objectReference: {fileID: 0}
     - target: {fileID: 4660044653995347573, guid: 76d1e06de40038e468cbf0b9d4ac4aec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6170,6 +6233,26 @@ PrefabInstance:
       propertyPath: quotaText
       value: 
       objectReference: {fileID: 1741245550}
+    - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: items.Array.data[3].quantity
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: items.Array.data[4].quantity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: items.Array.data[7].quantity
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289797121930636120, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: flags.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6289797121930636120, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: 'flags.Array.data[5]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 2fd46b1183dc09a4bbb5977bbfb68055, type: 2}
     - target: {fileID: 6976893978927954516, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
       propertyPath: boss
       value: 
@@ -6278,6 +6361,10 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 7542321580228605085}
+    - target: {fileID: 587108306397481450, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_TextWrappingMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 735374344279805916, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_fontMaterial
       value: 
@@ -6293,6 +6380,10 @@ PrefabInstance:
     - target: {fileID: 1534198253662916250, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1763012233576149347, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 2131507554243985064, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_SizeDelta.x

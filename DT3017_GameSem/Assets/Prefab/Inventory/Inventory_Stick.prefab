@@ -127,3 +127,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00bf7587f8be70241af269a11f232bf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CraftingItemView
+  hoverOutline: {fileID: 0}
