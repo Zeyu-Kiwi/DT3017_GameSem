@@ -37,8 +37,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Color_Res: 78.9
-    - _Dither_Res: 0.002
+    - _Color_Res: 29.4
+    - _Dither_Res: 0.005
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1
