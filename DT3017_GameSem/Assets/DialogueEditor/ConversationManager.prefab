@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6457692081473662245}
   - component: {fileID: 8112527055460833592}
   - component: {fileID: 5795483324331053133}
+  - component: {fileID: 864707316572948803}
   m_Layer: 5
   m_Name: OptionScrollView
   m_TagString: Untagged
@@ -37,7 +38,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -127}
+  m_AnchoredPosition: {x: 0, y: -172}
   m_SizeDelta: {x: 600, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6457692081473662245
@@ -61,7 +62,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -91,13 +92,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ScrollRect
   m_Content: {fileID: 3852935656990629450}
-  m_Horizontal: 1
+  m_Horizontal: 0
   m_Vertical: 1
-  m_MovementType: 1
+  m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 20
   m_Viewport: {fileID: 5017869650168138909}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 3489420527597929872}
@@ -108,6 +109,26 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &864707316572948803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548128265943898950}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b808c6dc3644ba40b71595b9f3edff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueOptionsScrollController
+  scrollRect: {fileID: 5795483324331053133}
+  viewport: {fileID: 5017869650168138909}
+  content: {fileID: 3852935656990629450}
+  verticalScrollbar: {fileID: 3489420527597929872}
+  minimumHeight: 0
+  maximumHeight: 300
+  resetToTopForNewOptions: 1
+  hideScrollbarWhenContentFits: 1
 --- !u!1 &2627237302378752163
 GameObject:
   m_ObjectHideFlags: 0
@@ -598,6 +619,7 @@ GameObject:
   - component: {fileID: 3852935656990629450}
   - component: {fileID: 3900108755107041022}
   - component: {fileID: 808359371095546423}
+  - component: {fileID: 6907182839185210234}
   m_Layer: 5
   m_Name: Panel_Options
   m_TagString: Untagged
@@ -619,11 +641,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 5017869650168138909}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 8.5, y: 12.002704}
-  m_SizeDelta: {x: 37, y: -95.84}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &3900108755107041022
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -652,12 +674,26 @@ MonoBehaviour:
   m_ChildAlignment: 1
   m_Spacing: 1
   m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
+  m_ChildForceExpandHeight: 0
+  m_ChildControlWidth: 1
+  m_ChildControlHeight: 1
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &6907182839185210234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3900108755107041016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.ContentSizeFitter
+  m_HorizontalFit: 0
+  m_VerticalFit: 2
 --- !u!1 &3900108755395677322
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +968,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 3965079684260494886}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9015204
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
