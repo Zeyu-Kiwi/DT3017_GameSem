@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6716932433219a43becf5ee58539a41, type: 3}
-  m_Name: Cloth
+  m_Name: Shirt
   m_EditorClassIdentifier: Assembly-CSharp::ItemData
-  itemId: cloth
-  displayName: Cloth
+  itemId: shirt
+  displayName: Shirt
   stackLimit: 20
   icon: {fileID: 0}
