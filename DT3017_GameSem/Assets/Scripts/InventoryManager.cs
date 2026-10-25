@@ -148,6 +148,16 @@ public class InventoryManager : MonoBehaviour
         return itemsById.TryGetValue(itemId, out item);
     }
 
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+    public bool RegisterDevelopmentItem(ItemData item)
+    {
+        if (item == null || string.IsNullOrWhiteSpace(item.ItemId)) return false;
+        if (itemsById.TryGetValue(item.ItemId, out var existing) && existing != item) return false;
+        if (!quantities.ContainsKey(item)) quantities.Add(item, 0);
+        itemsById[item.ItemId] = item;
+        return true;
+    }
+#endif
     private bool IsRegistered(ItemData item)
     {
         if (item == null)

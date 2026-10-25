@@ -250,8 +250,19 @@ public class DayOneTutorial : MonoBehaviour
     private void OnQuotaChangedForced()
     {
         if (!IsActive) return;
+        // Cancel waiting dialogue before the end event can notify any tutorial callbacks.
+        if (conversationRoutine != null)
+        {
+            StopCoroutine(conversationRoutine);
+            conversationRoutine = null;
+        }
+        activeConversation = ConversationReason.None;
         stage = TutorialStage.Completed;
         violationInProgress = false;
+        playerHasEnteredWorkstation = false;
+        foreach (var conversation in FindObjectsByType<ConversationManager>(
+                     FindObjectsInactive.Include, FindObjectsSortMode.None))
+            conversation.EndConversationImmediately();
         boss?.EndTutorialStareAndLeave();
         onTutorialCompleted.Invoke();
     }
