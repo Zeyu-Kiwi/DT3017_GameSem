@@ -6619,6 +6619,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2005928931 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5442390808185617442, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+  m_PrefabInstance: {fileID: 3919338576058649304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &2005928936
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005928931}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &2044340639
 GameObject:
   m_ObjectHideFlags: 0
@@ -7366,6 +7383,10 @@ PrefabInstance:
       propertyPath: maximumHeight
       value: 150
       objectReference: {fileID: 0}
+    - target: {fileID: 1299565883189800946, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: verticalScrollbarCanvasGroup
+      value: 
+      objectReference: {fileID: 2005928936}
     - target: {fileID: 1530991192240536710, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_Spacing
       value: 10
@@ -7530,6 +7551,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4214560664541023762, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4434603069716691602, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_fontMaterial
       value: 
@@ -7541,6 +7566,10 @@ PrefabInstance:
     - target: {fileID: 4977909007194624898, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -0.0000039511096
+      objectReference: {fileID: 0}
+    - target: {fileID: 5442390808185617442, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5648995596226164476, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_ScrollSensitivity
@@ -7570,6 +7599,14 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7896882386354353451, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896882386354353451, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 8.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8003187593083022294, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_fontMaterial
       value: 
@@ -7581,7 +7618,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5442390808185617442, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2005928936}
   m_SourcePrefab: {fileID: 100100000, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
 --- !u!1001 &4960941058639426509
 PrefabInstance:

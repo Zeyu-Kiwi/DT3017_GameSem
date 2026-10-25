@@ -11,6 +11,7 @@ public class DialogueOptionsScrollController : MonoBehaviour
     [SerializeField] private RectTransform viewport;
     [SerializeField] private RectTransform content;
     [SerializeField] private Scrollbar verticalScrollbar;
+    [SerializeField] private CanvasGroup verticalScrollbarCanvasGroup;
 
     [Header("Height")]
     [SerializeField, Min(0f)] private float minimumHeight;
@@ -20,17 +21,28 @@ public class DialogueOptionsScrollController : MonoBehaviour
     [SerializeField] private bool resetToTopForNewOptions = true;
     [SerializeField] private bool hideScrollbarWhenContentFits = true;
 
+    [Header("Mouse Wheel")]
+    [Tooltip("Read the mouse wheel anywhere on screen while dialogue options overflow.")]
+    [SerializeField] private bool scrollWheelWorksAnywhere = true;
+    [SerializeField, Min(0.01f)] private float normalizedScrollStep = 0.12f;
+
     private RectTransform scrollRoot;
     private Coroutine refreshRoutine;
     private int previousChildrenSignature;
     private bool previousContentActive;
     private float previousPreferredHeight = -1f;
     private bool applyingLayout;
+    private bool contentOverflows;
+    private float originalScrollSensitivity;
 
     private void Awake()
     {
         scrollRoot = transform as RectTransform;
         if (scrollRect == null) scrollRect = GetComponent<ScrollRect>();
+        if (scrollRect != null)
+            originalScrollSensitivity = scrollRect.scrollSensitivity;
+        EnsureScrollbarCanvasGroup();
+        SetScrollbarVisible(false);
         ApplyReferencesToScrollRect();
     }
 
@@ -39,6 +51,32 @@ public class DialogueOptionsScrollController : MonoBehaviour
         previousChildrenSignature = CalculateChildrenSignature();
         previousContentActive = content != null && content.gameObject.activeSelf;
         QueueRefresh(true);
+    }
+
+    private void Update()
+    {
+        if (!scrollWheelWorksAnywhere || !contentOverflows ||
+            scrollRect == null || content == null ||
+            !content.gameObject.activeInHierarchy)
+            return;
+
+        float wheelDelta;
+#if ENABLE_INPUT_SYSTEM
+        UnityEngine.InputSystem.Mouse mouse =
+            UnityEngine.InputSystem.Mouse.current;
+        wheelDelta = mouse != null ? mouse.scroll.ReadValue().y : 0f;
+        // Windows commonly reports 120 per wheel notch, while some devices and
+        // platforms already report small normalized values.
+        if (Mathf.Abs(wheelDelta) > 10f) wheelDelta /= 120f;
+#else
+        wheelDelta = Input.mouseScrollDelta.y;
+#endif
+
+        if (Mathf.Abs(wheelDelta) <= Mathf.Epsilon) return;
+        scrollRect.StopMovement();
+        scrollRect.verticalNormalizedPosition = Mathf.Clamp01(
+            scrollRect.verticalNormalizedPosition +
+            wheelDelta * normalizedScrollStep);
     }
 
     private void LateUpdate()
@@ -71,6 +109,9 @@ public class DialogueOptionsScrollController : MonoBehaviour
             StopCoroutine(refreshRoutine);
             refreshRoutine = null;
         }
+
+        if (scrollRect != null)
+            scrollRect.scrollSensitivity = originalScrollSensitivity;
     }
 
     private void OnRectTransformDimensionsChange()
@@ -89,6 +130,9 @@ public class DialogueOptionsScrollController : MonoBehaviour
         scrollRect.horizontal = false;
         scrollRect.vertical = true;
         scrollRect.movementType = ScrollRect.MovementType.Clamped;
+        scrollRect.scrollSensitivity = scrollWheelWorksAnywhere
+            ? 0f
+            : originalScrollSensitivity;
         if (hideScrollbarWhenContentFits)
         {
             scrollRect.verticalScrollbarVisibility =
@@ -141,15 +185,12 @@ public class DialogueOptionsScrollController : MonoBehaviour
             visibleHeight);
 
         bool overflow = contentActive && preferredHeight > visibleHeight + 0.5f;
+        contentOverflows = overflow;
         scrollRect.vertical = overflow;
 
-        if (verticalScrollbar != null)
-        {
-            if (!contentActive || (hideScrollbarWhenContentFits && !overflow))
-                verticalScrollbar.gameObject.SetActive(false);
-            else
-                verticalScrollbar.gameObject.SetActive(true);
-        }
+        bool showScrollbar = contentActive &&
+                             (!hideScrollbarWhenContentFits || overflow);
+        SetScrollbarVisible(showScrollbar);
 
         Canvas.ForceUpdateCanvases();
         if (viewport != null) LayoutRebuilder.ForceRebuildLayoutImmediate(viewport);
@@ -177,10 +218,40 @@ public class DialogueOptionsScrollController : MonoBehaviour
         }
     }
 
+    private void EnsureScrollbarCanvasGroup()
+    {
+        if (verticalScrollbarCanvasGroup != null || verticalScrollbar == null)
+            return;
+
+        verticalScrollbarCanvasGroup =
+            verticalScrollbar.GetComponent<CanvasGroup>();
+        if (verticalScrollbarCanvasGroup == null && Application.isPlaying)
+        {
+            verticalScrollbarCanvasGroup =
+                verticalScrollbar.gameObject.AddComponent<CanvasGroup>();
+        }
+    }
+
+    private void SetScrollbarVisible(bool visible)
+    {
+        EnsureScrollbarCanvasGroup();
+        if (verticalScrollbarCanvasGroup == null) return;
+
+        verticalScrollbarCanvasGroup.alpha = visible ? 1f : 0f;
+        verticalScrollbarCanvasGroup.interactable = visible;
+        verticalScrollbarCanvasGroup.blocksRaycasts = visible;
+    }
+
     private void OnValidate()
     {
         maximumHeight = Mathf.Max(1f, maximumHeight);
         minimumHeight = Mathf.Clamp(minimumHeight, 0f, maximumHeight);
+        normalizedScrollStep = Mathf.Max(0.01f, normalizedScrollStep);
         if (scrollRect == null) scrollRect = GetComponent<ScrollRect>();
+        if (verticalScrollbarCanvasGroup == null && verticalScrollbar != null)
+        {
+            verticalScrollbarCanvasGroup =
+                verticalScrollbar.GetComponent<CanvasGroup>();
+        }
     }
 }
