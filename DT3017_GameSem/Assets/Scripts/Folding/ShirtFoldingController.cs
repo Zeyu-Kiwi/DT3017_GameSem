@@ -235,9 +235,31 @@ public class ShirtFoldingController : MonoBehaviour
 
             if (!animationPlaying && currentStage != FoldStage.Collected)
             {
-                shouldEnable = currentStage == FoldStage.WaitingToCollect
-                    ? hotspot.Part == ShirtFoldPart.Collect
-                    : hotspot.Part != ShirtFoldPart.Collect;
+                switch (currentStage)
+                {
+                    case FoldStage.Right:
+                        // Keep every unfinished fold available so selecting Left or
+                        // Bottom can still show the wrong-order guidance.
+                        shouldEnable = hotspot.Part != ShirtFoldPart.Collect;
+                        break;
+
+                    case FoldStage.Left:
+                        // Right has already been folded and must no longer block
+                        // raycasts, while Bottom stays available for guidance.
+                        shouldEnable = hotspot.Part == ShirtFoldPart.Left ||
+                                       hotspot.Part == ShirtFoldPart.Bottom;
+                        break;
+
+                    case FoldStage.Bottom:
+                        // Both side colliders have moved with the bones, so only
+                        // the final bottom fold may receive raycasts now.
+                        shouldEnable = hotspot.Part == ShirtFoldPart.Bottom;
+                        break;
+
+                    case FoldStage.WaitingToCollect:
+                        shouldEnable = hotspot.Part == ShirtFoldPart.Collect;
+                        break;
+                }
             }
 
             hotspot.SetColliderEnabled(shouldEnable);
