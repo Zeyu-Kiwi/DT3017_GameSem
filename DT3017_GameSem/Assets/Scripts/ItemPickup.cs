@@ -31,6 +31,11 @@ public class ItemPickup : MonoBehaviour, IInteractable
     public Color OutlineColor => outlineColor;
     public bool CanInteract => item != null && quantity > 0;
 
+    public void Configure(ItemData itemData, int amount = 1)
+    {
+        item = itemData;
+        quantity = Mathf.Max(1, amount);
+    }
     public void Interact(GameObject player)
     {
         if (InventoryManager.Instance == null || item == null)

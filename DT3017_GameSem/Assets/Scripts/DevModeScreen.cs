@@ -17,6 +17,14 @@ public sealed class DevModeScreen : MonoBehaviour
     private readonly System.Collections.Generic.List<System.Action> refreshOptions =
         new System.Collections.Generic.List<System.Action>();
     private bool optionsDirty;
+    private GameObject optionsPanel;
+    private GameObject itemsPanel;
+    private RectTransform itemsContent;
+    private TMP_Text itemStatus;
+    private UnityEngine.UI.Button optionsTab;
+    private UnityEngine.UI.Button itemsTab;
+    private bool spawnItemsOnGround;
+    private readonly System.Collections.Generic.List<System.Action> refreshItems = new System.Collections.Generic.List<System.Action>();
     private DayCycleManager dayManager;
     private FirstPersonController player;
     private PlayerInteractor interactor;
@@ -73,6 +81,7 @@ public sealed class DevModeScreen : MonoBehaviour
             player?.LockMovement(this);
             interactor?.LockInteraction(this);
             EnsureEventSystem();
+            RebuildItems();
             screen.SetActive(true);
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -118,6 +127,7 @@ public sealed class DevModeScreen : MonoBehaviour
     {
         if (optionsDirty) RebuildOptions();
         foreach (var refresh in refreshOptions) refresh();
+        if (itemsPanel.activeSelf) foreach (var refresh in refreshItems) refresh();
         if (dayManager == null)
         {
             dayText.text = "DAILY TIMER";
@@ -272,6 +282,131 @@ public sealed class DevModeScreen : MonoBehaviour
         Canvas.ForceUpdateCanvases();
     }
 
+    private UnityEngine.UI.Button Button(string name, Transform parent, string title, UnityEngine.Events.UnityAction clicked)
+    {
+        var rect = Rect(name, parent, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+        var layout = rect.gameObject.AddComponent<UnityEngine.UI.LayoutElement>();
+        layout.preferredHeight = 38;
+        layout.minHeight = 38;
+        var image = rect.gameObject.AddComponent<UnityEngine.UI.Image>();
+        image.color = new Color(.15f, .25f, .3f);
+        var button = rect.gameObject.AddComponent<UnityEngine.UI.Button>();
+        button.targetGraphic = image;
+        button.onClick.AddListener(clicked);
+        Text("Label", rect, title, 18, Color.white, 38).alignment = TextAlignmentOptions.Center;
+        return button;
+    }
+
+    private void BuildTabs(Transform parent)
+    {
+        var tabs = Rect("Tabs", parent, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+        tabs.gameObject.AddComponent<UnityEngine.UI.LayoutElement>().preferredHeight = 38;
+        var layout = tabs.gameObject.AddComponent<UnityEngine.UI.HorizontalLayoutGroup>();
+        layout.spacing = 8;
+        layout.childControlWidth = true;
+        layout.childControlHeight = true;
+        layout.childForceExpandWidth = true;
+        optionsTab = Button("OptionsTab", tabs, "Options", () => SelectItemsTab(false));
+        itemsTab = Button("ItemsTab", tabs, "Items", () => SelectItemsTab(true));
+        var body = Rect("TabBody", parent, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+        var bodyLayout = body.gameObject.AddComponent<UnityEngine.UI.LayoutElement>();
+        bodyLayout.minHeight = 150;
+        bodyLayout.preferredHeight = 290;
+        bodyLayout.flexibleHeight = 1;
+        BuildOptionsList(body);
+        optionsPanel = optionsContent.parent.parent.gameObject;
+        BuildItemsPanel(body);
+        SelectItemsTab(false);
+    }
+
+    private void SelectItemsTab(bool items)
+    {
+        optionsPanel.SetActive(!items);
+        itemsPanel.SetActive(items);
+        optionsTab.interactable = items;
+        itemsTab.interactable = !items;
+        Canvas.ForceUpdateCanvases();
+    }
+
+    private void BuildItemsPanel(Transform parent)
+    {
+        var panel = Rect("Items", parent, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+        itemsPanel = panel.gameObject;
+        var layout = panel.gameObject.AddComponent<UnityEngine.UI.VerticalLayoutGroup>();
+        layout.spacing = 8;
+        layout.childControlWidth = true;
+        layout.childControlHeight = true;
+        layout.childForceExpandHeight = false;
+        Toggle(panel, "Spawn on ground in front of me", value => spawnItemsOnGround = value);
+        itemStatus = Text("ItemStatus", panel, "Adds one item per click. Inventory stack limits apply.", 15, new Color(.65f,.72f,.8f), 38);
+        var root = Rect("ItemList", panel, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+        var sizing = root.gameObject.AddComponent<UnityEngine.UI.LayoutElement>();
+        sizing.minHeight = 80;
+        sizing.preferredHeight = 200;
+        sizing.flexibleHeight = 1;
+        var scroll = root.gameObject.AddComponent<UnityEngine.UI.ScrollRect>();
+        scroll.horizontal = false;
+        scroll.scrollSensitivity = 30;
+        scroll.movementType = UnityEngine.UI.ScrollRect.MovementType.Clamped;
+        var viewport = Rect("Viewport", root, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+        viewport.gameObject.AddComponent<UnityEngine.UI.Image>().color = new Color(.065f,.085f,.12f);
+        viewport.gameObject.AddComponent<UnityEngine.UI.Mask>().showMaskGraphic = false;
+        itemsContent = Rect("Content", viewport, new Vector2(0,1), Vector2.one, Vector2.zero, Vector2.zero);
+        itemsContent.pivot = new Vector2(.5f,1);
+        var rows = itemsContent.gameObject.AddComponent<UnityEngine.UI.VerticalLayoutGroup>();
+        rows.spacing = 6;
+        rows.childControlWidth = true;
+        rows.childControlHeight = true;
+        rows.childForceExpandHeight = false;
+        itemsContent.gameObject.AddComponent<UnityEngine.UI.ContentSizeFitter>().verticalFit = UnityEngine.UI.ContentSizeFitter.FitMode.PreferredSize;
+        scroll.viewport = viewport;
+        scroll.content = itemsContent;
+        RebuildItems();
+    }
+
+    private void RebuildItems()
+    {
+        if (itemsContent == null) return;
+        refreshItems.Clear();
+        foreach (Transform child in itemsContent) { child.gameObject.SetActive(false); Destroy(child.gameObject); }
+        var catalog = Resources.Load<DevItemCatalog>("DevItemCatalog");
+        if (catalog == null) { itemStatus.text = "No item catalog found."; return; }
+        foreach (var entry in catalog.Entries)
+        {
+            if (entry.item == null) continue;
+            var item = entry.item;
+            var row = Rect("Item-" + item.ItemId, itemsContent, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
+            var layout = row.gameObject.AddComponent<UnityEngine.UI.LayoutElement>();
+            layout.minHeight = 46;
+            layout.preferredHeight = 46;
+            row.gameObject.AddComponent<UnityEngine.UI.Image>().color = new Color(.13f,.17f,.23f);
+            var title = Text("ItemName", row, item.DisplayName, 17, Color.white, 46);
+            title.rectTransform.offsetMin = new Vector2(12,0);
+            title.rectTransform.offsetMax = new Vector2(-126,0);
+            var button = Button("Spawn", row, "Add 1", () =>
+            {
+                DevItemSpawner.Spawn(entry, spawnItemsOnGround, player, out string message);
+                itemStatus.text = message;
+            });
+            var buttonRect = (RectTransform)button.transform;
+            buttonRect.anchorMin = new Vector2(1,0);
+            buttonRect.anchorMax = Vector2.one;
+            buttonRect.pivot = new Vector2(1,.5f);
+            buttonRect.offsetMin = new Vector2(-114,4);
+            buttonRect.offsetMax = new Vector2(-4,-4);
+            var label = button.GetComponentInChildren<TMP_Text>();
+            refreshItems.Add(() =>
+            {
+                var inventory = InventoryManager.Instance;
+                int quantity = inventory != null ? inventory.GetQuantity(item) : 0;
+                bool full = quantity >= item.StackLimit;
+                title.text = item.DisplayName + "  (" + quantity + "/" + item.StackLimit + ")";
+                label.text = spawnItemsOnGround ? "Spawn 1" : full ? "Full" : "Add 1";
+                button.interactable = spawnItemsOnGround ? player != null : inventory != null && !full;
+            });
+        }
+        Canvas.ForceUpdateCanvases();
+    }
     private void BuildScreen()
     {
         screen = Rect("DevModeCanvas", transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero).gameObject;
@@ -285,7 +420,7 @@ public sealed class DevModeScreen : MonoBehaviour
         screen.AddComponent<UnityEngine.UI.GraphicRaycaster>();
         var shade = Rect("Backdrop", screen.transform, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero).gameObject.AddComponent<UnityEngine.UI.Image>();
         shade.color = new Color(0, 0, 0, .65f);
-        var panel = Rect("Panel", screen.transform, new Vector2(.5f, .5f), new Vector2(.5f, .5f), new Vector2(540, 580), Vector2.zero);
+        var panel = Rect("Panel", screen.transform, new Vector2(.5f, .5f), new Vector2(.5f, .5f), new Vector2(620, 650), Vector2.zero);
         panel.gameObject.AddComponent<UnityEngine.UI.Image>().color = new Color(.065f, .085f, .12f, 1);
         var content = panel.gameObject.AddComponent<UnityEngine.UI.VerticalLayoutGroup>();
         content.padding = new RectOffset(28, 28, 22, 22);
@@ -297,7 +432,7 @@ public sealed class DevModeScreen : MonoBehaviour
         dayText = Text("Day", panel, "DAILY TIMER", 15, new Color(.65f, .72f, .8f), 25);
         timerText = Text("Time", panel, "--:--", 48, Color.white, 66);
         timerStateText = Text("TimerState", panel, "", 16, new Color(.65f, .72f, .8f), 26);
-        BuildOptionsList(panel);
+        BuildTabs(panel);
 
         Text("Hint", panel, "Workstation detection still applies.\nPress apostrophe or backtick to close. Changes apply this session.", 14, new Color(.65f, .72f, .8f), 48);
         var closeRect = Rect("Close", panel, Vector2.zero, Vector2.one, Vector2.zero, Vector2.zero);
