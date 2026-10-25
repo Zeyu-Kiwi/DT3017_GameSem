@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e9341db4d91dc04eb776e59e737ad83, type: 3}
   m_Name: Recipe_ScrewdriverHead_Unlcoked
   m_EditorClassIdentifier: Assembly-CSharp::GameFlagData
-  flagId: recipe_screwdriver_head_unlocked
+  flagId: recipe_sdriverH_unlocked
   displayName: Recipe Screwdriver Head Unlocked
   startingValue: 0
