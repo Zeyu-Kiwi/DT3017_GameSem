@@ -140,7 +140,7 @@ public class RandomItemSpawnArea : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
         Matrix4x4 previous = Gizmos.matrix;
         Gizmos.matrix = transform.localToWorldMatrix;

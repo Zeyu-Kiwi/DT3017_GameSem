@@ -37,7 +37,14 @@ public class CraftingMaterialSection : MonoBehaviour
             // Instantiate without a parent first, then preserve its world transform when
             // parenting it. This prevents a scaled section hierarchy from stretching it.
             GameObject model = Instantiate(modelPrefab);
-            model.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
+            // Spawn points control position only. Preserve the prefab's intended
+            // rotation while still rotating it with the complete crafting station.
+            Quaternion stationRotation = station != null
+                ? station.transform.rotation
+                : transform.rotation;
+            Quaternion displayRotation =
+                stationRotation * modelPrefab.transform.localRotation;
+            model.transform.SetPositionAndRotation(spawnPoint.position, displayRotation);
             model.transform.SetParent(spawnPoint, true);
 
             CraftingItemView itemView = model.GetComponent<CraftingItemView>();

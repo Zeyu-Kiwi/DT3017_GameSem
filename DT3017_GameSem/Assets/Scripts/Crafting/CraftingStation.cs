@@ -25,6 +25,10 @@ public class CraftingStation : MonoBehaviour, IInteractable
 
     [Header("Centre Display")]
     [SerializeField] private List<Transform> centerSpawnPoints = new List<Transform>();
+    [SerializeField] private Vector3 centreGizmoOffset = Vector3.zero;
+    [SerializeField] private Vector3 centreGizmoSize = new Vector3(1f, 0.25f, 1f);
+    [SerializeField] private Color centreGizmoColor = new Color(0.9f, 0.25f, 1f, 0.9f);
+    [SerializeField, Min(0.005f)] private float spawnPointMarkerSize = 0.05f;
 
     [Header("Input")]
     [SerializeField] private LayerMask craftingItemLayers = ~0;
@@ -653,7 +657,11 @@ public class CraftingStation : MonoBehaviour, IInteractable
 
             // Preserve the prefab's world scale even when the centre hierarchy is scaled.
             GameObject model = Instantiate(section.ModelPrefab);
-            model.transform.SetPositionAndRotation(spawnPoint.position, spawnPoint.rotation);
+            // Centre points control position only. Combine the station's orientation
+            // with the prefab's own rotation instead of copying the point rotation.
+            Quaternion displayRotation =
+                transform.rotation * section.ModelPrefab.transform.localRotation;
+            model.transform.SetPositionAndRotation(spawnPoint.position, displayRotation);
             model.transform.SetParent(spawnPoint, true);
 
             CraftingItemView view = model.GetComponent<CraftingItemView>();
@@ -886,6 +894,39 @@ public class CraftingStation : MonoBehaviour, IInteractable
     private void OnFlagChanged(GameFlagData flag, bool value)
     {
         RefreshUI();
+    }
+
+    private void OnValidate()
+    {
+        centreGizmoSize.x = Mathf.Max(0.01f, Mathf.Abs(centreGizmoSize.x));
+        centreGizmoSize.y = Mathf.Max(0.01f, Mathf.Abs(centreGizmoSize.y));
+        centreGizmoSize.z = Mathf.Max(0.01f, Mathf.Abs(centreGizmoSize.z));
+        spawnPointMarkerSize = Mathf.Max(0.005f, spawnPointMarkerSize);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Color previousColor = Gizmos.color;
+        Matrix4x4 previousMatrix = Gizmos.matrix;
+
+        Gizmos.color = centreGizmoColor;
+        // Use world-unit dimensions so inherited scale does not distort the box.
+        Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, Vector3.one);
+        Gizmos.DrawWireCube(centreGizmoOffset, centreGizmoSize);
+
+        // Spawn-point markers use their exact world positions and a fixed world size.
+        Gizmos.matrix = Matrix4x4.identity;
+        for (int i = 0; i < centerSpawnPoints.Count; i++)
+        {
+            Transform spawnPoint = centerSpawnPoints[i];
+            if (spawnPoint != null)
+            {
+                Gizmos.DrawWireSphere(spawnPoint.position, spawnPointMarkerSize);
+            }
+        }
+
+        Gizmos.matrix = previousMatrix;
+        Gizmos.color = previousColor;
     }
 
     private void ShowMessage(string message)
