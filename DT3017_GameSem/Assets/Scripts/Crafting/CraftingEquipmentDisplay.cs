@@ -7,8 +7,8 @@ public class CraftingEquipmentDisplay : MonoBehaviour
     [Serializable]
     private class EquipmentEntry
     {
-        public ItemData item;
-        public GameObject displayModel;
+        public ItemData item = null;
+        public GameObject displayModel = null;
     }
 
     [SerializeField] private List<EquipmentEntry> equipment = new List<EquipmentEntry>();

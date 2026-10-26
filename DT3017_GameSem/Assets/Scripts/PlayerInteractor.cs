@@ -85,8 +85,6 @@ public class PlayerInteractor : MonoBehaviour
                 target.GetComponents<GameVariableAction>();
             for (int i = 0; i < variableActions.Length; i++)
                 variableActions[i].ExecuteFromInteraction();
-
-            target.GetComponentInParent<EscapeRouteCheck>()?.MarkChecked();
         }
     }
 

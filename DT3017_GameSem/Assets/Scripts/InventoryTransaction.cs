@@ -7,7 +7,7 @@ public class InventoryTransaction : MonoBehaviour
     [Serializable]
     private class ItemAmount
     {
-        public ItemData item;
+        public ItemData item = null;
         [Min(1)] public int amount = 1;
     }
 

@@ -1,20 +1,10 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.Events;
 
 [DisallowMultipleComponent]
-public sealed class VentCoverInteractable : MonoBehaviour, IInteractable
+public sealed class VentCoverInteractable : MonoBehaviour
 {
-    [Header("Interaction")]
-    [SerializeField] private ItemData requiredTool;
-    [SerializeField, TextArea] private string missingToolMessage =
-        "I need a Phillips screwdriver to remove the screws holding this vent cover.";
-    [SerializeField, TextArea] private string toolAvailableMessage =
-        "My Phillips screwdriver fits these screws.";
-    [Tooltip("Future cover removal can be connected here. The tool is not consumed.")]
-    [SerializeField] private UnityEvent onToolAvailable = new UnityEvent();
-
-    [Header("Missing Tool Shake")]
+    [Header("Shake Response")]
     [Tooltip("Move the cover and screws together, keeping the interaction collider still.")]
     [SerializeField] private Transform shakeTarget;
     [SerializeField, Min(0.01f)] private float shakeDuration = 0.35f;
@@ -22,32 +12,20 @@ public sealed class VentCoverInteractable : MonoBehaviour, IInteractable
     [SerializeField, Min(0f)] private float shakeAngle = 0.8f;
     [SerializeField, Min(0f)] private float shakeFrequency = 18f;
 
-    [SerializeField] private VentInspectionController inspection;
-
     private Coroutine shakeRoutine;
     private Transform activeShakeTarget;
     private Vector3 restingPosition;
     private Quaternion restingRotation;
 
-    public bool CanInteract => isActiveAndEnabled && (inspection == null || (!inspection.IsInspecting && !inspection.IsComplete));
-    public ItemData RequiredTool => requiredTool;
     public bool IsShaking => shakeRoutine != null;
-    public UnityEvent OnToolAvailable => onToolAvailable;
 
-    public void Interact(GameObject player)
+    public void PlayShake()
     {
-        if (!CanInteract || player == null || IsShaking) return;
-
-        InventoryManager inventory = InventoryManager.Instance;
-        if (requiredTool != null && inventory != null && inventory.Has(requiredTool, 1))
+        if (!isActiveAndEnabled || IsShaking)
         {
-            if (inspection != null) inspection.Begin(player);
-            else ShowMessage(toolAvailableMessage);
-            onToolAvailable.Invoke();
             return;
         }
 
-        ShowMessage(missingToolMessage);
         shakeRoutine = StartCoroutine(Shake());
     }
 
@@ -87,14 +65,5 @@ public sealed class VentCoverInteractable : MonoBehaviour, IInteractable
         activeShakeTarget.localPosition = restingPosition;
         activeShakeTarget.localRotation = restingRotation;
         activeShakeTarget = null;
-    }
-
-    private void ShowMessage(string message)
-    {
-        if (string.IsNullOrWhiteSpace(message)) return;
-        if (NotificationManager.Instance != null)
-            NotificationManager.Instance.ShowMessage(message);
-        else
-            Debug.Log(message, this);
     }
 }
