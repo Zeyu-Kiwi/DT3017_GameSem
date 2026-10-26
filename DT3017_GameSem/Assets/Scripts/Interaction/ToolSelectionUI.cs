@@ -22,7 +22,7 @@ public class ToolSelectionUI : MonoBehaviour
     private readonly List<ToolSelectionButtonUI> spawnedButtons =
         new List<ToolSelectionButtonUI>();
 
-    private DoorToolInteractable activeDoor;
+    private IToolSelectionTarget activeTarget;
     private GameObject activePlayer;
     private FirstPersonController firstPersonController;
     private PlayerInteractor playerInteractor;
@@ -78,9 +78,9 @@ public class ToolSelectionUI : MonoBehaviour
         }
     }
 
-    public void Open(DoorToolInteractable door, GameObject player)
+    public void Open(IToolSelectionTarget target, GameObject player)
     {
-        if (isOpen || door == null || player == null)
+        if (isOpen || target == null || player == null)
         {
             return;
         }
@@ -93,11 +93,11 @@ public class ToolSelectionUI : MonoBehaviour
 
         if (!HasAnyOwnedTool())
         {
-            ShowMessage("You do not have any tools.");
+            target.HandleNoToolsAvailable();
             return;
         }
 
-        activeDoor = door;
+        activeTarget = target;
         activePlayer = player;
         CachePlayerComponents();
         BuildOwnedToolButtons();
@@ -132,7 +132,7 @@ public class ToolSelectionUI : MonoBehaviour
 
     public void SelectTool(ToolSelectionButtonUI selectedButton)
     {
-        if (!isOpen || activeDoor == null || selectedButton == null)
+        if (!isOpen || activeTarget == null || selectedButton == null)
         {
             return;
         }
@@ -147,15 +147,22 @@ public class ToolSelectionUI : MonoBehaviour
             return;
         }
 
-        if (activeDoor.IsCorrectTool(selectedTool))
+        if (activeTarget.IsCorrectTool(selectedTool))
         {
-            DoorToolInteractable completedDoor = activeDoor;
+            IToolSelectionTarget completedTarget = activeTarget;
+            GameObject interactingPlayer = activePlayer;
             Close();
-            completedDoor.InvokeCorrectToolResponse();
+            completedTarget.HandleCorrectTool(interactingPlayer);
         }
         else
         {
-            activeDoor.InvokeWrongToolResponse();
+            IToolSelectionTarget wrongTarget = activeTarget;
+            if (!wrongTarget.KeepSelectionOpenAfterWrongTool)
+            {
+                Close();
+            }
+
+            wrongTarget.HandleWrongTool();
         }
     }
 
@@ -205,7 +212,7 @@ public class ToolSelectionUI : MonoBehaviour
             }
         }
 
-        activeDoor = null;
+        activeTarget = null;
         activePlayer = null;
         firstPersonController = null;
         playerInteractor = null;

@@ -7,8 +7,8 @@ public class InventoryManager : MonoBehaviour
     [Serializable]
     private class StartingItem
     {
-        public ItemData item;
-        [Min(0)] public int quantity;
+        public ItemData item = null;
+        [Min(0)] public int quantity = 0;
     }
 
     public static InventoryManager Instance { get; private set; }
