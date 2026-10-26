@@ -186,6 +186,19 @@ namespace DialogueEditor
                 OnConversationEnded.Invoke();
         }
 
+        /// <summary>Dismiss dialogue, choices and voice audio immediately, without advancing nodes.</summary>
+        public void EndConversationImmediately()
+        {
+            bool notifyEnded = IsConversationActive && m_state != eState.TransitioningDialogueOff;
+            m_fastForward = false;
+            if (AudioPlayer != null) AudioPlayer.Stop();
+            ClearOptions();
+            TurnOffUI();
+            m_currentSpeech = null;
+            m_selectedOption = null;
+            m_conversation = null;
+            if (notifyEnded) OnConversationEnded?.Invoke();
+        }
         public bool TryFastForward()
         {
             if (!AllowClickFastForward || !IsConversationActive || m_fastForward) return false;
