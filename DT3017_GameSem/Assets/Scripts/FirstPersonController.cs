@@ -88,18 +88,6 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (canMove)
-            {
-                DisableController();
-            }
-            else
-            {
-                EnableController();
-            }
-        }
-
         if (CanMove && Input.GetKeyDown(jumpKey)) jumpQueued = true;
 
         if (CanLook)
