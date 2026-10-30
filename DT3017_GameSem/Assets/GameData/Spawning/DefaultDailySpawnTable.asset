@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ece9c27420e084e9870da0db0a7687, type: 3}
+  m_Name: DefaultDailySpawnTable
+  m_EditorClassIdentifier: Assembly-CSharp::DailyItemSpawnTable
+  entries:
+  - prefab: {fileID: 919132149155446097, guid: 4ddfa1a5305616c488e4ae3c710fc39a, type: 3}
+    item: {fileID: 11400000, guid: 7ce056aef7bfef34abacbf7a370a24d5, type: 2}
+    pickupPrefab: {fileID: 0}
+    weight: 4
+    minimumQuantity: 1
+    maximumQuantity: 1
+  - prefab: {fileID: 919132149155446097, guid: 1fc427fc808e7394d85a84eb79cde1f9, type: 3}
+    item: {fileID: 11400000, guid: 2cc802e0568494c449c2b5fb6c253a15, type: 2}
+    pickupPrefab: {fileID: 0}
+    weight: 5
+    minimumQuantity: 1
+    maximumQuantity: 1
+  - prefab: {fileID: 919132149155446097, guid: e3e50b15f090f254796d4eb29509d6e8, type: 3}
+    item: {fileID: 11400000, guid: 182d59327ac79bb489f31a3372fc5710, type: 2}
+    pickupPrefab: {fileID: 0}
+    weight: 3
+    minimumQuantity: 1
+    maximumQuantity: 1
