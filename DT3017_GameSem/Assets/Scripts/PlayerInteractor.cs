@@ -11,6 +11,8 @@ public class PlayerInteractor : MonoBehaviour
     [SerializeField] private Camera playerCamera;
     [SerializeField] private float interactionDistance = 3f;
     [SerializeField] private LayerMask interactableLayers = ~0;
+    [Tooltip("Solid layers that stop interaction rays. Trigger colliders on these layers are ignored.")]
+    [SerializeField] private LayerMask interactionBlockingLayers = 1 << 7;
 
     [SerializeField] private PlayerInteractUI interactUI;
     private IInteractable currentInteractable;
@@ -97,15 +99,30 @@ public class PlayerInteractor : MonoBehaviour
             playerCamera.transform.forward
         );
 
+        // A layer selected in both masks acts as a blocker, never as an interactable.
+        int effectiveInteractableLayers =
+            interactableLayers.value & ~interactionBlockingLayers.value;
+
         if (Physics.Raycast(
                 ray,
-                out RaycastHit hit,
+                out RaycastHit interactableHit,
                 interactionDistance,
-                interactableLayers,
+                effectiveInteractableLayers,
                 QueryTriggerInteraction.Collide))
         {
-            detectedInteractable =
-                hit.collider.GetComponentInParent<IInteractable>();
+            bool blocked = Physics.Raycast(
+                ray,
+                out RaycastHit blockingHit,
+                interactableHit.distance,
+                interactionBlockingLayers,
+                QueryTriggerInteraction.Ignore) &&
+                blockingHit.distance < interactableHit.distance - 0.001f;
+
+            if (!blocked)
+            {
+                detectedInteractable =
+                    interactableHit.collider.GetComponentInParent<IInteractable>();
+            }
 
             if (detectedInteractable != null &&
                 !detectedInteractable.CanInteract)

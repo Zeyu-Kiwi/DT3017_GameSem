@@ -56,12 +56,35 @@ public class BossVision : MonoBehaviour
 
     public bool CanSee(Transform target)
     {
-        if (eye == null || target == null)
+        return target != null && CanSeePoint(target.position);
+    }
+
+    public bool CanSee(BossVisionTargetArea targetArea)
+    {
+        if (targetArea == null)
         {
             return false;
         }
 
-        Vector3 toTarget = target.position - eye.position;
+        for (int i = 0; i < targetArea.SampleCount; i++)
+        {
+            if (CanSeePoint(targetArea.GetSampleWorldPosition(i)))
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool CanSeePoint(Vector3 targetPosition)
+    {
+        if (eye == null)
+        {
+            return false;
+        }
+
+        Vector3 toTarget = targetPosition - eye.position;
         float distance = toTarget.magnitude;
         if (distance <= Mathf.Epsilon || distance > viewDistance)
         {

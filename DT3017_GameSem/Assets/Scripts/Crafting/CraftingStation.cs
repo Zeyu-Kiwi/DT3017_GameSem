@@ -143,10 +143,6 @@ public class CraftingStation : MonoBehaviour, IInteractable
         {
             hoveredItem.HandleLeftClick();
         }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            hoveredItem.HandleRightClick();
-        }
     }
 
     public void Interact(GameObject player)
