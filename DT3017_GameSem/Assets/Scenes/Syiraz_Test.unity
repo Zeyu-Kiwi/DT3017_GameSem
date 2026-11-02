@@ -1758,11 +1758,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
---- !u!4 &549976612 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 587477610993162982, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
-  m_PrefabInstance: {fileID: 248426132340461813}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &557554657
 GameObject:
   m_ObjectHideFlags: 0
@@ -6374,7 +6369,7 @@ Transform:
   - {fileID: 1646407593}
   - {fileID: 916681924}
   - {fileID: 1546591437}
-  - {fileID: 549976612}
+  - {fileID: 248426132340461814}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1915170357 stripped
@@ -6908,6 +6903,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
+--- !u!4 &248426132340461814 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8298659277745394742, guid: ec9d6f29a83f031449c387db7316f817, type: 3}
+  m_PrefabInstance: {fileID: 248426132340461813}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2475658960873960499
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7434,6 +7434,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2958363608428009623, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3130162685860215035, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3230289615006512322, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}

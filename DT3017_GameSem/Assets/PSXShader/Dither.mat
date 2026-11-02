@@ -37,8 +37,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Color_Res: 29.4
-    - _Dither_Res: 0.005
+    - _Color_Res: 32
+    - _Dither_Res: 0.15
+    - _Original_Dither_Res: 0.0005
+    - _UsePerceptualQuantization: 1
     m_Colors: []
   m_BuildTextureStacks: []
   m_AllowLocking: 1

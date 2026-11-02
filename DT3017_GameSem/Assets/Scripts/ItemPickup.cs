@@ -25,6 +25,7 @@ public class ItemPickup : MonoBehaviour, IInteractable
     [SerializeField] private bool useCustomOutlineEmission;
     [SerializeField, Min(0f)] private float outlineEmissionIntensity;
 
+    public ItemData Item => item;
     public bool UseCustomOutlineEmission => useCustomOutlineEmission;
     public float OutlineEmissionIntensity => Mathf.Max(0f, outlineEmissionIntensity);
     public bool UseCustomOutlineColor => useCustomOutlineColor;
