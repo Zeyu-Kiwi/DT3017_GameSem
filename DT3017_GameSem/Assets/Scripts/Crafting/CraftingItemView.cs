@@ -39,17 +39,18 @@ public class CraftingItemView : MonoBehaviour
 
     public void HandleLeftClick()
     {
-        if (station != null && !isCenterItem && canSelectIngredient)
+        if (station == null)
         {
-            station.TryAddIngredient(item);
+            return;
         }
-    }
 
-    public void HandleRightClick()
-    {
-        if (station != null && isCenterItem)
+        if (isCenterItem)
         {
             station.TryRemoveIngredient(item);
+        }
+        else if (canSelectIngredient)
+        {
+            station.TryAddIngredient(item);
         }
     }
 }

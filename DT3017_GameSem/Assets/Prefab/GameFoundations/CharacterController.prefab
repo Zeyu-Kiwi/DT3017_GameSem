@@ -290,6 +290,9 @@ MonoBehaviour:
   interactableLayers:
     serializedVersion: 2
     m_Bits: 8
+  interactionBlockingLayers:
+    serializedVersion: 2
+    m_Bits: 0
   interactUI: {fileID: 229973187043357576}
 --- !u!114 &2241679284241904182
 MonoBehaviour:
