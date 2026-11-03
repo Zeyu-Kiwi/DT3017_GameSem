@@ -10,22 +10,24 @@ public class DailyQuotaManager : MonoBehaviour
     [SerializeField] private ItemData shirtItem;
     [SerializeField, Min(1)] private int defaultQuota = 5;
     [SerializeField, Min(0)] private int caughtPenalty = 5;
+    [Tooltip("When enabled, quota increases caused by failed days remain permanently. When disabled, completing a day resets the following day to Default Quota.")]
+    [SerializeField] private bool failureIncreaseIsPermanent = true;
 
     [Header("UI")]
     [SerializeField] private TMP_Text quotaText;
 
     [Header("Runtime State (Debug)")]
     [SerializeField] private int currentInventoryShirts;
+    [SerializeField] private int currentDailyBaseQuota;
     [SerializeField] private int currentRequiredQuota;
 
     public event Action QuotaChanged;
 
     public ItemData ShirtItem => shirtItem;
     public int CurrentInventoryShirts => currentInventoryShirts;
-    public int DisplayedQuotaAmount => Mathf.Min(
-        currentInventoryShirts,
-        currentRequiredQuota);
+    public int DisplayedQuotaAmount => currentInventoryShirts;
     public int CurrentRequiredQuota => currentRequiredQuota;
+    public int CurrentDailyBaseQuota => currentDailyBaseQuota;
     public int MissingShirts => Mathf.Max(
         0,
         currentRequiredQuota - currentInventoryShirts);
@@ -43,6 +45,7 @@ public class DailyQuotaManager : MonoBehaviour
         }
 
         Instance = this;
+        currentDailyBaseQuota = Mathf.Max(1, defaultQuota);
         StartNewDay();
     }
 
@@ -72,9 +75,52 @@ public class DailyQuotaManager : MonoBehaviour
             return false;
         }
 
-        return InventoryManager.Instance.TryRemoveItem(
-            shirtItem,
-            currentRequiredQuota);
+        if (!InventoryManager.Instance.TryRemoveItem(
+                shirtItem,
+                currentRequiredQuota))
+        {
+            return false;
+        }
+
+        ApplySuccessfulDayCompletion();
+        return true;
+    }
+
+    public bool ResolveTimerExpiredDay(
+        out int missingShirts,
+        out int nextDailyBaseQuota)
+    {
+        RefreshFromInventory();
+        missingShirts = MissingShirts;
+
+        if (missingShirts <= 0)
+        {
+            bool consumed = ConsumeRequiredShirtsForDayEnd();
+            nextDailyBaseQuota = currentDailyBaseQuota;
+            return consumed;
+        }
+
+        if (InventoryManager.Instance == null || shirtItem == null)
+        {
+            nextDailyBaseQuota = currentDailyBaseQuota;
+            return false;
+        }
+
+        int shirtsToRemove = currentInventoryShirts;
+        if (shirtsToRemove > 0 &&
+            !InventoryManager.Instance.TryRemoveItem(shirtItem, shirtsToRemove))
+        {
+            nextDailyBaseQuota = currentDailyBaseQuota;
+            return false;
+        }
+
+        // Boss penalties increase today's required amount, but do not directly
+        // become part of the daily base. Only the amount still missing carries on.
+        currentDailyBaseQuota = Mathf.Max(
+            1,
+            currentDailyBaseQuota + missingShirts);
+        nextDailyBaseQuota = currentDailyBaseQuota;
+        return true;
     }
 
     public void AddCaughtPenalty()
@@ -90,8 +136,21 @@ public class DailyQuotaManager : MonoBehaviour
 
     public void StartNewDay()
     {
-        currentRequiredQuota = Mathf.Max(1, defaultQuota);
+        if (currentDailyBaseQuota <= 0)
+        {
+            currentDailyBaseQuota = Mathf.Max(1, defaultQuota);
+        }
+
+        currentRequiredQuota = currentDailyBaseQuota;
         RefreshFromInventory();
+    }
+
+    private void ApplySuccessfulDayCompletion()
+    {
+        if (!failureIncreaseIsPermanent)
+        {
+            currentDailyBaseQuota = Mathf.Max(1, defaultQuota);
+        }
     }
 
     private void SubscribeToInventory()

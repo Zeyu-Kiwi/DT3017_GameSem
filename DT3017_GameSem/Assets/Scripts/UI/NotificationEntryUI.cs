@@ -12,11 +12,11 @@ public sealed class NotificationEntryUI : MonoBehaviour
     [Header("Automatic Height")]
     [SerializeField] private LayoutElement layoutElement;
     [SerializeField, Min(1f)] private float minimumHeight = 50f;
-    [SerializeField, Min(0f)] private float verticalPadding = 16f;
 
     private CanvasGroup canvasGroup;
     private NotificationManager owner;
     private Coroutine lifetimeRoutine;
+    private Coroutine heightRefreshRoutine;
 
     public void Initialize(
         NotificationManager owningManager,
@@ -40,6 +40,14 @@ public sealed class NotificationEntryUI : MonoBehaviour
         {
             messageText.text = message;
             UpdatePreferredHeight(message);
+
+            if (heightRefreshRoutine != null)
+            {
+                StopCoroutine(heightRefreshRoutine);
+            }
+
+            heightRefreshRoutine = StartCoroutine(
+                RefreshPreferredHeightNextFrame(message));
         }
         else
         {
@@ -72,31 +80,37 @@ public sealed class NotificationEntryUI : MonoBehaviour
             return;
         }
 
-        // Ensure the parent layout has assigned the entry width before asking TMP
-        // how tall the wrapped text needs to be.
+        // Ensure the parent layout has assigned the entry width before TMP
+        // generates the final wrapped text mesh.
         Canvas.ForceUpdateCanvases();
-        messageText.ForceMeshUpdate();
+        messageText.ForceMeshUpdate(true, true);
 
-        float availableWidth = messageText.rectTransform.rect.width;
-        if (availableWidth <= 0.01f && transform is RectTransform entryRect)
-        {
-            availableWidth = entryRect.rect.width;
-        }
+        RectTransform textRect = messageText.rectTransform;
+        float renderedTextHeight = messageText.GetRenderedValues(false).y;
 
-        availableWidth = Mathf.Max(1f, availableWidth);
-        float textHeight = messageText.GetPreferredValues(
-            message,
-            availableWidth,
-            Mathf.Infinity).y;
+        // MessageText uses vertical stretch anchors. Its Top and Bottom offsets
+        // are the real visual padding, so they are the single source of truth.
+        float topPadding = Mathf.Max(0f, -textRect.offsetMax.y);
+        float bottomPadding = Mathf.Max(0f, textRect.offsetMin.y);
+        float requiredHeight = renderedTextHeight + topPadding + bottomPadding;
 
-        layoutElement.preferredHeight = Mathf.Max(
+        layoutElement.preferredHeight = Mathf.Ceil(Mathf.Max(
             minimumHeight,
-            textHeight + verticalPadding);
+            requiredHeight));
 
         if (transform.parent is RectTransform parentRect)
         {
             LayoutRebuilder.ForceRebuildLayoutImmediate(parentRect);
         }
+    }
+
+    private IEnumerator RefreshPreferredHeightNextFrame(string message)
+    {
+        // A newly-instantiated entry may not receive its final width from the
+        // parent VerticalLayoutGroup until the following Canvas layout pass.
+        yield return null;
+        UpdatePreferredHeight(message);
+        heightRefreshRoutine = null;
     }
 
     public void RemoveImmediately()
@@ -149,7 +163,6 @@ public sealed class NotificationEntryUI : MonoBehaviour
     private void OnValidate()
     {
         minimumHeight = Mathf.Max(1f, minimumHeight);
-        verticalPadding = Mathf.Max(0f, verticalPadding);
 
         if (layoutElement == null)
         {

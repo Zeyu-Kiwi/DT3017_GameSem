@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DialogueEditor;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -48,6 +49,7 @@ public class DayCycleManager : MonoBehaviour
 
     private bool currentDayTimerEnabled = true;
     private float currentDayDurationSeconds;
+    private string pendingDayEndNotification;
 
     public event System.Action<int> DayStarted;
 
@@ -97,8 +99,9 @@ public class DayCycleManager : MonoBehaviour
         remainingDayTimeSeconds = Mathf.Max(0f, remainingDayTimeSeconds - deltaSeconds);
         if (remainingDayTimeSeconds <= 0f)
         {
-            // Set this before invoking events so callbacks cannot expire this timer twice.
+            // Set this before beginning the transition so this timer cannot expire twice.
             timerExpired = true;
+            TryBeginNextDayFromTimer();
             onTimerExpired?.Invoke();
         }
     }
@@ -162,13 +165,34 @@ public class DayCycleManager : MonoBehaviour
             return false;
         }
 
-        StartCoroutine(NextDayRoutine(requireDailyQuota));
+        transitionRunning = true;
+        StartCoroutine(NextDayRoutine(requireDailyQuota, false));
         return true;
     }
 
-    private IEnumerator NextDayRoutine(bool requireDailyQuota)
+    private bool TryBeginNextDayFromTimer()
     {
+        if (quotaManager == null)
+        {
+            quotaManager = DailyQuotaManager.Instance;
+        }
+
+        if (!isActiveAndEnabled || transitionRunning || quotaManager == null)
+        {
+            return false;
+        }
+
         transitionRunning = true;
+        StartCoroutine(NextDayRoutine(false, true));
+        return true;
+    }
+
+    private IEnumerator NextDayRoutine(
+        bool requireDailyQuota,
+        bool causedByTimerExpiry)
+    {
+        pendingDayEndNotification = null;
+        CancelActiveInterfacesForDayTransition();
 
         if (playerResetController != null)
         {
@@ -187,11 +211,36 @@ public class DayCycleManager : MonoBehaviour
             yield return FadeBlackScreen(0f, 1f, fadeOutDuration);
         }
 
-        if (requireDailyQuota && (quotaManager == null ||
-            !quotaManager.ConsumeRequiredShirtsForDayEnd()))
+        bool quotaResolved = true;
+        if (causedByTimerExpiry)
+        {
+            int missingShirts = 0;
+            int nextDailyBaseQuota = quotaManager == null
+                ? 0
+                : quotaManager.CurrentDailyBaseQuota;
+            quotaResolved = quotaManager != null &&
+                quotaManager.ResolveTimerExpiredDay(
+                    out missingShirts,
+                    out nextDailyBaseQuota);
+
+            if (quotaResolved && missingShirts > 0)
+            {
+                string itemName = missingShirts == 1 ? "shirt was" : "shirts were";
+                pendingDayEndNotification =
+                    "Daily quota increased to " + nextDailyBaseQuota +
+                    " because " + missingShirts + " " + itemName + " missing.";
+            }
+        }
+        else if (requireDailyQuota)
+        {
+            quotaResolved = quotaManager != null &&
+                quotaManager.ConsumeRequiredShirtsForDayEnd();
+        }
+
+        if (!quotaResolved)
         {
             Debug.LogError(
-                "Day transition started, but the required shirts could not be removed.",
+                "Day transition started, but the daily shirts could not be resolved.",
                 this);
             yield return CancelTransitionRoutine();
             yield break;
@@ -243,6 +292,56 @@ public class DayCycleManager : MonoBehaviour
 
         transitionRunning = false;
         DayStarted?.Invoke(currentDay);
+
+        if (!string.IsNullOrEmpty(pendingDayEndNotification))
+        {
+            string message = pendingDayEndNotification;
+            pendingDayEndNotification = null;
+
+            if (NotificationManager.Instance != null)
+            {
+                NotificationManager.Instance.ShowMessage(message);
+            }
+            else
+            {
+                Debug.Log(message, this);
+            }
+        }
+    }
+
+    private void CancelActiveInterfacesForDayTransition()
+    {
+        if (ToolSelectionUI.Instance != null && ToolSelectionUI.Instance.IsOpen)
+        {
+            ToolSelectionUI.Instance.CloseForExternalSequence();
+        }
+
+        if (ConversationManager.Instance != null &&
+            ConversationManager.Instance.IsConversationActive)
+        {
+            ConversationManager.Instance.EndConversationImmediately();
+        }
+
+        VentInspectionController ventInspection =
+            FindFirstObjectByType<VentInspectionController>();
+        if (ventInspection != null && ventInspection.IsInspecting)
+        {
+            ventInspection.CancelForExternalSequence();
+        }
+
+        CraftingStation craftingStation = FindFirstObjectByType<CraftingStation>();
+        if (craftingStation != null)
+        {
+            craftingStation.ResetStationImmediately(false);
+        }
+
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+        DevModeScreen developerScreen = FindFirstObjectByType<DevModeScreen>();
+        if (developerScreen != null && developerScreen.IsOpen)
+        {
+            developerScreen.SetOpen(false);
+        }
+#endif
     }
 
     private IEnumerator CancelTransitionRoutine()

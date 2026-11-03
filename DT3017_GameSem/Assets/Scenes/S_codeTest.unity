@@ -7128,7 +7128,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5616064158423183961, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
   m_PrefabInstance: {fileID: 2475658960873960499}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892374874}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8ad4166467adbf34c9088fb0b97f3561, type: 3}
@@ -7772,63 +7772,6 @@ MonoBehaviour:
   TMPFont: {fileID: 0}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
---- !u!1 &1892374874 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6420617156263633838, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
-  m_PrefabInstance: {fileID: 2475658960873960499}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1892374876 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4159079841894115136, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
-  m_PrefabInstance: {fileID: 2475658960873960499}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892374874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 798241481b3843246b4056cedd13f0cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CraftingDrawerController
---- !u!114 &1892374879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892374874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fcdcd5982faeb4d419a9f0a8db2a56bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DrawerTutorialGlow
-  dayCycle: {fileID: 2051834765}
-  drawerController: {fileID: 1892374876}
-  drawerInteractable: {fileID: 1788109923}
-  playerOutline: {fileID: 7542321580228605093}
-  tutorialDay: 2
-  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
-  minimumThickness: 1
-  maximumThickness: 5
-  breathingDuration: 1.5
-  emissionIntensity: 2
-  tutorialGlowActive: 0
-  completedThisSession: 0
---- !u!114 &1892374880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892374874}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37ef4630152cb014dacc2c9898154d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractionOutlineHighlighter
-  outlineEnabled: 1
-  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
-  outlineWidthPixels: 3
-  outlineEmissionIntensity: 3
-  outlineMaterial: {fileID: 0}
 --- !u!1 &1910559433
 GameObject:
   m_ObjectHideFlags: 0
@@ -8608,26 +8551,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CraftingSystem
       objectReference: {fileID: 0}
-    - target: {fileID: 1665794745479382048, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
-      propertyPath: m_Size.y
-      value: 0.23558426
-      objectReference: {fileID: 0}
-    - target: {fileID: 1665794745479382048, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
-      propertyPath: m_Size.z
-      value: 0.103164196
-      objectReference: {fileID: 0}
-    - target: {fileID: 1665794745479382048, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
-      propertyPath: m_Center.y
-      value: 0.28964886
-      objectReference: {fileID: 0}
-    - target: {fileID: 1665794745479382048, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
-      propertyPath: m_Center.z
-      value: -0.93257976
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325767529322803843, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.853
-      objectReference: {fileID: 0}
     - target: {fileID: 4676332224053991427, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
       propertyPath: quotaManager
       value: 
@@ -8644,16 +8567,18 @@ PrefabInstance:
       propertyPath: workstationTutorial
       value: 
       objectReference: {fileID: 3870596984072605440}
+    - target: {fileID: 7715012296747090103, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
+      propertyPath: dayCycle
+      value: 
+      objectReference: {fileID: 2051834765}
+    - target: {fileID: 7715012296747090103, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
+      propertyPath: playerOutline
+      value: 
+      objectReference: {fileID: 7542321580228605093}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6420617156263633838, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1892374880}
-    - targetCorrespondingSourceObject: {fileID: 6420617156263633838, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1892374879}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
 --- !u!1001 &2496766148151083049
 PrefabInstance:
@@ -8792,6 +8717,10 @@ PrefabInstance:
       propertyPath: bossController
       value: 
       objectReference: {fileID: 1915170357}
+    - target: {fileID: 5407019507255862269, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: defaultDayDurationSeconds
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 5487308697309699165, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
       propertyPath: closeButton
       value: 
@@ -8812,14 +8741,6 @@ PrefabInstance:
       propertyPath: quotaText
       value: 
       objectReference: {fileID: 1741245550}
-    - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: items.Array.data[3].quantity
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: items.Array.data[6].quantity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6976893978927954516, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
       propertyPath: boss
       value: 
@@ -8844,18 +8765,6 @@ PrefabInstance:
       propertyPath: container
       value: 
       objectReference: {fileID: 1611224494}
-    - target: {fileID: 7601250464227937946, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: displayTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7601250464227937946, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: entryPrefab
-      value: 
-      objectReference: {fileID: 3369123909522734462, guid: 0c69450ca0efa484dbdd95728d0be515, type: 3}
-    - target: {fileID: 7601250464227937946, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: messageText
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7601250464227937946, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
       propertyPath: entryContainer
       value: 
@@ -9034,6 +8943,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3230289615006512322, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6149355837639374265, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6605653844821142060, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}

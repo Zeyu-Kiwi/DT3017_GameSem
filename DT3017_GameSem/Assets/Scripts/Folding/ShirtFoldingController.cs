@@ -198,7 +198,7 @@ public class ShirtFoldingController : MonoBehaviour
         switch (requiredPart)
         {
             case ShirtFoldPart.Left:
-                ShowMessage("Fold the left side next.");
+                ShowMessage("Fold the right side next.");
                 break;
 
             case ShirtFoldPart.Bottom:
@@ -206,7 +206,7 @@ public class ShirtFoldingController : MonoBehaviour
                 break;
 
             default:
-                ShowMessage("Fold the right side first.");
+                ShowMessage("Fold the left side first.");
                 break;
         }
     }
