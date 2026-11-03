@@ -486,7 +486,8 @@ public class BossController : MonoBehaviour
         bool playerVisible = DeveloperGameOptions.PlayerVisionDetectionEnabled &&
                              playerVisionTarget != null &&
                              vision.CanSee(playerVisionTarget);
-        bool workstationVisible = workstationVisionArea != null &&
+        bool workstationVisible = DeveloperGameOptions.WorkstationDetectionEnabled &&
+                                  workstationVisionArea != null &&
                                   vision.CanSee(workstationVisionArea);
 
         string reason = null;

@@ -241,6 +241,34 @@ public sealed class VentInspectionController : MonoBehaviour
         cameraRoutine = StartCoroutine(MoveCamera(true));
     }
 
+    public void CancelForExternalSequence()
+    {
+        if (!IsInspecting)
+        {
+            return;
+        }
+
+        StopAllCoroutines();
+        cameraRoutine = null;
+        outline?.Clear();
+
+        if (heldTool != null)
+        {
+            Destroy(heldTool);
+        }
+
+        if (attachedTool != null)
+        {
+            Destroy(attachedTool);
+        }
+
+        heldTool = null;
+        attachedTool = null;
+        activeScrew = null;
+        hoveredScrew = null;
+        RestoreControls();
+    }
+
     private void RestoreControls()
     {
         if (view != null)

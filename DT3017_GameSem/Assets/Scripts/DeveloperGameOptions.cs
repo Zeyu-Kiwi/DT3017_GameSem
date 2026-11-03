@@ -12,6 +12,7 @@ public class DeveloperGameOptions : ScriptableObject
     private static DeveloperGameOptions current;
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
     private static bool? playerDetectionOverride;
+    private static bool workstationDetectionEnabled = true;
     private static bool skipDailyQuota;
 
     public static void SetSkipDailyQuotaEnabled(bool enabled)
@@ -22,6 +23,11 @@ public class DeveloperGameOptions : ScriptableObject
     public static void SetPlayerVisionDetectionEnabled(bool enabled)
     {
         playerDetectionOverride = enabled;
+    }
+
+    public static void SetWorkstationDetectionEnabled(bool enabled)
+    {
+        workstationDetectionEnabled = enabled;
     }
 #endif
 
@@ -38,6 +44,18 @@ public class DeveloperGameOptions : ScriptableObject
     }
 
     public bool BossVisionTargetTriggersDetection => bossVisionTargetTriggersDetection;
+
+    public static bool WorkstationDetectionEnabled
+    {
+        get
+        {
+#if UNITY_EDITOR || DEVELOPMENT_BUILD
+            return workstationDetectionEnabled;
+#else
+            return true;
+#endif
+        }
+    }
 
     // Missing settings preserve the game's normal detection behavior.
     public static bool PlayerVisionDetectionEnabled
@@ -65,6 +83,7 @@ public class DeveloperGameOptions : ScriptableObject
         current = null;
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
         playerDetectionOverride = null;
+        workstationDetectionEnabled = true;
         skipDailyQuota = false;
 #endif
     }
