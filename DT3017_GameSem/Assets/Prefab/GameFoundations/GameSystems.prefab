@@ -192,7 +192,7 @@ MonoBehaviour:
   dayText: {fileID: 0}
   bedWakeUpPoint: {fileID: 0}
   dailyTimerEnabled: 1
-  defaultDayDurationSeconds: 180
+  defaultDayDurationSeconds: 60
   dayTimerOverrides: []
   onTimerExpired:
     m_PersistentCalls:
