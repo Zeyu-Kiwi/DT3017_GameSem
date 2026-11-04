@@ -779,31 +779,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 20
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":411.5,"yPos":-287},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Nothing,
-    just saying hi.","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":136.5,"yPos":-285},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Anything
-    you can teach me?","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":-17.5,"yPos":-62},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"Emm...
-    what should I know?","parentUIDs":[6],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":true}],"NodeUID":10},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"knows_screwdriver_price","CheckType":0,"RequiredValue":false},{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":false}],"NodeUID":11},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"knows_screwdriver_price","CheckType":0,"RequiredValue":true},{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":false}],"NodeUID":14}],"EditorInfo":{"isRoot":false,"xPos":289.5,"yPos":-58},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"About
-    the Vent","parentUIDs":[3,6],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":14}],"EditorInfo":{"isRoot":false,"xPos":489.5,"yPos":188},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"How
-    do I open the vent?","parentUIDs":[11],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":270.5,"yPos":405},"ID":15,"ParamActions":[],"TMPFontGUID":null,"Text":"I
-    will be back...","parentUIDs":[14],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":17}],"EditorInfo":{"isRoot":false,"xPos":498.5,"yPos":410},"ID":16,"ParamActions":[],"TMPFontGUID":null,"Text":"Here''s
-    10 shirts... It better worth the shirts.","parentUIDs":[14],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"shirt","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"screwdriver_recipe_given","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"knows_screwdriver_price","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"vent_interacted","BoolValue":false}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":3}],"EditorInfo":{"isRoot":true,"xPos":217,"yPos":-502},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes...","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":411.5,"yPos":-389},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"Focus
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":590.5,"yPos":-48},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Nothing,
+    just saying hi.","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":315.5,"yPos":-46},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Anything
+    you can teach me?","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":161.5,"yPos":177},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"Emm...
+    what should I know?","parentUIDs":[6],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":true}],"NodeUID":10},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"knows_screwdriver_price","CheckType":0,"RequiredValue":false},{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":false}],"NodeUID":11},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"knows_screwdriver_price","CheckType":0,"RequiredValue":true},{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":false}],"NodeUID":14}],"EditorInfo":{"isRoot":false,"xPos":468.5,"yPos":181},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"About
+    the Vent","parentUIDs":[3,6],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":14}],"EditorInfo":{"isRoot":false,"xPos":668.5,"yPos":427},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"How
+    do I open the vent?","parentUIDs":[11],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":449.5,"yPos":644},"ID":15,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    will be back...","parentUIDs":[14],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":17}],"EditorInfo":{"isRoot":false,"xPos":677.5,"yPos":649},"ID":16,"ParamActions":[],"TMPFontGUID":null,"Text":"Here''s
+    10 shirts... It better worth the shirts.","parentUIDs":[14],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"shirt","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"screwdriver_recipe_given","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"knows_screwdriver_price","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"vent_interacted","BoolValue":false}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":3}],"EditorInfo":{"isRoot":true,"xPos":396,"yPos":-263},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes...","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":590.5,"yPos":-150},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"Focus
     on your work...","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":53.5,"yPos":-387},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"What...","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":7},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":143.5,"yPos":-190},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"What
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":232.5,"yPos":-148},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"What...","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":7},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":322.5,"yPos":49},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"What
     do you want to know?","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":19}],"EditorInfo":{"isRoot":false,"xPos":-20.5,"yPos":42},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"*Sigh*
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":19}],"EditorInfo":{"isRoot":false,"xPos":158.5,"yPos":281},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"*Sigh*
     Think before you ask...","parentUIDs":[7],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":242.5,"yPos":39},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"I''ve
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":421.5,"yPos":278},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"I''ve
     told you everything... No refund for the shirt","parentUIDs":[8],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":492.5,"yPos":41},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"There
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":671.5,"yPos":280},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"There
     was a little boy that went through the vent, but no news afterwards... ","parentUIDs":[8],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":15},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"shirt","CheckType":2,"RequiredValue":9}],"NodeUID":16}],"EditorInfo":{"isRoot":false,"xPos":490.5,"yPos":289},"ID":14,"ParamActions":[],"TMPFontGUID":null,"Text":"10
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":15},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"shirt","CheckType":2,"RequiredValue":9}],"NodeUID":16}],"EditorInfo":{"isRoot":false,"xPos":669.5,"yPos":528},"ID":14,"ParamActions":[],"TMPFontGUID":null,"Text":"10
     shirts tuition fee.","parentUIDs":[8,13],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":501,"yPos":511},"ID":17,"ParamActions":[],"TMPFontGUID":null,"Text":"You
-    can trade, scavenge, and craft things. Here is how to craft a screwdriver. Good
-    luck.","parentUIDs":[16],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-20,"yPos":174},"ID":19,"ParamActions":[],"TMPFontGUID":null,"Text":"Take
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":680,"yPos":750},"ID":17,"ParamActions":[],"TMPFontGUID":null,"Text":"You
+    can trade, scavenge, and craft things. Screwdriver requires: Screwdriver Head,
+    Refined Metal, and Wood. Good luck.","parentUIDs":[16],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":159,"yPos":413},"ID":19,"ParamActions":[],"TMPFontGUID":null,"Text":"Take
     a good look around the room,  and don''t let Boss caught you not at your seat.","parentUIDs":[9],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
     Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
@@ -833,8 +833,20 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1334231732}
-        m_TargetAssemblyTypeName: InventoryTransaction, Assembly-CSharp
+      - m_Target: {fileID: 323242492}
+        m_TargetAssemblyTypeName: SetGameFlagAction, Assembly-CSharp
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 396730066}
+        m_TargetAssemblyTypeName: SetGameFlagAction, Assembly-CSharp
         m_MethodName: Execute
         m_Mode: 1
         m_Arguments:
@@ -8551,6 +8563,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CraftingSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 4468620779992279072, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4676332224053991427, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
       propertyPath: quotaManager
       value: 
@@ -8567,6 +8583,10 @@ PrefabInstance:
       propertyPath: workstationTutorial
       value: 
       objectReference: {fileID: 3870596984072605440}
+    - target: {fileID: 6882398218542735174, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7715012296747090103, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
       propertyPath: dayCycle
       value: 
@@ -8580,63 +8600,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
---- !u!1001 &2496766148151083049
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 340331567635451219, guid: 290b5d9c5791f2045b801cfa9a5cffa6, type: 3}
-      propertyPath: m_Name
-      value: NPC_02
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109295387799702345, guid: 290b5d9c5791f2045b801cfa9a5cffa6, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 17.09
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109295387799702345, guid: 290b5d9c5791f2045b801cfa9a5cffa6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109295387799702345, guid: 290b5d9c5791f2045b801cfa9a5cffa6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.83
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109295387799702345, guid: 290b5d9c5791f2045b801cfa9a5cffa6, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109295387799702345, guid: 290b5d9c5791f2045b801cfa9a5cffa6, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109295387799702345, guid: 290b5d9c5791f2045b801cfa9a5cffa6, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109295387799702345, guid: 290b5d9c5791f2045b801cfa9a5cffa6, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109295387799702345, guid: 290b5d9c5791f2045b801cfa9a5cffa6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109295387799702345, guid: 290b5d9c5791f2045b801cfa9a5cffa6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7109295387799702345, guid: 290b5d9c5791f2045b801cfa9a5cffa6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 290b5d9c5791f2045b801cfa9a5cffa6, type: 3}
 --- !u!1001 &3870596984072605436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8719,7 +8682,7 @@ PrefabInstance:
       objectReference: {fileID: 1915170357}
     - target: {fileID: 5407019507255862269, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
       propertyPath: defaultDayDurationSeconds
-      value: 60
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 5487308697309699165, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
       propertyPath: closeButton
@@ -8741,6 +8704,10 @@ PrefabInstance:
       propertyPath: quotaText
       value: 
       objectReference: {fileID: 1741245550}
+    - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: items.Array.data[0].quantity
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 6976893978927954516, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
       propertyPath: boss
       value: 
@@ -8945,10 +8912,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6149355837639374265, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6605653844821142060, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8971,63 +8934,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 735946907237041748, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
   m_PrefabInstance: {fileID: 3919338576058649304}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &4960941058639426509
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1800905687589045909, guid: 891d8d88f56da35468c58a47291c2c62, type: 3}
-      propertyPath: m_Name
-      value: NPC_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210100054379935899, guid: 891d8d88f56da35468c58a47291c2c62, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.67
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210100054379935899, guid: 891d8d88f56da35468c58a47291c2c62, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.11
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210100054379935899, guid: 891d8d88f56da35468c58a47291c2c62, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210100054379935899, guid: 891d8d88f56da35468c58a47291c2c62, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210100054379935899, guid: 891d8d88f56da35468c58a47291c2c62, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210100054379935899, guid: 891d8d88f56da35468c58a47291c2c62, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210100054379935899, guid: 891d8d88f56da35468c58a47291c2c62, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210100054379935899, guid: 891d8d88f56da35468c58a47291c2c62, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210100054379935899, guid: 891d8d88f56da35468c58a47291c2c62, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7210100054379935899, guid: 891d8d88f56da35468c58a47291c2c62, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 891d8d88f56da35468c58a47291c2c62, type: 3}
 --- !u!1001 &7317139109886176104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9173,6 +9079,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CharacterController
       objectReference: {fileID: 0}
+    - target: {fileID: 8020299290391686311, guid: be0dae57d80718b43950011260edd9e9, type: 3}
+      propertyPath: interactionBlockingLayers.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
     - target: {fileID: 8959133221734111792, guid: be0dae57d80718b43950011260edd9e9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -9257,8 +9167,6 @@ SceneRoots:
   m_Roots:
   - {fileID: 1184107098}
   - {fileID: 975489210}
-  - {fileID: 4960941058639426509}
-  - {fileID: 2496766148151083049}
   - {fileID: 1912368228}
   - {fileID: 7542321580228605084}
   - {fileID: 201859296}
