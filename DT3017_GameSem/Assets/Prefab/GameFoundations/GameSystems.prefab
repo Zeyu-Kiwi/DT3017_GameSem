@@ -57,7 +57,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
   items:
   - item: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
-    quantity: 8
+    quantity: 20
   - item: {fileID: 11400000, guid: aeb54d50f3b7fe946acf7334085c2a44, type: 2}
     quantity: 0
   - item: {fileID: 11400000, guid: 7ce056aef7bfef34abacbf7a370a24d5, type: 2}
@@ -192,7 +192,7 @@ MonoBehaviour:
   dayText: {fileID: 0}
   bedWakeUpPoint: {fileID: 0}
   dailyTimerEnabled: 1
-  defaultDayDurationSeconds: 60
+  defaultDayDurationSeconds: 300
   dayTimerOverrides: []
   onTimerExpired:
     m_PersistentCalls:
