@@ -5544,7 +5544,7 @@ PrefabInstance:
       objectReference: {fileID: 700168191}
     - target: {fileID: 142549603374943581, guid: 0711e40d02019da458a358beb8ee9fcf, type: 3}
       propertyPath: m_VersionIndex
-      value: 10409
+      value: 10427
       objectReference: {fileID: 0}
     - target: {fileID: 620256527014993603, guid: 0711e40d02019da458a358beb8ee9fcf, type: 3}
       propertyPath: m_Mesh
@@ -5568,7 +5568,7 @@ PrefabInstance:
       objectReference: {fileID: 1621477977}
     - target: {fileID: 3530870058571226942, guid: 0711e40d02019da458a358beb8ee9fcf, type: 3}
       propertyPath: m_VersionIndex
-      value: 10541
+      value: 10559
       objectReference: {fileID: 0}
     - target: {fileID: 4077852581638806275, guid: 0711e40d02019da458a358beb8ee9fcf, type: 3}
       propertyPath: m_Name
@@ -5636,7 +5636,7 @@ PrefabInstance:
       objectReference: {fileID: 266564294}
     - target: {fileID: 7977356063202846187, guid: 0711e40d02019da458a358beb8ee9fcf, type: 3}
       propertyPath: m_VersionIndex
-      value: 10464
+      value: 10482
       objectReference: {fileID: 0}
     - target: {fileID: 8332363103754831402, guid: 0711e40d02019da458a358beb8ee9fcf, type: 3}
       propertyPath: m_Mesh
@@ -5644,7 +5644,7 @@ PrefabInstance:
       objectReference: {fileID: 2010595861}
     - target: {fileID: 8332363103754831402, guid: 0711e40d02019da458a358beb8ee9fcf, type: 3}
       propertyPath: m_VersionIndex
-      value: 10409
+      value: 10427
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9025,10 +9025,6 @@ PrefabInstance:
     - target: {fileID: 729956758794990614, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
       propertyPath: m_Name
       value: CraftingSystem
-      objectReference: {fileID: 0}
-    - target: {fileID: 4325767529322803843, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1.889
       objectReference: {fileID: 0}
     - target: {fileID: 4676332224053991427, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
       propertyPath: quotaManager
