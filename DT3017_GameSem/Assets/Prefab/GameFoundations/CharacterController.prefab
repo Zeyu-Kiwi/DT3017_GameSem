@@ -245,11 +245,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FirstPersonController
   walkSpeed: 6
-  jumpKey: 0
+  jumpKey: 32
   jumpHeight: 1.2
   groundLayers:
     serializedVersion: 2
-    m_Bits: 251
+    m_Bits: 441
   groundCheckDistance: 0.1
   sprintKey: 304
   sprintSpeedMultiplier: 1.035
@@ -292,7 +292,7 @@ MonoBehaviour:
     m_Bits: 8
   interactionBlockingLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   interactUI: {fileID: 229973187043357576}
 --- !u!114 &2241679284241904182
 MonoBehaviour:
