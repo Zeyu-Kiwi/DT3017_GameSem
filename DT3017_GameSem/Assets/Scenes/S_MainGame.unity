@@ -218,8 +218,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: f2ee6bf3100ff8043bc9d105f9709f8a, type: 3}
   Audio: {fileID: 0}
 --- !u!1 &122583582
 GameObject:
@@ -957,37 +957,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 20
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":590.5,"yPos":-48},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Nothing,
-    just saying hi.","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":315.5,"yPos":-46},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Anything
-    you can teach me?","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":161.5,"yPos":177},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"Emm...
-    what should I know?","parentUIDs":[6],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":true}],"NodeUID":10},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"knows_screwdriver_price","CheckType":0,"RequiredValue":false},{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":false}],"NodeUID":11},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"knows_screwdriver_price","CheckType":0,"RequiredValue":true},{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":false}],"NodeUID":14}],"EditorInfo":{"isRoot":false,"xPos":468.5,"yPos":181},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"About
-    the Vent","parentUIDs":[3,6],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":14}],"EditorInfo":{"isRoot":false,"xPos":668.5,"yPos":427},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"How
-    do I open the vent?","parentUIDs":[11],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":449.5,"yPos":644},"ID":15,"ParamActions":[],"TMPFontGUID":null,"Text":"I
-    will be back...","parentUIDs":[14],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":17}],"EditorInfo":{"isRoot":false,"xPos":677.5,"yPos":649},"ID":16,"ParamActions":[],"TMPFontGUID":null,"Text":"Here''s
-    10 shirts... It better worth the shirts.","parentUIDs":[14],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"shirt","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"screwdriver_recipe_given","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"knows_screwdriver_price","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"vent_interacted","BoolValue":false}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":3}],"EditorInfo":{"isRoot":true,"xPos":396,"yPos":-263},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes...","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":590.5,"yPos":-150},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"Focus
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":478.300171,"yPos":236.999634},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Nothing,
+    just saying hi.","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":203.300018,"yPos":238.999634},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Anything
+    you can teach me?","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":49.30002,"yPos":461.9994},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"Emm...
+    what should I know?","parentUIDs":[6],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":true}],"NodeUID":10},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"knows_screwdriver_price","CheckType":0,"RequiredValue":false},{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":false}],"NodeUID":11},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"knows_screwdriver_price","CheckType":0,"RequiredValue":true},{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":false}],"NodeUID":14}],"EditorInfo":{"isRoot":false,"xPos":355.5,"yPos":464.3994},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"About
+    the Vent","parentUIDs":[3,6],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":14}],"EditorInfo":{"isRoot":false,"xPos":565.1001,"yPos":747.9995},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"How
+    do I open the vent?","parentUIDs":[11],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":330.100037,"yPos":947.3998},"ID":15,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    will be back...","parentUIDs":[14],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":17}],"EditorInfo":{"isRoot":false,"xPos":565.3002,"yPos":933.999634},"ID":16,"ParamActions":[],"TMPFontGUID":null,"Text":"Here''s
+    10 shirts... It better worth the shirts.","parentUIDs":[14],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"shirt","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"screwdriver_recipe_given","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"knows_screwdriver_price","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"vent_interacted","BoolValue":false}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":3}],"EditorInfo":{"isRoot":true,"xPos":283,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes...","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":478.300171,"yPos":134.999756},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"Focus
     on your work...","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":232.5,"yPos":-148},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"What...","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":7},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":322.5,"yPos":49},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"What
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":120.300018,"yPos":136.999634},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"What...","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":7},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":210.300018,"yPos":333.999634},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"What
     do you want to know?","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":19}],"EditorInfo":{"isRoot":false,"xPos":158.5,"yPos":281},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"*Sigh*
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":19}],"EditorInfo":{"isRoot":false,"xPos":46.30002,"yPos":565.999634},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"*Sigh*
     Think before you ask...","parentUIDs":[7],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":421.5,"yPos":278},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"I''ve
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":308.5,"yPos":562.999634},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"I''ve
     told you everything... No refund for the shirt","parentUIDs":[8],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":671.5,"yPos":280},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"There
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":559.3002,"yPos":564.1997},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"There
     was a little boy that went through the vent, but no news afterwards... ","parentUIDs":[8],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":15},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"shirt","CheckType":2,"RequiredValue":9}],"NodeUID":16}],"EditorInfo":{"isRoot":false,"xPos":669.5,"yPos":528},"ID":14,"ParamActions":[],"TMPFontGUID":null,"Text":"10
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":15},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"shirt","CheckType":2,"RequiredValue":9}],"NodeUID":16}],"EditorInfo":{"isRoot":false,"xPos":557.3002,"yPos":812.999634},"ID":14,"ParamActions":[],"TMPFontGUID":null,"Text":"10
     shirts tuition fee.","parentUIDs":[8,13],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":680,"yPos":750},"ID":17,"ParamActions":[],"TMPFontGUID":null,"Text":"You
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":567.8002,"yPos":1034.99939},"ID":17,"ParamActions":[],"TMPFontGUID":null,"Text":"You
     can trade, scavenge, and craft things. Screwdriver requires: Screwdriver Head,
     Refined Metal, and Wood. Good luck.","parentUIDs":[16],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":159,"yPos":413},"ID":19,"ParamActions":[],"TMPFontGUID":null,"Text":"Take
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":46.0000153,"yPos":698.7997},"ID":19,"ParamActions":[],"TMPFontGUID":null,"Text":"Take
     a good look around the room,  and don''t let Boss caught you not at your seat.","parentUIDs":[9],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
     Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: Hayden Bush (Blueprint)
-  DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  DefaultSprite: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
+  DefaultFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   NodeSerializedDataList:
   - {fileID: 1009720298}
   - {fileID: 1009720313}
@@ -1006,35 +1006,11 @@ MonoBehaviour:
   - {fileID: 1009720300}
   - {fileID: 1009720299}
   - {fileID: 1009720314}
-  ContinueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  EndConversationFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ContinueFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  EndConversationFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 323242492}
-        m_TargetAssemblyTypeName: SetGameFlagAction, Assembly-CSharp
-        m_MethodName: Execute
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 396730066}
-        m_TargetAssemblyTypeName: SetGameFlagAction, Assembly-CSharp
-        m_MethodName: Execute
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &304940199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,7 +1449,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 6
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &464182670
@@ -1492,7 +1468,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 5
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &464182672
@@ -1511,8 +1487,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 3
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: f57aa2d1c760b98408caecddde6c9769, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &464182673
 MonoBehaviour:
@@ -1530,8 +1506,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 2
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: f57aa2d1c760b98408caecddde6c9769, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &464182674
 MonoBehaviour:
@@ -1549,8 +1525,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: f57aa2d1c760b98408caecddde6c9769, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &464182675
 MonoBehaviour:
@@ -1568,7 +1544,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 10
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &464182676
@@ -1587,8 +1563,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 9
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: f57aa2d1c760b98408caecddde6c9769, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &464182677
 MonoBehaviour:
@@ -1606,7 +1582,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 8
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &464182678
@@ -1625,8 +1601,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 7
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: f57aa2d1c760b98408caecddde6c9769, type: 3}
   Audio: {fileID: 0}
 --- !u!1 &489391000
 GameObject:
@@ -2118,29 +2094,29 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 13
-  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":-102,"yPos":297},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"Where
-    did you get the carving tool?","parentUIDs":[1],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":113,"yPos":301},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Why
-    do you need wood? And how do you get stick?","parentUIDs":[1],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"wood","CheckType":2,"RequiredValue":0}],"NodeUID":7},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"wood","CheckType":1,"RequiredValue":1}],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":333,"yPos":300},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"I
-    heard you trade things.","parentUIDs":[1],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":566,"yPos":295},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"Just
-    taking a walk.","parentUIDs":[1],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":345,"yPos":519},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"Deal...","parentUIDs":[7],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":578,"yPos":525},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"Let
-    me think about it.","parentUIDs":[7],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"wood","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"stick_trade_count","IntValue":0}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":1},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2}],"EditorInfo":{"isRoot":true,"xPos":397.5,"yPos":37},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"*quick
+  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":-199.700089,"yPos":296.400024},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"Where
+    did you get the carving tool?","parentUIDs":[1],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":15.299942,"yPos":300.400024},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Why
+    do you need wood? And how do you get stick?","parentUIDs":[1],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"wood","CheckType":2,"RequiredValue":0}],"NodeUID":7},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"wood","CheckType":1,"RequiredValue":1}],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":235.299927,"yPos":299.400024},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    heard you trade things.","parentUIDs":[1],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":468.2998,"yPos":294.400024},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"Just
+    taking a walk.","parentUIDs":[1],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":247.299927,"yPos":518.4006},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"Deal...","parentUIDs":[7],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":480.2999,"yPos":523.600647},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"Let
+    me think about it.","parentUIDs":[7],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"wood","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"stick_trade_count","IntValue":0}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":1},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2}],"EditorInfo":{"isRoot":true,"xPos":299.799927,"yPos":36.3999939},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"*quick
     glance at you*","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
-    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"stick_trade_count","CheckType":2,"RequiredValue":1}],"NodeUID":3},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"stick_trade_count","CheckType":2,"RequiredValue":0}],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":207,"yPos":179},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Trade?","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
-    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":614,"yPos":185},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"I''m
+    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"stick_trade_count","CheckType":2,"RequiredValue":1}],"NodeUID":3},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"stick_trade_count","CheckType":2,"RequiredValue":0}],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":109.299866,"yPos":179.999954},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Trade?","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
+    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":516.2999,"yPos":184.4},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"I''m
     still reviewing you.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
-    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":11},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":12}],"EditorInfo":{"isRoot":false,"xPos":347,"yPos":385},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes.
+    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":11},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":12}],"EditorInfo":{"isRoot":false,"xPos":249.299927,"yPos":384.400024},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes.
     1 Wood for 1 Stick. No bargaining.","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
-    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":573,"yPos":382},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"You
+    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":475.2999,"yPos":381.399963},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"You
     don''t seem to have what I need. Come back next time.","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
-    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":115,"yPos":389},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":17.299942,"yPos":388.400024},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"I
     carve sticks with wood, and make some toys along the way.","parentUIDs":[4],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
-    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-112,"yPos":391},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"The
+    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-209.700073,"yPos":391.199951},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"The
     boy with red vest taught me how to craft. He knows a lot about crafting.","parentUIDs":[3],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
     (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: Zeke (TradeStick)
-  DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  DefaultSprite: {fileID: 21300000, guid: 7ce0bb1819a3209488eb565f0428ab63, type: 3}
+  DefaultFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   NodeSerializedDataList:
   - {fileID: 1085834546}
   - {fileID: 1085834558}
@@ -2155,35 +2131,11 @@ MonoBehaviour:
   - {fileID: 1085834549}
   - {fileID: 1085834548}
   - {fileID: 1085834547}
-  ContinueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  EndConversationFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ContinueFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  EndConversationFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 901643344}
-        m_TargetAssemblyTypeName: InventoryTransaction, Assembly-CSharp
-        m_MethodName: Execute
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 940229129}
-        m_TargetAssemblyTypeName: GameVariableAction, Assembly-CSharp
-        m_MethodName: Execute
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1001 &573570783
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2474,28 +2426,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 12
-  json: "{\"Options\":[{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-137,\"yPos\":246},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Just
-    taking a look.\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":9}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":107,\"yPos\":249},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
-    heard you trade things?\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":8}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":343,\"yPos\":252},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Do
-    you know anyone here?\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":587,\"yPos\":248},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Where
-    do you get your goods?\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-88,\"yPos\":532},\"ID\":10,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Let
-    me think about it.\",\"parentUIDs\":[9],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":141,\"yPos\":532},\"ID\":11,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Okay.\",\"parentUIDs\":[9],\"SpeechUID\":-1}],\"Parameters\":[{\"__type\":\"EditableIntParameter:#DialogueEditor\",\"ParameterName\":\"CurrentDay\",\"IntValue\":0},{\"__type\":\"EditableIntParameter:#DialogueEditor\",\"ParameterName\":\"shirt\",\"IntValue\":0},{\"__type\":\"EditableIntParameter:#DialogueEditor\",\"ParameterName\":\"scrap_trade_count\",\"IntValue\":0}],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"CurrentDay\",\"CheckType\":0,\"RequiredValue\":1}],\"NodeUID\":1},{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"CurrentDay\",\"CheckType\":2,\"RequiredValue\":1}],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":263.5,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Hello
+  json: "{\"Options\":[{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-142.300171,\"yPos\":367.6001},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Just
+    taking a look.\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":9}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":101.699829,\"yPos\":370.600037},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
+    heard you trade things?\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":8}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":337.6999,\"yPos\":379.2},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Do
+    you know anyone here?\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":581.699646,\"yPos\":369.600037},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Where
+    do you get your goods?\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-93.30017,\"yPos\":653.599854},\"ID\":10,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Let
+    me think about it.\",\"parentUIDs\":[9],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":135.699829,\"yPos\":653.599854},\"ID\":11,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Okay.\",\"parentUIDs\":[9],\"SpeechUID\":-1}],\"Parameters\":[{\"__type\":\"EditableIntParameter:#DialogueEditor\",\"ParameterName\":\"CurrentDay\",\"IntValue\":0},{\"__type\":\"EditableIntParameter:#DialogueEditor\",\"ParameterName\":\"shirt\",\"IntValue\":0},{\"__type\":\"EditableIntParameter:#DialogueEditor\",\"ParameterName\":\"scrap_trade_count\",\"IntValue\":0}],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"CurrentDay\",\"CheckType\":0,\"RequiredValue\":1}],\"NodeUID\":1},{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"CurrentDay\",\"CheckType\":2,\"RequiredValue\":1}],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":256.599823,\"yPos\":143.599976},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Hello
     \u30FE(\u2267\u25BD\u2266*)o\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Eren
-    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":482,\"yPos\":131},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Sorry,
+    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":476.699646,\"yPos\":252.59996},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Sorry,
     Zeke said don't talk to new people on their first day.\",\"parentUIDs\":[0],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Eren
-    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"scrap_trade_count\",\"CheckType\":2,\"RequiredValue\":0}],\"NodeUID\":5},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"scrap_trade_count\",\"CheckType\":2,\"RequiredValue\":1}],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":90,\"yPos\":127},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"How
+    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"scrap_trade_count\",\"CheckType\":2,\"RequiredValue\":0}],\"NodeUID\":5},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"scrap_trade_count\",\"CheckType\":2,\"RequiredValue\":1}],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":84.69983,\"yPos\":248.599976},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"How
     can I help? ( \u2022\u0300 \u03C9 \u2022\u0301 )\u2727\",\"parentUIDs\":[0],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Eren
-    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":586,\"yPos\":367},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I..I
+    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":580.699646,\"yPos\":488.60022},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I..I
     can't tell you. But you can ask Curie. He knows a lot about the place.\",\"parentUIDs\":[6],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Eren
-    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":342,\"yPos\":372},\"ID\":8,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Zeke!
+    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":345.499817,\"yPos\":502.4002},\"ID\":8,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Zeke!
     He needs wood!\",\"parentUIDs\":[5],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Eren
-    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":10},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":11}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":104,\"yPos\":375},\"ID\":9,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Yes,
+    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":10},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":11}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":91.49985,\"yPos\":495.000183},\"ID\":9,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Yes,
     3...emm 2 shirts for 1 metal scrap. Do you want to trade? ^o^\",\"parentUIDs\":[4],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Eren
     (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
   saveVersion: 110
   DefaultName: Eren (TradeScrap)
-  DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  DefaultSprite: {fileID: 21300000, guid: c5dd024ef3b4bc34da5be29c14928a14, type: 3}
+  DefaultFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   NodeSerializedDataList:
   - {fileID: 712323688}
   - {fileID: 712323699}
@@ -2509,35 +2461,11 @@ MonoBehaviour:
   - {fileID: 712323691}
   - {fileID: 712323690}
   - {fileID: 712323689}
-  ContinueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  EndConversationFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ContinueFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  EndConversationFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Event:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2003223}
-        m_TargetAssemblyTypeName: InventoryTransaction, Assembly-CSharp
-        m_MethodName: Execute
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2123425274}
-        m_TargetAssemblyTypeName: GameVariableAction, Assembly-CSharp
-        m_MethodName: Execute
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &573570788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2866,41 +2794,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 19
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-637.5,"yPos":-65},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"Just
-    taking a walk.","parentUIDs":[2],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":-409.5,"yPos":-59},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"People
-    said you knows a lot about this place","parentUIDs":[2],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":-150.5,"yPos":-60},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Can
-    I ask you something?","parentUIDs":[2],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":-407.5,"yPos":186},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"Crafting
-    Tips?","parentUIDs":[7],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":12}],"EditorInfo":{"isRoot":false,"xPos":-146.5,"yPos":188},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"How''s
-    the people here?","parentUIDs":[7],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":11}],"EditorInfo":{"isRoot":false,"xPos":126.5,"yPos":179},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"About
-    the vent","parentUIDs":[7],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":16}],"EditorInfo":{"isRoot":false,"xPos":-78,"yPos":413},"ID":14,"ParamActions":[],"TMPFontGUID":null,"Text":"Open
-    the vent.","parentUIDs":[11],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"recipe_sdriver_unlocked","CheckType":0,"RequiredValue":false}],"NodeUID":17},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"recipe_sdriver_unlocked","CheckType":0,"RequiredValue":true}],"NodeUID":18}],"EditorInfo":{"isRoot":false,"xPos":259,"yPos":414},"ID":15,"ParamActions":[],"TMPFontGUID":null,"Text":"Crafting
-    the tool.","parentUIDs":[11],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"vent_interacted","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"recipe_sdriver_unlocked","BoolValue":false}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":1},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":2}],"EditorInfo":{"isRoot":true,"xPos":-264.5,"yPos":-296},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Hi~","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-62.5,"yPos":-179},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Careful,
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-90.00003,"yPos":253.0001},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"Just
+    taking a walk.","parentUIDs":[2],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":138,"yPos":258.999939},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"People
+    said you knows a lot about this place","parentUIDs":[2],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":397,"yPos":258},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Can
+    I ask you something?","parentUIDs":[2],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":140,"yPos":504.000031},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"Crafting
+    Tips?","parentUIDs":[7],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":12}],"EditorInfo":{"isRoot":false,"xPos":400.199951,"yPos":507.600128},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"How''s
+    the people here?","parentUIDs":[7],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":11}],"EditorInfo":{"isRoot":false,"xPos":674,"yPos":497.000031},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"About
+    the vent","parentUIDs":[7],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":16}],"EditorInfo":{"isRoot":false,"xPos":468.699921,"yPos":731.8002},"ID":14,"ParamActions":[],"TMPFontGUID":null,"Text":"Open
+    the vent.","parentUIDs":[11],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"recipe_sdriver_unlocked","CheckType":0,"RequiredValue":false}],"NodeUID":17},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"recipe_sdriver_unlocked","CheckType":0,"RequiredValue":true}],"NodeUID":18}],"EditorInfo":{"isRoot":false,"xPos":805.699951,"yPos":732.0001},"ID":15,"ParamActions":[],"TMPFontGUID":null,"Text":"Crafting
+    the tool.","parentUIDs":[11],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"vent_interacted","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"recipe_sdriver_unlocked","BoolValue":false}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":1},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":2}],"EditorInfo":{"isRoot":true,"xPos":283,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Hi~","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":484.999969,"yPos":139.000366},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Careful,
     Boss will check on us randomly....","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5}],"EditorInfo":{"isRoot":false,"xPos":-409.5,"yPos":-184},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes?","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-401.5,"yPos":37},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"Thanks.
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5}],"EditorInfo":{"isRoot":false,"xPos":138,"yPos":134.000366},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes?","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":145.200012,"yPos":355.7999},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"Thanks.
     Be curious and observant. You can do it too.","parentUIDs":[4],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":8},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":9},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":-147.5,"yPos":40},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":8},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":9},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":400,"yPos":357.999847},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"I
     see if I know it.","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":14},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":15}],"EditorInfo":{"isRoot":false,"xPos":126,"yPos":295},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"Crafting
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":14},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":15}],"EditorInfo":{"isRoot":false,"xPos":673.5,"yPos":613.000366},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"Crafting
     the tool or opening the vent?","parentUIDs":[10],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-147,"yPos":288},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"Hayden''s
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":398.899963,"yPos":606.0006},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"Hayden''s
     good with crafting.\nThe brothers trade things.\n*SICK* will need some help if
     you can.\u2028 Be patient with *LOCKDOWN*.","parentUIDs":[9],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-409,"yPos":301},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"One
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":138.5,"yPos":619.8004},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"One
     of the material can combine with its duplicate.","parentUIDs":[8],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-86,"yPos":511},"ID":16,"ParamActions":[],"TMPFontGUID":null,"Text":"I''m
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":461.499969,"yPos":829.0001},"ID":16,"ParamActions":[],"TMPFontGUID":null,"Text":"I''m
     not sure if that''s a good idea. But a screwdriver will be ideal. Hayden might
     know something.","parentUIDs":[14],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":171,"yPos":512},"ID":17,"ParamActions":[],"TMPFontGUID":null,"Text":"If
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":718.5001,"yPos":830.0001},"ID":17,"ParamActions":[],"TMPFontGUID":null,"Text":"If
     you could show me the recipe I might be able to figure out something","parentUIDs":[15],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":433,"yPos":513},"ID":18,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":980.500366,"yPos":831.0001},"ID":18,"ParamActions":[],"TMPFontGUID":null,"Text":"I
     seen someone made a file with wood and something...","parentUIDs":[15],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
     (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: Curie (Info NPC)
-  DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  DefaultSprite: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
+  DefaultFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   NodeSerializedDataList:
   - {fileID: 1792375640}
   - {fileID: 1792375658}
@@ -2921,8 +2849,8 @@ MonoBehaviour:
   - {fileID: 1792375643}
   - {fileID: 1792375642}
   - {fileID: 1792375641}
-  ContinueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  EndConversationFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ContinueFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  EndConversationFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Event:
     m_PersistentCalls:
       m_Calls: []
@@ -3047,8 +2975,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 1bc65eb18501e404891e2be35417bb88, type: 3}
   Audio: {fileID: 0}
 --- !u!43 &700168191
 Mesh:
@@ -3287,8 +3215,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: c5dd024ef3b4bc34da5be29c14928a14, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &712323689
 MonoBehaviour:
@@ -3330,7 +3258,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   NodeID: 11
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &712323690
@@ -3349,7 +3277,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 10
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &712323691
@@ -3368,8 +3296,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 9
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: c5dd024ef3b4bc34da5be29c14928a14, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &712323692
 MonoBehaviour:
@@ -3387,8 +3315,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 8
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: c5dd024ef3b4bc34da5be29c14928a14, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &712323693
 MonoBehaviour:
@@ -3406,8 +3334,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 7
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: c5dd024ef3b4bc34da5be29c14928a14, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &712323694
 MonoBehaviour:
@@ -3425,7 +3353,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 6
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &712323695
@@ -3444,7 +3372,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 5
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &712323696
@@ -3463,7 +3391,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 4
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &712323697
@@ -3482,7 +3410,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 3
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &712323698
@@ -3501,8 +3429,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 2
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: c5dd024ef3b4bc34da5be29c14928a14, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &712323699
 MonoBehaviour:
@@ -3520,8 +3448,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 1
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: c5dd024ef3b4bc34da5be29c14928a14, type: 3}
   Audio: {fileID: 0}
 --- !u!1001 &734836547
 PrefabInstance:
@@ -4193,17 +4121,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
-  CurrentIDCounter: 1
-  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":255,"yPos":146},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"test","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Sick
+  CurrentIDCounter: 3
+  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":283,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"test","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Sick
     NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: Sick NPC
-  DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  DefaultSprite: {fileID: 21300000, guid: f2ee6bf3100ff8043bc9d105f9709f8a, type: 3}
+  DefaultFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   NodeSerializedDataList:
   - {fileID: 95674992}
-  ContinueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  EndConversationFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ContinueFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  EndConversationFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Event:
     m_PersistentCalls:
       m_Calls: []
@@ -4265,8 +4193,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 2
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 5e6dfd2631814d6438adf3097a4b7a36, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &830769072
 MonoBehaviour:
@@ -4284,8 +4212,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 1
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 5e6dfd2631814d6438adf3097a4b7a36, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &830769073
 MonoBehaviour:
@@ -4303,8 +4231,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 5e6dfd2631814d6438adf3097a4b7a36, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &830769074
 MonoBehaviour:
@@ -4322,7 +4250,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 5
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &830769075
@@ -4341,7 +4269,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 4
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &830769076
@@ -4372,7 +4300,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   NodeID: 3
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &830769077
@@ -4391,8 +4319,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 10
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 5e6dfd2631814d6438adf3097a4b7a36, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &830769078
 MonoBehaviour:
@@ -4410,7 +4338,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 9
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &830769079
@@ -4429,8 +4357,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 8
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 5e6dfd2631814d6438adf3097a4b7a36, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &830769080
 MonoBehaviour:
@@ -4448,7 +4376,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 7
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &830769081
@@ -4479,8 +4407,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   NodeID: 6
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 5e6dfd2631814d6438adf3097a4b7a36, type: 3}
   Audio: {fileID: 0}
 --- !u!1 &884625165 stripped
 GameObject:
@@ -4931,25 +4859,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 11
-  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":354.5,"yPos":366},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"What''s
-    your name?","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":69.5,"yPos":367},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"Here
-    have a shirt!","parentUIDs":[3],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":344.8,"yPos":576},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"She
-    still isn''t moving.","parentUIDs":[7],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":55.7999878,"yPos":565},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"I
-    don''t think she cares about her quota.","parentUIDs":[9],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"gave_shirt","BoolValue":false},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"shirt","IntValue":0}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":3}],"EditorInfo":{"isRoot":true,"xPos":527,"yPos":45},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
+  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":198.500031,"yPos":395.80014},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"What''s
+    your name?","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":-86.49997,"yPos":396.80014},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"Here
+    have a shirt!","parentUIDs":[3],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":193.6,"yPos":605.8002},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"She
+    still isn''t moving.","parentUIDs":[7],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-100.199982,"yPos":594.8002},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    don''t think she cares about her quota.","parentUIDs":[9],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"gave_shirt","BoolValue":false},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"shirt","IntValue":0}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":3}],"EditorInfo":{"isRoot":true,"xPos":371,"yPos":74.79999},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
     sits in silence*","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Denial
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":741.5,"yPos":197},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":585.499939,"yPos":226.799988},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
     stays silent*","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Denial
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"gave_shirt","CheckType":0,"RequiredValue":true}],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":357.5,"yPos":193},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"gave_shirt","CheckType":0,"RequiredValue":true}],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":119.099976,"yPos":241.999985},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
     stays silent*","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Denial
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":348.8,"yPos":461},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":192.800018,"yPos":490.8002},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
     stays silent*","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Denial
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":62.7999878,"yPos":455},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":-93.19998,"yPos":484.80014},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
     stays silent*","parentUIDs":[6],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Denial
     NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: Denial NPC
-  DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  DefaultSprite: {fileID: 21300000, guid: f57aa2d1c760b98408caecddde6c9769, type: 3}
+  DefaultFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   NodeSerializedDataList:
   - {fileID: 464182674}
   - {fileID: 464182673}
@@ -4960,8 +4888,8 @@ MonoBehaviour:
   - {fileID: 464182677}
   - {fileID: 464182676}
   - {fileID: 464182675}
-  ContinueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  EndConversationFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ContinueFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  EndConversationFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Event:
     m_PersistentCalls:
       m_Calls: []
@@ -5253,8 +5181,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1009720299
 MonoBehaviour:
@@ -5296,8 +5224,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   NodeID: 17
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1009720300
 MonoBehaviour:
@@ -5327,7 +5255,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   NodeID: 16
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1009720301
@@ -5346,7 +5274,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 15
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1009720302
@@ -5377,8 +5305,8 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   NodeID: 14
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1009720303
 MonoBehaviour:
@@ -5396,7 +5324,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 13
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1009720304
@@ -5415,8 +5343,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 11
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1009720305
 MonoBehaviour:
@@ -5434,8 +5362,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 10
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1009720306
 MonoBehaviour:
@@ -5453,8 +5381,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 9
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1009720307
 MonoBehaviour:
@@ -5472,7 +5400,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 8
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1009720308
@@ -5491,7 +5419,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 7
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1009720309
@@ -5510,8 +5438,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 6
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1009720310
 MonoBehaviour:
@@ -5529,7 +5457,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 5
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1009720311
@@ -5548,7 +5476,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 4
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1009720312
@@ -5567,8 +5495,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 3
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1009720313
 MonoBehaviour:
@@ -5586,8 +5514,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 2
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1009720314
 MonoBehaviour:
@@ -5605,8 +5533,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 19
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
   Audio: {fileID: 0}
 --- !u!1001 &1025627138
 PrefabInstance:
@@ -5910,8 +5838,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 7ce0bb1819a3209488eb565f0428ab63, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1085834547
 MonoBehaviour:
@@ -5929,7 +5857,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 12
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1085834548
@@ -5972,7 +5900,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   NodeID: 11
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1085834549
@@ -5991,8 +5919,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 10
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 7ce0bb1819a3209488eb565f0428ab63, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1085834550
 MonoBehaviour:
@@ -6010,8 +5938,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 9
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 7ce0bb1819a3209488eb565f0428ab63, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1085834551
 MonoBehaviour:
@@ -6029,8 +5957,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 8
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 7ce0bb1819a3209488eb565f0428ab63, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1085834552
 MonoBehaviour:
@@ -6048,8 +5976,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 7
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 7ce0bb1819a3209488eb565f0428ab63, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1085834553
 MonoBehaviour:
@@ -6067,7 +5995,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 6
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1085834554
@@ -6086,7 +6014,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 5
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1085834555
@@ -6105,7 +6033,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 4
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1085834556
@@ -6124,7 +6052,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 3
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1085834557
@@ -6143,8 +6071,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 2
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 7ce0bb1819a3209488eb565f0428ab63, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1085834558
 MonoBehaviour:
@@ -6162,8 +6090,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 1
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 7ce0bb1819a3209488eb565f0428ab63, type: 3}
   Audio: {fileID: 0}
 --- !u!1 &1090327803
 GameObject:
@@ -7702,16 +7630,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 1
-  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":156,"yPos":148},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Test","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Lockdown
+  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":283,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Test","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Lockdown
     NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: Lockdown NPC
-  DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  DefaultSprite: {fileID: 21300000, guid: 1bc65eb18501e404891e2be35417bb88, type: 3}
+  DefaultFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   NodeSerializedDataList:
   - {fileID: 648741451}
-  ContinueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  EndConversationFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ContinueFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  EndConversationFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Event:
     m_PersistentCalls:
       m_Calls: []
@@ -7810,8 +7738,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 0
-  TMPFont: {fileID: 0}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1792375641
 MonoBehaviour:
@@ -7829,8 +7757,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 18
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1792375642
 MonoBehaviour:
@@ -7848,8 +7776,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 17
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1792375643
 MonoBehaviour:
@@ -7867,8 +7795,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 16
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1792375644
 MonoBehaviour:
@@ -7886,7 +7814,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 15
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1792375645
@@ -7905,7 +7833,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 14
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1792375646
@@ -7924,8 +7852,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 13
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1792375647
 MonoBehaviour:
@@ -7943,8 +7871,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 12
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1792375648
 MonoBehaviour:
@@ -7962,8 +7890,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 11
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1792375649
 MonoBehaviour:
@@ -7981,7 +7909,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 10
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1792375650
@@ -8000,7 +7928,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 9
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1792375651
@@ -8019,7 +7947,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 8
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1792375652
@@ -8038,8 +7966,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 7
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1792375653
 MonoBehaviour:
@@ -8057,8 +7985,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 6
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1792375654
 MonoBehaviour:
@@ -8076,7 +8004,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 5
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1792375655
@@ -8095,7 +8023,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 4
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!114 &1792375656
@@ -8133,8 +8061,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 2
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
   Audio: {fileID: 0}
 --- !u!114 &1792375658
 MonoBehaviour:
@@ -8152,8 +8080,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   NodeID: 1
-  TMPFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  Icon: {fileID: 0}
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
   Audio: {fileID: 0}
 --- !u!1 &1882340567
 GameObject:
@@ -8617,27 +8545,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 11
-  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":-289.2,"yPos":329},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"Have
-    this! A gift from me.","parentUIDs":[1],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":35.7999878,"yPos":335},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"I
-    wanna make friends.","parentUIDs":[1],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":321.8,"yPos":343},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Why
-    do you not wanna talk?","parentUIDs":[1],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-302.2,"yPos":646.2},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"Okay
-    then...","parentUIDs":[6],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":34.7999878,"yPos":639.2},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"okay
-    fine...","parentUIDs":[8],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"chocolate","IntValue":0}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":1},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2}],"EditorInfo":{"isRoot":true,"xPos":264.2,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Don''t
+  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":-245.600159,"yPos":348.200073},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"Have
+    this! A gift from me.","parentUIDs":[1],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":77.7999,"yPos":355.000244},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    wanna make friends.","parentUIDs":[1],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":365.400055,"yPos":362.200317},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Why
+    do you not wanna talk?","parentUIDs":[1],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-258.600159,"yPos":664.6011},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"Okay
+    then...","parentUIDs":[6],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":78.39987,"yPos":658.401},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"okay
+    fine...","parentUIDs":[8],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"chocolate","IntValue":0}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":1},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2}],"EditorInfo":{"isRoot":true,"xPos":283,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Don''t
     talk to me.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Angry
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"chocolate","CheckType":2,"RequiredValue":0}],"NodeUID":3},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":1,"RequiredValue":6}],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":5}],"NodeUID":5}],"EditorInfo":{"isRoot":false,"xPos":40.7000122,"yPos":179},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"What.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Angry
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":517.6999,"yPos":188},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"chocolate","CheckType":2,"RequiredValue":0}],"NodeUID":3},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":1,"RequiredValue":6}],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":5}],"NodeUID":5}],"EditorInfo":{"isRoot":false,"xPos":84.2999,"yPos":198.199814},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"What.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Angry
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":561.300049,"yPos":207.199814},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"I
     said don''t talk to me.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Angry
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":-290.2,"yPos":471.2},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":-246.600159,"yPos":490.400146},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"I
     don''t want it.","parentUIDs":[3],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Angry
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":36.7999878,"yPos":482.2},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":80.39987,"yPos":501.3999},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"I
     don''t need friends. Go away!","parentUIDs":[4],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Angry
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":317.8,"yPos":480.2},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"Aren''t
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":361.399933,"yPos":499.400024},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"Aren''t
     you tired of trying?","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Angry
     NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: Angry NPC
-  DefaultSprite: {fileID: 0}
-  DefaultFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  DefaultSprite: {fileID: 21300000, guid: 5e6dfd2631814d6438adf3097a4b7a36, type: 3}
+  DefaultFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   NodeSerializedDataList:
   - {fileID: 830769073}
   - {fileID: 830769072}
@@ -8650,8 +8578,8 @@ MonoBehaviour:
   - {fileID: 830769079}
   - {fileID: 830769078}
   - {fileID: 830769077}
-  ContinueFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  EndConversationFont: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  ContinueFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  EndConversationFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Event:
     m_PersistentCalls:
       m_Calls: []
@@ -9425,6 +9353,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2888789572353354126, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -597
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888789573585360463, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 6.97936
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888789573585360463, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 6.97936
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888789573585360463, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 6.97936
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888789573585360463, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 203
+      objectReference: {fileID: 0}
+    - target: {fileID: 2888789573585360463, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 132
+      objectReference: {fileID: 0}
     - target: {fileID: 3230289615006512322, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -9504,6 +9456,22 @@ PrefabInstance:
     - target: {fileID: 3230289615006512322, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5155047979542862205, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 580
+      objectReference: {fileID: 0}
+    - target: {fileID: 5397859468501922072, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_margin.x
+      value: 31.924599
+      objectReference: {fileID: 0}
+    - target: {fileID: 5397859468501922072, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_margin.z
+      value: -36.530525
+      objectReference: {fileID: 0}
+    - target: {fileID: 5397859468501922072, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
