@@ -41,6 +41,8 @@ public class CraftingStation : MonoBehaviour, IInteractable
     private readonly List<GameObject> centerModels = new List<GameObject>();
     private readonly HashSet<CraftingRecipeData> discoveredThisSession =
         new HashSet<CraftingRecipeData>();
+    private readonly HashSet<CraftingRecipeData> eventUnlockedUncraftedRecipes =
+        new HashSet<CraftingRecipeData>();
 
     private FirstPersonController playerController;
     private PlayerInteractor playerInteractor;
@@ -142,10 +144,6 @@ public class CraftingStation : MonoBehaviour, IInteractable
         if (Input.GetMouseButtonDown(0))
         {
             hoveredItem.HandleLeftClick();
-        }
-        else if (Input.GetMouseButtonDown(1))
-        {
-            hoveredItem.HandleRightClick();
         }
     }
 
@@ -394,6 +392,12 @@ public class CraftingStation : MonoBehaviour, IInteractable
         return recipe.UnlockFlag != null &&
                GameStateManager.Instance != null &&
                GameStateManager.Instance.GetFlag(recipe.UnlockFlag);
+    }
+
+    public bool ShouldShowNewRecipeBadge(CraftingRecipeData recipe)
+    {
+        return recipe != null &&
+               eventUnlockedUncraftedRecipes.Contains(recipe);
     }
 
     internal void SetPlayerInsideWorkstation(bool value)
@@ -819,6 +823,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
         }
 
         discoveredThisSession.Add(recipe);
+        eventUnlockedUncraftedRecipes.Remove(recipe);
         if (recipe.UnlockFlag != null && GameStateManager.Instance != null)
         {
             GameStateManager.Instance.SetFlag(recipe.UnlockFlag, true);
@@ -893,6 +898,33 @@ public class CraftingStation : MonoBehaviour, IInteractable
 
     private void OnFlagChanged(GameFlagData flag, bool value)
     {
+        if (flag != null && recipeDatabase != null)
+        {
+            List<CraftingRecipeData> recipes = recipeDatabase.GetOrderedRecipes();
+            for (int i = 0; i < recipes.Count; i++)
+            {
+                CraftingRecipeData recipe = recipes[i];
+                if (recipe == null || recipe.UnlockFlag != flag)
+                {
+                    continue;
+                }
+
+                if (!value)
+                {
+                    eventUnlockedUncraftedRecipes.Remove(recipe);
+                    continue;
+                }
+
+                // Starts-unlocked and self-discovered recipes were already known
+                // before this flag event and should not be marked as new.
+                if (!recipe.StartsUnlocked &&
+                    !discoveredThisSession.Contains(recipe))
+                {
+                    eventUnlockedUncraftedRecipes.Add(recipe);
+                }
+            }
+        }
+
         RefreshUI();
     }
 

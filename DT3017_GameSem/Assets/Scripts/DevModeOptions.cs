@@ -47,6 +47,7 @@ public static class DevModeOptions
         options.Clear();
         Changed = null;
         RegisterToggle("boss-target", "Boss target detection", () => DeveloperGameOptions.PlayerVisionDetectionEnabled, DeveloperGameOptions.SetPlayerVisionDetectionEnabled);
+        RegisterToggle("boss-workstation", "Boss workstation detection", () => DeveloperGameOptions.WorkstationDetectionEnabled, DeveloperGameOptions.SetWorkstationDetectionEnabled);
         RegisterToggle("psx-effects", "PSX shader effects", () => Game.Visuals.PSXEffects.Enabled, Game.Visuals.PSXEffects.SetEnabled);
         RegisterToggle("skip-quota", "Sleep without quota", () => DeveloperGameOptions.SkipDailyQuotaEnabled, DeveloperGameOptions.SetSkipDailyQuotaEnabled);
         RegisterAction("skip-tutorial", "Skip tutorial", () =>

@@ -41,7 +41,11 @@ public class CraftingRecipePanelUI : MonoBehaviour
         {
             CraftingRecipeData recipe = recipes[i];
             CraftingRecipeEntryUI entry = Instantiate(entryPrefab, entryContainer);
-            entry.Setup(recipe, selection, station.IsRecipeUnlocked(recipe));
+            entry.Setup(
+                recipe,
+                selection,
+                station.IsRecipeUnlocked(recipe),
+                station.ShouldShowNewRecipeBadge(recipe));
             entry.gameObject.SetActive(true);
             generatedEntries.Add(entry);
         }

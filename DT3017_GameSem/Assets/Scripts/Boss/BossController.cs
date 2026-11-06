@@ -46,7 +46,7 @@ public class BossController : MonoBehaviour
     [Header("Detection")]
     [SerializeField] private BossVision vision;
     [SerializeField] private Transform playerVisionTarget;
-    [SerializeField] private Transform workstationVisionTarget;
+    [SerializeField] private BossVisionTargetArea workstationVisionArea;
     [SerializeField] private CraftingStation workstation;
     [SerializeField] private CaughtSequenceController caughtSequence;
 
@@ -486,8 +486,9 @@ public class BossController : MonoBehaviour
         bool playerVisible = DeveloperGameOptions.PlayerVisionDetectionEnabled &&
                              playerVisionTarget != null &&
                              vision.CanSee(playerVisionTarget);
-        bool workstationVisible = workstationVisionTarget != null &&
-                                  vision.CanSee(workstationVisionTarget);
+        bool workstationVisible = DeveloperGameOptions.WorkstationDetectionEnabled &&
+                                  workstationVisionArea != null &&
+                                  vision.CanSee(workstationVisionArea);
 
         string reason = null;
         if (playerOutside && playerVisible)

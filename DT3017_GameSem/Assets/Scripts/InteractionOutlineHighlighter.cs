@@ -26,6 +26,14 @@ public sealed class InteractionOutlineHighlighter : MonoBehaviour
 
     public Component Target => target;
 
+    public void SetAppearance(Color color, float widthPixels, float emissionIntensity)
+    {
+        outlineColor = color;
+        outlineWidthPixels = Mathf.Clamp(widthPixels, 0f, 12f);
+        outlineEmissionIntensity = Mathf.Max(0f, emissionIntensity);
+        UpdateCopies();
+    }
+
     public void SetTarget(Component nextTarget)
     {
         if (!isActiveAndEnabled) { Clear(); return; }

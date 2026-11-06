@@ -38,7 +38,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Color_Res: 32
-    - _Dither_Res: 0.15
+    - _Dither_Res: 0.74
     - _Original_Dither_Res: 0.0005
     - _UsePerceptualQuantization: 1
     m_Colors: []

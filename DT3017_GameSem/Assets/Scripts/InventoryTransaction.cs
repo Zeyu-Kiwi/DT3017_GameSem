@@ -47,35 +47,55 @@ public class InventoryTransaction : MonoBehaviour
             {
                 if (inventory.GetRemainingCapacity(reward.Key) < reward.Value)
                 {
-                    ShowMessage("Not enough space for " + reward.Key.DisplayName + ".");
+                    ShowMessage(
+                        "Not enough space for " + reward.Key.DisplayName +
+                        ". Trade was cancelled.");
                     return;
                 }
             }
         }
 
+        List<string> changes = new List<string>();
+        List<string> capacityMessages = new List<string>();
+
         foreach (KeyValuePair<ItemData, int> cost in combinedCosts)
         {
             inventory.TryRemoveItem(cost.Key, cost.Value);
+            changes.Add("-" + cost.Value + " " + cost.Key.DisplayName);
         }
 
         foreach (KeyValuePair<ItemData, int> reward in combinedRewards)
         {
             int added = inventory.AddItem(reward.Key, reward.Value);
 
+            if (added > 0)
+            {
+                changes.Add("+" + added + " " + reward.Key.DisplayName);
+            }
+
             if (added < reward.Value)
             {
                 if (added == 0)
                 {
-                    ShowMessage(reward.Key.DisplayName + " is full.");
+                    capacityMessages.Add(reward.Key.DisplayName + " is full.");
                 }
                 else
                 {
-                    ShowMessage(
-                        "Received " + added + " " + reward.Key.DisplayName +
-                        ". " + reward.Key.DisplayName + " is now full.");
+                    capacityMessages.Add(reward.Key.DisplayName + " is now full.");
                 }
             }
         }
+
+        string resultMessage = changes.Count > 0
+            ? string.Join(", ", changes) + "."
+            : "Transaction completed.";
+
+        if (capacityMessages.Count > 0)
+        {
+            resultMessage += " " + string.Join(" ", capacityMessages);
+        }
+
+        ShowMessage(resultMessage);
     }
 
     private Dictionary<ItemData, int> Combine(List<ItemAmount> entries)
