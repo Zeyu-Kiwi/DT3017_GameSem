@@ -19,6 +19,10 @@ public class ShirtFoldingController : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator animator;
 
+    [Header("Interaction")]
+    [Tooltip("Allow folding this shirt without sitting in the chair.")]
+    [SerializeField] private bool allowWhileStanding;
+
     [Header("Interaction Hotspots")]
     [Tooltip("Leave empty to find every ShirtFoldHotspot below this object automatically.")]
     [SerializeField] private ShirtFoldHotspot[] hotspots;
@@ -55,6 +59,9 @@ public class ShirtFoldingController : MonoBehaviour
 
     public bool CanInteractWith(ShirtFoldPart part)
     {
+        if (!PlayerSeatController.AllowsInteraction(allowWhileStanding))
+            return false;
+
         if (animationPlaying || currentStage == FoldStage.Collected)
         {
             return false;

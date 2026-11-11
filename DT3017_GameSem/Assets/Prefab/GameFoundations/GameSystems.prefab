@@ -57,21 +57,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
   items:
   - item: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
-    quantity: 20
+    quantity: 0
   - item: {fileID: 11400000, guid: aeb54d50f3b7fe946acf7334085c2a44, type: 2}
     quantity: 0
   - item: {fileID: 11400000, guid: 7ce056aef7bfef34abacbf7a370a24d5, type: 2}
-    quantity: 4
+    quantity: 0
   - item: {fileID: 11400000, guid: 182d59327ac79bb489f31a3372fc5710, type: 2}
-    quantity: 5
+    quantity: 0
   - item: {fileID: 11400000, guid: 3b615d5d53bd6394c918758538ecfbdc, type: 2}
     quantity: 0
   - item: {fileID: 11400000, guid: 084b8554363c6d5479f4d33f466aec8b, type: 2}
-    quantity: 2
+    quantity: 0
   - item: {fileID: 11400000, guid: 2cc802e0568494c449c2b5fb6c253a15, type: 2}
-    quantity: 1
+    quantity: 0
   - item: {fileID: 11400000, guid: ff3402cf6f49d554c84a0aaaddc1f59a, type: 2}
-    quantity: 2
+    quantity: 0
   - item: {fileID: 11400000, guid: 8b30a2c29948d404ab21ecc67ffd0f76, type: 2}
     quantity: 0
   - item: {fileID: 11400000, guid: eff7831812c9e9c478acbeab5ba7f1ff, type: 2}
@@ -134,7 +134,7 @@ MonoBehaviour:
   container: {fileID: 0}
   entryContainer: {fileID: 0}
   entryPrefab: {fileID: 3369123909522734462, guid: 0c69450ca0efa484dbdd95728d0be515, type: 3}
-  displayDuration: 3
+  displayDuration: 5
   fadeDuration: 0.35
   maximumVisibleMessages: 5
 --- !u!114 &2103800464648912675
@@ -168,6 +168,7 @@ MonoBehaviour:
   defaultQuota: 5
   caughtPenalty: 1
   failureIncreaseIsPermanent: 0
+  clearDrawerOnFailedDay: 1
   quotaText: {fileID: 0}
   currentInventoryShirts: 0
   currentDailyBaseQuota: 0
@@ -205,6 +206,7 @@ MonoBehaviour:
   transitionRunning: 0
   remainingDayTimeSeconds: 0
   timerExpired: 0
+  tutorialTimerPaused: 0
 --- !u!114 &7833660600555416962
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +275,7 @@ MonoBehaviour:
   startingConversation: {fileID: 0}
   leftWorkstationConversation: {fileID: 0}
   drawerAttemptConversation: {fileID: 0}
+  completionConversation: {fileID: 0}
   violationQuotaPenalty: 1
   onTutorialStarted:
     m_PersistentCalls:

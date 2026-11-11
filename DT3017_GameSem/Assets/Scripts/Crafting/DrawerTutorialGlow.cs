@@ -68,9 +68,9 @@ public sealed class DrawerTutorialGlow : MonoBehaviour
     {
         bool drawerOpen = drawerController != null && drawerController.IsDrawerOpen;
 
-        // Opening the drawer on any earlier day proves the player has already
-        // discovered it, so Day 2 should not show the tutorial glow again.
-        if (!completedThisSession && !wasDrawerOpen && drawerOpen)
+        // Only a successful opening on the tutorial day dismisses its glow.
+        // Earlier openings do not prevent the Day 2 reminder.
+        if (tutorialGlowActive && !wasDrawerOpen && drawerOpen)
         {
             CompleteTutorialGlow();
         }
