@@ -11,13 +11,14 @@ using UnityEngine.Events;
 public class DayOneTutorial : MonoBehaviour
 {
     public enum TutorialStage { Inactive, StartingConversation, Folding, Completed }
-    private enum ConversationReason { None, Introduction, LeftWorkstation, DrawerAttempt }
+    private enum ConversationReason { None, Introduction, LeftWorkstation, DrawerAttempt, Completion }
 
     [Header("Systems")]
     [SerializeField] private DayCycleManager dayCycle;
     [SerializeField] private DailyQuotaManager quota;
     [SerializeField] private PlayerTutorialPosition tutorialPosition;
     [SerializeField] private FirstPersonController player;
+    private PlayerSeatController playerSeat;
     [SerializeField] private CraftingStation craftingStation;
     [SerializeField] private BossController boss;
 
@@ -33,6 +34,8 @@ public class DayOneTutorial : MonoBehaviour
     [SerializeField] private NPCConversation startingConversation;
     [SerializeField] private NPCConversation leftWorkstationConversation;
     [SerializeField] private NPCConversation drawerAttemptConversation;
+    [Tooltip("Boss dialogue after the shirt quota is met. Leave empty to end the tutorial immediately.")]
+    [SerializeField] private NPCConversation completionConversation;
 
     [Header("Penalty")]
     [SerializeField, Min(0)] private int violationQuotaPenalty = 3;
@@ -51,6 +54,7 @@ public class DayOneTutorial : MonoBehaviour
     private ConversationReason activeConversation;
     private Coroutine conversationRoutine;
     private DailyQuotaManager subscribedQuota;
+    private bool completionSequenceFinished;
 
     public TutorialStage Stage => stage;
     public bool IsActive => planEnabled && stage != TutorialStage.Inactive &&
@@ -63,6 +67,7 @@ public class DayOneTutorial : MonoBehaviour
         if (dayCycle == null) dayCycle = GetComponent<DayCycleManager>();
         if (quota == null) quota = DailyQuotaManager.Instance;
         if (player == null) player = FindFirstObjectByType<FirstPersonController>();
+        if (player != null) playerSeat = player.GetComponent<PlayerSeatController>();
         if (tutorialPosition == null && player != null)
             tutorialPosition = player.GetComponent<PlayerTutorialPosition>();
         if (craftingStation == null) craftingStation = FindFirstObjectByType<CraftingStation>();
@@ -124,10 +129,13 @@ public class DayOneTutorial : MonoBehaviour
             return;
         }
 
+        dayCycle?.SetTutorialTimerPaused(true, true);
+        completionSequenceFinished = false;
         stage = TutorialStage.StartingConversation;
         violationInProgress = false;
         playerHasEnteredWorkstation = false;
-        tutorialPosition.TeleportWithoutLock(tutorialPoint);
+        if (playerSeat != null) playerSeat.SnapSeatedAt(tutorialPoint);
+        else tutorialPosition.TeleportWithoutLock(tutorialPoint);
         Physics.SyncTransforms();
         boss.BeginTutorialStare(bossStareLocator,
             bossLookTarget != null ? bossLookTarget : player.transform);
@@ -149,7 +157,8 @@ public class DayOneTutorial : MonoBehaviour
         if (!IsActive || violationInProgress) return;
         violationInProgress = true;
         quota.AddPenalty(violationQuotaPenalty);
-        tutorialPosition.TeleportWithoutLock(tutorialPoint);
+        if (playerSeat != null) playerSeat.SnapSeatedAt(tutorialPoint);
+        else tutorialPosition.TeleportWithoutLock(tutorialPoint);
         Physics.SyncTransforms();
         BeginConversation(conversation, reason);
     }
@@ -170,11 +179,23 @@ public class DayOneTutorial : MonoBehaviour
             yield return null;
 
         conversationRoutine = null;
-        if (!IsActive) yield break;
+        bool isCompletion = reason == ConversationReason.Completion;
+        if (isCompletion
+            ? !planEnabled || stage != TutorialStage.Completed || completionSequenceFinished
+            : !IsActive)
+            yield break;
+
+        if (isCompletion && conversation == null)
+        {
+            FinishTutorialCompletion();
+            yield break;
+        }
+
         if (conversation == null || ConversationManager.Instance == null)
         {
             Debug.LogWarning("A Day 1 tutorial conversation is not assigned.", this);
-            FinishConversationReason(reason);
+            if (isCompletion) FinishTutorialCompletion();
+            else FinishConversationReason(reason);
             yield break;
         }
 
@@ -195,6 +216,12 @@ public class DayOneTutorial : MonoBehaviour
 
     private void FinishConversationReason(ConversationReason reason)
     {
+        if (reason == ConversationReason.Completion)
+        {
+            conversationRoutine = StartCoroutine(FinishCompletionWhenConversationCloses());
+            return;
+        }
+
         if (!IsActive) return;
         if (reason == ConversationReason.Introduction)
             stage = TutorialStage.Folding;
@@ -212,6 +239,27 @@ public class DayOneTutorial : MonoBehaviour
         stage = TutorialStage.Completed;
         violationInProgress = false;
         onQuotaMet.Invoke();
+        BeginConversation(completionConversation, ConversationReason.Completion);
+    }
+
+    private IEnumerator FinishCompletionWhenConversationCloses()
+    {
+        // The dialogue package announces its end before its fade-out finishes.
+        while (ConversationManager.Instance != null &&
+               ConversationManager.Instance.IsConversationActive)
+            yield return null;
+
+        conversationRoutine = null;
+        FinishTutorialCompletion();
+    }
+
+    private void FinishTutorialCompletion()
+    {
+        if (!planEnabled || stage != TutorialStage.Completed || completionSequenceFinished)
+            return;
+
+        completionSequenceFinished = true;
+        dayCycle?.SetTutorialTimerPaused(false);
         boss?.EndTutorialStareAndLeave();
         onTutorialCompleted.Invoke();
     }
@@ -234,10 +282,12 @@ public class DayOneTutorial : MonoBehaviour
             conversationRoutine = null;
         }
         activeConversation = ConversationReason.None;
+        completionSequenceFinished = false;
         violationInProgress = false;
         playerHasEnteredWorkstation = false;
         boss?.CancelTutorialStare();
         stage = makeCompleted ? TutorialStage.Completed : TutorialStage.Inactive;
+        dayCycle?.SetTutorialTimerPaused(false);
     }
 
 #if UNITY_EDITOR || DEVELOPMENT_BUILD
@@ -258,6 +308,8 @@ public class DayOneTutorial : MonoBehaviour
         }
         activeConversation = ConversationReason.None;
         stage = TutorialStage.Completed;
+        completionSequenceFinished = true;
+        dayCycle?.SetTutorialTimerPaused(false);
         violationInProgress = false;
         playerHasEnteredWorkstation = false;
         foreach (var conversation in FindObjectsByType<ConversationManager>(

@@ -46,6 +46,7 @@ public class DayCycleManager : MonoBehaviour
     [SerializeField] private bool transitionRunning;
     [SerializeField] private float remainingDayTimeSeconds;
     [SerializeField] private bool timerExpired;
+    [SerializeField] private bool tutorialTimerPaused;
 
     private bool currentDayTimerEnabled = true;
     private float currentDayDurationSeconds;
@@ -60,7 +61,8 @@ public class DayCycleManager : MonoBehaviour
     public bool TimerExpired => timerExpired;
     public bool IsDailyTimerEnabled => dailyTimerEnabled && currentDayTimerEnabled;
     public bool IsDailyTimerRunning => isActiveAndEnabled && IsDailyTimerEnabled &&
-                                       !transitionRunning && !timerExpired;
+                                       !transitionRunning && !timerExpired &&
+                                       !tutorialTimerPaused;
     public UnityEvent OnTimerExpired => onTimerExpired;
 
     private void Awake()
@@ -109,6 +111,17 @@ public class DayCycleManager : MonoBehaviour
     public void SetDailyTimerEnabled(bool enabled)
     {
         dailyTimerEnabled = enabled;
+    }
+
+    public void SetTutorialTimerPaused(bool paused, bool restartFullDuration = false)
+    {
+        tutorialTimerPaused = paused;
+        if (paused && restartFullDuration)
+        {
+            // Keep the duration chosen by the Day Plan, including its override.
+            remainingDayTimeSeconds = currentDayDurationSeconds;
+            timerExpired = false;
+        }
     }
 
     [ContextMenu("Reset Daily Timer")]
@@ -215,20 +228,22 @@ public class DayCycleManager : MonoBehaviour
         if (causedByTimerExpiry)
         {
             int missingShirts = 0;
+            bool drawerCleared = false;
             int nextDailyBaseQuota = quotaManager == null
                 ? 0
                 : quotaManager.CurrentDailyBaseQuota;
             quotaResolved = quotaManager != null &&
                 quotaManager.ResolveTimerExpiredDay(
                     out missingShirts,
-                    out nextDailyBaseQuota);
+                    out nextDailyBaseQuota,
+                    out drawerCleared);
 
             if (quotaResolved && missingShirts > 0)
             {
-                string itemName = missingShirts == 1 ? "shirt was" : "shirts were";
                 pendingDayEndNotification =
-                    "Daily quota increased to " + nextDailyBaseQuota +
-                    " because " + missingShirts + " " + itemName + " missing.";
+                    "Yesterday's quota was not met. New quota: " +
+                    nextDailyBaseQuota + "." +
+                    (drawerCleared ? " Drawer emptied." : string.Empty);
             }
         }
         else if (requireDailyQuota)

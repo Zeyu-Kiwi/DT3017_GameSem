@@ -12,6 +12,8 @@ public class DailyQuotaManager : MonoBehaviour
     [SerializeField, Min(0)] private int caughtPenalty = 5;
     [Tooltip("When enabled, quota increases caused by failed days remain permanently. When disabled, completing a day resets the following day to Default Quota.")]
     [SerializeField] private bool failureIncreaseIsPermanent = true;
+    [Tooltip("When the timer expires before the quota is met, remove every inventory item, including tools. When disabled, only remaining shirts are removed.")]
+    [SerializeField] private bool clearDrawerOnFailedDay = true;
 
     [Header("UI")]
     [SerializeField] private TMP_Text quotaText;
@@ -88,8 +90,10 @@ public class DailyQuotaManager : MonoBehaviour
 
     public bool ResolveTimerExpiredDay(
         out int missingShirts,
-        out int nextDailyBaseQuota)
+        out int nextDailyBaseQuota,
+        out bool drawerCleared)
     {
+        drawerCleared = false;
         RefreshFromInventory();
         missingShirts = MissingShirts;
 
@@ -106,9 +110,13 @@ public class DailyQuotaManager : MonoBehaviour
             return false;
         }
 
-        int shirtsToRemove = currentInventoryShirts;
-        if (shirtsToRemove > 0 &&
-            !InventoryManager.Instance.TryRemoveItem(shirtItem, shirtsToRemove))
+        if (clearDrawerOnFailedDay)
+        {
+            InventoryManager.Instance.ClearAllItems();
+            drawerCleared = true;
+        }
+        else if (currentInventoryShirts > 0 &&
+            !InventoryManager.Instance.TryRemoveItem(shirtItem, currentInventoryShirts))
         {
             nextDailyBaseQuota = currentDailyBaseQuota;
             return false;

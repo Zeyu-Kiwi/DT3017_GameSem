@@ -6,6 +6,8 @@ public class CraftingStation : MonoBehaviour, IInteractable
 {
     [Header("Configuration")]
     [SerializeField] private bool canInteract = true;
+    [Tooltip("Allow opening the drawer without sitting in the chair.")]
+    [SerializeField] private bool allowWhileStanding;
     [SerializeField] private DayOneTutorial workstationTutorial;
     [SerializeField] private CraftingRecipeDatabase recipeDatabase;
     [SerializeField] private List<CraftingMaterialSection> materialSections =
@@ -62,6 +64,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
     private bool dayPlanInteractionEnabled = true;
 
     public bool CanInteract => canInteract &&
+                               PlayerSeatController.AllowsInteraction(allowWhileStanding) &&
                                dayPlanInteractionEnabled &&
                                isPlayerInsideWorkstation &&
                                !isOpen &&

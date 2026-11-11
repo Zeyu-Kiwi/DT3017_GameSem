@@ -18,7 +18,7 @@ MonoBehaviour:
   overrideTimerDuration: 0
   timerDurationSeconds: 300
   bossEnabled: 1
-  drawerEnabled: 1
+  drawerEnabled: 0
   npcInteractionEnabled: 1
   bedIndicatorVisible: 0
   workstationQuotaTutorial: 1

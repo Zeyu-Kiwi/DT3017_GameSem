@@ -6,6 +6,8 @@ public class ClothesPileInteractable : MonoBehaviour, IInteractable
     [Header("Shirt")]
     [SerializeField] private ItemData shirtItem;
     [SerializeField] private ShirtFoldingController shirtPrefab;
+    [Tooltip("Allow spawning a shirt without sitting in the chair.")]
+    [SerializeField] private bool allowWhileStanding;
 
     [Header("Folding Workstation")]
     [SerializeField] private Transform shirtSpawnPoint;
@@ -16,6 +18,7 @@ public class ClothesPileInteractable : MonoBehaviour, IInteractable
     [SerializeField] private ShirtFoldingController activeShirt;
 
     public bool CanInteract =>
+        PlayerSeatController.AllowsInteraction(allowWhileStanding) &&
         shirtItem != null && shirtPrefab != null && shirtSpawnPoint != null;
 
     public ShirtFoldingController ActiveShirt => activeShirt;

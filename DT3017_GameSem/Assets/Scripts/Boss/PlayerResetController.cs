@@ -10,6 +10,7 @@ public class PlayerResetController : MonoBehaviour
     [SerializeField] private CraftingStation craftingStation;
 
     private FirstPersonController firstPersonController;
+    private PlayerSeatController playerSeatController;
     private PlayerInteractor playerInteractor;
     private PlayerInteractUI playerInteractUI;
     private Rigidbody playerRigidbody;
@@ -101,6 +102,10 @@ public class PlayerResetController : MonoBehaviour
         }
 
         Physics.SyncTransforms();
+        // Caught sequences return to the chair; day changes return to the bed.
+        playerSeatController?.SetSeatedAfterTeleport(
+            returnPoint == workstationReturnPoint &&
+            returnPoint == playerSeatController.SeatPoint);
     }
 
     public void UnlockPlayer()
@@ -136,6 +141,11 @@ public class PlayerResetController : MonoBehaviour
         if (firstPersonController == null)
         {
             firstPersonController = player.GetComponent<FirstPersonController>();
+        }
+
+        if (playerSeatController == null)
+        {
+            playerSeatController = player.GetComponent<PlayerSeatController>();
         }
 
         if (playerInteractor == null)

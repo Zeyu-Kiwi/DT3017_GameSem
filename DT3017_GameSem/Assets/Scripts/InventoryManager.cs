@@ -137,6 +137,28 @@ public class InventoryManager : MonoBehaviour
         return true;
     }
 
+    public void ClearAllItems()
+    {
+        // Set every quantity before notifying displays, so each listener sees
+        // the final empty inventory even when many item types were owned.
+        List<ItemData> changedItems = new List<ItemData>();
+        foreach (ItemData item in new List<ItemData>(quantities.Keys))
+        {
+            if (quantities[item] <= 0)
+            {
+                continue;
+            }
+
+            quantities[item] = 0;
+            changedItems.Add(item);
+        }
+
+        foreach (ItemData item in changedItems)
+        {
+            QuantityChanged?.Invoke(item, 0);
+        }
+    }
+
     public bool TryGetItemById(string itemId, out ItemData item)
     {
         if (string.IsNullOrEmpty(itemId))

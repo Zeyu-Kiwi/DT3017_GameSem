@@ -7,8 +7,11 @@ public class BedInteractable : MonoBehaviour, IInteractable
 
     [Tooltip("Require the daily shirt quota before ending the day.")]
     [SerializeField] private bool requireDailyQuota = true;
+    [Tooltip("Allow using the bed without sitting in the chair.")]
+    [SerializeField] private bool allowWhileStanding;
 
-    public bool CanInteract => dayCycleManager != null &&
+    public bool CanInteract => PlayerSeatController.AllowsInteraction(allowWhileStanding) &&
+                               dayCycleManager != null &&
                                !dayCycleManager.TransitionRunning;
 
     private void Awake()
