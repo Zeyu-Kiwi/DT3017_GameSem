@@ -52,6 +52,8 @@ public class DayCycleManager : MonoBehaviour
     private float currentDayDurationSeconds;
     private string pendingDayEndNotification;
 
+    /// <summary>Raised after the old day's quota is resolved, while the screen is black.</summary>
+    public event System.Action<int> DayEnding;
     public event System.Action<int> DayStarted;
 
     public int CurrentDay => currentDay;
@@ -260,6 +262,8 @@ public class DayCycleManager : MonoBehaviour
             yield return CancelTransitionRoutine();
             yield break;
         }
+
+        DayEnding?.Invoke(currentDay);
 
         Transform nextSpawnPoint = dayPlanManager != null
             ? dayPlanManager.GetSpawnPointForDay(currentDay + 1, bedWakeUpPoint)

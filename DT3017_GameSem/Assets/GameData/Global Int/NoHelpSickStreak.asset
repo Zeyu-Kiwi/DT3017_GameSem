@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb07e2500a21b88499b630c066e73a3d, type: 3}
-  m_Name: New Game Integer
+  m_Name: NoHelpSickStreak
   m_EditorClassIdentifier: Assembly-CSharp::GameIntData
-  variableId: help_sick_streak
-  displayName: HelpSickStreak
+  variableId: no_help_sick_streak
+  displayName: NoHelpSickStreak
   startingValue: 0
   useMinimum: 1
   minimumValue: 0
