@@ -15,4 +15,4 @@ MonoBehaviour:
   itemId: screwdriver_head
   displayName: Screwdriver Head
   stackLimit: 1
-  icon: {fileID: 21300000, guid: 1dc0b604e9613c8488200654a1f8c3b3, type: 3}
+  icon: {fileID: 21300000, guid: a09f9b485e347c64483f82b338d3be98, type: 3}
