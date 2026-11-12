@@ -956,36 +956,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
-  CurrentIDCounter: 20
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":478.300171,"yPos":236.999634},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Nothing,
-    just saying hi.","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":203.300018,"yPos":238.999634},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Anything
-    you can teach me?","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":49.30002,"yPos":461.9994},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"Emm...
-    what should I know?","parentUIDs":[6],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":true}],"NodeUID":10},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"knows_screwdriver_price","CheckType":0,"RequiredValue":false},{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":false}],"NodeUID":11},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"knows_screwdriver_price","CheckType":0,"RequiredValue":true},{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":false}],"NodeUID":14}],"EditorInfo":{"isRoot":false,"xPos":355.5,"yPos":464.3994},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"About
-    the Vent","parentUIDs":[3,6],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":14}],"EditorInfo":{"isRoot":false,"xPos":565.1001,"yPos":747.9995},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"How
-    do I open the vent?","parentUIDs":[11],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":330.100037,"yPos":947.3998},"ID":15,"ParamActions":[],"TMPFontGUID":null,"Text":"I
-    will be back...","parentUIDs":[14],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":17}],"EditorInfo":{"isRoot":false,"xPos":565.3002,"yPos":933.999634},"ID":16,"ParamActions":[],"TMPFontGUID":null,"Text":"Here''s
-    10 shirts... It better worth the shirts.","parentUIDs":[14],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"shirt","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"screwdriver_recipe_given","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"knows_screwdriver_price","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"vent_interacted","BoolValue":false}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":3}],"EditorInfo":{"isRoot":true,"xPos":283,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes...","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":478.300171,"yPos":134.999756},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"Focus
+  CurrentIDCounter: 31
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-962.6998,"yPos":-242.000366},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Nothing,
+    just saying hi.","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":-744.699951,"yPos":-233.000366},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Anything
+    you can teach me?","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":-738.699951,"yPos":-22.00061},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"Emm...
+    what should I know?","parentUIDs":[6],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":true}],"NodeUID":10},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"knows_screwdriver_price","CheckType":0,"RequiredValue":false},{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":false}],"NodeUID":11},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"knows_screwdriver_price","CheckType":0,"RequiredValue":true},{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"screwdriver_recipe_given","CheckType":0,"RequiredValue":false}],"NodeUID":14}],"EditorInfo":{"isRoot":false,"xPos":-489.5,"yPos":-29.6005859},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"About
+    the Vent","parentUIDs":[3,6],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":14}],"EditorInfo":{"isRoot":false,"xPos":-224.8999,"yPos":214.999512},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"How
+    to I open the vent?","parentUIDs":[11],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-463.899963,"yPos":444.39978},"ID":15,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    will be back...","parentUIDs":[14],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":17}],"EditorInfo":{"isRoot":false,"xPos":-222.699829,"yPos":449.999634},"ID":16,"ParamActions":[],"TMPFontGUID":null,"Text":"Here''s
+    10 shirts... It better worth the shirts.","parentUIDs":[14],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"crowbar_recipe_given","CheckType":0,"RequiredValue":true}],"NodeUID":21},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"crowbar_recipe_given","CheckType":0,"RequiredValue":false},{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"knows_crowbar_price","CheckType":0,"RequiredValue":false}],"NodeUID":22},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"crowbar_recipe_given","CheckType":0,"RequiredValue":false},{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"knows_crowbar_price","CheckType":0,"RequiredValue":true}],"NodeUID":24}],"EditorInfo":{"isRoot":false,"xPos":91.5,"yPos":-36},"ID":20,"ParamActions":[],"TMPFontGUID":null,"Text":"About
+    the boarded hole","parentUIDs":[3,6],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":24}],"EditorInfo":{"isRoot":false,"xPos":370.5,"yPos":206},"ID":23,"ParamActions":[],"TMPFontGUID":null,"Text":"How
+    to remove the boards?","parentUIDs":[22],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":28}],"EditorInfo":{"isRoot":false,"xPos":363.5,"yPos":444},"ID":25,"ParamActions":[],"TMPFontGUID":null,"Text":"Oh...
+    cheaper than I expected.","parentUIDs":[24],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":117.5,"yPos":449},"ID":27,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    will be back...","parentUIDs":[24],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"shirt","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"screwdriver_recipe_given","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"knows_screwdriver_price","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"vent_interacted","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"hole_interacted","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"crowbar_recipe_given","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"knows_crowbar_price","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"is_sick_gone","BoolValue":false}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":3}],"EditorInfo":{"isRoot":true,"xPos":-505,"yPos":-462},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes...","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
+    (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-182.699829,"yPos":-375.000244},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"Focus
     on your work...","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":120.300018,"yPos":136.999634},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"What...","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":7},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":210.300018,"yPos":333.999634},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"What
+    (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":8},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"hole_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":20}],"EditorInfo":{"isRoot":false,"xPos":-710.699951,"yPos":-349.000366},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"What...","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
+    (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":7},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":8},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"hole_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":20}],"EditorInfo":{"isRoot":false,"xPos":-736.699951,"yPos":-156.000366},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"What
     do you want to know?","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":19}],"EditorInfo":{"isRoot":false,"xPos":46.30002,"yPos":565.999634},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"*Sigh*
+    (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":19}],"EditorInfo":{"isRoot":false,"xPos":-741.699951,"yPos":81.99963},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"*Sigh*
     Think before you ask...","parentUIDs":[7],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":308.5,"yPos":562.999634},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"I''ve
+    (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-479.5,"yPos":78.99963},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"I''ve
     told you everything... No refund for the shirt","parentUIDs":[8],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":559.3002,"yPos":564.1997},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"There
+    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":-228.699829,"yPos":80.19971},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"There
     was a little boy that went through the vent, but no news afterwards... ","parentUIDs":[8],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":15},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"shirt","CheckType":2,"RequiredValue":9}],"NodeUID":16}],"EditorInfo":{"isRoot":false,"xPos":557.3002,"yPos":812.999634},"ID":14,"ParamActions":[],"TMPFontGUID":null,"Text":"10
+    (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":15},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"shirt","CheckType":2,"RequiredValue":9}],"NodeUID":16}],"EditorInfo":{"isRoot":false,"xPos":-225.699829,"yPos":317.999634},"ID":14,"ParamActions":[],"TMPFontGUID":null,"Text":"10
     shirts tuition fee.","parentUIDs":[8,13],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":567.8002,"yPos":1034.99939},"ID":17,"ParamActions":[],"TMPFontGUID":null,"Text":"You
+    (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-220.199829,"yPos":550.9994},"ID":17,"ParamActions":[],"TMPFontGUID":null,"Text":"You
     can trade, scavenge, and craft things. Screwdriver requires: Screwdriver Head,
     Refined Metal, and Wood. Good luck.","parentUIDs":[16],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":46.0000153,"yPos":698.7997},"ID":19,"ParamActions":[],"TMPFontGUID":null,"Text":"Take
+    (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-742,"yPos":214.799683},"ID":19,"ParamActions":[],"TMPFontGUID":null,"Text":"Take
     a good look around the room,  and don''t let Boss caught you not at your seat.","parentUIDs":[9],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
-    Bush (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+    (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":88.5,"yPos":73},"ID":21,"ParamActions":[],"TMPFontGUID":null,"Text":"I''m
+    trapped here like you... That''s all I got.","parentUIDs":[20],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
+    (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":23}],"EditorInfo":{"isRoot":false,"xPos":371.5,"yPos":78},"ID":22,"ParamActions":[],"TMPFontGUID":null,"Text":"There
+    was a mass escape during the pandemic due to lack of monitor. Some stayed due
+    to frail body.","parentUIDs":[20],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
+    (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"shirt","CheckType":2,"RequiredValue":4}],"NodeUID":25},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":27}],"EditorInfo":{"isRoot":false,"xPos":359.5,"yPos":317},"ID":24,"ParamActions":[],"TMPFontGUID":null,"Text":"5
+    shirts tuition fee.","parentUIDs":[20,23],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
+    (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"is_sick_gone","CheckType":0,"RequiredValue":true}],"NodeUID":30}],"EditorInfo":{"isRoot":false,"xPos":363.5,"yPos":543},"ID":28,"ParamActions":[],"TMPFontGUID":null,"Text":"You
+    can trade, scavenge, and craft things. Crowbar requires: Bent Claw, Refined Metal,
+    and Wood. Kindness may take time to payback.","parentUIDs":[25],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
+    (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":357.5,"yPos":658},"ID":30,"ParamActions":[],"TMPFontGUID":null,"Text":"Seeky
+    is gone... She could have left, but stayed out of fear of dragging her friend
+    down.","parentUIDs":[28],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Hayden
+    (Blueprint)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
-  DefaultName: Hayden Bush (Blueprint)
+  DefaultName: Hayden (Blueprint)
   DefaultSprite: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
   DefaultFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   NodeSerializedDataList:
@@ -1006,11 +1023,44 @@ MonoBehaviour:
   - {fileID: 1009720300}
   - {fileID: 1009720299}
   - {fileID: 1009720314}
+  - {fileID: 1009720323}
+  - {fileID: 1009720322}
+  - {fileID: 1009720321}
+  - {fileID: 1009720320}
+  - {fileID: 1009720319}
+  - {fileID: 1009720318}
+  - {fileID: 1009720317}
+  - {fileID: 1009720316}
+  - {fileID: 1009720315}
   ContinueFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   EndConversationFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Event:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1172705596}
+        m_TargetAssemblyTypeName: SetGameFlagAction, Assembly-CSharp
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1302313401}
+        m_TargetAssemblyTypeName: SetGameFlagAction, Assembly-CSharp
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &304940199
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,23 +2144,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 13
-  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":-199.700089,"yPos":296.400024},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"Where
-    did you get the carving tool?","parentUIDs":[1],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":15.299942,"yPos":300.400024},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Why
-    do you need wood? And how do you get stick?","parentUIDs":[1],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"wood","CheckType":2,"RequiredValue":0}],"NodeUID":7},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"wood","CheckType":1,"RequiredValue":1}],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":235.299927,"yPos":299.400024},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"I
-    heard you trade things.","parentUIDs":[1],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":468.2998,"yPos":294.400024},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"Just
-    taking a walk.","parentUIDs":[1],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":247.299927,"yPos":518.4006},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"Deal...","parentUIDs":[7],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":480.2999,"yPos":523.600647},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"Let
-    me think about it.","parentUIDs":[7],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"wood","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"stick_trade_count","IntValue":0}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":1},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2}],"EditorInfo":{"isRoot":true,"xPos":299.799927,"yPos":36.3999939},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"*quick
+  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":-159.000015,"yPos":282.000031},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"Where
+    did you get the carving tool?","parentUIDs":[1],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":56.0000153,"yPos":286.000031},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"Why
+    do you need wood? And how do you get stick?","parentUIDs":[1],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"wood","CheckType":2,"RequiredValue":0}],"NodeUID":7},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"wood","CheckType":1,"RequiredValue":1}],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":276,"yPos":285.000031},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    heard you trade things.","parentUIDs":[1],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":508.999878,"yPos":280.000031},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"Just
+    taking a walk.","parentUIDs":[1],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":288,"yPos":504.00058},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"Deal...","parentUIDs":[7],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":521,"yPos":509.200653},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"Let
+    me think about it.","parentUIDs":[7],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"wood","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"stick_trade_count","IntValue":0}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":1},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2}],"EditorInfo":{"isRoot":true,"xPos":340.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"*quick
     glance at you*","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
-    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"stick_trade_count","CheckType":2,"RequiredValue":1}],"NodeUID":3},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"stick_trade_count","CheckType":2,"RequiredValue":0}],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":109.299866,"yPos":179.999954},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Trade?","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
-    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":516.2999,"yPos":184.4},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"I''m
+    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"stick_trade_count","CheckType":2,"RequiredValue":1}],"NodeUID":3},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"stick_trade_count","CheckType":2,"RequiredValue":0}],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":149.999939,"yPos":165.59996},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Trade?","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
+    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":557,"yPos":170},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"I''m
     still reviewing you.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
-    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":11},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":12}],"EditorInfo":{"isRoot":false,"xPos":249.299927,"yPos":384.400024},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes.
+    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":11},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":12}],"EditorInfo":{"isRoot":false,"xPos":290,"yPos":370.000031},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes.
     1 Wood for 1 Stick. No bargaining.","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
-    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":475.2999,"yPos":381.399963},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"You
+    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":516,"yPos":366.999969},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"You
     don''t seem to have what I need. Come back next time.","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
-    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":17.299942,"yPos":388.400024},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":58.0000153,"yPos":374.000031},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"I
     carve sticks with wood, and make some toys along the way.","parentUIDs":[4],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
-    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-209.700073,"yPos":391.199951},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"The
+    (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-169,"yPos":376.799957},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"The
     boy with red vest taught me how to craft. He knows a lot about crafting.","parentUIDs":[3],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Zeke
     (TradeStick)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
@@ -2426,22 +2476,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 12
-  json: "{\"Options\":[{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-142.300171,\"yPos\":367.6001},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Just
-    taking a look.\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":9}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":101.699829,\"yPos\":370.600037},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
-    heard you trade things?\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":8}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":337.6999,\"yPos\":379.2},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Do
-    you know anyone here?\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":581.699646,\"yPos\":369.600037},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Where
-    do you get your goods?\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-93.30017,\"yPos\":653.599854},\"ID\":10,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Let
-    me think about it.\",\"parentUIDs\":[9],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":135.699829,\"yPos\":653.599854},\"ID\":11,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Okay.\",\"parentUIDs\":[9],\"SpeechUID\":-1}],\"Parameters\":[{\"__type\":\"EditableIntParameter:#DialogueEditor\",\"ParameterName\":\"CurrentDay\",\"IntValue\":0},{\"__type\":\"EditableIntParameter:#DialogueEditor\",\"ParameterName\":\"shirt\",\"IntValue\":0},{\"__type\":\"EditableIntParameter:#DialogueEditor\",\"ParameterName\":\"scrap_trade_count\",\"IntValue\":0}],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"CurrentDay\",\"CheckType\":0,\"RequiredValue\":1}],\"NodeUID\":1},{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"CurrentDay\",\"CheckType\":2,\"RequiredValue\":1}],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":256.599823,\"yPos\":143.599976},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Hello
+  json: "{\"Options\":[{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-58.3999939,\"yPos\":246.000122},\"ID\":3,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Just
+    taking a look.\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":9}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":185.6,\"yPos\":249.000061},\"ID\":4,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I
+    heard you trade things?\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":8}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":421.600067,\"yPos\":257.600037},\"ID\":5,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Do
+    you know anyone here?\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":7}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":665.599854,\"yPos\":248.000061},\"ID\":6,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Where
+    do you get your goods?\",\"parentUIDs\":[2],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":-9.399994,\"yPos\":531.9999},\"ID\":10,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Let
+    me think about it.\",\"parentUIDs\":[9],\"SpeechUID\":-1},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":219.6,\"yPos\":531.9999},\"ID\":11,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Okay.\",\"parentUIDs\":[9],\"SpeechUID\":-1}],\"Parameters\":[{\"__type\":\"EditableIntParameter:#DialogueEditor\",\"ParameterName\":\"CurrentDay\",\"IntValue\":0},{\"__type\":\"EditableIntParameter:#DialogueEditor\",\"ParameterName\":\"shirt\",\"IntValue\":0},{\"__type\":\"EditableIntParameter:#DialogueEditor\",\"ParameterName\":\"scrap_trade_count\",\"IntValue\":0}],\"SpeechNodes\":[{\"Connections\":[{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"CurrentDay\",\"CheckType\":0,\"RequiredValue\":1}],\"NodeUID\":1},{\"__type\":\"EditableSpeechConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"CurrentDay\",\"CheckType\":2,\"RequiredValue\":1}],\"NodeUID\":2}],\"EditorInfo\":{\"isRoot\":true,\"xPos\":340.5,\"yPos\":22},\"ID\":0,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Hello
     \u30FE(\u2267\u25BD\u2266*)o\",\"parentUIDs\":[],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Eren
-    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":476.699646,\"yPos\":252.59996},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Sorry,
+    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":560.599854,\"yPos\":130.999985},\"ID\":1,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Sorry,
     Zeke said don't talk to new people on their first day.\",\"parentUIDs\":[0],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Eren
-    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"scrap_trade_count\",\"CheckType\":2,\"RequiredValue\":0}],\"NodeUID\":5},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"scrap_trade_count\",\"CheckType\":2,\"RequiredValue\":1}],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":84.69983,\"yPos\":248.599976},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"How
+    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":3},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":4},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"scrap_trade_count\",\"CheckType\":2,\"RequiredValue\":0}],\"NodeUID\":5},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[{\"__type\":\"EditableIntCondition:#DialogueEditor\",\"ParameterName\":\"scrap_trade_count\",\"CheckType\":2,\"RequiredValue\":1}],\"NodeUID\":6}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":168.6,\"yPos\":127},\"ID\":2,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"How
     can I help? ( \u2022\u0300 \u03C9 \u2022\u0301 )\u2727\",\"parentUIDs\":[0],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Eren
-    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":580.699646,\"yPos\":488.60022},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I..I
+    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":664.599854,\"yPos\":367.000244},\"ID\":7,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"I..I
     can't tell you. But you can ask Curie. He knows a lot about the place.\",\"parentUIDs\":[6],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Eren
-    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":345.499817,\"yPos\":502.4002},\"ID\":8,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Zeke!
+    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[],\"EditorInfo\":{\"isRoot\":false,\"xPos\":429.4,\"yPos\":380.800232},\"ID\":8,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Zeke!
     He needs wood!\",\"parentUIDs\":[5],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Eren
-    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":10},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":11}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":91.49985,\"yPos\":495.000183},\"ID\":9,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Yes,
+    (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0},{\"Connections\":[{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":10},{\"__type\":\"EditableOptionConnection:#DialogueEditor\",\"Conditions\":[],\"NodeUID\":11}],\"EditorInfo\":{\"isRoot\":false,\"xPos\":175.400024,\"yPos\":373.4002},\"ID\":9,\"ParamActions\":[],\"TMPFontGUID\":null,\"Text\":\"Yes,
     3...emm 2 shirts for 1 metal scrap. Do you want to trade? ^o^\",\"parentUIDs\":[4],\"AdvanceDialogueAutomatically\":false,\"AudioGUID\":null,\"AutoAdvanceShouldDisplayOption\":false,\"IconGUID\":null,\"Name\":\"Eren
     (TradeScrap)\",\"OptionUIDs\":null,\"SpeechUID\":0,\"TimeUntilAdvance\":0,\"Volume\":0}]}"
   saveVersion: 110
@@ -2793,37 +2843,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83189876d4d389f43b7dd2e925aa112e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
-  CurrentIDCounter: 19
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-90.00003,"yPos":253.0001},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"Just
-    taking a walk.","parentUIDs":[2],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":138,"yPos":258.999939},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"People
-    said you knows a lot about this place","parentUIDs":[2],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":397,"yPos":258},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Can
-    I ask you something?","parentUIDs":[2],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":140,"yPos":504.000031},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"Crafting
-    Tips?","parentUIDs":[7],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":12}],"EditorInfo":{"isRoot":false,"xPos":400.199951,"yPos":507.600128},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"How''s
-    the people here?","parentUIDs":[7],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":11}],"EditorInfo":{"isRoot":false,"xPos":674,"yPos":497.000031},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"About
-    the vent","parentUIDs":[7],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":16}],"EditorInfo":{"isRoot":false,"xPos":468.699921,"yPos":731.8002},"ID":14,"ParamActions":[],"TMPFontGUID":null,"Text":"Open
-    the vent.","parentUIDs":[11],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"recipe_sdriver_unlocked","CheckType":0,"RequiredValue":false}],"NodeUID":17},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"recipe_sdriver_unlocked","CheckType":0,"RequiredValue":true}],"NodeUID":18}],"EditorInfo":{"isRoot":false,"xPos":805.699951,"yPos":732.0001},"ID":15,"ParamActions":[],"TMPFontGUID":null,"Text":"Crafting
-    the tool.","parentUIDs":[11],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"vent_interacted","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"recipe_sdriver_unlocked","BoolValue":false}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":1},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":2}],"EditorInfo":{"isRoot":true,"xPos":283,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Hi~","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":484.999969,"yPos":139.000366},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Careful,
+  CurrentIDCounter: 28
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-32.5,"yPos":253.000046},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"Just
+    taking a walk.","parentUIDs":[2],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":195.5,"yPos":258.999878},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"People
+    said you knows a lot about this place","parentUIDs":[2],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":454.5,"yPos":257.999939},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Can
+    I ask you something?","parentUIDs":[2],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":197.5,"yPos":504.000183},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"Crafting
+    Tips?","parentUIDs":[7],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":12}],"EditorInfo":{"isRoot":false,"xPos":457.699951,"yPos":507.600281},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"How''s
+    the people here?","parentUIDs":[7],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":11}],"EditorInfo":{"isRoot":false,"xPos":731.5,"yPos":497.0002},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"About
+    the vent","parentUIDs":[7],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":16}],"EditorInfo":{"isRoot":false,"xPos":526.199951,"yPos":731.8006},"ID":14,"ParamActions":[],"TMPFontGUID":null,"Text":"Open
+    the vent.","parentUIDs":[11],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"recipe_sdriver_unlocked","CheckType":0,"RequiredValue":false}],"NodeUID":17},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"recipe_sdriver_unlocked","CheckType":0,"RequiredValue":true}],"NodeUID":18}],"EditorInfo":{"isRoot":false,"xPos":863.1999,"yPos":732.000549},"ID":15,"ParamActions":[],"TMPFontGUID":null,"Text":"Crafting
+    the tool.","parentUIDs":[11],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":20}],"EditorInfo":{"isRoot":false,"xPos":1441,"yPos":485},"ID":19,"ParamActions":[],"TMPFontGUID":null,"Text":"About
+    the boarded hole.","parentUIDs":[7],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":23}],"EditorInfo":{"isRoot":false,"xPos":1276,"yPos":727},"ID":21,"ParamActions":[],"TMPFontGUID":null,"Text":"Remove
+    the boards.","parentUIDs":[20],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"recipe_crowbar_unlocked","CheckType":0,"RequiredValue":false}],"NodeUID":24},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"recipe_crowbar_unlocked","CheckType":0,"RequiredValue":true}],"NodeUID":25}],"EditorInfo":{"isRoot":false,"xPos":1688,"yPos":729},"ID":22,"ParamActions":[],"TMPFontGUID":null,"Text":"Crafting
+    the tool.","parentUIDs":[20],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"vent_interacted","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"recipe_sdriver_unlocked","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"is_sick_gone","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"recipe_crowbar_unlocked","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"hole_interacted","BoolValue":false}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":1},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":2}],"EditorInfo":{"isRoot":true,"xPos":340.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Hi~","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":542.5,"yPos":139.0003},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Careful,
     Boss will check on us randomly....","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5}],"EditorInfo":{"isRoot":false,"xPos":138,"yPos":134.000366},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes?","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":145.200012,"yPos":355.7999},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"Thanks.
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":3},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":4},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5}],"EditorInfo":{"isRoot":false,"xPos":195.5,"yPos":134.0003},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"Yes?","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":202.700012,"yPos":355.7998},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"Thanks.
     Be curious and observant. You can do it too.","parentUIDs":[4],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":8},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":9},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":400,"yPos":357.999847},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":8},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":9},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"vent_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":10},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"hole_interacted","CheckType":0,"RequiredValue":true}],"NodeUID":19}],"EditorInfo":{"isRoot":false,"xPos":457.5,"yPos":357.999756},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"I
     see if I know it.","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":14},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":15}],"EditorInfo":{"isRoot":false,"xPos":673.5,"yPos":613.000366},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"Crafting
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":14},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":15}],"EditorInfo":{"isRoot":false,"xPos":731,"yPos":613.0005},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"Crafting
     the tool or opening the vent?","parentUIDs":[10],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":398.899963,"yPos":606.0006},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"Hayden''s
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":456.399963,"yPos":606.000732},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"Hayden''s
     good with crafting.\nThe brothers trade things.\n*SICK* will need some help if
     you can.\u2028 Be patient with *LOCKDOWN*.","parentUIDs":[9],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":138.5,"yPos":619.8004},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"One
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":196,"yPos":619.800537},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"One
     of the material can combine with its duplicate.","parentUIDs":[8],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":461.499969,"yPos":829.0001},"ID":16,"ParamActions":[],"TMPFontGUID":null,"Text":"I''m
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":519,"yPos":829.001038},"ID":16,"ParamActions":[],"TMPFontGUID":null,"Text":"I''m
     not sure if that''s a good idea. But a screwdriver will be ideal. Hayden might
     know something.","parentUIDs":[14],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":718.5001,"yPos":830.0001},"ID":17,"ParamActions":[],"TMPFontGUID":null,"Text":"If
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":780.0001,"yPos":830.001038},"ID":17,"ParamActions":[],"TMPFontGUID":null,"Text":"If
     you could show me the recipe I might be able to figure out something","parentUIDs":[15],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
-    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":980.500366,"yPos":831.0001},"ID":18,"ParamActions":[],"TMPFontGUID":null,"Text":"I
-    seen someone made a file with wood and something...","parentUIDs":[15],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":1038.00037,"yPos":831.001},"ID":18,"ParamActions":[],"TMPFontGUID":null,"Text":"Screwdriver
+    head? You can try file it out with refine metal.","parentUIDs":[15],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":21},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":22}],"EditorInfo":{"isRoot":false,"xPos":1444,"yPos":604},"ID":20,"ParamActions":[],"TMPFontGUID":null,"Text":"Crafting
+    the tool or removing the boards?","parentUIDs":[19],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":1276,"yPos":827},"ID":23,"ParamActions":[],"TMPFontGUID":null,"Text":"Crowbar
+    is definitely rare around here... Maybe you can ask Hayden?","parentUIDs":[21],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":26}],"EditorInfo":{"isRoot":false,"xPos":1512,"yPos":827},"ID":24,"ParamActions":[],"TMPFontGUID":null,"Text":"Long
+    ago there was a mass escape through that whole. Someone might have kept things
+    from that incident. ","parentUIDs":[22],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"is_sick_gone","CheckType":0,"RequiredValue":true}],"NodeUID":27}],"EditorInfo":{"isRoot":false,"xPos":1745,"yPos":825},"ID":25,"ParamActions":[],"TMPFontGUID":null,"Text":"Bent
+    Claw? Definitly not something can be crafted. Hmm, I know Seeky was close to
+    the girl that planned the mass escape through the hole.","parentUIDs":[22],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":1515,"yPos":939},"ID":26,"ParamActions":[],"TMPFontGUID":null,"Text":"If
+    you could show me the recipe I might be able to figure out something","parentUIDs":[24],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
+    (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":1745,"yPos":943},"ID":27,"ParamActions":[],"TMPFontGUID":null,"Text":"Seeky''s
+    condition worsened over the past two days, and the guards took her out last night.
+    I doubt anyone else have a Bent Claw.","parentUIDs":[25],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Curie
     (Info NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: Curie (Info NPC)
@@ -2849,6 +2917,15 @@ MonoBehaviour:
   - {fileID: 1792375643}
   - {fileID: 1792375642}
   - {fileID: 1792375641}
+  - {fileID: 1792375667}
+  - {fileID: 1792375666}
+  - {fileID: 1792375665}
+  - {fileID: 1792375664}
+  - {fileID: 1792375663}
+  - {fileID: 1792375662}
+  - {fileID: 1792375661}
+  - {fileID: 1792375660}
+  - {fileID: 1792375659}
   ContinueFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   EndConversationFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Event:
@@ -4044,8 +4121,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 3
-  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":283,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"test","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Sick
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":340.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"test","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Seeky
+    (Sick NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: Sick NPC
   DefaultSprite: {fileID: 21300000, guid: f2ee6bf3100ff8043bc9d105f9709f8a, type: 3}
@@ -4786,19 +4863,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 11
-  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":198.500031,"yPos":395.80014},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"What''s
-    your name?","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":-86.49997,"yPos":396.80014},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"Here
-    have a shirt!","parentUIDs":[3],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":193.6,"yPos":605.8002},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"She
-    still isn''t moving.","parentUIDs":[7],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-100.199982,"yPos":594.8002},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"I
-    don''t think she cares about her quota.","parentUIDs":[9],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"gave_shirt","BoolValue":false},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"shirt","IntValue":0}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":3}],"EditorInfo":{"isRoot":true,"xPos":371,"yPos":74.79999},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
+  json: '{"Options":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":7}],"EditorInfo":{"isRoot":false,"xPos":391.000031,"yPos":410.000153},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"What''s
+    your name?","parentUIDs":[3],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":9}],"EditorInfo":{"isRoot":false,"xPos":106.000031,"yPos":411.000153},"ID":6,"ParamActions":[],"TMPFontGUID":null,"Text":"Here
+    have a shirt!","parentUIDs":[3],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":386.1,"yPos":620.0002},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"She
+    still isn''t moving.","parentUIDs":[7],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":92.30002,"yPos":609.0002},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"I
+    don''t think she cares about her quota.","parentUIDs":[9],"SpeechUID":-1}],"Parameters":[{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"gave_shirt","BoolValue":false},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"shirt","IntValue":0}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":0,"RequiredValue":1}],"NodeUID":2},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1}],"NodeUID":3}],"EditorInfo":{"isRoot":true,"xPos":563.5,"yPos":89},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
     sits in silence*","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Denial
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":585.499939,"yPos":226.799988},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":777.999939,"yPos":241},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
     stays silent*","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Denial
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"gave_shirt","CheckType":0,"RequiredValue":true}],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":119.099976,"yPos":241.999985},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":5},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"gave_shirt","CheckType":0,"RequiredValue":true}],"NodeUID":6}],"EditorInfo":{"isRoot":false,"xPos":311.599976,"yPos":256.2},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
     stays silent*","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Denial
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":192.800018,"yPos":490.8002},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":385.300018,"yPos":505.000244},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
     stays silent*","parentUIDs":[5],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Denial
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":-93.19998,"yPos":484.80014},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":10}],"EditorInfo":{"isRoot":false,"xPos":99.30002,"yPos":499.000122},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"*girl
     stays silent*","parentUIDs":[6],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Denial
     NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
@@ -5070,6 +5147,15 @@ GameObject:
   - component: {fileID: 1009720300}
   - component: {fileID: 1009720299}
   - component: {fileID: 1009720314}
+  - component: {fileID: 1009720323}
+  - component: {fileID: 1009720322}
+  - component: {fileID: 1009720321}
+  - component: {fileID: 1009720320}
+  - component: {fileID: 1009720319}
+  - component: {fileID: 1009720318}
+  - component: {fileID: 1009720317}
+  - component: {fileID: 1009720316}
+  - component: {fileID: 1009720315}
   m_Layer: 0
   m_Name: ConversationEventInfo
   m_TagString: Untagged
@@ -5462,6 +5548,225 @@ MonoBehaviour:
   NodeID: 19
   TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
+  Audio: {fileID: 0}
+--- !u!114 &1009720315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009720296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 30
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
+  Audio: {fileID: 0}
+--- !u!114 &1009720316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009720296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1172705596}
+        m_TargetAssemblyTypeName: SetGameFlagAction, Assembly-CSharp
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1302313401}
+        m_TargetAssemblyTypeName: SetGameFlagAction, Assembly-CSharp
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  NodeID: 28
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
+  Audio: {fileID: 0}
+--- !u!114 &1009720317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009720296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 27
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &1009720318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009720296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1664873470}
+        m_TargetAssemblyTypeName: InventoryTransaction, Assembly-CSharp
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  NodeID: 25
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &1009720319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009720296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1894967973}
+        m_TargetAssemblyTypeName: SetGameFlagAction, Assembly-CSharp
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  NodeID: 24
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
+  Audio: {fileID: 0}
+--- !u!114 &1009720320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009720296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 23
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &1009720321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009720296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 22
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
+  Audio: {fileID: 0}
+--- !u!114 &1009720322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009720296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 21
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: 445a17ed1a9b4e640a8ce5a6e2e0b641, type: 3}
+  Audio: {fileID: 0}
+--- !u!114 &1009720323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009720296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 20
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 0}
   Audio: {fileID: 0}
 --- !u!1001 &1025627138
 PrefabInstance:
@@ -6240,6 +6545,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01385550215ee47418577c2123015576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialHUD
+--- !u!1 &1172705594
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1172705595}
+  - component: {fileID: 1172705596}
+  m_Layer: 3
+  m_Name: CrowbarRecipeUnlocked_T
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1172705595
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172705594}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1735675254}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1172705596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1172705594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cfafe1a86e91444959f78ab6be0cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SetGameFlagAction
+  flag: {fileID: 11400000, guid: fe03b5a9b82b33b409a7a756379fb8da, type: 2}
+  value: 1
 --- !u!1 &1184107096
 GameObject:
   m_ObjectHideFlags: 0
@@ -6527,6 +6878,52 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4216384262744028943, guid: be0dae57d80718b43950011260edd9e9, type: 3}
   m_PrefabInstance: {fileID: 7542321580228605084}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1302313399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1302313400}
+  - component: {fileID: 1302313401}
+  m_Layer: 3
+  m_Name: CrowbarRecipeGiven_T
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1302313400
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302313399}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1735675254}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1302313401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302313399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cfafe1a86e91444959f78ab6be0cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SetGameFlagAction
+  flag: {fileID: 11400000, guid: d2e51206429e4ba408818f74fbb8aff7, type: 2}
+  value: 1
 --- !u!1 &1334231730
 GameObject:
   m_ObjectHideFlags: 0
@@ -7294,6 +7691,55 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &1664873468
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1664873469}
+  - component: {fileID: 1664873470}
+  m_Layer: 3
+  m_Name: Give_5shirt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1664873469
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664873468}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1735675254}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1664873470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1664873468}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7515663bf9153342a104194030ec8fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryTransaction
+  costs:
+  - item: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
+    amount: 5
+  rewards: []
+  requireSpaceForAllRewards: 0
 --- !u!1 &1666169614
 GameObject:
   m_ObjectHideFlags: 0
@@ -7390,9 +7836,13 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1334231731}
+  - {fileID: 1664873469}
   - {fileID: 323242491}
   - {fileID: 396730065}
   - {fileID: 1090327804}
+  - {fileID: 1302313400}
+  - {fileID: 1172705595}
+  - {fileID: 1894967972}
   m_Father: {fileID: 285279735}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1741245550 stripped
@@ -7559,7 +8009,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 1
-  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":283,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Test","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Lockdown
+  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":340.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Test","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Lockdown
     NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: Lockdown NPC
@@ -7629,6 +8079,15 @@ GameObject:
   - component: {fileID: 1792375643}
   - component: {fileID: 1792375642}
   - component: {fileID: 1792375641}
+  - component: {fileID: 1792375667}
+  - component: {fileID: 1792375666}
+  - component: {fileID: 1792375665}
+  - component: {fileID: 1792375664}
+  - component: {fileID: 1792375663}
+  - component: {fileID: 1792375662}
+  - component: {fileID: 1792375661}
+  - component: {fileID: 1792375660}
+  - component: {fileID: 1792375659}
   m_Layer: 0
   m_Name: ConversationEventInfo
   m_TagString: Untagged
@@ -8012,6 +8471,177 @@ MonoBehaviour:
   TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
   Audio: {fileID: 0}
+--- !u!114 &1792375659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792375638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 27
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
+  Audio: {fileID: 0}
+--- !u!114 &1792375660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792375638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 26
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
+  Audio: {fileID: 0}
+--- !u!114 &1792375661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792375638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 25
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
+  Audio: {fileID: 0}
+--- !u!114 &1792375662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792375638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 24
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
+  Audio: {fileID: 0}
+--- !u!114 &1792375663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792375638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 23
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
+  Audio: {fileID: 0}
+--- !u!114 &1792375664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792375638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 22
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &1792375665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792375638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 21
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
+--- !u!114 &1792375666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792375638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 20
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 21300000, guid: cc11235ed648a0f4897f87d4a5387419, type: 3}
+  Audio: {fileID: 0}
+--- !u!114 &1792375667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792375638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00abedce3cdbbba46bf2d86c9518c9f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NodeEventHolder
+  Event:
+    m_PersistentCalls:
+      m_Calls: []
+  NodeID: 19
+  TMPFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+  Icon: {fileID: 0}
+  Audio: {fileID: 0}
 --- !u!4 &1835661446 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7687156361374857356, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
@@ -8130,6 +8760,52 @@ MonoBehaviour:
   TMPFont: {fileID: 0}
   Icon: {fileID: 0}
   Audio: {fileID: 0}
+--- !u!1 &1894967971
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1894967972}
+  - component: {fileID: 1894967973}
+  m_Layer: 3
+  m_Name: KnowsCrowbarPrice_T
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1894967972
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894967971}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1735675254}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1894967973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894967971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1cfafe1a86e91444959f78ab6be0cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SetGameFlagAction
+  flag: {fileID: 11400000, guid: b2d0de8630f7d15498d9d6caba467523, type: 2}
+  value: 1
 --- !u!1 &1912368227
 GameObject:
   m_ObjectHideFlags: 0
@@ -9107,38 +9783,18 @@ PrefabInstance:
       propertyPath: quotaText
       value: 
       objectReference: {fileID: 1741245550}
-    - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: items.Array.data[0].quantity
-      value: 1
+    - target: {fileID: 6289797121930636120, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: flags.Array.size
+      value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: items.Array.data[1].quantity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: items.Array.data[2].quantity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: items.Array.data[3].quantity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: items.Array.data[4].quantity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: items.Array.data[5].quantity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: items.Array.data[6].quantity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6099101263565619696, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: items.Array.data[7].quantity
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 6289797121930636120, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: 'flags.Array.data[14]'
+      value: 
+      objectReference: {fileID: 11400000, guid: b2d0de8630f7d15498d9d6caba467523, type: 2}
+    - target: {fileID: 6289797121930636120, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: 'flags.Array.data[15]'
+      value: 
+      objectReference: {fileID: 11400000, guid: d2e51206429e4ba408818f74fbb8aff7, type: 2}
     - target: {fileID: 6976893978927954516, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
       propertyPath: boss
       value: 
@@ -9243,6 +9899,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1601062439301131292, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_Color.a
+      value: 0.22745098
+      objectReference: {fileID: 0}
     - target: {fileID: 2131507554243985064, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -9251,9 +9911,9 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
-    - target: {fileID: 2888789573586758201, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
-      propertyPath: m_Color.a
-      value: 0.63529414
+    - target: {fileID: 2888789573651778983, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: DialogueBackgroundOpacity
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 3230289615006512322, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_Pivot.x
@@ -9409,69 +10069,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4284400813181945959, guid: ac92cd39068325745970fb1664762c36, type: 3}
-      propertyPath: Icon
-      value: 
-      objectReference: {fileID: 21300000, guid: 94b315ef31744814287c5e202b5b5ee9, type: 3}
-    - target: {fileID: 5299947060969437753, guid: ac92cd39068325745970fb1664762c36, type: 3}
-      propertyPath: json
-      value: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":283,"yPos":21.1999969},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"You
-        ain''t going anywhere until you get your job done!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 5299947060969437753, guid: ac92cd39068325745970fb1664762c36, type: 3}
-      propertyPath: DefaultFont
-      value: 
-      objectReference: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
-    - target: {fileID: 5299947060969437753, guid: ac92cd39068325745970fb1664762c36, type: 3}
-      propertyPath: DefaultSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 94b315ef31744814287c5e202b5b5ee9, type: 3}
     - target: {fileID: 5339916617538917166, guid: ac92cd39068325745970fb1664762c36, type: 3}
       propertyPath: m_Name
       value: BossSystem
       objectReference: {fileID: 0}
-    - target: {fileID: 6204249000736689325, guid: ac92cd39068325745970fb1664762c36, type: 3}
-      propertyPath: json
-      value: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":87.79997,"yPos":50},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Alright
-        Kido, I spent big money to get you into the factory, so you better shows
-        some value.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":2}],"EditorInfo":{"isRoot":false,"xPos":91.99992,"yPos":211.200012},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Your
-        job is simple. Fold the shirt, meet the quota, then you can sleep.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":87.99992,"yPos":366.3998},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"This
-        is your first day, I will make sure you finish your work before I leave.
-        Don''t try to play tricks.","parentUIDs":[1],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 7228103978051617864, guid: ac92cd39068325745970fb1664762c36, type: 3}
-      propertyPath: Icon
-      value: 
-      objectReference: {fileID: 21300000, guid: 94b315ef31744814287c5e202b5b5ee9, type: 3}
-    - target: {fileID: 7228103978051617864, guid: ac92cd39068325745970fb1664762c36, type: 3}
-      propertyPath: TMPFont
-      value: 
-      objectReference: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
-    - target: {fileID: 7235207386063470099, guid: ac92cd39068325745970fb1664762c36, type: 3}
-      propertyPath: Icon
-      value: 
-      objectReference: {fileID: 21300000, guid: 94b315ef31744814287c5e202b5b5ee9, type: 3}
-    - target: {fileID: 7235207386063470099, guid: ac92cd39068325745970fb1664762c36, type: 3}
-      propertyPath: TMPFont
-      value: 
-      objectReference: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
-    - target: {fileID: 8392459413755439716, guid: ac92cd39068325745970fb1664762c36, type: 3}
-      propertyPath: json
-      value: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":282.2,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Not
-        to bad on your first day. Just a reminder, don''t waste your time on escaping,
-        no one made it home alive.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":281.6,"yPos":152.8},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"I''m
-        not a demon, so fell free to sleep and start a new day after your work. Good
-        night.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8731480019218306990, guid: ac92cd39068325745970fb1664762c36, type: 3}
-      propertyPath: json
-      value: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":282.199982,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Focus
-        on your work, maggot!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
-      objectReference: {fileID: 0}
-    - target: {fileID: 9197424096014184506, guid: ac92cd39068325745970fb1664762c36, type: 3}
-      propertyPath: Icon
-      value: 
-      objectReference: {fileID: 21300000, guid: 94b315ef31744814287c5e202b5b5ee9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

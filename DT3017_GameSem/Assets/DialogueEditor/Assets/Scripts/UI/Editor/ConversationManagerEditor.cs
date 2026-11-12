@@ -17,6 +17,7 @@ namespace DialogueEditor
 
         SerializedProperty BackgroundImageProperty;
         SerializedProperty BackgroundImageSlicedProperty;
+        SerializedProperty DialogueBackgroundOpacityProperty;
         SerializedProperty OptionImageProperty;
         SerializedProperty OptionImageSlicedProperty;
         SerializedProperty ScrollTextProperty;
@@ -30,6 +31,7 @@ namespace DialogueEditor
         {
             BackgroundImageProperty = serializedObject.FindProperty("BackgroundImage");
             BackgroundImageSlicedProperty = serializedObject.FindProperty("BackgroundImageSliced");
+            DialogueBackgroundOpacityProperty = serializedObject.FindProperty("DialogueBackgroundOpacity");
             OptionImageProperty = serializedObject.FindProperty("OptionImage");
             OptionImageSlicedProperty = serializedObject.FindProperty("OptionImageSliced");
             ScrollTextProperty = serializedObject.FindProperty("ScrollText");
@@ -57,6 +59,7 @@ namespace DialogueEditor
             GUILayout.Label("Dialogue Image Options", EditorStyles.boldLabel);
             EditorGUILayout.PropertyField(BackgroundImageProperty);
             EditorGUILayout.PropertyField(BackgroundImageSlicedProperty); 
+            EditorGUILayout.PropertyField(DialogueBackgroundOpacityProperty, new GUIContent("Background Opacity"));
             EditorGUILayout.Space();
 
             // Option image
