@@ -1499,7 +1499,7 @@ namespace DialogueEditor
 #if UNITY_EDITOR
             if (!Application.isPlaying && CurrentAsset != null)
             {
-                // In Prefab Mode the conversation lives in the prefab stage scene,
+                // In Prefab Mode the conversation belongs to the prefab stage,
                 // which is different from the active gameplay scene.
                 UnityEngine.SceneManagement.Scene conversationScene = CurrentAsset.gameObject.scene;
                 if (conversationScene.IsValid())
@@ -1572,9 +1572,9 @@ namespace DialogueEditor
                 // Serialize
                 CurrentAsset.Serialize(conversation);
 
-                // The dialogue window edits component fields directly, outside a
-                // SerializedObject inspector. Record both the conversation and its
-                // per-node icon holders so prefab saves and scene overrides persist.
+                // This window changes component fields directly rather than through
+                // a SerializedObject inspector. Record the conversation and its node
+                // holders so prefab saves and scene overrides keep their changes.
                 EditorUtility.SetDirty(CurrentAsset);
                 if (PrefabUtility.IsPartOfPrefabInstance(CurrentAsset))
                     PrefabUtility.RecordPrefabInstancePropertyModifications(CurrentAsset);
