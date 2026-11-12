@@ -15,4 +15,4 @@ MonoBehaviour:
   itemId: chocolate
   displayName: Chocolate
   stackLimit: 5
-  icon: {fileID: 21300000, guid: f27fdb6b1919cc94cb69494d7a88283f, type: 3}
+  icon: {fileID: 21300000, guid: 418ccaef99d847f4c9d9fbff26b68e64, type: 3}
