@@ -57,25 +57,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
   items:
   - item: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
-    quantity: 0
-  - item: {fileID: 11400000, guid: aeb54d50f3b7fe946acf7334085c2a44, type: 2}
-    quantity: 0
-  - item: {fileID: 11400000, guid: 7ce056aef7bfef34abacbf7a370a24d5, type: 2}
-    quantity: 0
-  - item: {fileID: 11400000, guid: 182d59327ac79bb489f31a3372fc5710, type: 2}
-    quantity: 0
-  - item: {fileID: 11400000, guid: 3b615d5d53bd6394c918758538ecfbdc, type: 2}
-    quantity: 0
-  - item: {fileID: 11400000, guid: 084b8554363c6d5479f4d33f466aec8b, type: 2}
-    quantity: 0
-  - item: {fileID: 11400000, guid: 2cc802e0568494c449c2b5fb6c253a15, type: 2}
-    quantity: 0
-  - item: {fileID: 11400000, guid: ff3402cf6f49d554c84a0aaaddc1f59a, type: 2}
-    quantity: 0
-  - item: {fileID: 11400000, guid: 8b30a2c29948d404ab21ecc67ffd0f76, type: 2}
-    quantity: 0
+    quantity: 1
   - item: {fileID: 11400000, guid: eff7831812c9e9c478acbeab5ba7f1ff, type: 2}
     quantity: 0
+  - item: {fileID: 11400000, guid: 7ce056aef7bfef34abacbf7a370a24d5, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: 182d59327ac79bb489f31a3372fc5710, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: 2cc802e0568494c449c2b5fb6c253a15, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: 084b8554363c6d5479f4d33f466aec8b, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: ff3402cf6f49d554c84a0aaaddc1f59a, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: aeb54d50f3b7fe946acf7334085c2a44, type: 2}
+    quantity: 0
+  - item: {fileID: 11400000, guid: 3b615d5d53bd6394c918758538ecfbdc, type: 2}
+    quantity: 1
+  - item: {fileID: 11400000, guid: 8b30a2c29948d404ab21ecc67ffd0f76, type: 2}
+    quantity: 0
+  - item: {fileID: 11400000, guid: 0faf2617225954a4299a0692b045ffc9, type: 2}
+    quantity: 1
 --- !u!114 &6289797121930636120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -100,6 +102,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b12df936a8877a14e9e79c07dffa2124, type: 2}
   - {fileID: 11400000, guid: 2cb28c4cb5400394b846d11cbed05e75, type: 2}
   - {fileID: 11400000, guid: 220d6eca5209f6443aa93e860d0c49fd, type: 2}
+  - {fileID: 11400000, guid: 003f82150dd0a8843b96c75a0dc730b4, type: 2}
+  - {fileID: 11400000, guid: 108d178a3e1ef9b43b7682dd5b40f5bd, type: 2}
+  - {fileID: 11400000, guid: d2e51206429e4ba408818f74fbb8aff7, type: 2}
   integers:
   - {fileID: 11400000, guid: cfa4fa25481ad154798d9fe8ea00ddc5, type: 2}
   - {fileID: 11400000, guid: 72741374ffee2d44295ddd67c5cc4733, type: 2}

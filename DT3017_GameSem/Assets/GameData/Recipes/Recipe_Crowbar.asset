@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2b4d48565d9f5d644a235319af24cf2a, type: 3}
-  m_Name: Recipe_Axe
+  m_Name: Recipe_Crowbar
   m_EditorClassIdentifier: Assembly-CSharp::CraftingRecipeData
   displayName: Axe
   ingredients:
-  - item: {fileID: 11400000, guid: 7ce056aef7bfef34abacbf7a370a24d5, type: 2}
+  - item: {fileID: 11400000, guid: 0faf2617225954a4299a0692b045ffc9, type: 2}
     amount: 1
   - item: {fileID: 11400000, guid: ff3402cf6f49d554c84a0aaaddc1f59a, type: 2}
     amount: 1
-  - item: {fileID: 11400000, guid: 182d59327ac79bb489f31a3372fc5710, type: 2}
+  - item: {fileID: 11400000, guid: 2cc802e0568494c449c2b5fb6c253a15, type: 2}
     amount: 1
   result: {fileID: 11400000, guid: 8b30a2c29948d404ab21ecc67ffd0f76, type: 2}
   resultAmount: 1
