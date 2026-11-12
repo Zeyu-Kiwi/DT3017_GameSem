@@ -35,6 +35,8 @@ namespace DialogueEditor
         public float ScrollSpeed = 1;
         public Sprite BackgroundImage;
         public bool BackgroundImageSliced;
+        [Tooltip("Opacity of the dialogue panel background while a conversation is visible. Does not affect text or the NPC icon.")]
+        [Range(0f, 1f)] public float DialogueBackgroundOpacity = 1f;
         public Sprite OptionImage;
         public bool OptionImageSliced;
         public bool AllowMouseInteraction;
@@ -319,7 +321,7 @@ namespace DialogueEditor
                     m_selectedOption = null;
                     break;
                 case eState.TransitioningDialogueBoxOn:
-                    SetColorAlpha(DialogueBackground, 1);
+                    SetColorAlpha(DialogueBackground, DialogueBackgroundOpacity);
                     SetColorAlpha(NpcIcon, 1);
                     SetColorAlpha(NameText, 1);
                     break;
@@ -387,7 +389,7 @@ namespace DialogueEditor
                 return;
             }
 
-            SetColorAlpha(DialogueBackground, t);
+            SetColorAlpha(DialogueBackground, t * DialogueBackgroundOpacity);
             SetColorAlpha(NpcIcon, t);
             SetColorAlpha(NameText, t);
         }
@@ -495,7 +497,7 @@ namespace DialogueEditor
                 return;
             }
 
-            SetColorAlpha(DialogueBackground, 1 - t);
+            SetColorAlpha(DialogueBackground, (1 - t) * DialogueBackgroundOpacity);
             SetColorAlpha(NpcIcon, 1 - t);
             SetColorAlpha(NameText, 1 - t);
         }

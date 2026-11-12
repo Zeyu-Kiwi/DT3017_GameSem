@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5e9341db4d91dc04eb776e59e737ad83, type: 3}
-  m_Name: Recipe_Axe_Unlcoked
+  m_Name: HoleInteracted
   m_EditorClassIdentifier: Assembly-CSharp::GameFlagData
-  flagId: recipe_axe_unlocked
-  displayName: Recipe Axe Unlcoked
+  flagId: hole_interacted
+  displayName: HoleInteracted
   startingValue: 0
