@@ -169,7 +169,9 @@ namespace DialogueEditor
             Recenter();
             Repaint();
 
-            MarkSceneDirty();
+#if UNITY_EDITOR
+            UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene());
+#endif
         }
 
         
@@ -1497,13 +1499,9 @@ namespace DialogueEditor
         private void MarkSceneDirty()
         {
 #if UNITY_EDITOR
-            if (!Application.isPlaying && CurrentAsset != null)
+            if (!Application.isPlaying)
             {
-                // In Prefab Mode the conversation lives in the prefab stage scene,
-                // which is different from the active gameplay scene.
-                UnityEngine.SceneManagement.Scene conversationScene = CurrentAsset.gameObject.scene;
-                if (conversationScene.IsValid())
-                    UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(conversationScene);
+                UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(UnityEditor.SceneManagement.EditorSceneManager.GetActiveScene());
             }
 #endif
         }
@@ -1572,22 +1570,6 @@ namespace DialogueEditor
                 // Serialize
                 CurrentAsset.Serialize(conversation);
 
-                // The dialogue window edits component fields directly, outside a
-                // SerializedObject inspector. Record both the conversation and its
-                // per-node icon holders so prefab saves and scene overrides persist.
-                EditorUtility.SetDirty(CurrentAsset);
-                if (PrefabUtility.IsPartOfPrefabInstance(CurrentAsset))
-                    PrefabUtility.RecordPrefabInstancePropertyModifications(CurrentAsset);
-                for (int i = 0; i < uiNodes.Count; i++)
-                {
-                    NodeEventHolder holder = CurrentAsset.GetNodeData(uiNodes[i].Info.ID);
-                    EditorUtility.SetDirty(holder);
-                    if (PrefabUtility.IsPartOfPrefabInstance(holder))
-                        PrefabUtility.RecordPrefabInstancePropertyModifications(holder);
-                }
-
-                MarkSceneDirty();
-
                 // Null / clear everything. We aren't pointing to it anymore. 
                 if (!manual)
                 {
@@ -1597,6 +1579,7 @@ namespace DialogueEditor
                     CurrentlySelectedObject = null;
                 }
 
+                MarkSceneDirty();
             }
         }
     }
