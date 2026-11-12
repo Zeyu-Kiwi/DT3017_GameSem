@@ -9251,6 +9251,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2888789573586758201, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_Color.a
+      value: 0.63529414
+      objectReference: {fileID: 0}
     - target: {fileID: 3230289615006512322, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -9405,10 +9409,69 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4284400813181945959, guid: ac92cd39068325745970fb1664762c36, type: 3}
+      propertyPath: Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 94b315ef31744814287c5e202b5b5ee9, type: 3}
+    - target: {fileID: 5299947060969437753, guid: ac92cd39068325745970fb1664762c36, type: 3}
+      propertyPath: json
+      value: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":283,"yPos":21.1999969},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"You
+        ain''t going anywhere until you get your job done!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 5299947060969437753, guid: ac92cd39068325745970fb1664762c36, type: 3}
+      propertyPath: DefaultFont
+      value: 
+      objectReference: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+    - target: {fileID: 5299947060969437753, guid: ac92cd39068325745970fb1664762c36, type: 3}
+      propertyPath: DefaultSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 94b315ef31744814287c5e202b5b5ee9, type: 3}
     - target: {fileID: 5339916617538917166, guid: ac92cd39068325745970fb1664762c36, type: 3}
       propertyPath: m_Name
       value: BossSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 6204249000736689325, guid: ac92cd39068325745970fb1664762c36, type: 3}
+      propertyPath: json
+      value: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":87.79997,"yPos":50},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Alright
+        Kido, I spent big money to get you into the factory, so you better shows
+        some value.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":2}],"EditorInfo":{"isRoot":false,"xPos":91.99992,"yPos":211.200012},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Your
+        job is simple. Fold the shirt, meet the quota, then you can sleep.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":87.99992,"yPos":366.3998},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"This
+        is your first day, I will make sure you finish your work before I leave.
+        Don''t try to play tricks.","parentUIDs":[1],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7228103978051617864, guid: ac92cd39068325745970fb1664762c36, type: 3}
+      propertyPath: Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 94b315ef31744814287c5e202b5b5ee9, type: 3}
+    - target: {fileID: 7228103978051617864, guid: ac92cd39068325745970fb1664762c36, type: 3}
+      propertyPath: TMPFont
+      value: 
+      objectReference: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+    - target: {fileID: 7235207386063470099, guid: ac92cd39068325745970fb1664762c36, type: 3}
+      propertyPath: Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 94b315ef31744814287c5e202b5b5ee9, type: 3}
+    - target: {fileID: 7235207386063470099, guid: ac92cd39068325745970fb1664762c36, type: 3}
+      propertyPath: TMPFont
+      value: 
+      objectReference: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
+    - target: {fileID: 8392459413755439716, guid: ac92cd39068325745970fb1664762c36, type: 3}
+      propertyPath: json
+      value: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":282.2,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Not
+        to bad on your first day. Just a reminder, don''t waste your time on escaping,
+        no one made it home alive.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":281.6,"yPos":152.8},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"I''m
+        not a demon, so fell free to sleep and start a new day after your work. Good
+        night.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8731480019218306990, guid: ac92cd39068325745970fb1664762c36, type: 3}
+      propertyPath: json
+      value: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":282.199982,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Focus
+        on your work, maggot!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 9197424096014184506, guid: ac92cd39068325745970fb1664762c36, type: 3}
+      propertyPath: Icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 94b315ef31744814287c5e202b5b5ee9, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
