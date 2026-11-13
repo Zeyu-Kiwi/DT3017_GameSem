@@ -33,12 +33,20 @@ public sealed class ToolSelectionInteractable : MonoBehaviour, IInteractable, IT
     [SerializeField] private UnityEvent onWrongToolUsed = new UnityEvent();
     [SerializeField] private UnityEvent onNoToolsAvailable = new UnityEvent();
 
-    public bool CanInteract => canInteract;
+    [Tooltip("Optional follow-up interaction, used when it becomes available after completing this tool task.")]
+    [SerializeField] private MonoBehaviour interactionAfterCompletion;
+
+    public bool CanInteract => canInteract || (interactionAfterCompletion is IInteractable followUp && followUp.CanInteract);
     public ItemData RequiredTool => requiredTool;
     public bool KeepSelectionOpenAfterWrongTool => keepUIOpenAfterWrongTool;
 
     public void Interact(GameObject player)
     {
+        if (player != null && interactionAfterCompletion is IInteractable followUp && followUp.CanInteract)
+        {
+            followUp.Interact(player);
+            return;
+        }
         if (!canInteract || player == null)
         {
             return;

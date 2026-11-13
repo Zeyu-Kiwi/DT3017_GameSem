@@ -58,13 +58,22 @@ public class DayCycleManager : MonoBehaviour
 
     public int CurrentDay => currentDay;
     public bool TransitionRunning => transitionRunning;
+    private readonly System.Collections.Generic.HashSet<object> sequenceTimerPauses = new System.Collections.Generic.HashSet<object>();
+
+    public void SetSequenceTimerPaused(object owner, bool paused)
+    {
+        if (owner == null) throw new System.ArgumentNullException(nameof(owner));
+        if (paused) sequenceTimerPauses.Add(owner);
+        else sequenceTimerPauses.Remove(owner);
+    }
+
     public float RemainingDayTimeSeconds => remainingDayTimeSeconds;
     public float CurrentDayDurationSeconds => currentDayDurationSeconds;
     public bool TimerExpired => timerExpired;
     public bool IsDailyTimerEnabled => dailyTimerEnabled && currentDayTimerEnabled;
     public bool IsDailyTimerRunning => isActiveAndEnabled && IsDailyTimerEnabled &&
                                        !transitionRunning && !timerExpired &&
-                                       !tutorialTimerPaused;
+                                       !tutorialTimerPaused && sequenceTimerPauses.Count == 0;
     public UnityEvent OnTimerExpired => onTimerExpired;
 
     private void Awake()
@@ -340,6 +349,12 @@ public class DayCycleManager : MonoBehaviour
         {
             ConversationManager.Instance.EndConversationImmediately();
         }
+
+        foreach (var gateExit in FindObjectsByType<GateExitCutscene>(FindObjectsSortMode.None))
+            gateExit.CancelForExternalSequence();
+
+        foreach (var traversal in FindObjectsByType<VentTraversalCutscene>(FindObjectsSortMode.None))
+            traversal.CancelForExternalSequence();
 
         VentInspectionController ventInspection =
             FindFirstObjectByType<VentInspectionController>();

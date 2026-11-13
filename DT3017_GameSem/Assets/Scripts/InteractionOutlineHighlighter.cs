@@ -36,6 +36,7 @@ public sealed class InteractionOutlineHighlighter : MonoBehaviour
 
     public void SetTarget(Component nextTarget)
     {
+        if (nextTarget is GateExitCutscene) nextTarget = null;
         if (!isActiveAndEnabled) { Clear(); return; }
         if (target == nextTarget) return;
         Clear();
