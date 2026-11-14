@@ -86,7 +86,7 @@ namespace DialogueEditor
         private float m_elapsedScrollTime;
         private int m_scrollIndex;
         public int m_targetScrollTextCount;
-        private eState m_state;
+        private eState m_state = eState.Off;
         private float m_stateTime;
         
         private Conversation m_conversation;
@@ -94,8 +94,8 @@ namespace DialogueEditor
         private OptionNode m_selectedOption;
 
         // Selection options
-        private List<UIConversationButton> m_uiOptions;
-        private int m_currentSelectedIndex;
+        private List<UIConversationButton> m_uiOptions = new List<UIConversationButton>();
+        private int m_currentSelectedIndex = -1;
 
 
         //--------------------------------------
@@ -702,8 +702,8 @@ namespace DialogueEditor
 
         private void TurnOffUI()
         {
-            DialoguePanel.gameObject.SetActive(false);
-            OptionsPanel.gameObject.SetActive(false);
+            if (DialoguePanel != null) DialoguePanel.gameObject.SetActive(false);
+            if (OptionsPanel != null) OptionsPanel.gameObject.SetActive(false);
             SetState(eState.Off);
 #if UNITY_EDITOR
             // Debug.Log("[ConversationManager]: Conversation UI off.");
@@ -773,7 +773,7 @@ namespace DialogueEditor
         {
             while (m_uiOptions.Count != 0)
             {
-                GameObject.Destroy(m_uiOptions[0].gameObject);
+                if (m_uiOptions[0] != null) GameObject.Destroy(m_uiOptions[0].gameObject);
                 m_uiOptions.RemoveAt(0);
             }
         }
