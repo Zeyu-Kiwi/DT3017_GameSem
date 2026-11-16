@@ -14,6 +14,7 @@ public class ScreenFadeCutscene : MonoBehaviour
     [SerializeField] private UnityEvent onBlack = new UnityEvent();
     [SerializeField] private UnityEvent onFinished = new UnityEvent();
     public bool IsPlaying { get; private set; }
+    public bool IsConfigured => blackScreen != null;
     public UnityEvent OnBlack => onBlack;
     public UnityEvent OnFinished => onFinished;
 
@@ -23,6 +24,11 @@ public class ScreenFadeCutscene : MonoBehaviour
     }
 
     public IEnumerator PlayRoutine(System.Action atBlack = null)
+    {
+        return PlayRoutine(atBlack, fadeOutDuration, blackDuration, fadeInDuration);
+    }
+
+    public IEnumerator PlayRoutine(System.Action atBlack, float fadeOutSeconds, float holdSeconds, float fadeInSeconds)
     {
         if (IsPlaying || !isActiveAndEnabled) yield break;
         if (blackScreen == null)
@@ -36,18 +42,41 @@ public class ScreenFadeCutscene : MonoBehaviour
         IsPlaying = true;
         blackScreen.blocksRaycasts = true;
         onStarted.Invoke();
-        yield return FadeTo(1f, fadeOutDuration);
+        yield return FadeTo(1f, Mathf.Max(0f, fadeOutSeconds));
         atBlack?.Invoke();
         onBlack.Invoke();
         // Render at least one fully black frame before fading back in.
         yield return null;
-        if (blackDuration > 0f) yield return new WaitForSecondsRealtime(blackDuration);
-        yield return FadeTo(0f, fadeInDuration);
+        if (holdSeconds > 0f) yield return new WaitForSecondsRealtime(holdSeconds);
+        yield return FadeTo(0f, Mathf.Max(0f, fadeInSeconds));
         blackScreen.blocksRaycasts = false;
         IsPlaying = false;
         onFinished.Invoke();
     }
 
+    /// <summary>Fade out and hold black. Call FadeInRoutine or CancelCutscene to clear it.</summary>
+    public IEnumerator FadeOutRoutine(float duration, System.Action atBlack = null)
+    {
+        if (IsPlaying || !isActiveAndEnabled || blackScreen == null) yield break;
+        blackScreen.gameObject.SetActive(true);
+        blackScreen.transform.SetAsLastSibling();
+        blackScreen.blocksRaycasts = true;
+        IsPlaying = true;
+        onStarted.Invoke();
+        yield return FadeTo(1f, Mathf.Max(0f, duration));
+        onBlack.Invoke();
+        atBlack?.Invoke();
+    }
+
+    public IEnumerator FadeInRoutine(float duration)
+    {
+        if (!isActiveAndEnabled || blackScreen == null) yield break;
+        IsPlaying = true;
+        yield return FadeTo(0f, Mathf.Max(0f, duration));
+        blackScreen.blocksRaycasts = false;
+        IsPlaying = false;
+        onFinished.Invoke();
+    }
     private IEnumerator FadeTo(float target, float duration)
     {
         float from = blackScreen.alpha;

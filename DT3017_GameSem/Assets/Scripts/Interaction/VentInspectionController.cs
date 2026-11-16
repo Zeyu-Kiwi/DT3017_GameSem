@@ -50,6 +50,7 @@ public sealed class VentInspectionController : MonoBehaviour
     private Coroutine cameraRoutine;
     public bool IsInspecting { get; private set; }
     public bool IsComplete { get; private set; }
+    public UnityEvent OnCoverRemoved => onCoverRemoved;
     public int RemainingScrews
     {
         get { int count = 0; foreach (var screw in screws) if (screw != null && !screw.IsRemoved) count++; return count; }
