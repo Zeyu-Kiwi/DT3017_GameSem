@@ -131,7 +131,10 @@ public class CraftingStation : MonoBehaviour, IInteractable
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape))
+        KeyCode interactionKey = playerInteractor != null
+            ? playerInteractor.InteractionKey
+            : KeyCode.F;
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(interactionKey))
         {
             CloseCrafting();
             return;
@@ -362,22 +365,20 @@ public class CraftingStation : MonoBehaviour, IInteractable
         RefreshUI();
     }
 
-    public void HandleGearPressed()
+    public void TryCraftRecipe(CraftingRecipeData recipe)
     {
-        if (!inputReady || selection.Count == 0)
+        if (!isOpen || !inputReady || recipe == null)
         {
             return;
         }
 
-        CraftingRecipeData exactRecipe = FindExactRecipe();
-        if (exactRecipe != null)
+        if (!recipe.ExactlyMatches(selection))
         {
-            Craft(exactRecipe);
+            ShowMessage("Add the required ingredients to craft this recipe.");
+            return;
         }
-        else if (stationUI != null)
-        {
-            stationUI.ToggleRecipePanel(GetCandidateRecipes(), selection);
-        }
+
+        Craft(recipe);
     }
 
     public bool IsRecipeUnlocked(CraftingRecipeData recipe)
@@ -756,25 +757,6 @@ public class CraftingStation : MonoBehaviour, IInteractable
         return candidates;
     }
 
-    private CraftingRecipeData FindExactRecipe()
-    {
-        if (recipeDatabase == null)
-        {
-            return null;
-        }
-
-        List<CraftingRecipeData> recipes = recipeDatabase.GetOrderedRecipes();
-        for (int i = 0; i < recipes.Count; i++)
-        {
-            if (recipes[i].ExactlyMatches(selection))
-            {
-                return recipes[i];
-            }
-        }
-
-        return null;
-    }
-
     private void Craft(CraftingRecipeData recipe)
     {
         InventoryManager inventory = InventoryManager.Instance;
@@ -854,10 +836,8 @@ public class CraftingStation : MonoBehaviour, IInteractable
         }
 
         bool hasSelection = selection.Count > 0;
-        bool canCraftSelection = FindExactRecipe() != null;
         stationUI.Refresh(
             hasSelection,
-            canCraftSelection,
             GetCandidateRecipes(),
             selection);
     }

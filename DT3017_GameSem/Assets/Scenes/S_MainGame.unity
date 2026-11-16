@@ -201,63 +201,9 @@ Transform:
   m_Children:
   - {fileID: 671749439}
   - {fileID: 1223478817}
-  - {fileID: 1897771062}
   - {fileID: 955399773}
   - {fileID: 1742798024}
   m_Father: {fileID: 803958946}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &57287887
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 57287889}
-  - component: {fileID: 57287888}
-  m_Layer: 3
-  m_Name: VentOpeningInteraction
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!65 &57287888
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57287887}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Size: {x: 0.12, y: 1.12, z: 1.12}
-  m_Center: {x: -0.08, y: 0, z: 0}
---- !u!4 &57287889
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 57287887}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1268096202}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &59171584
 GameObject:
@@ -758,18 +704,6 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1223478818}
         m_TargetAssemblyTypeName: InventoryTransaction, Assembly-CSharp
-        m_MethodName: Execute
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1897771063}
-        m_TargetAssemblyTypeName: GameVariableAction, Assembly-CSharp
         m_MethodName: Execute
         m_Mode: 1
         m_Arguments:
@@ -2070,6 +2004,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 202991977}
   m_Mesh: {fileID: -9078885000931372180, guid: b4e5ef71ec3c80842b15ff64a749d957, type: 3}
+--- !u!1 &205171914 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 977683751136687676, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+  m_PrefabInstance: {fileID: 3919338576058649304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &209902749
 Mesh:
   m_ObjectHideFlags: 0
@@ -3591,37 +3530,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!1 &293272522
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 293272523}
-  m_Layer: 0
-  m_Name: PlayerStandPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &293272523
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 293272522}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -125.748024, y: -0.37700176, z: 9.986864}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1268096202}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &304940199
 GameObject:
   m_ObjectHideFlags: 0
@@ -6823,8 +6731,8 @@ MonoBehaviour:
   noHelpSickStreak: {fileID: 11400000, guid: 059a82732d49703439c9c80ba67bf419, type: 2}
   helpedSick: {fileID: 11400000, guid: f40e3e4fee777254abc73f960a0e114f, type: 2}
   isSickGone: {fileID: 11400000, guid: 003f82150dd0a8843b96c75a0dc730b4, type: 2}
-  daysWithoutHelpBeforeGone: 2
-  consecutiveHelpDaysToSave: 3
+  daysWithoutHelpBeforeGone: 3
+  totalHelpDaysToSave: 3
   npcObject: {fileID: 803958942}
   emptyWorkstationConversation: {fileID: 182296484}
   permanentlySaved: 0
@@ -8011,6 +7919,11 @@ MonoBehaviour:
   Event:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &623854435 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4402895628081335701, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+  m_PrefabInstance: {fileID: 3919338576058649304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &627936703
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10404,35 +10317,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 22
-  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":705.5,"yPos":385},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"Get
-    well soon.","parentUIDs":[4],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"helped_sick","CheckType":0,"RequiredValue":true}],"NodeUID":12},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"gift_bent_claw","CheckType":0,"RequiredValue":false}],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":459.5,"yPos":384},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"You
-    need some help?","parentUIDs":[4],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":222.5,"yPos":377},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"Hi.
-    Bye.","parentUIDs":[5],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":19}],"EditorInfo":{"isRoot":false,"xPos":-0.5,"yPos":376},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"You''re
-    not coughing anymore.","parentUIDs":[5],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":18}],"EditorInfo":{"isRoot":false,"xPos":-230.5,"yPos":371},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"Anything
-    I need to know about this place?","parentUIDs":[5],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":16}],"EditorInfo":{"isRoot":false,"xPos":716.5,"yPos":633},"ID":14,"ParamActions":[],"TMPFontGUID":null,"Text":"Sorry,
-    I will need the shirts.","parentUIDs":[13],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":17}],"EditorInfo":{"isRoot":false,"xPos":444.5,"yPos":640},"ID":15,"ParamActions":[],"TMPFontGUID":null,"Text":"Here,
-    hope that reduce your workload.","parentUIDs":[13],"SpeechUID":-1}],"Parameters":[{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"gift_bent_claw","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"helped_sick","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"is_sick_gone","BoolValue":false},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"help_sick_streak","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"shirt","IntValue":0}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":1,"RequiredValue":2}],"NodeUID":3},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1},{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"help_sick_streak","CheckType":1,"RequiredValue":3}],"NodeUID":4},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1},{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"help_sick_streak","CheckType":2,"RequiredValue":2}],"NodeUID":5}],"EditorInfo":{"isRoot":true,"xPos":502,"yPos":106},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"*Gives
+  json: '{"Options":[{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":426,"yPos":301},"ID":7,"ParamActions":[],"TMPFontGUID":null,"Text":"Get
+    well soon.","parentUIDs":[4],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"helped_sick","CheckType":0,"RequiredValue":true}],"NodeUID":12},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"gift_bent_claw","CheckType":0,"RequiredValue":false}],"NodeUID":13}],"EditorInfo":{"isRoot":false,"xPos":180,"yPos":300},"ID":8,"ParamActions":[],"TMPFontGUID":null,"Text":"You
+    need some help?","parentUIDs":[4],"SpeechUID":-1},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-57,"yPos":293},"ID":9,"ParamActions":[],"TMPFontGUID":null,"Text":"Hi.
+    Bye.","parentUIDs":[5],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":19}],"EditorInfo":{"isRoot":false,"xPos":-280,"yPos":292},"ID":10,"ParamActions":[],"TMPFontGUID":null,"Text":"You''re
+    not coughing anymore.","parentUIDs":[5],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":18}],"EditorInfo":{"isRoot":false,"xPos":-510,"yPos":287},"ID":11,"ParamActions":[],"TMPFontGUID":null,"Text":"Anything
+    I need to know about this place?","parentUIDs":[5],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":16}],"EditorInfo":{"isRoot":false,"xPos":437,"yPos":549},"ID":14,"ParamActions":[],"TMPFontGUID":null,"Text":"Sorry,
+    I will need the shirts.","parentUIDs":[13],"SpeechUID":-1},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":17}],"EditorInfo":{"isRoot":false,"xPos":165,"yPos":556},"ID":15,"ParamActions":[],"TMPFontGUID":null,"Text":"Here,
+    hope that reduce your workload.","parentUIDs":[13],"SpeechUID":-1}],"Parameters":[{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"gift_bent_claw","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"helped_sick","BoolValue":false},{"__type":"EditableBoolParameter:#DialogueEditor","ParameterName":"is_sick_gone","BoolValue":false},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"CurrentDay","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"help_sick_streak","IntValue":0},{"__type":"EditableIntParameter:#DialogueEditor","ParameterName":"shirt","IntValue":0}],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":1,"RequiredValue":2}],"NodeUID":3},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1},{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"help_sick_streak","CheckType":1,"RequiredValue":3}],"NodeUID":4},{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"CurrentDay","CheckType":2,"RequiredValue":1},{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"help_sick_streak","CheckType":2,"RequiredValue":2}],"NodeUID":5}],"EditorInfo":{"isRoot":true,"xPos":222.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"*Gives
     you a frail smile*","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Seeky
-    (Sick NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":965,"yPos":213},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"Sorry,
+    (Sick NPC)","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":685.5,"yPos":129},"ID":3,"ParamActions":[],"TMPFontGUID":null,"Text":"Sorry,
     too sick to talk...","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Sick
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":7},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":675,"yPos":221},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"*Cough
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":7},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":8}],"EditorInfo":{"isRoot":false,"xPos":395.5,"yPos":137},"ID":4,"ParamActions":[],"TMPFontGUID":null,"Text":"*Cough
     Cough*","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Sick
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":9},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"gift_bent_claw","CheckType":0,"RequiredValue":false}],"NodeUID":10},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"gift_bent_claw","CheckType":0,"RequiredValue":true}],"NodeUID":11}],"EditorInfo":{"isRoot":false,"xPos":22,"yPos":221},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Hi","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Sick
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":714.5,"yPos":491},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"Thank
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":9},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"gift_bent_claw","CheckType":0,"RequiredValue":false}],"NodeUID":10},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableBoolCondition:#DialogueEditor","ParameterName":"gift_bent_claw","CheckType":0,"RequiredValue":true}],"NodeUID":11}],"EditorInfo":{"isRoot":false,"xPos":-257.5,"yPos":137},"ID":5,"ParamActions":[],"TMPFontGUID":null,"Text":"Hi","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Sick
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":435,"yPos":407},"ID":12,"ParamActions":[],"TMPFontGUID":null,"Text":"Thank
     you for asking. There''s nothing I need for now.","parentUIDs":[8],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Sick
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":14},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"shirt","CheckType":2,"RequiredValue":2}],"NodeUID":15}],"EditorInfo":{"isRoot":false,"xPos":457.5,"yPos":493},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"*Cough*
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[],"NodeUID":14},{"__type":"EditableOptionConnection:#DialogueEditor","Conditions":[{"__type":"EditableIntCondition:#DialogueEditor","ParameterName":"shirt","CheckType":2,"RequiredValue":2}],"NodeUID":15}],"EditorInfo":{"isRoot":false,"xPos":178,"yPos":409},"ID":13,"ParamActions":[],"TMPFontGUID":null,"Text":"*Cough*
     Three shirts will be good. It''s fine to decline, take care of yourself first.","parentUIDs":[8],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Sick
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":721.5,"yPos":761},"ID":16,"ParamActions":[],"TMPFontGUID":null,"Text":"No
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":442,"yPos":677},"ID":16,"ParamActions":[],"TMPFontGUID":null,"Text":"No
     need to apologies. I understand.","parentUIDs":[14],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Sick
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":445.5,"yPos":769},"ID":17,"ParamActions":[],"TMPFontGUID":null,"Text":"Thosand
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":166,"yPos":685},"ID":17,"ParamActions":[],"TMPFontGUID":null,"Text":"Thosand
     thanks. *Cough* I will get some good rest today.","parentUIDs":[15],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Sick
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-230,"yPos":480},"ID":18,"ParamActions":[],"TMPFontGUID":null,"Text":"Hayden
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-509.5,"yPos":396},"ID":18,"ParamActions":[],"TMPFontGUID":null,"Text":"Hayden
     knows many blueprints.\nYou can trade out stick or metal scrap from the brothers.\u2028
     Curie is knowledgeable.\u2028Angry is acting rude to protect himself, just give
     him sometime.","parentUIDs":[11],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Sick
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":21}],"EditorInfo":{"isRoot":false,"xPos":-3,"yPos":479},"ID":19,"ParamActions":[],"TMPFontGUID":null,"Text":"Indeed.
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":21}],"EditorInfo":{"isRoot":false,"xPos":-282.5,"yPos":395},"ID":19,"ParamActions":[],"TMPFontGUID":null,"Text":"Indeed.
     All thanks to you.","parentUIDs":[10],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Sick
-    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":1,"yPos":619},"ID":21,"ParamActions":[],"TMPFontGUID":null,"Text":"This
+    NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":-278.5,"yPos":535},"ID":21,"ParamActions":[],"TMPFontGUID":null,"Text":"This
     Bent Claw was a leftover material from a friend of mine. I think it might help
     you in some way.","parentUIDs":[19],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Sick
     NPC","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
@@ -10463,7 +10376,31 @@ MonoBehaviour:
   EndConversationFont: {fileID: 11400000, guid: 0511665364e806340a34c530687061bf, type: 2}
   Event:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 671749440}
+        m_TargetAssemblyTypeName: SetGameFlagAction, Assembly-CSharp
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1223478818}
+        m_TargetAssemblyTypeName: InventoryTransaction, Assembly-CSharp
+        m_MethodName: Execute
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &830769069
 GameObject:
   m_ObjectHideFlags: 0
@@ -11369,11 +11306,6 @@ BoxCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 24b96927927ac384d9dfe09691d9cec5, type: 3}
   m_PrefabInstance: {fileID: 884743130}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &890263966 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7949554333801397153, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
-  m_PrefabInstance: {fileID: 3919338576058649304}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &901643342
 GameObject:
@@ -14146,11 +14078,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86cf5650a8aa3904ca0435a4d7a41e71, type: 3}
---- !u!328 &1036669565 stripped
-VideoPlayer:
-  m_CorrespondingSourceObject: {fileID: 1420086547250725934, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
-  m_PrefabInstance: {fileID: 3919338576058649304}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1049506834
 GameObject:
   m_ObjectHideFlags: 0
@@ -15368,6 +15295,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01385550215ee47418577c2123015576, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialHUD
+--- !u!1 &1136191106 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4714292688406061476, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+  m_PrefabInstance: {fileID: 3919338576058649304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1172705594
 GameObject:
   m_ObjectHideFlags: 0
@@ -16293,14 +16225,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2416757649160623348, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: screenFade
+      value: 
+      objectReference: {fileID: 3870596984072605437}
+    - target: {fileID: 2416757649160623348, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: firstVentPoint
+      value: 
+      objectReference: {fileID: 358629216}
+    - target: {fileID: 2416757649160623348, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: secondVentPoint
+      value: 
+      objectReference: {fileID: 1894599937}
     - target: {fileID: 4107357528043618032, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
       propertyPath: m_Name
       value: EscapeRoute_Vent
       objectReference: {fileID: 0}
-    - target: {fileID: 4809076598926222478, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
-      propertyPath: interactionAfterCompletion
-      value: 
-      objectReference: {fileID: 1268096203}
     - target: {fileID: 7902854622936949104, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.372001
@@ -16343,91 +16283,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7902854622936949104, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1440874235}
-    - targetCorrespondingSourceObject: {fileID: 7902854622936949104, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 293272523}
-    - targetCorrespondingSourceObject: {fileID: 7902854622936949104, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 57287889}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4107357528043618032, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1268096203}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
---- !u!1 &1268096200 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4107357528043618032, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
-  m_PrefabInstance: {fileID: 1268096199}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1268096201 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6474078771208941174, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
-  m_PrefabInstance: {fileID: 1268096199}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268096200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9db63b05e870eb446911bbc62b089c0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VentInspectionController
---- !u!4 &1268096202 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7902854622936949104, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
-  m_PrefabInstance: {fileID: 1268096199}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1268096203
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1268096200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 384ef6677f61c5641b1b70a05c2e02cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::VentTraversalCutscene
-  inspection: {fileID: 1268096201}
-  screenFade: {fileID: 3870596984072605437}
-  openingCollider: {fileID: 57287888}
-  firstVentPoint: {fileID: 358629216}
-  secondVentPoint: {fileID: 1894599937}
-  crawlPoints:
-  - {fileID: 1440874235}
-  playerStandPoint: {fileID: 293272523}
-  crouchDuration: 0.7
-  enterDuration: 1.1
-  fadeOutDuration: 0.5
-  hiddenClimbDuration: 0.5
-  fadeInDuration: 0.65
-  crawlSpeed: 1.4
-  fallDuration: 0.8
-  faceDownDuration: 1
-  standUpDuration: 1.6
-  crouchDrop: 0.75
-  crawlBobAmount: 0.015
-  crawlBobFrequency: 2
-  faceDownEyeHeight: 0.18
-  faceDownAngles: {x: 78, y: 0, z: 12}
-  landingShakeEnabled: 1
-  landingShakeDuration: 0.35
-  landingShakeDistance: 0.025
-  landingShakeAngle: 2.5
-  landingShakeFrequency: 24
-  onStarted:
-    m_PersistentCalls:
-      m_Calls: []
-  onLanded:
-    m_PersistentCalls:
-      m_Calls: []
-  onFinished:
-    m_PersistentCalls:
-      m_Calls: []
-  stage: Idle
 --- !u!1 &1271710718 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4216384262744028943, guid: be0dae57d80718b43950011260edd9e9, type: 3}
@@ -16752,6 +16610,7 @@ MonoBehaviour:
   turnDuration: 0.4
   fadeOutDuration: 1.2
   screenFade: {fileID: 3870596984072605437}
+  escapeFlow: {fileID: 0}
   onOpened:
     m_PersistentCalls:
       m_Calls: []
@@ -17336,37 +17195,6 @@ Transform:
   - {fileID: 1200110056}
   - {fileID: 1230626902}
   m_Father: {fileID: 1919887676}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1440874234
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1440874235}
-  m_Layer: 0
-  m_Name: CrawlExitPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1440874235
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1440874234}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -125.74801, y: 3.803, z: 9.971002}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1268096202}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1451944137
 PrefabInstance:
@@ -28478,6 +28306,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1858434684}
   m_Mesh: {fileID: -7513297493162946847, guid: 97bf4e458110ac64eb65112625a9ca6e, type: 3}
+--- !u!1 &1863699189 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3230396637015361862, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+  m_PrefabInstance: {fileID: 3919338576058649304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1865178164
 GameObject:
   m_ObjectHideFlags: 0
@@ -28929,56 +28762,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SetGameFlagAction
   flag: {fileID: 11400000, guid: b2d0de8630f7d15498d9d6caba467523, type: 2}
   value: 1
---- !u!1 &1897771061
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1897771062}
-  - component: {fileID: 1897771063}
-  m_Layer: 3
-  m_Name: Add_HelpSickStreak_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1897771062
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1897771061}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 27512510}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1897771063
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1897771061}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb277a8867dac82438d18308678618cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameVariableAction
-  runAutomaticallyOnInteraction: 0
-  booleanChanges: []
-  integerChanges:
-  - variable: {fileID: 11400000, guid: 15653f97f440c1048915c426b217be1d, type: 2}
-    operation: 1
-    value: 1
 --- !u!1 &1912368227
 GameObject:
   m_ObjectHideFlags: 0
@@ -31447,13 +31230,33 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3919338576058649305}
     - target: {fileID: 7833660600555416962, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: videoRoot
+      propertyPath: openDrawerRoot
       value: 
-      objectReference: {fileID: 890263966}
+      objectReference: {fileID: 205171914}
     - target: {fileID: 7833660600555416962, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
-      propertyPath: videoPlayer
+      propertyPath: playerSeenRoot
       value: 
-      objectReference: {fileID: 1036669565}
+      objectReference: {fileID: 1136191106}
+    - target: {fileID: 7833660600555416962, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: caughtScreenRoot
+      value: 
+      objectReference: {fileID: 623854435}
+    - target: {fileID: 7833660600555416962, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: emptyWorkstationRoot
+      value: 
+      objectReference: {fileID: 1863699189}
+    - target: {fileID: 8112233445566778899, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: endGamePanel
+      value: 
+      objectReference: {fileID: 3919338576058649306}
+    - target: {fileID: 8112233445566778899, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: bossController
+      value: 
+      objectReference: {fileID: 1915170357}
+    - target: {fileID: 8112233445566778899, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: gameplayHudRoot
+      value: 
+      objectReference: {fileID: 3919338576058649307}
     - target: {fileID: 9032438460833785045, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -31629,6 +31432,16 @@ PrefabInstance:
 --- !u!224 &3919338576058649305 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 735946907237041748, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+  m_PrefabInstance: {fileID: 3919338576058649304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3919338576058649306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3740830815021425939, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+  m_PrefabInstance: {fileID: 3919338576058649304}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3919338576058649307 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2416948352232145132, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
   m_PrefabInstance: {fileID: 3919338576058649304}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7317139109886176104
@@ -31881,13 +31694,13 @@ SceneRoots:
   - {fileID: 2475658960873960499}
   - {fileID: 7317139109886176104}
   - {fileID: 3919338576058649304}
+  - {fileID: 1268096199}
   - {fileID: 1882340568}
   - {fileID: 1983180328}
   - {fileID: 1963441804}
   - {fileID: 791462759}
   - {fileID: 2044340640}
   - {fileID: 1581083523}
-  - {fileID: 1268096199}
   - {fileID: 1025627138}
   - {fileID: 2068259475}
   - {fileID: 183084796}

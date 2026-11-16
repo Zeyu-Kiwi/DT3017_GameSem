@@ -1851,12 +1851,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossVision
   eye: {fileID: 0}
-  viewDistance: 6
-  horizontalViewAngle: 60
-  verticalViewAngle: 50
+  viewDistance: 8
+  horizontalViewAngle: 70
+  verticalViewAngle: 40
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 128
+  proximityOrigin: {fileID: 838067659737958308}
+  proximityCenterOffset: {x: 0, y: 1, z: 0}
+  proximityRadius: 2.5
+  proximityHeight: 3.5
+  proximityGizmoColor: {r: 1, g: 0.5, b: 0, a: 0.9}
+  proximityMaterial: {fileID: 2100000, guid: 803760f79111cda45bbf4eac72f57707, type: 2}
   horizontalSamples: 48
   meshUpdateInterval: 0.08
 --- !u!1 &5814571170568544239
@@ -2928,6 +2934,7 @@ MonoBehaviour:
   walkingBoolParameter: IsWalking
   state: 0
   sequencePaused: 0
+  escapePaused: 0
   isInRoom: 0
   visitedRoamingLocators: 0
   targetRoamingLocatorCount: 0
