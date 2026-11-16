@@ -57,6 +57,7 @@ public class BossController : MonoBehaviour
     [Header("Runtime State (Debug)")]
     [SerializeField] private BossState state;
     [SerializeField] private bool sequencePaused;
+    [SerializeField] private bool escapePaused;
     [SerializeField] private bool isInRoom;
     [SerializeField] private int visitedRoamingLocators;
     [SerializeField] private int targetRoamingLocatorCount;
@@ -99,7 +100,7 @@ public class BossController : MonoBehaviour
 
     private void Update()
     {
-        if (sequencePaused)
+        if (sequencePaused || escapePaused)
         {
             return;
         }
@@ -139,7 +140,13 @@ public class BossController : MonoBehaviour
     public void SetSequencePaused(bool paused)
     {
         sequencePaused = paused;
-        SetWalking(!paused && IsMovementState(state));
+        SetWalking(IsMovementState(state));
+    }
+
+    public void SetEscapePaused(bool paused)
+    {
+        escapePaused = paused;
+        SetWalking(IsMovementState(state));
     }
 
     public void ResetOutsideAndRestartTimer()
@@ -491,17 +498,21 @@ public class BossController : MonoBehaviour
                                   vision.CanSee(workstationVisionArea);
 
         string reason = null;
+        CaughtSequenceController.CaughtReason caughtReason = default;
         if (playerOutside && playerVisible)
         {
             reason = "Player was visible outside the workstation.";
+            caughtReason = CaughtSequenceController.CaughtReason.PlayerSeen;
         }
         else if (playerOutside && workstationVisible)
         {
             reason = "Boss saw that the workstation was empty.";
+            caughtReason = CaughtSequenceController.CaughtReason.EmptyWorkstation;
         }
         else if (!playerOutside && workstationVisible && workstation.IsDrawerOpen)
         {
             reason = "Boss saw the open workstation drawer.";
+            caughtReason = CaughtSequenceController.CaughtReason.OpenDrawer;
         }
 
         if (reason == null)
@@ -514,7 +525,7 @@ public class BossController : MonoBehaviour
 
         if (caughtSequence != null)
         {
-            caughtSequence.PlayCaughtSequence(this);
+            caughtSequence.PlayCaughtSequence(this, caughtReason);
         }
         else
         {
@@ -534,7 +545,7 @@ public class BossController : MonoBehaviour
     {
         if (animator != null && !string.IsNullOrEmpty(walkingBoolParameter))
         {
-            animator.SetBool(walkingBoolParameter, walking);
+            animator.SetBool(walkingBoolParameter, walking && !sequencePaused && !escapePaused);
         }
     }
 

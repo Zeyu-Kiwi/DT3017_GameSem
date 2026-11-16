@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 1195738970806064272}
   - component: {fileID: 2145325709214167293}
   - component: {fileID: 6976893978927954516}
+  - component: {fileID: 8112233445566778899}
   m_Layer: 0
   m_Name: GameSystems
   m_TagString: Untagged
@@ -231,8 +232,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CaughtSequenceController
   playerResetController: {fileID: 2103800464648912675}
   quotaManager: {fileID: 5496611127710979390}
-  videoPlayer: {fileID: 0}
-  videoRoot: {fileID: 0}
+  dayCycleManager: {fileID: 5407019507255862269}
+  caughtScreenRoot: {fileID: 0}
+  playerSeenRoot: {fileID: 0}
+  emptyWorkstationRoot: {fileID: 0}
+  openDrawerRoot: {fileID: 0}
+  displayDuration: 3
   onSequenceStarted:
     m_PersistentCalls:
       m_Calls: []
@@ -349,3 +354,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3a00363d6c159e54e801daa19e2f584c, type: 2}
   defaultPlan: {fileID: 11400000, guid: d74e95d9572fcd642a6f105e5e86a9f5, type: 2}
   developerJumpDay: 1
+--- !u!114 &8112233445566778899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 880498257113415435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96ce75015f34095a1c81fef9848fcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EscapeFlowController
+  dayCycleManager: {fileID: 5407019507255862269}
+  bossController: {fileID: 0}
+  gameplayHudRoot: {fileID: 0}
+  endGamePanel: {fileID: 0}
+  escapeStarted: 0
+  endGameShown: 0

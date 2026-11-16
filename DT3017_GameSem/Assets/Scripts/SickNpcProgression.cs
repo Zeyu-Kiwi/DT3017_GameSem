@@ -1,6 +1,7 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
-/// <summary>Tracks consecutive days of helping a specific NPC.</summary>
+/// <summary>Tracks total days helped and consecutive days without help.</summary>
 [DisallowMultipleComponent]
 public class SickNpcProgression : MonoBehaviour
 {
@@ -9,14 +10,16 @@ public class SickNpcProgression : MonoBehaviour
     [SerializeField, Min(1)] private int firstDayToCheck = 2;
 
     [Header("Existing Game Variables")]
+    [Tooltip("Existing HelpSickStreak variable, now used as the total number of days helped.")]
     [SerializeField] private GameIntData helpSickStreak;
     [SerializeField] private GameIntData noHelpSickStreak;
     [SerializeField] private GameFlagData helpedSick;
     [SerializeField] private GameFlagData isSickGone;
 
     [Header("Limits")]
-    [SerializeField, Min(1)] private int daysWithoutHelpBeforeGone = 2;
-    [SerializeField, Min(1)] private int consecutiveHelpDaysToSave = 3;
+    [SerializeField, Min(1)] private int daysWithoutHelpBeforeGone = 3;
+    [FormerlySerializedAs("consecutiveHelpDaysToSave")]
+    [SerializeField, Min(1)] private int totalHelpDaysToSave = 3;
 
     [Header("Objects")]
     [SerializeField] private GameObject npcObject;
@@ -40,8 +43,8 @@ public class SickNpcProgression : MonoBehaviour
             return;
         }
 
-        // This latch survives later resets of HelpSickStreak during this session.
-        permanentlySaved = state.GetInt(helpSickStreak) >= consecutiveHelpDaysToSave;
+        // Keep the save permanent for this session even if a developer later edits the int.
+        permanentlySaved = state.GetInt(helpSickStreak) >= totalHelpDaysToSave;
         ApplyGoneState();
     }
 
@@ -93,7 +96,7 @@ public class SickNpcProgression : MonoBehaviour
 
     private void OnIntChanged(GameIntData variable, int value)
     {
-        if (variable == helpSickStreak && value >= consecutiveHelpDaysToSave)
+        if (variable == helpSickStreak && value >= totalHelpDaysToSave)
             permanentlySaved = true;
     }
 
@@ -101,20 +104,20 @@ public class SickNpcProgression : MonoBehaviour
     {
         if (endedDay < firstDayToCheck || state.GetFlag(isSickGone)) return;
 
-        // The dialogue option already added one to HelpSickStreak. It can only
-        // be selected once because HelpedSick stays true until day end.
+        // The dialogue sets HelpedSick once. Count the help at day end so the
+        // updated total changes dialogue only on the following day.
         if (state.GetFlag(helpedSick))
         {
-            if (state.GetInt(helpSickStreak) >= consecutiveHelpDaysToSave)
+            state.AddInt(helpSickStreak, 1);
+            if (state.GetInt(helpSickStreak) >= totalHelpDaysToSave)
                 permanentlySaved = true;
             state.SetInt(noHelpSickStreak, 0);
             state.SetFlag(helpedSick, false);
             return;
         }
 
-        if (state.GetInt(helpSickStreak) >= consecutiveHelpDaysToSave)
+        if (state.GetInt(helpSickStreak) >= totalHelpDaysToSave)
             permanentlySaved = true;
-        state.SetInt(helpSickStreak, 0);
         state.AddInt(noHelpSickStreak, 1);
 
         if (!permanentlySaved &&
@@ -142,6 +145,6 @@ public class SickNpcProgression : MonoBehaviour
     {
         firstDayToCheck = Mathf.Max(1, firstDayToCheck);
         daysWithoutHelpBeforeGone = Mathf.Max(1, daysWithoutHelpBeforeGone);
-        consecutiveHelpDaysToSave = Mathf.Max(1, consecutiveHelpDaysToSave);
+        totalHelpDaysToSave = Mathf.Max(1, totalHelpDaysToSave);
     }
 }

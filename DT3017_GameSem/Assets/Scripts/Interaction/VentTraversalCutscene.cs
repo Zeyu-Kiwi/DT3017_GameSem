@@ -10,6 +10,7 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
     [SerializeField] private VentInspectionController inspection;
     [SerializeField] private ScreenFadeCutscene screenFade;
     [SerializeField] private Collider openingCollider;
+    [SerializeField] private EscapeFlowController escapeFlow;
     [Header("Camera path (world poses)")]
     [SerializeField] private Transform firstVentPoint;
     [SerializeField] private Transform secondVentPoint;
@@ -70,6 +71,7 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
     private bool cursorVisible;
     private Coroutine sequence;
     private bool stateCaptured;
+    private bool startedEscapeFlow;
 
     public void Interact(GameObject player)
     {
@@ -119,6 +121,9 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
         for (int i=0;i<bosses.Length;i++) { bossPauseStates[i]=bosses[i].IsSequencePaused; bosses[i].SetSequencePaused(true); }
         dayCycle = FindFirstObjectByType<DayCycleManager>();
         dayCycle?.SetSequenceTimerPaused(this, true);
+        if (escapeFlow == null)
+            escapeFlow = FindFirstObjectByType<EscapeFlowController>();
+        startedEscapeFlow = escapeFlow != null && escapeFlow.BeginEscape();
         Cursor.lockState=CursorLockMode.Locked; Cursor.visible=false;
         onStarted.Invoke();
 
@@ -173,6 +178,7 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
         yield return MoveView(standingPosition,standingRotation,standUpDuration);
         HasPlayed=true;
         Restore(false);
+        startedEscapeFlow = false;
         stage="Complete";
         sequence=null;
         onFinished.Invoke();
@@ -252,6 +258,11 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
         }
         stateCaptured=false;
         IsPlaying=false;
+        if (returnToEntry && startedEscapeFlow)
+        {
+            escapeFlow?.CancelEscape();
+            startedEscapeFlow = false;
+        }
     }
 
     private void OnEnable()

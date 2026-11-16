@@ -18,6 +18,7 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
     [Tooltip("Begin fading this many seconds before the walk finishes.")]
     [SerializeField, Min(0f)] private float fadeOutDuration = 1.2f;
     [SerializeField] private ScreenFadeCutscene screenFade;
+    [SerializeField] private EscapeFlowController escapeFlow;
     [Header("Events")]
     [SerializeField] private UnityEvent onOpened = new UnityEvent();
     [Tooltip("Screen is fully black and control remains locked. Connect the next scene or cutscene here.")]
@@ -44,6 +45,7 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
     private Vector3 originalPosition, cameraLocalPosition;
     private Quaternion originalRotation, originalViewRotation, cameraLocalRotation, closedRotation;
     private Coroutine routine;
+    private bool startedEscapeFlow;
 
     public void Interact(GameObject player)
     {
@@ -89,6 +91,9 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
         body.isKinematic = true;
         dayCycle = FindFirstObjectByType<DayCycleManager>();
         dayCycle?.SetSequenceTimerPaused(this, true);
+        if (escapeFlow == null)
+            escapeFlow = FindFirstObjectByType<EscapeFlowController>();
+        startedEscapeFlow = escapeFlow != null && escapeFlow.BeginEscape();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
@@ -113,6 +118,7 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
         while (!reachedBlack) yield return null;
         stage = "Black";
         routine = null;
+        escapeFlow?.CompleteEscape(player);
         onReachedBlack.Invoke();
     }
 
@@ -164,7 +170,8 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
     /// <summary>Optional continuation when the next event needs to return to gameplay.</summary>
     public void ResumeFromBlack()
     {
-        if (!IsPlaying || stage != "Black" || routine != null) return;
+        if (!IsPlaying || stage != "Black" || routine != null ||
+            (escapeFlow != null && escapeFlow.IsEndGameShown)) return;
         routine = StartCoroutine(Resume());
     }
 
@@ -179,9 +186,15 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
     public void CancelForExternalSequence()
     {
         if (!IsPlaying) return;
+        if (escapeFlow != null && escapeFlow.IsEndGameShown) return;
         StopAllCoroutines();
         if (fading && screenFade != null) screenFade.CancelCutscene();
         Restore(true);
+        if (startedEscapeFlow)
+        {
+            escapeFlow?.CancelEscape();
+            startedEscapeFlow = false;
+        }
         routine = null;
         fading = false;
         reachedBlack = false;
