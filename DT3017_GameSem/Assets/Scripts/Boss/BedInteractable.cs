@@ -10,6 +10,10 @@ public class BedInteractable : MonoBehaviour, IInteractable
     [Tooltip("Allow using the bed without sitting in the chair.")]
     [SerializeField] private bool allowWhileStanding;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip bedInteractClip;
+    [SerializeField, Range(0f, 1f)] private float bedInteractVolume = 1f;
+
     public bool CanInteract => PlayerSeatController.AllowsInteraction(allowWhileStanding) &&
                                dayCycleManager != null &&
                                !dayCycleManager.TransitionRunning;
@@ -45,7 +49,8 @@ public class BedInteractable : MonoBehaviour, IInteractable
             return;
         }
 
-        dayCycleManager.TryBeginNextDay(checkQuota);
+        if (dayCycleManager.TryBeginNextDay(checkQuota))
+            WorldAudioOneShot.Play(bedInteractClip, transform.position, bedInteractVolume);
     }
 
     private void ShowMessage(string message)

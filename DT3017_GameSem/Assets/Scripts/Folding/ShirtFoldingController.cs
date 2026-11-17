@@ -19,6 +19,10 @@ public class ShirtFoldingController : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator animator;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip foldClip;
+    [SerializeField, Range(0f, 1f)] private float foldVolume = 1f;
+
     [Header("Interaction")]
     [Tooltip("Allow folding this shirt without sitting in the chair.")]
     [SerializeField] private bool allowWhileStanding;
@@ -109,6 +113,8 @@ public class ShirtFoldingController : MonoBehaviour
         animationPlaying = true;
         animationPart = part;
         RefreshHotspotColliders();
+
+        WorldAudioOneShot.Play(foldClip, transform.position, foldVolume);
 
         switch (part)
         {

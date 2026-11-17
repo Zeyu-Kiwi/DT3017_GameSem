@@ -40,6 +40,14 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
     [SerializeField, Min(0f)] private float landingShakeDistance = .025f;
     [SerializeField, Min(0f)] private float landingShakeAngle = 2.5f;
     [SerializeField, Min(0f)] private float landingShakeFrequency = 24f;
+    [Header("Audio")]
+    [SerializeField] private AudioClip crouchClip;
+    [SerializeField] private AudioClip enterVentClip;
+    [SerializeField] private AudioClip crawlClip;
+    [SerializeField] private AudioClip playerFallClip;
+    [SerializeField] private AudioClip landingClip;
+    [SerializeField] private AudioClip standUpClip;
+    [SerializeField, Range(0f, 1f)] private float cutsceneVolume = 1f;
     [Header("Hooks")]
     [SerializeField] private UnityEvent onStarted = new UnityEvent();
     [SerializeField] private UnityEvent onLanded = new UnityEvent();
@@ -128,11 +136,13 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
         onStarted.Invoke();
 
         stage="Crouching";
+        WorldAudioOneShot.Play(crouchClip, view.transform.position, cutsceneVolume);
         var direction=firstVentPoint.position-view.transform.position;
         direction.y=0f;
         var facing=direction.sqrMagnitude>.001f?Quaternion.LookRotation(direction):firstVentPoint.rotation;
         yield return MoveView(view.transform.position-Vector3.up*crouchDrop, facing, crouchDuration);
         stage="Entering vent";
+        WorldAudioOneShot.Play(enterVentClip, firstVentPoint.position, cutsceneVolume);
         yield return MoveView(firstVentPoint.position, firstVentPoint.rotation, enterDuration);
         stage="Hidden climb";
         yield return screenFade.PlayRoutine(() => {
@@ -140,6 +150,8 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
             stage="Inside second vent";
         }, fadeOutDuration, hiddenClimbDuration, fadeInDuration);
         stage="Crawling";
+        GameAudioHub.Instance?.PlayVentAmbience();
+        WorldAudioOneShot.Play(crawlClip, view.transform.position, cutsceneVolume);
         foreach(var point in crawlPoints)
             yield return MoveView(point.position, point.rotation,
                 Vector3.Distance(view.transform.position,point.position)/Mathf.Max(.01f,crawlSpeed),true);
@@ -155,8 +167,11 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
         Vector3 facePosition=playerStandPoint.position+Vector3.up*(feetOffset+faceDownEyeHeight);
         Quaternion faceRotation=Quaternion.Euler(0f,playerStandPoint.eulerAngles.y,0f)*Quaternion.Euler(faceDownAngles);
         stage="Falling";
+        WorldAudioOneShot.Play(playerFallClip, view.transform.position, cutsceneVolume);
         yield return MoveView(facePosition,faceRotation,fallDuration,false,true);
         stage="Face down";
+        GameAudioHub.Instance?.PlayExteriorAmbience();
+        WorldAudioOneShot.Play(landingClip, view.transform.position, cutsceneVolume);
         onLanded.Invoke();
         if (landingShakeEnabled && landingShakeDuration > 0f)
         {
@@ -166,6 +181,7 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
         }
         if(faceDownDuration>0f)yield return new WaitForSecondsRealtime(faceDownDuration);
         stage="Standing up";
+        WorldAudioOneShot.Play(standUpClip, view.transform.position, cutsceneVolume);
         var cameraWorldPosition=view.transform.position;
         var cameraWorldRotation=view.transform.rotation;
         controller.TeleportTo(playerStandPoint);
@@ -260,6 +276,7 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
         IsPlaying=false;
         if (returnToEntry && startedEscapeFlow)
         {
+            GameAudioHub.Instance?.PlayFactoryAmbience();
             escapeFlow?.CancelEscape();
             startedEscapeFlow = false;
         }

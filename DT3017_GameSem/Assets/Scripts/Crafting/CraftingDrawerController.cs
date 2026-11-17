@@ -18,6 +18,11 @@ public class CraftingDrawerController : MonoBehaviour
     [SerializeField] private GameObject sectionsContainer;
     [SerializeField] private bool startClosed = true;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip drawerPullClip;
+    [SerializeField] private AudioClip drawerPushClip;
+    [SerializeField, Range(0f, 1f)] private float drawerVolume = 1f;
+
     private Coroutine movementRoutine;
 
     public bool IsDrawerOpen { get; private set; }
@@ -60,6 +65,7 @@ public class CraftingDrawerController : MonoBehaviour
         }
 
         // The boss considers the drawer open from the moment opening begins.
+        WorldAudioOneShot.Play(drawerPullClip, movingTransform.position, drawerVolume);
         IsDrawerOpen = true;
 
         if (sectionsContainer != null)
@@ -78,6 +84,7 @@ public class CraftingDrawerController : MonoBehaviour
         }
 
         // IsDrawerOpen deliberately remains true throughout the closing movement.
+        WorldAudioOneShot.Play(drawerPushClip, movingTransform.position, drawerVolume);
         StartMovement(closedLocalPosition, true, completed);
     }
 

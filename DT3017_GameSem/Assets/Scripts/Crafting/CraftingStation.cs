@@ -37,6 +37,13 @@ public class CraftingStation : MonoBehaviour, IInteractable
     [SerializeField] private CraftingStationUI stationUI;
     [SerializeField] private CraftingCameraController cameraController;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip hoverDrawerItemClip;
+    [SerializeField] private AudioClip itemToCenterClip;
+    [SerializeField] private AudioClip itemOffCenterClip;
+    [SerializeField] private AudioClip craftItemClip;
+    [SerializeField, Range(0f, 1f)] private float interactionVolume = 1f;
+
     private readonly Dictionary<ItemData, int> selection =
         new Dictionary<ItemData, int>();
     private readonly List<ItemData> selectionOrder = new List<ItemData>();
@@ -335,6 +342,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
 
         selection[item]++;
         selectionOrder.Add(item);
+        WorldAudioOneShot.Play(itemToCenterClip, transform.position, interactionVolume);
         RefreshDisplays();
         RefreshUI();
     }
@@ -360,6 +368,8 @@ public class CraftingStation : MonoBehaviour, IInteractable
                 break;
             }
         }
+
+        WorldAudioOneShot.Play(itemOffCenterClip, transform.position, interactionVolume);
 
         RefreshDisplays();
         RefreshUI();
@@ -602,6 +612,8 @@ public class CraftingStation : MonoBehaviour, IInteractable
         if (hoveredItem != null)
         {
             hoveredItem.SetHovered(true, playerOutlineHighlighter == null);
+            WorldAudioOneShot.Play(hoverDrawerItemClip, hoveredItem.transform.position,
+                interactionVolume);
         }
 
         playerOutlineHighlighter?.SetTarget(hoveredItem);
@@ -806,6 +818,8 @@ public class CraftingStation : MonoBehaviour, IInteractable
             Debug.LogError("Crafting validation succeeded but the result could not be added.", this);
             return;
         }
+
+        WorldAudioOneShot.Play(craftItemClip, transform.position, interactionVolume);
 
         discoveredThisSession.Add(recipe);
         eventUnlockedUncraftedRecipes.Remove(recipe);

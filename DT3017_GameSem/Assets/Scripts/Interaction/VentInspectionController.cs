@@ -26,6 +26,17 @@ public sealed class VentInspectionController : MonoBehaviour
     [SerializeField, Min(20f)] private float maximumCursorRadius = 220f;
     [SerializeField, Range(10f, 120f)] private float maximumStepDegrees = 85f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip screwdriverAttachClip;
+    [SerializeField] private AudioClip unscrewTickClip;
+    [SerializeField, Min(0.01f)] private float unscrewTickInterval = 0.12f;
+    [SerializeField] private AudioClip screwDetachClip;
+    [SerializeField] private AudioClip screwFloorImpactClip;
+    [SerializeField] private AudioClip coverDropClip;
+    [SerializeField] private AudioClip coverFloorImpactClip;
+    [SerializeField, Range(0f, 1f)] private float ventVolume = 1f;
+    private float nextUnscrewTickTime;
+
     private Camera view;
     private FirstPersonController controller;
     private PlayerInteractor interactor;
@@ -152,6 +163,7 @@ public sealed class VentInspectionController : MonoBehaviour
         outline?.Clear();
         if (heldTool != null) heldTool.SetActive(false);
         attachedTool = MakeTool(screw.transform);
+        WorldAudioOneShot.Play(screwdriverAttachClip, screw.transform.position, ventVolume);
         Tell("Move the cursor clockwise around the screw to loosen it.");
     }
 
@@ -167,7 +179,15 @@ public sealed class VentInspectionController : MonoBehaviour
         if (hasPreviousAngle)
         {
             float delta = Mathf.DeltaAngle(previousAngle, angle);
-            if (Mathf.Abs(delta) <= maximumStepDegrees && activeScrew.Turn(-delta)) FinishScrew();
+            if (Mathf.Abs(delta) <= maximumStepDegrees)
+            {
+                if (delta < -0.5f && Time.unscaledTime >= nextUnscrewTickTime)
+                {
+                    WorldAudioOneShot.Play(unscrewTickClip, activeScrew.transform.position, ventVolume);
+                    nextUnscrewTickTime = Time.unscaledTime + unscrewTickInterval;
+                }
+                if (activeScrew.Turn(-delta)) FinishScrew();
+            }
         }
         previousAngle = angle;
         hasPreviousAngle = true;
@@ -176,7 +196,7 @@ public sealed class VentInspectionController : MonoBehaviour
     private void FinishScrew()
     {
         if (attachedTool != null) Destroy(attachedTool);
-        activeScrew.Drop();
+        activeScrew.Drop(screwDetachClip, screwFloorImpactClip, ventVolume);
         activeScrew = null;
         hasPreviousAngle = false;
         ShowHeldTool();
@@ -209,10 +229,14 @@ public sealed class VentInspectionController : MonoBehaviour
         if (coverCollider != null) coverCollider.enabled = false;
         if (coverVisuals != null)
         {
+            WorldAudioOneShot.Play(coverDropClip, coverVisuals.position, ventVolume);
             coverVisuals.SetParent(null, true);
             var body = coverVisuals.gameObject.AddComponent<Rigidbody>();
             body.mass = 1f;
             var collider = coverVisuals.gameObject.AddComponent<BoxCollider>();
+            if (coverFloorImpactClip != null)
+                coverVisuals.gameObject.AddComponent<AudioImpactOnCollision>()
+                    .Configure(coverFloorImpactClip, ventVolume);
             var renderer = coverVisuals.GetComponentInChildren<Renderer>();
             if (renderer != null)
             {

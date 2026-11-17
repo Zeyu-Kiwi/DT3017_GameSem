@@ -28,6 +28,7 @@ namespace DialogueEditor
 
         public static ConversationStartEvent OnConversationStarted;
         public static ConversationEndEvent OnConversationEnded;
+        public static event System.Action OnSpeechShown;
 
         // User-Facing options
         // Drawn by custom inspector
@@ -582,6 +583,7 @@ namespace DialogueEditor
             }
 
             // Call the event
+            if (!string.IsNullOrEmpty(speech.Text)) OnSpeechShown?.Invoke();
             if (speech.Event != null)
                 speech.Event.Invoke();
 
