@@ -17,6 +17,7 @@ public sealed class PauseMenuController : MonoBehaviour
     [SerializeField] private PlayerInteractor playerInteractor;
     [SerializeField] private PlayerSeatController playerSeat;
     [SerializeField] private CraftingStation craftingStation;
+    [SerializeField] private VentInspectionController ventInspection;
 
     [Header("Audio")]
     [SerializeField] private bool pauseAudio = true;
@@ -27,6 +28,8 @@ public sealed class PauseMenuController : MonoBehaviour
     private bool previousCursorVisible;
 
     public bool IsPaused { get; private set; }
+    private int lastResumeFrame = -1;
+    public bool ResumedThisFrame => lastResumeFrame == Time.frameCount;
 
     private void Awake()
     {
@@ -144,6 +147,7 @@ public sealed class PauseMenuController : MonoBehaviour
         Cursor.lockState = previousCursorLock;
         Cursor.visible = previousCursorVisible;
         IsPaused = false;
+        lastResumeFrame = Time.frameCount;
     }
 
     private bool CanOpenPauseMenu()
@@ -160,6 +164,13 @@ public sealed class PauseMenuController : MonoBehaviour
         // Crafting disables the player controller while the drawer is open.
         // Only the fully opened, input-ready drawer may be paused.
         if (craftingStation != null && craftingStation.IsDrawerReadyForInput)
+        {
+            return true;
+        }
+
+        // Vent inspection disables the normal player controller. Allow pausing
+        // after its camera has arrived, while keeping its state intact.
+        if (ventInspection != null && ventInspection.IsReadyForInput)
         {
             return true;
         }
@@ -193,6 +204,11 @@ public sealed class PauseMenuController : MonoBehaviour
         if (craftingStation == null)
         {
             craftingStation = FindFirstObjectByType<CraftingStation>();
+        }
+
+        if (ventInspection == null)
+        {
+            ventInspection = FindFirstObjectByType<VentInspectionController>();
         }
     }
 

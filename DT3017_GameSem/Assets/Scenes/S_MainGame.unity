@@ -7517,6 +7517,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 593361621}
   m_Mesh: {fileID: 685162762135345306, guid: b4e5ef71ec3c80842b15ff64a749d957, type: 3}
+--- !u!114 &611415358 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6474078771208941174, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+  m_PrefabInstance: {fileID: 1268096199}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db63b05e870eb446911bbc62b089c0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VentInspectionController
 --- !u!1001 &617580351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12451,6 +12462,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 86cf5650a8aa3904ca0435a4d7a41e71, type: 3}
   m_PrefabInstance: {fileID: 441951573}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &994840164 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 731046920942456434, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+  m_PrefabInstance: {fileID: 3919338576058649304}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6662f9bcff461bc43a3cb78e4a0d7aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractUI
 --- !u!1 &1001631798
 GameObject:
   m_ObjectHideFlags: 0
@@ -29176,6 +29198,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1429583856}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1956783177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3283488243143994893, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+  m_PrefabInstance: {fileID: 3919338576058649304}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1958704254
 GameObject:
   m_ObjectHideFlags: 0
@@ -31332,6 +31359,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4972d5296a4d3174daf4ef31625c0ce7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DayOneTutorial
+--- !u!114 &3870596984072605441 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8112233445566778899, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+  m_PrefabInstance: {fileID: 3870596984072605436}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a96ce75015f34095a1c81fef9848fcab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EscapeFlowController
 --- !u!1001 &3919338576058649304
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31432,10 +31470,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3784092818745746841, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: playerSeat
+      value: 
+      objectReference: {fileID: 7542321580228605099}
+    - target: {fileID: 3784092818745746841, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: ventInspection
+      value: 
+      objectReference: {fileID: 611415358}
+    - target: {fileID: 3784092818745746841, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: craftingStation
+      value: 
+      objectReference: {fileID: 1788109923}
+    - target: {fileID: 3784092818745746841, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: playerController
+      value: 
+      objectReference: {fileID: 7542321580228605087}
+    - target: {fileID: 3784092818745746841, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: playerInteractor
+      value: 
+      objectReference: {fileID: 7542321580228605103}
+    - target: {fileID: 7386645951728390888, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2416948352232145132, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3919338576058649313}
   m_SourcePrefab: {fileID: 100100000, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
 --- !u!224 &3919338576058649305 stripped
 RectTransform:
@@ -31452,6 +31517,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2416948352232145132, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
   m_PrefabInstance: {fileID: 3919338576058649304}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3919338576058649313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3919338576058649307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6590287b89d7445088bcd777ec561bd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CrosshairVisibilityController
+  crosshairRoot: {fileID: 1956783177}
+  playerController: {fileID: 7542321580228605087}
+  interactionPrompt: {fileID: 994840164}
+  escapeFlow: {fileID: 3870596984072605441}
 --- !u!1001 &7317139109886176104
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31690,6 +31771,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0ce68a824af4b42a5c5205e22f69304, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerSeatController
+--- !u!114 &7542321580228605103 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8020299290391686311, guid: be0dae57d80718b43950011260edd9e9, type: 3}
+  m_PrefabInstance: {fileID: 7542321580228605084}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1271710718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4984154f3bbc1db4ba6361a8ae19e871, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractor
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
