@@ -51,6 +51,9 @@ public class CaughtSequenceController : MonoBehaviour
             return;
         }
 
+        foreach (var boards in FindObjectsByType<BoardedHolePryingMinigame>(FindObjectsSortMode.None))
+            boards.CancelForExternalSequence();
+
         sequenceRunning = true;
         activeBoss = boss;
 

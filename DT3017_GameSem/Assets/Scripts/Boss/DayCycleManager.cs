@@ -350,6 +350,9 @@ public class DayCycleManager : MonoBehaviour
             ConversationManager.Instance.EndConversationImmediately();
         }
 
+        foreach (var boards in FindObjectsByType<BoardedHolePryingMinigame>(FindObjectsSortMode.None))
+            boards.CancelForExternalSequence();
+
         foreach (var gateExit in FindObjectsByType<GateExitCutscene>(FindObjectsSortMode.None))
             gateExit.CancelForExternalSequence();
 
