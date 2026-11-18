@@ -127,11 +127,13 @@ public sealed class GameAudioHub : MonoBehaviour
     public void PlayDefaultHover(AudioClip overrideClip = null) => PlayUi(overrideClip != null ? overrideClip : defaultHover);
     public void PlayDialogueOptionHover() => PlayUi(dialogueOptionHover != null ? dialogueOptionHover : defaultHover);
     public void PlayCaughtWarning() => PlayUi(caughtWarning);
+    public void PlayUiCue(AudioClip clip, float volume = 1f) => PlayUi(clip, volume);
     private void PlayDialogueSpeech() => PlayUi(dialogueSpeechAppear);
 
-    private void PlayUi(AudioClip clip)
+    private void PlayUi(AudioClip clip, float volume = 1f)
     {
-        if (clip != null && uiSource != null) uiSource.PlayOneShot(clip, uiVolume);
+        if (clip != null && uiSource != null)
+            uiSource.PlayOneShot(clip, uiVolume * Mathf.Clamp01(volume));
     }
 
     private void OnValidate()

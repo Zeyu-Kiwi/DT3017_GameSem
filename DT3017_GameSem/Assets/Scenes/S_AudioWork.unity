@@ -9823,14 +9823,8 @@ MonoBehaviour:
   canInteract: 1
   requiredTool: {fileID: 11400000, guid: 8b30a2c29948d404ab21ecc67ffd0f76, type: 2}
   noToolMessage: You need something to pry the board.
-  wrongToolMessage: That tool will not work here.
-  correctToolMessage: 'Crowbar will be a great tool to pry up the board. '
-  keepUIOpenAfterWrongTool: 1
   disableAfterCorrectTool: 0
   onCorrectToolUsed:
-    m_PersistentCalls:
-      m_Calls: []
-  onWrongToolUsed:
     m_PersistentCalls:
       m_Calls: []
   onNoToolsAvailable:
@@ -16296,13 +16290,37 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2416757649160623348, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: crawlClip
+      value: 
+      objectReference: {fileID: 8300000, guid: d14974009383c5741b62c7489066d876, type: 3}
+    - target: {fileID: 2416757649160623348, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: crouchClip
+      value: 
+      objectReference: {fileID: 8300000, guid: df49938a1860650418b6d5654ed436be, type: 3}
+    - target: {fileID: 2416757649160623348, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
       propertyPath: screenFade
       value: 
       objectReference: {fileID: 3870596984072605437}
     - target: {fileID: 2416757649160623348, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: landingClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
+    - target: {fileID: 2416757649160623348, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: standUpClip
+      value: 
+      objectReference: {fileID: 8300000, guid: df49938a1860650418b6d5654ed436be, type: 3}
+    - target: {fileID: 2416757649160623348, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: enterVentClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e6709cc34e1daa54f9d575a452e0f64e, type: 3}
+    - target: {fileID: 2416757649160623348, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
       propertyPath: firstVentPoint
       value: 
       objectReference: {fileID: 358629216}
+    - target: {fileID: 2416757649160623348, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: playerFallClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
     - target: {fileID: 2416757649160623348, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
       propertyPath: secondVentPoint
       value: 
@@ -16311,6 +16329,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: EscapeRoute_Vent
       objectReference: {fileID: 0}
+    - target: {fileID: 4796089223303259900, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: shakeClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 06aec2cf2f6b02f428ee547099d61c6a, type: 3}
+    - target: {fileID: 6474078771208941174, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: coverDropClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 303d4126524680e47acaf4a7312ed6b7, type: 3}
+    - target: {fileID: 6474078771208941174, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: screwDetachClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 7ad4c708f29bf504c9a2d44cd54db398, type: 3}
+    - target: {fileID: 6474078771208941174, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: unscrewTickClip
+      value: 
+      objectReference: {fileID: 8300000, guid: df5d55f55c7c9ab40afab32d29c813a2, type: 3}
+    - target: {fileID: 6474078771208941174, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: unscrewTickInterval
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6474078771208941174, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: coverFloorImpactClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 43313658c10269946ae442ba1beaf6a5, type: 3}
+    - target: {fileID: 6474078771208941174, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: screwFloorImpactClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 99c660f29afae044fbbdf0c16d87f167, type: 3}
+    - target: {fileID: 6474078771208941174, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
+      propertyPath: screwdriverAttachClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 52d075a16e86eb142bee96e35c6b2ee3, type: 3}
     - target: {fileID: 7902854622936949104, guid: 71a6da2bba91dd1438dfeada76f40231, type: 3}
       propertyPath: m_LocalPosition.x
       value: -14.372001
@@ -16820,7 +16870,7 @@ MonoBehaviour:
   gatePivot: {fileID: 1358351859}
   openAngle: -100
   openDuration: 1
-  gateOpenClip: {fileID: 0}
+  gateOpenClip: {fileID: 8300000, guid: 835e200db1741ca48a2d9916831fa599, type: 3}
   gateOpenVolume: 1
   walkStartPoint: {fileID: 277310318}
   walkExitPoint: {fileID: 1936417547}
@@ -31573,9 +31623,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: CraftingSystem
       objectReference: {fileID: 0}
-    - target: {fileID: 2746258868987843724, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+    - target: {fileID: 1665794745479382048, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
+      propertyPath: m_Size.x
+      value: 4.234743
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665794745479382048, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
+      propertyPath: m_Size.y
+      value: 0.2799822
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665794745479382048, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
+      propertyPath: m_Center.x
+      value: -0.01615429
+      objectReference: {fileID: 0}
+    - target: {fileID: 1665794745479382048, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
+      propertyPath: m_Center.y
+      value: 0.43943638
       objectReference: {fileID: 0}
     - target: {fileID: 4159079841894115136, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
       propertyPath: drawerPullClip
@@ -31585,6 +31647,10 @@ PrefabInstance:
       propertyPath: drawerPushClip
       value: 
       objectReference: {fileID: 8300000, guid: 7ed0acaa42ff3ee4097e60814bfc429b, type: 3}
+    - target: {fileID: 4325767529322803843, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1.855
+      objectReference: {fileID: 0}
     - target: {fileID: 4469427840315019622, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.181
@@ -31597,6 +31663,10 @@ PrefabInstance:
       propertyPath: quotaManager
       value: 
       objectReference: {fileID: 2051834763}
+    - target: {fileID: 4676332224053991427, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
+      propertyPath: bedInteractClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 1977217ce6f3b7e4cb43177406e362d6, type: 3}
     - target: {fileID: 4676332224053991427, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
       propertyPath: dayCycleManager
       value: 
@@ -31612,11 +31682,11 @@ PrefabInstance:
     - target: {fileID: 5616064158423183961, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
       propertyPath: itemToCenterClip
       value: 
-      objectReference: {fileID: 8300000, guid: 81652031b64c342cc8dbc59c138d77c5, type: 3}
+      objectReference: {fileID: 8300000, guid: 0994c12e202f342459a4212e7287f7e8, type: 3}
     - target: {fileID: 5616064158423183961, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
       propertyPath: itemOffCenterClip
       value: 
-      objectReference: {fileID: 8300000, guid: 6e8772b49f34d402a90016ed445d8a2f, type: 3}
+      objectReference: {fileID: 8300000, guid: 0994c12e202f342459a4212e7287f7e8, type: 3}
     - target: {fileID: 5616064158423183961, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
       propertyPath: hoverDrawerItemClip
       value: 
@@ -31653,6 +31723,10 @@ PrefabInstance:
       propertyPath: playerOutline
       value: 
       objectReference: {fileID: 7542321580228605093}
+    - target: {fileID: 7715012296747090103, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
+      propertyPath: maximumBrightness
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8425604538786977505, guid: 6c35300f82eec2c47a112100eafb9e8a, type: 3}
       propertyPath: sitClip
       value: 
@@ -31942,7 +32016,7 @@ MonoBehaviour:
   worldSfxGroup: {fileID: 8800284486017824706, guid: 2f88bf210d425b34fadf302a6464db2c, type: 2}
   factoryInterior: {fileID: 8300000, guid: 903d8421a6e52204aa3f11b897614239, type: 3}
   insideVent: {fileID: 8300000, guid: 2df4fdd4db2d93d49962d08a5a1f5b7d, type: 3}
-  exteriorNight: {fileID: 8300000, guid: db0bc1b304ce24e4980d50c6da90e90f, type: 3}
+  exteriorNight: {fileID: 8300000, guid: 8794e9cd2af468046963160685da268f, type: 3}
   ambienceFadeSeconds: 1
   ambienceVolume: 1
   defaultClick: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
@@ -32053,6 +32127,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3784092818745746841, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: playerSeat
+      value: 
+      objectReference: {fileID: 7542321580228605099}
     - target: {fileID: 3784092818745746841, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: playerController
       value: 

@@ -1148,6 +1148,8 @@ MonoBehaviour:
   dayCycleManager: {fileID: 0}
   requireDailyQuota: 1
   allowWhileStanding: 1
+  bedInteractClip: {fileID: 0}
+  bedInteractVolume: 1
 --- !u!1 &3590406016081123808
 GameObject:
   m_ObjectHideFlags: 0
@@ -1884,6 +1886,8 @@ MonoBehaviour:
   allowWhileStanding: 0
   shirtSpawnPoint: {fileID: 5840580607793841037}
   spawnedShirtParent: {fileID: 4284900162956440337}
+  spawnShirtClip: {fileID: 0}
+  spawnShirtVolume: 1
   activeShirt: {fileID: 0}
 --- !u!1 &6391591728619329093
 GameObject:
@@ -1985,7 +1989,6 @@ GameObject:
   - component: {fileID: 5616064158423183961}
   - component: {fileID: 3017316178560502732}
   - component: {fileID: 4159079841894115136}
-  - component: {fileID: 2702655552595795765}
   - component: {fileID: 7715012296747090103}
   m_Layer: 3
   m_Name: CraftingStation_Drawer
@@ -2075,6 +2078,11 @@ MonoBehaviour:
     m_Bits: 64
   stationUI: {fileID: 0}
   cameraController: {fileID: 3017316178560502732}
+  hoverDrawerItemClip: {fileID: 0}
+  itemToCenterClip: {fileID: 0}
+  itemOffCenterClip: {fileID: 0}
+  craftItemClip: {fileID: 0}
+  interactionVolume: 1
 --- !u!114 &3017316178560502732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2131,23 +2139,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   sectionsContainer: {fileID: 6758976205678336140}
   startClosed: 1
---- !u!114 &2702655552595795765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6420617156263633838}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37ef4630152cb014dacc2c9898154d98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::InteractionOutlineHighlighter
-  outlineEnabled: 1
-  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
-  outlineWidthPixels: 3
-  outlineEmissionIntensity: 3
-  outlineMaterial: {fileID: 0}
+  drawerPullClip: {fileID: 0}
+  drawerPushClip: {fileID: 0}
+  drawerVolume: 1
 --- !u!114 &7715012296747090103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2162,14 +2156,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DrawerTutorialGlow
   dayCycle: {fileID: 0}
   drawerController: {fileID: 4159079841894115136}
+  drawerRenderer: {fileID: 2553401039227694112}
   drawerInteractable: {fileID: 5616064158423183961}
   playerOutline: {fileID: 0}
   tutorialDay: 2
-  outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}
-  minimumThickness: 1
-  maximumThickness: 5
+  glowColor: {r: 1, g: 0.75, b: 0.15, a: 1}
+  minimumBrightness: 0.15
+  maximumBrightness: 3
   breathingDuration: 1.5
-  emissionIntensity: 2
   tutorialGlowActive: 0
   completedThisSession: 0
 --- !u!1 &6758976205678336140
@@ -3467,3 +3461,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ChairInteractable
   playerSeat: {fileID: 0}
+  sitClip: {fileID: 0}
+  standClip: {fileID: 0}
+  chairVolume: 1

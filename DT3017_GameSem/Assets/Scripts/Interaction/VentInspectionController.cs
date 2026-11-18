@@ -30,6 +30,8 @@ public sealed class VentInspectionController : MonoBehaviour
     [SerializeField] private AudioClip screwdriverAttachClip;
     [SerializeField] private AudioClip unscrewTickClip;
     [SerializeField, Min(0.01f)] private float unscrewTickInterval = 0.12f;
+    [Tooltip("A new pitch is picked between X and Y for each unscrew tick.")]
+    [SerializeField] private Vector2 unscrewTickPitchRange = new Vector2(0.9f, 1.1f);
     [SerializeField] private AudioClip screwDetachClip;
     [SerializeField] private AudioClip screwFloorImpactClip;
     [SerializeField] private AudioClip coverDropClip;
@@ -183,7 +185,8 @@ public sealed class VentInspectionController : MonoBehaviour
             {
                 if (delta < -0.5f && Time.unscaledTime >= nextUnscrewTickTime)
                 {
-                    WorldAudioOneShot.Play(unscrewTickClip, activeScrew.transform.position, ventVolume);
+                    WorldAudioOneShot.Play(unscrewTickClip, activeScrew.transform.position,
+                        ventVolume, Random.Range(unscrewTickPitchRange.x, unscrewTickPitchRange.y));
                     nextUnscrewTickTime = Time.unscaledTime + unscrewTickInterval;
                 }
                 if (activeScrew.Turn(-delta)) FinishScrew();
@@ -324,4 +327,11 @@ public sealed class VentInspectionController : MonoBehaviour
     }
 
     private void Tell(string message) { NotificationManager.Instance?.ShowMessage(message); }
+
+    private void OnValidate()
+    {
+        unscrewTickPitchRange.x = Mathf.Clamp(unscrewTickPitchRange.x, 0.1f, 3f);
+        unscrewTickPitchRange.y = Mathf.Clamp(unscrewTickPitchRange.y,
+            unscrewTickPitchRange.x, 3f);
+    }
 }
