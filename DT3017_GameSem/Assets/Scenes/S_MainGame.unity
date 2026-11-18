@@ -31145,6 +31145,18 @@ PrefabInstance:
       propertyPath: leftWorkstationConversation
       value: 
       objectReference: {fileID: 7317139109886176107}
+    - target: {fileID: 1610028687057710659, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: factoryVoicesVolume
+      value: 0.527
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610028687057710659, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: maximumVoiceInterval
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 1610028687057710659, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: minimumVoiceInterval
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 2103800464648912675, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
       propertyPath: player
       value: 
