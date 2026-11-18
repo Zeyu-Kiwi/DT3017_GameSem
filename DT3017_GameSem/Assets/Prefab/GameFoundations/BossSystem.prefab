@@ -2869,6 +2869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 838067659737958308}
   - component: {fileID: 770377296465172310}
+  - component: {fileID: 2840343271628532974}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -2938,6 +2939,29 @@ MonoBehaviour:
   isInRoom: 0
   visitedRoamingLocators: 0
   targetRoamingLocatorCount: 0
+--- !u!114 &2840343271628532974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8343964184594038092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9899e51a1561432f96607951a55276c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossFootstepAudio
+  boss: {fileID: 770377296465172310}
+  stepClips:
+  - {fileID: 8300000, guid: 1a7741daba5446e46a40f8074aae75dc, type: 3}
+  - {fileID: 8300000, guid: 0bc66974c41ff8c4fa15f46d21ad3548, type: 3}
+  - {fileID: 8300000, guid: f0f794c67e9233d468a38d165590d253, type: 3}
+  stepInterval: 0.75
+  volume: 1
+  pitchRange: {x: 0.95, y: 1.05}
+  bossFootstepsGroup: {fileID: -7922517242184966869, guid: 2f88bf210d425b34fadf302a6464db2c, type: 2}
+  minDistance: 5
+  maxDistance: 17
 --- !u!1 &8737660987865582146
 GameObject:
   m_ObjectHideFlags: 0

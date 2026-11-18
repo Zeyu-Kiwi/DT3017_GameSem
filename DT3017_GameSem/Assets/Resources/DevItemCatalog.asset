@@ -17,6 +17,8 @@ MonoBehaviour:
     worldModel: {fileID: 2412955409806545748, guid: a752bec1f59db5d4c9e918c38dd51ba1, type: 3}
   - item: {fileID: 11400000, guid: eff7831812c9e9c478acbeab5ba7f1ff, type: 2}
     worldModel: {fileID: 0}
+  - item: {fileID: 11400000, guid: 7ab8bd2e76c08d849939b2e4470d1e51, type: 2}
+    worldModel: {fileID: 0}
   - item: {fileID: 11400000, guid: 8b30a2c29948d404ab21ecc67ffd0f76, type: 2}
     worldModel: {fileID: 5785483196894873046, guid: 63002d85a3d2bac4397df65905c90317, type: 3}
   - item: {fileID: 11400000, guid: 084b8554363c6d5479f4d33f466aec8b, type: 2}

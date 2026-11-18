@@ -9739,14 +9739,8 @@ MonoBehaviour:
   canInteract: 1
   requiredTool: {fileID: 11400000, guid: 8b30a2c29948d404ab21ecc67ffd0f76, type: 2}
   noToolMessage: You need something to pry the board.
-  wrongToolMessage: That tool will not work here.
-  correctToolMessage: 'Crowbar will be a great tool to pry up the board. '
-  keepUIOpenAfterWrongTool: 1
   disableAfterCorrectTool: 0
   onCorrectToolUsed:
-    m_PersistentCalls:
-      m_Calls: []
-  onWrongToolUsed:
     m_PersistentCalls:
       m_Calls: []
   onNoToolsAvailable:
@@ -16604,6 +16598,8 @@ MonoBehaviour:
   gatePivot: {fileID: 1358351859}
   openAngle: -100
   openDuration: 1
+  gateOpenClip: {fileID: 8300000, guid: 835e200db1741ca48a2d9916831fa599, type: 3}
+  gateOpenVolume: 1
   walkStartPoint: {fileID: 277310318}
   walkExitPoint: {fileID: 1936417547}
   walkSpeed: 1.8
@@ -26342,7 +26338,7 @@ Transform:
   m_GameObject: {fileID: 1666169614}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.891, y: 0.026, z: -1.017}
+  m_LocalPosition: {x: 1.298, y: 0.026, z: -1.017}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26363,7 +26359,7 @@ MonoBehaviour:
   firstActiveDay: 2
   lastActiveDay: 2
   spawnEveryActiveDay: 1
-  areaSize: {x: 0.5, y: 0.5, z: 0.5}
+  areaSize: {x: 1, y: 0.5, z: 1}
   floorLayers:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -26375,8 +26371,8 @@ MonoBehaviour:
   placementAttempts: 20
   items:
   - pickupPrefab: {fileID: 1747186936357171592, guid: b3f96421225cc26438b8c14fb75d91d3, type: 3}
-    minimumCount: 1
-    maximumCount: 1
+    minimumCount: 2
+    maximumCount: 2
 --- !u!1 &1672647939
 GameObject:
   m_ObjectHideFlags: 0

@@ -419,6 +419,8 @@ MonoBehaviour:
   shakeDistance: 0.012
   shakeAngle: 0.8
   shakeFrequency: 18
+  shakeClip: {fileID: 8300000, guid: 06aec2cf2f6b02f428ee547099d61c6a, type: 3}
+  shakeVolume: 1
 --- !u!114 &6474078771208941174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -463,6 +465,15 @@ MonoBehaviour:
   minimumCursorRadius: 18
   maximumCursorRadius: 220
   maximumStepDegrees: 85
+  screwdriverAttachClip: {fileID: 8300000, guid: 52d075a16e86eb142bee96e35c6b2ee3, type: 3}
+  unscrewTickClip: {fileID: 8300000, guid: df5d55f55c7c9ab40afab32d29c813a2, type: 3}
+  unscrewTickInterval: 0.2
+  unscrewTickPitchRange: {x: 0.9, y: 1.1}
+  screwDetachClip: {fileID: 8300000, guid: 7ad4c708f29bf504c9a2d44cd54db398, type: 3}
+  screwFloorImpactClip: {fileID: 8300000, guid: 99c660f29afae044fbbdf0c16d87f167, type: 3}
+  coverDropClip: {fileID: 8300000, guid: 303d4126524680e47acaf4a7312ed6b7, type: 3}
+  coverFloorImpactClip: {fileID: 8300000, guid: 43313658c10269946ae442ba1beaf6a5, type: 3}
+  ventVolume: 1
 --- !u!114 &4809076598926222478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,9 +489,6 @@ MonoBehaviour:
   canInteract: 1
   requiredTool: {fileID: 11400000, guid: aeb54d50f3b7fe946acf7334085c2a44, type: 2}
   noToolMessage: You need something to remove the screws.
-  wrongToolMessage: That tool will not work here.
-  correctToolMessage: The Philips Screwdriver seems to fit the screws.
-  keepUIOpenAfterWrongTool: 1
   disableAfterCorrectTool: 0
   onCorrectToolUsed:
     m_PersistentCalls:
@@ -489,21 +497,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: VentInspectionController, Assembly-CSharp
         m_MethodName: Begin
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onWrongToolUsed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4796089223303259900}
-        m_TargetAssemblyTypeName: VentCoverInteractable, Assembly-CSharp
-        m_MethodName: PlayShake
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -585,6 +578,13 @@ MonoBehaviour:
   landingShakeDistance: 0.025
   landingShakeAngle: 2.5
   landingShakeFrequency: 24
+  crouchClip: {fileID: 8300000, guid: df49938a1860650418b6d5654ed436be, type: 3}
+  enterVentClip: {fileID: 8300000, guid: e6709cc34e1daa54f9d575a452e0f64e, type: 3}
+  crawlClip: {fileID: 8300000, guid: d14974009383c5741b62c7489066d876, type: 3}
+  playerFallClip: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
+  landingClip: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
+  standUpClip: {fileID: 8300000, guid: df49938a1860650418b6d5654ed436be, type: 3}
+  cutsceneVolume: 1
   onStarted:
     m_PersistentCalls:
       m_Calls: []

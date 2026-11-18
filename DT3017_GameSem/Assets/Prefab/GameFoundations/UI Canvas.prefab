@@ -140,6 +140,8 @@ MonoBehaviour:
   resumeButton: {fileID: 5940817415204007993}
   playerController: {fileID: 0}
   playerInteractor: {fileID: 0}
+  playerSeat: {fileID: 0}
+  craftingStation: {fileID: 0}
   pauseAudio: 1
 --- !u!1 &419785820087210120
 GameObject:
@@ -1819,6 +1821,7 @@ GameObject:
   - component: {fileID: 4592090068214592640}
   - component: {fileID: 4757815794320816743}
   - component: {fileID: 3163292512944441231}
+  - component: {fileID: 6286921713784334109}
   m_Layer: 5
   m_Name: UI Canvas
   m_TagString: Untagged
@@ -1919,6 +1922,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6286921713784334109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2781879694002840813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3681bed739734d12849962b050d6f0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIAudioRouter
 --- !u!1 &2944594860447818617
 GameObject:
   m_ObjectHideFlags: 0
