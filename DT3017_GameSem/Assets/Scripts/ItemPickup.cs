@@ -5,6 +5,10 @@ public class ItemPickup : MonoBehaviour, IInteractable
     [SerializeField] private ItemData item;
     [SerializeField, Min(1)] private int quantity = 1;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip pickupClip;
+    [SerializeField, Range(0f, 1f)] private float pickupVolume = 1f;
+
     [Header("Item Shine")]
     [Tooltip("Show sparkles and a diagonal sheen while this pickup is in the world. Add Item Shine Effect to customize its appearance.")]
     [SerializeField] private bool itemShineEnabled = true;
@@ -50,6 +54,8 @@ public class ItemPickup : MonoBehaviour, IInteractable
             ShowMessage(item.DisplayName + " is full.");
             return;
         }
+
+        WorldAudioOneShot.Play(pickupClip, transform.position, pickupVolume);
 
         quantity -= added;
 

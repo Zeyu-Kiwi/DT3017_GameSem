@@ -1,12 +1,13 @@
 using UnityEngine;
 
 [DisallowMultipleComponent]
-[RequireComponent(typeof(InteractionOutlineHighlighter))]
 public sealed class DrawerTutorialGlow : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private DayCycleManager dayCycle;
     [SerializeField] private CraftingDrawerController drawerController;
+    [Tooltip("The MeshRenderer on drawer_model, not the whole workstation.")]
+    [SerializeField] private Renderer drawerRenderer;
     [Tooltip("The component targeted when the player looks at the drawer. Usually CraftingStation.")]
     [SerializeField] private Component drawerInteractable;
     [Tooltip("The InteractionOutlineHighlighter on the Player. It is discovered automatically when empty.")]
@@ -15,28 +16,27 @@ public sealed class DrawerTutorialGlow : MonoBehaviour
     [Header("Tutorial Day")]
     [SerializeField, Min(1)] private int tutorialDay = 2;
 
-    [Header("Breathing Outline")]
+    [Header("Breathing Material Glow")]
     [SerializeField, ColorUsage(true, true)]
-    private Color outlineColor = new Color(1f, 0.75f, 0.15f, 1f);
-    [SerializeField, Range(0f, 12f)] private float minimumThickness = 1.5f;
-    [SerializeField, Range(0f, 12f)] private float maximumThickness = 6f;
-    [Tooltip("Seconds for one complete thin-to-thick-to-thin cycle.")]
+    private Color glowColor = new Color(1f, 0.75f, 0.15f, 1f);
+    [SerializeField, Min(0f)] private float minimumBrightness = 0.15f;
+    [SerializeField, Min(0f)] private float maximumBrightness = 3f;
+    [Tooltip("Seconds for one complete dim-to-bright-to-dim cycle.")]
     [SerializeField, Min(0.1f)] private float breathingDuration = 1.5f;
-    [SerializeField, Min(0f)] private float emissionIntensity = 3f;
 
     [Header("Runtime State (Debug)")]
     [SerializeField] private bool tutorialGlowActive;
     [SerializeField] private bool completedThisSession;
 
-    private InteractionOutlineHighlighter tutorialOutline;
-    private bool tutorialOutlineVisible;
+    private Material[] originalMaterials;
+    private Material[] glowMaterials;
+    private Color[] originalEmissionColors;
     private bool wasDrawerOpen;
+    private bool warnedAboutMaterial;
 
     private void Awake()
     {
-        tutorialOutline = GetComponent<InteractionOutlineHighlighter>();
         ResolveReferences();
-        HideTutorialOutline();
     }
 
     private void OnEnable()
@@ -61,7 +61,7 @@ public sealed class DrawerTutorialGlow : MonoBehaviour
             dayCycle.DayStarted -= HandleDayStarted;
         }
 
-        HideTutorialOutline();
+        RestoreDrawerMaterials();
     }
 
     private void Update()
@@ -77,23 +77,26 @@ public sealed class DrawerTutorialGlow : MonoBehaviour
 
         wasDrawerOpen = drawerOpen;
 
-        if (!tutorialGlowActive || completedThisSession || drawerOpen ||
-            IsNormalInteractionOutlineShowing())
+        if (!tutorialGlowActive || completedThisSession || drawerOpen)
         {
-            HideTutorialOutline();
+            RestoreDrawerMaterials();
             return;
         }
 
-        ShowTutorialOutline();
+        if (IsNormalInteractionOutlineShowing())
+        {
+            SetEmission(0f);
+            return;
+        }
+
+        if (!PrepareDrawerMaterials()) return;
 
         float duration = Mathf.Max(0.1f, breathingDuration);
         float phase = Mathf.Repeat(Time.time / duration, 1f);
         float smoothPulse = 0.5f - 0.5f * Mathf.Cos(phase * Mathf.PI * 2f);
-        float minimum = Mathf.Min(minimumThickness, maximumThickness);
-        float maximum = Mathf.Max(minimumThickness, maximumThickness);
-        float thickness = Mathf.Lerp(minimum, maximum, smoothPulse);
-
-        tutorialOutline.SetAppearance(outlineColor, thickness, emissionIntensity);
+        float minimum = Mathf.Min(minimumBrightness, maximumBrightness);
+        float maximum = Mathf.Max(minimumBrightness, maximumBrightness);
+        SetEmission(Mathf.Lerp(minimum, maximum, smoothPulse));
     }
 
     private void ResolveReferences()
@@ -106,6 +109,12 @@ public sealed class DrawerTutorialGlow : MonoBehaviour
         if (drawerController == null)
         {
             drawerController = GetComponentInParent<CraftingDrawerController>();
+        }
+
+        if (drawerRenderer == null)
+        {
+            Transform drawerModel = transform.Find("drawer_model");
+            if (drawerModel != null) drawerRenderer = drawerModel.GetComponent<Renderer>();
         }
 
         if (drawerInteractable == null)
@@ -135,7 +144,7 @@ public sealed class DrawerTutorialGlow : MonoBehaviour
 
         if (!tutorialGlowActive)
         {
-            HideTutorialOutline();
+            RestoreDrawerMaterials();
         }
     }
 
@@ -162,49 +171,99 @@ public sealed class DrawerTutorialGlow : MonoBehaviour
                expected.IsChildOf(actual);
     }
 
-    private void ShowTutorialOutline()
+    private bool PrepareDrawerMaterials()
     {
-        if (tutorialOutline == null)
+        if (glowMaterials != null) return true;
+        if (drawerRenderer == null)
         {
-            tutorialOutline = GetComponent<InteractionOutlineHighlighter>();
+            WarnAboutMaterial("DrawerTutorialGlow needs the drawer_model Renderer assigned.");
+            return false;
         }
 
-        if (tutorialOutlineVisible || tutorialOutline == null)
+        originalMaterials = drawerRenderer.sharedMaterials;
+        glowMaterials = new Material[originalMaterials.Length];
+        originalEmissionColors = new Color[originalMaterials.Length];
+        bool hasEmissionMaterial = false;
+
+        for (int i = 0; i < originalMaterials.Length; i++)
         {
-            return;
+            Material original = originalMaterials[i];
+            if (original == null || !original.HasProperty("_EmissionColor"))
+            {
+                glowMaterials[i] = original;
+                continue;
+            }
+
+            Material copy = new Material(original);
+            copy.name = original.name + " (Drawer Tutorial Glow)";
+            originalEmissionColors[i] = original.GetColor("_EmissionColor");
+            copy.EnableKeyword("_EMISSION");
+            glowMaterials[i] = copy;
+            hasEmissionMaterial = true;
         }
 
-        tutorialOutline.SetAppearance(
-            outlineColor,
-            minimumThickness,
-            emissionIntensity);
-        tutorialOutline.SetTarget(this);
-        tutorialOutlineVisible = true;
+        if (!hasEmissionMaterial)
+        {
+            WarnAboutMaterial("The drawer material does not support _EmissionColor. Assign an emission-capable material to drawer_model.");
+            glowMaterials = null;
+            originalMaterials = null;
+            originalEmissionColors = null;
+            return false;
+        }
+
+        drawerRenderer.sharedMaterials = glowMaterials;
+        return true;
     }
 
-    private void HideTutorialOutline()
+    private void WarnAboutMaterial(string message)
     {
-        if (tutorialOutline != null && tutorialOutline.Target != null)
+        if (warnedAboutMaterial) return;
+        warnedAboutMaterial = true;
+        Debug.LogWarning(message, this);
+    }
+
+    private void SetEmission(float brightness)
+    {
+        if (glowMaterials == null) return;
+        for (int i = 0; i < glowMaterials.Length; i++)
         {
-            tutorialOutline.Clear();
+            Material material = glowMaterials[i];
+            if (material != null && material != originalMaterials[i])
+            {
+                material.SetColor("_EmissionColor",
+                    originalEmissionColors[i] + glowColor * brightness);
+            }
+        }
+    }
+
+    private void RestoreDrawerMaterials()
+    {
+        if (glowMaterials == null) return;
+        if (drawerRenderer != null) drawerRenderer.sharedMaterials = originalMaterials;
+
+        for (int i = 0; i < glowMaterials.Length; i++)
+        {
+            if (glowMaterials[i] != null && glowMaterials[i] != originalMaterials[i])
+                Destroy(glowMaterials[i]);
         }
 
-        tutorialOutlineVisible = false;
+        glowMaterials = null;
+        originalMaterials = null;
+        originalEmissionColors = null;
     }
 
     private void CompleteTutorialGlow()
     {
         completedThisSession = true;
         tutorialGlowActive = false;
-        HideTutorialOutline();
+        RestoreDrawerMaterials();
     }
 
     private void OnValidate()
     {
         tutorialDay = Mathf.Max(1, tutorialDay);
-        minimumThickness = Mathf.Clamp(minimumThickness, 0f, 12f);
-        maximumThickness = Mathf.Clamp(maximumThickness, 0f, 12f);
+        minimumBrightness = Mathf.Max(0f, minimumBrightness);
+        maximumBrightness = Mathf.Max(0f, maximumBrightness);
         breathingDuration = Mathf.Max(0.1f, breathingDuration);
-        emissionIntensity = Mathf.Max(0f, emissionIntensity);
     }
 }

@@ -276,6 +276,68 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::VentScrew
   turnsToRemove: 3
   extractionDistance: 0.08
+--- !u!1 &3683575548530243770
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 930338383142425421}
+  m_Layer: 0
+  m_Name: PlayerStandPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &930338383142425421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3683575548530243770}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -125.748024, y: -0.37700176, z: 9.986864}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7902854622936949104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3766573610908325767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4833714409362095047}
+  m_Layer: 0
+  m_Name: CrawlExitPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4833714409362095047
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3766573610908325767}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -125.74801, y: 3.803, z: 9.971002}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7902854622936949104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4107357528043618032
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,6 +352,7 @@ GameObject:
   - component: {fileID: 6474078771208941174}
   - component: {fileID: 4809076598926222478}
   - component: {fileID: 7894474927007281020}
+  - component: {fileID: 2416757649160623348}
   m_Layer: 3
   m_Name: EscapeRoute_Vent
   m_TagString: Untagged
@@ -313,6 +376,9 @@ Transform:
   - {fileID: 1593013689693828329}
   - {fileID: 1144607719660038051}
   - {fileID: 5438492912714342926}
+  - {fileID: 4833714409362095047}
+  - {fileID: 930338383142425421}
+  - {fileID: 6291610071946964058}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &3788068717905699697
@@ -353,6 +419,8 @@ MonoBehaviour:
   shakeDistance: 0.012
   shakeAngle: 0.8
   shakeFrequency: 18
+  shakeClip: {fileID: 8300000, guid: 06aec2cf2f6b02f428ee547099d61c6a, type: 3}
+  shakeVolume: 1
 --- !u!114 &6474078771208941174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,6 +465,15 @@ MonoBehaviour:
   minimumCursorRadius: 18
   maximumCursorRadius: 220
   maximumStepDegrees: 85
+  screwdriverAttachClip: {fileID: 8300000, guid: 52d075a16e86eb142bee96e35c6b2ee3, type: 3}
+  unscrewTickClip: {fileID: 8300000, guid: df5d55f55c7c9ab40afab32d29c813a2, type: 3}
+  unscrewTickInterval: 0.2
+  unscrewTickPitchRange: {x: 0.9, y: 1.1}
+  screwDetachClip: {fileID: 8300000, guid: 7ad4c708f29bf504c9a2d44cd54db398, type: 3}
+  screwFloorImpactClip: {fileID: 8300000, guid: 99c660f29afae044fbbdf0c16d87f167, type: 3}
+  coverDropClip: {fileID: 8300000, guid: 303d4126524680e47acaf4a7312ed6b7, type: 3}
+  coverFloorImpactClip: {fileID: 8300000, guid: 43313658c10269946ae442ba1beaf6a5, type: 3}
+  ventVolume: 1
 --- !u!114 &4809076598926222478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,9 +489,6 @@ MonoBehaviour:
   canInteract: 1
   requiredTool: {fileID: 11400000, guid: aeb54d50f3b7fe946acf7334085c2a44, type: 2}
   noToolMessage: You need something to remove the screws.
-  wrongToolMessage: That tool will not work here.
-  correctToolMessage: The Philips Screwdriver seems to fit the screws.
-  keepUIOpenAfterWrongTool: 1
   disableAfterCorrectTool: 0
   onCorrectToolUsed:
     m_PersistentCalls:
@@ -423,21 +497,6 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: VentInspectionController, Assembly-CSharp
         m_MethodName: Begin
         m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  onWrongToolUsed:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 4796089223303259900}
-        m_TargetAssemblyTypeName: VentCoverInteractable, Assembly-CSharp
-        m_MethodName: PlayShake
-        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -461,6 +520,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  interactionAfterCompletion: {fileID: 2416757649160623348}
 --- !u!114 &7894474927007281020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,6 +538,63 @@ MonoBehaviour:
   - variable: {fileID: 11400000, guid: 007a30f586360274eb5903bec3a49300, type: 2}
     value: 1
   integerChanges: []
+--- !u!114 &2416757649160623348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4107357528043618032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384ef6677f61c5641b1b70a05c2e02cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::VentTraversalCutscene
+  inspection: {fileID: 6474078771208941174}
+  screenFade: {fileID: 0}
+  openingCollider: {fileID: 5524442522265142818}
+  escapeFlow: {fileID: 0}
+  firstVentPoint: {fileID: 0}
+  secondVentPoint: {fileID: 0}
+  crawlPoints:
+  - {fileID: 4833714409362095047}
+  playerStandPoint: {fileID: 930338383142425421}
+  crouchDuration: 0.7
+  enterDuration: 1.1
+  fadeOutDuration: 0.5
+  hiddenClimbDuration: 0.5
+  fadeInDuration: 0.65
+  crawlSpeed: 1.4
+  fallDuration: 0.8
+  faceDownDuration: 1
+  standUpDuration: 1.6
+  crouchDrop: 0.75
+  crawlBobAmount: 0.015
+  crawlBobFrequency: 2
+  faceDownEyeHeight: 0.18
+  faceDownAngles: {x: 78, y: 0, z: 12}
+  landingShakeEnabled: 1
+  landingShakeDuration: 0.35
+  landingShakeDistance: 0.025
+  landingShakeAngle: 2.5
+  landingShakeFrequency: 24
+  crouchClip: {fileID: 8300000, guid: df49938a1860650418b6d5654ed436be, type: 3}
+  enterVentClip: {fileID: 8300000, guid: e6709cc34e1daa54f9d575a452e0f64e, type: 3}
+  crawlClip: {fileID: 8300000, guid: d14974009383c5741b62c7489066d876, type: 3}
+  playerFallClip: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
+  landingClip: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
+  standUpClip: {fileID: 8300000, guid: df49938a1860650418b6d5654ed436be, type: 3}
+  cutsceneVolume: 1
+  onStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  onLanded:
+    m_PersistentCalls:
+      m_Calls: []
+  onFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  stage: Idle
 --- !u!1 &4314637691488703253
 GameObject:
   m_ObjectHideFlags: 0
@@ -510,6 +627,59 @@ Transform:
   - {fileID: 2754116137304015315}
   m_Father: {fileID: 7902854622936949104}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6252724747586692621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6291610071946964058}
+  - component: {fileID: 5524442522265142818}
+  m_Layer: 3
+  m_Name: VentOpeningInteraction
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6291610071946964058
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252724747586692621}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7902854622936949104}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5524442522265142818
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6252724747586692621}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Size: {x: 0.12, y: 1.12, z: 1.12}
+  m_Center: {x: -0.08, y: 0, z: 0}
 --- !u!1 &7057058937195083813
 GameObject:
   m_ObjectHideFlags: 0

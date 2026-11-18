@@ -15,6 +15,7 @@ public class PlayerSeatController : MonoBehaviour
     [Tooltip("Added to the camera's original local position while seated. Use a negative Y value to lower the view.")]
     [SerializeField] private Vector3 seatedCameraOffset = new Vector3(0f, -0.4f, 0f);
 
+
     [Header("Runtime State (Debug)")]
     [SerializeField] private bool isSeated;
     [SerializeField] private bool isTransitioning;

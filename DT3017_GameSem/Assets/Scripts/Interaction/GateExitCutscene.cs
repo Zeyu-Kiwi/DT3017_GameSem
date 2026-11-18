@@ -10,6 +10,9 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
     [SerializeField] private Transform gatePivot;
     [SerializeField] private float openAngle = -100f;
     [SerializeField, Min(.01f)] private float openDuration = 1f;
+    [Header("Audio")]
+    [SerializeField] private AudioClip gateOpenClip;
+    [SerializeField, Range(0f, 1f)] private float gateOpenVolume = 1f;
     [Header("Player path (standing root positions)")]
     [SerializeField] private Transform walkStartPoint;
     [SerializeField] private Transform walkExitPoint;
@@ -18,6 +21,7 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
     [Tooltip("Begin fading this many seconds before the walk finishes.")]
     [SerializeField, Min(0f)] private float fadeOutDuration = 1.2f;
     [SerializeField] private ScreenFadeCutscene screenFade;
+    [SerializeField] private EscapeFlowController escapeFlow;
     [Header("Events")]
     [SerializeField] private UnityEvent onOpened = new UnityEvent();
     [Tooltip("Screen is fully black and control remains locked. Connect the next scene or cutscene here.")]
@@ -44,6 +48,7 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
     private Vector3 originalPosition, cameraLocalPosition;
     private Quaternion originalRotation, originalViewRotation, cameraLocalRotation, closedRotation;
     private Coroutine routine;
+    private bool startedEscapeFlow;
 
     public void Interact(GameObject player)
     {
@@ -89,10 +94,14 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
         body.isKinematic = true;
         dayCycle = FindFirstObjectByType<DayCycleManager>();
         dayCycle?.SetSequenceTimerPaused(this, true);
+        if (escapeFlow == null)
+            escapeFlow = FindFirstObjectByType<EscapeFlowController>();
+        startedEscapeFlow = escapeFlow != null && escapeFlow.BeginEscape();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
 
         stage = "Opening gate";
+        WorldAudioOneShot.Play(gateOpenClip, gatePivot.position, gateOpenVolume);
         Quaternion opened = closedRotation * Quaternion.Euler(0f, openAngle, 0f);
         float elapsed = 0f;
         while (elapsed < openDuration)
@@ -113,6 +122,7 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
         while (!reachedBlack) yield return null;
         stage = "Black";
         routine = null;
+        escapeFlow?.CompleteEscape(player);
         onReachedBlack.Invoke();
     }
 
@@ -164,7 +174,8 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
     /// <summary>Optional continuation when the next event needs to return to gameplay.</summary>
     public void ResumeFromBlack()
     {
-        if (!IsPlaying || stage != "Black" || routine != null) return;
+        if (!IsPlaying || stage != "Black" || routine != null ||
+            (escapeFlow != null && escapeFlow.IsEndGameShown)) return;
         routine = StartCoroutine(Resume());
     }
 
@@ -179,9 +190,15 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
     public void CancelForExternalSequence()
     {
         if (!IsPlaying) return;
+        if (escapeFlow != null && escapeFlow.IsEndGameShown) return;
         StopAllCoroutines();
         if (fading && screenFade != null) screenFade.CancelCutscene();
         Restore(true);
+        if (startedEscapeFlow)
+        {
+            escapeFlow?.CancelEscape();
+            startedEscapeFlow = false;
+        }
         routine = null;
         fading = false;
         reachedBlack = false;

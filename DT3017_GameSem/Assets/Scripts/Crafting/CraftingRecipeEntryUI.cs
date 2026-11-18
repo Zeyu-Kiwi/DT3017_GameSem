@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class CraftingRecipeEntryUI : MonoBehaviour
 {
+    [Header("Interaction")]
+    [SerializeField] private Button entryButton;
+    [SerializeField] private Image resultAreaImage;
+    [SerializeField] private Color cannotCraftColor = new Color(1f, 0.5f, 0.5f, 0.75f);
+    [SerializeField] private Color canCraftColor = Color.green;
+
     [Header("Ingredients")]
     [SerializeField] private Transform ingredientContainer;
     [SerializeField] private Image ingredientIconPrefab;
@@ -28,9 +34,20 @@ public class CraftingRecipeEntryUI : MonoBehaviour
     private Vector3 badgeBaseScale = Vector3.one;
     private float badgeAnimationTime;
     private bool badgeVisible;
+    private CraftingRecipeData currentRecipe;
+    private CraftingStation owningStation;
 
     private void Awake()
     {
+        if (entryButton == null)
+        {
+            entryButton = GetComponent<Button>();
+        }
+        if (entryButton != null)
+        {
+            entryButton.onClick.AddListener(OnClicked);
+        }
+
         if (newRecipeBadge != null)
         {
             badgeBaseScale = newRecipeBadge.transform.localScale;
@@ -70,10 +87,20 @@ public class CraftingRecipeEntryUI : MonoBehaviour
         CraftingRecipeData recipe,
         IReadOnlyDictionary<ItemData, int> selection,
         bool unlocked,
-        bool showNewRecipeBadge)
+        bool showNewRecipeBadge,
+        CraftingStation station)
     {
+        currentRecipe = recipe;
+        owningStation = station;
         ClearIngredientIcons();
         SetNewRecipeBadgeVisible(showNewRecipeBadge);
+
+        if (resultAreaImage != null)
+        {
+            resultAreaImage.color = recipe != null && recipe.ExactlyMatches(selection)
+                ? canCraftColor
+                : cannotCraftColor;
+        }
 
         Dictionary<ItemData, int> remainingSelected =
             new Dictionary<ItemData, int>();
@@ -120,6 +147,14 @@ public class CraftingRecipeEntryUI : MonoBehaviour
             resultIcon.sprite = unlocked && recipe.Result != null
                 ? recipe.Result.Icon
                 : unknownIcon;
+        }
+    }
+
+    private void OnClicked()
+    {
+        if (owningStation != null)
+        {
+            owningStation.TryCraftRecipe(currentRecipe);
         }
     }
 

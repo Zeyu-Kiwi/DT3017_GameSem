@@ -251,6 +251,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShirtFoldingController
   animator: {fileID: 4232487000172506188}
+  foldClip: {fileID: 8300000, guid: 5a8ff2c744a56b641a344f52162aa4b2, type: 3}
+  foldVolume: 1
+  allowWhileStanding: 0
   hotspots:
   - {fileID: 3936114405144287907}
   - {fileID: 1692551117536136423}

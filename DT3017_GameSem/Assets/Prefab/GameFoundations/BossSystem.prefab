@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 5003444802723100571}
   - component: {fileID: 5029482004935336088}
   m_Layer: 0
-  m_Name: BossModel
+  m_Name: BossCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -349,7 +349,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 978676896173777994}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -410,10 +410,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 0.55224514
+  m_Height: 2.609532
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.21768987, z: 0.20898342}
 --- !u!1 &1202196727180721531
 GameObject:
   m_ObjectHideFlags: 0
@@ -1568,6 +1568,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 2187084453427099624}
   - {fileID: 7854341546077882630}
   - {fileID: 2500102731981546974}
   m_Father: {fileID: 838067659737958308}
@@ -1774,7 +1775,7 @@ Transform:
   m_GameObject: {fileID: 5747564111498062871}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.36, z: 0.48}
+  m_LocalPosition: {x: 0, y: 2.23, z: 0.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1850,12 +1851,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BossVision
   eye: {fileID: 0}
-  viewDistance: 6
-  horizontalViewAngle: 60
-  verticalViewAngle: 50
+  viewDistance: 8
+  horizontalViewAngle: 70
+  verticalViewAngle: 40
   obstacleLayers:
     serializedVersion: 2
     m_Bits: 128
+  proximityOrigin: {fileID: 838067659737958308}
+  proximityCenterOffset: {x: 0, y: 1, z: 0}
+  proximityRadius: 2.5
+  proximityHeight: 3.5
+  proximityGizmoColor: {r: 1, g: 0.5, b: 0, a: 0.9}
+  proximityMaterial: {fileID: 2100000, guid: 803760f79111cda45bbf4eac72f57707, type: 2}
   horizontalSamples: 48
   meshUpdateInterval: 0.08
 --- !u!1 &5814571170568544239
@@ -2862,6 +2869,7 @@ GameObject:
   m_Component:
   - component: {fileID: 838067659737958308}
   - component: {fileID: 770377296465172310}
+  - component: {fileID: 2840343271628532974}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -2927,9 +2935,33 @@ MonoBehaviour:
   walkingBoolParameter: IsWalking
   state: 0
   sequencePaused: 0
+  escapePaused: 0
   isInRoom: 0
   visitedRoamingLocators: 0
   targetRoamingLocatorCount: 0
+--- !u!114 &2840343271628532974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8343964184594038092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9899e51a1561432f96607951a55276c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BossFootstepAudio
+  boss: {fileID: 770377296465172310}
+  stepClips:
+  - {fileID: 8300000, guid: 1a7741daba5446e46a40f8074aae75dc, type: 3}
+  - {fileID: 8300000, guid: 0bc66974c41ff8c4fa15f46d21ad3548, type: 3}
+  - {fileID: 8300000, guid: f0f794c67e9233d468a38d165590d253, type: 3}
+  stepInterval: 0.75
+  volume: 1
+  pitchRange: {x: 0.95, y: 1.05}
+  bossFootstepsGroup: {fileID: -7922517242184966869, guid: 2f88bf210d425b34fadf302a6464db2c, type: 2}
+  minDistance: 5
+  maxDistance: 17
 --- !u!1 &8737660987865582146
 GameObject:
   m_ObjectHideFlags: 0
@@ -3035,3 +3067,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossPatrolLocator
   canBeRoamingTarget: 1
   connectedLocators: []
+--- !u!1001 &1860176605980151811
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 574241769897969110}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+      propertyPath: m_Name
+      value: boss_2_test
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+--- !u!4 &2187084453427099624 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+  m_PrefabInstance: {fileID: 1860176605980151811}
+  m_PrefabAsset: {fileID: 0}

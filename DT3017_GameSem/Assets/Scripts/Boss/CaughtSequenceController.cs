@@ -1,18 +1,29 @@
+using System.Collections;
 using DialogueEditor;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.Video;
 
 public class CaughtSequenceController : MonoBehaviour
 {
     [Header("Systems")]
     [SerializeField] private PlayerResetController playerResetController;
     [SerializeField] private DailyQuotaManager quotaManager;
+    [SerializeField] private DayCycleManager dayCycleManager;
 
-    [Header("Video")]
-    [SerializeField] private VideoPlayer videoPlayer;
-    [Tooltip("Canvas child containing the RawImage that displays the video's RenderTexture.")]
-    [SerializeField] private GameObject videoRoot;
+    public enum CaughtReason
+    {
+        PlayerSeen,
+        EmptyWorkstation,
+        OpenDrawer
+    }
+
+    [Header("Caught Screen")]
+    [Tooltip("Parent of the three reason screens. Keep this separate from the reason roots.")]
+    [SerializeField] private GameObject caughtScreenRoot;
+    [SerializeField] private GameObject playerSeenRoot;
+    [SerializeField] private GameObject emptyWorkstationRoot;
+    [SerializeField] private GameObject openDrawerRoot;
+    [SerializeField, Min(0f)] private float displayDuration = 3f;
 
     [Header("Optional Events")]
     [SerializeField] private UnityEvent onSequenceStarted;
@@ -22,6 +33,7 @@ public class CaughtSequenceController : MonoBehaviour
     [SerializeField] private bool sequenceRunning;
 
     private BossController activeBoss;
+    private Coroutine displayRoutine;
 
     public bool SequenceRunning => sequenceRunning;
 
@@ -32,19 +44,14 @@ public class CaughtSequenceController : MonoBehaviour
             quotaManager = DailyQuotaManager.Instance;
         }
 
-        if (videoRoot != null)
-        {
-            videoRoot.SetActive(false);
-        }
-
-        if (videoPlayer != null)
-        {
-            videoPlayer.playOnAwake = false;
-            videoPlayer.isLooping = false;
-        }
+        if (dayCycleManager == null)
+            dayCycleManager = GetComponent<DayCycleManager>() ??
+                              FindFirstObjectByType<DayCycleManager>();
+        if (caughtScreenRoot != null)
+            caughtScreenRoot.SetActive(false);
     }
 
-    public void PlayCaughtSequence(BossController boss)
+    public void PlayCaughtSequence(BossController boss, CaughtReason reason)
     {
         if (sequenceRunning)
         {
@@ -56,6 +63,7 @@ public class CaughtSequenceController : MonoBehaviour
 
         sequenceRunning = true;
         activeBoss = boss;
+        dayCycleManager?.SetSequenceTimerPaused(this, true);
 
         if (ToolSelectionUI.Instance != null && ToolSelectionUI.Instance.IsOpen)
         {
@@ -88,52 +96,48 @@ public class CaughtSequenceController : MonoBehaviour
             quotaManager.AddCaughtPenalty();
         }
 
-        if (videoRoot != null)
-        {
-            videoRoot.SetActive(true);
-        }
+        ShowCaughtScreen(reason);
+        GameAudioHub.Instance?.PlayCaughtWarning();
 
         onSequenceStarted?.Invoke();
-
-        if (!HasConfiguredVideo())
-        {
-            Debug.LogError(
-                "CaughtSequenceController has no playable video configured.",
-                this);
-            FinishSequence();
-            return;
-        }
-
-        videoPlayer.loopPointReached += OnVideoFinished;
-        videoPlayer.errorReceived += OnVideoError;
-        videoPlayer.Stop();
-        videoPlayer.Play();
+        displayRoutine = StartCoroutine(DisplayCaughtScreen());
     }
 
-    private bool HasConfiguredVideo()
+    private void ShowCaughtScreen(CaughtReason reason)
     {
-        if (videoPlayer == null)
-        {
-            return false;
-        }
+        playerSeenRoot?.SetActive(false);
+        emptyWorkstationRoot?.SetActive(false);
+        openDrawerRoot?.SetActive(false);
 
-        if (videoPlayer.source == VideoSource.VideoClip)
+        GameObject reasonRoot = reason switch
         {
-            return videoPlayer.clip != null;
-        }
+            CaughtReason.PlayerSeen => playerSeenRoot,
+            CaughtReason.EmptyWorkstation => emptyWorkstationRoot,
+            CaughtReason.OpenDrawer => openDrawerRoot,
+            _ => null
+        };
 
-        return !string.IsNullOrEmpty(videoPlayer.url);
+        if (caughtScreenRoot == null || reasonRoot == null)
+            Debug.LogWarning("Caught screen or its reason root is not assigned.", this);
+
+        reasonRoot?.SetActive(true);
+        caughtScreenRoot?.SetActive(true);
     }
 
-    private void OnVideoFinished(VideoPlayer source)
+    private IEnumerator DisplayCaughtScreen()
     {
+        yield return new WaitForSecondsRealtime(displayDuration);
+        displayRoutine = null;
         FinishSequence();
     }
 
-    private void OnVideoError(VideoPlayer source, string message)
+    private void HideCaughtScreen()
     {
-        Debug.LogError("Caught video failed: " + message, this);
-        FinishSequence();
+        if (caughtScreenRoot != null)
+            caughtScreenRoot.SetActive(false);
+        playerSeenRoot?.SetActive(false);
+        emptyWorkstationRoot?.SetActive(false);
+        openDrawerRoot?.SetActive(false);
     }
 
     private void FinishSequence()
@@ -143,17 +147,12 @@ public class CaughtSequenceController : MonoBehaviour
             return;
         }
 
-        if (videoPlayer != null)
+        if (displayRoutine != null)
         {
-            videoPlayer.loopPointReached -= OnVideoFinished;
-            videoPlayer.errorReceived -= OnVideoError;
-            videoPlayer.Stop();
+            StopCoroutine(displayRoutine);
+            displayRoutine = null;
         }
-
-        if (videoRoot != null)
-        {
-            videoRoot.SetActive(false);
-        }
+        HideCaughtScreen();
 
         if (playerResetController != null)
         {
@@ -167,15 +166,12 @@ public class CaughtSequenceController : MonoBehaviour
 
         activeBoss = null;
         sequenceRunning = false;
+        dayCycleManager?.SetSequenceTimerPaused(this, false);
         onSequenceFinished?.Invoke();
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        if (videoPlayer != null)
-        {
-            videoPlayer.loopPointReached -= OnVideoFinished;
-            videoPlayer.errorReceived -= OnVideoError;
-        }
+        if (sequenceRunning) FinishSequence();
     }
 }

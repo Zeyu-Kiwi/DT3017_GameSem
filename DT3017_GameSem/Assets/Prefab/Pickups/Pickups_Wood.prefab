@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6110177844274346731}
   - component: {fileID: 3232232469601770373}
   m_Layer: 3
-  m_Name: Pickups_wood
+  m_Name: Pickups_Wood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,6 +70,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   item: {fileID: 11400000, guid: 2cc802e0568494c449c2b5fb6c253a15, type: 2}
   quantity: 1
+  pickupClip: {fileID: 8300000, guid: 81ce05bf3fd9a9343b70c4f81bbcd574, type: 3}
+  pickupVolume: 0.5
   itemShineEnabled: 0
   useCustomOutlineColor: 0
   outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}

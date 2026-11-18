@@ -15,6 +15,9 @@ public sealed class PauseMenuController : MonoBehaviour
     [Header("Player")]
     [SerializeField] private FirstPersonController playerController;
     [SerializeField] private PlayerInteractor playerInteractor;
+    [SerializeField] private PlayerSeatController playerSeat;
+    [SerializeField] private CraftingStation craftingStation;
+    [SerializeField] private VentInspectionController ventInspection;
 
     [Header("Audio")]
     [SerializeField] private bool pauseAudio = true;
@@ -25,6 +28,8 @@ public sealed class PauseMenuController : MonoBehaviour
     private bool previousCursorVisible;
 
     public bool IsPaused { get; private set; }
+    private int lastResumeFrame = -1;
+    public bool ResumedThisFrame => lastResumeFrame == Time.frameCount;
 
     private void Awake()
     {
@@ -142,18 +147,41 @@ public sealed class PauseMenuController : MonoBehaviour
         Cursor.lockState = previousCursorLock;
         Cursor.visible = previousCursorVisible;
         IsPaused = false;
+        lastResumeFrame = Time.frameCount;
     }
 
     private bool CanOpenPauseMenu()
     {
         CachePlayerReferences();
 
-        return pauseMenuRoot != null &&
-               playerController != null &&
-               playerController.isActiveAndEnabled &&
-               playerController.CanMove &&
-               playerController.CanLook &&
-               Time.timeScale > 0f;
+        if (pauseMenuRoot == null || playerController == null ||
+            Time.timeScale <= 0f ||
+            (playerSeat != null && playerSeat.IsTransitioning))
+        {
+            return false;
+        }
+
+        // Crafting disables the player controller while the drawer is open.
+        // Only the fully opened, input-ready drawer may be paused.
+        if (craftingStation != null && craftingStation.IsDrawerReadyForInput)
+        {
+            return true;
+        }
+
+        // Vent inspection disables the normal player controller. Allow pausing
+        // after its camera has arrived, while keeping its state intact.
+        if (ventInspection != null && ventInspection.IsReadyForInput)
+        {
+            return true;
+        }
+
+        if (!playerController.isActiveAndEnabled || !playerController.CanLook)
+        {
+            return false;
+        }
+
+        return playerController.CanMove ||
+               (playerSeat != null && playerSeat.IsSeated);
     }
 
     private void CachePlayerReferences()
@@ -167,6 +195,21 @@ public sealed class PauseMenuController : MonoBehaviour
         {
             playerInteractor = playerController.GetComponent<PlayerInteractor>();
         }
+
+        if (playerSeat == null && playerController != null)
+        {
+            playerSeat = playerController.GetComponent<PlayerSeatController>();
+        }
+
+        if (craftingStation == null)
+        {
+            craftingStation = FindFirstObjectByType<CraftingStation>();
+        }
+
+        if (ventInspection == null)
+        {
+            ventInspection = FindFirstObjectByType<VentInspectionController>();
+        }
     }
 
     private void OnValidate()
@@ -174,6 +217,11 @@ public sealed class PauseMenuController : MonoBehaviour
         if (playerInteractor == null && playerController != null)
         {
             playerInteractor = playerController.GetComponent<PlayerInteractor>();
+        }
+
+        if (playerSeat == null && playerController != null)
+        {
+            playerSeat = playerController.GetComponent<PlayerSeatController>();
         }
     }
 }

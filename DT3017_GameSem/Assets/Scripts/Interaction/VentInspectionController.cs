@@ -26,9 +26,23 @@ public sealed class VentInspectionController : MonoBehaviour
     [SerializeField, Min(20f)] private float maximumCursorRadius = 220f;
     [SerializeField, Range(10f, 120f)] private float maximumStepDegrees = 85f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip screwdriverAttachClip;
+    [SerializeField] private AudioClip unscrewTickClip;
+    [SerializeField, Min(0.01f)] private float unscrewTickInterval = 0.12f;
+    [Tooltip("A new pitch is picked between X and Y for each unscrew tick.")]
+    [SerializeField] private Vector2 unscrewTickPitchRange = new Vector2(0.9f, 1.1f);
+    [SerializeField] private AudioClip screwDetachClip;
+    [SerializeField] private AudioClip screwFloorImpactClip;
+    [SerializeField] private AudioClip coverDropClip;
+    [SerializeField] private AudioClip coverFloorImpactClip;
+    [SerializeField, Range(0f, 1f)] private float ventVolume = 1f;
+    private float nextUnscrewTickTime;
+
     private Camera view;
     private FirstPersonController controller;
     private PlayerInteractor interactor;
+    private PauseMenuController pauseMenu;
     private InteractionOutlineHighlighter outline;
     private HeadBob[] bobs;
     private bool[] bobStates;
@@ -49,6 +63,7 @@ public sealed class VentInspectionController : MonoBehaviour
     private float previousAngle;
     private Coroutine cameraRoutine;
     public bool IsInspecting { get; private set; }
+    public bool IsReadyForInput => IsInspecting && ready && !returning;
     public bool IsComplete { get; private set; }
     public UnityEvent OnCoverRemoved => onCoverRemoved;
     public int RemainingScrews
@@ -63,6 +78,7 @@ public sealed class VentInspectionController : MonoBehaviour
         if (view == null) return;
         controller = player.GetComponent<FirstPersonController>();
         interactor = player.GetComponent<PlayerInteractor>();
+        if (pauseMenu == null) pauseMenu = FindFirstObjectByType<PauseMenuController>();
         outline = player.GetComponent<InteractionOutlineHighlighter>();
         cameraPosition = view.transform.localPosition;
         cameraRotation = view.transform.localRotation;
@@ -109,14 +125,32 @@ public sealed class VentInspectionController : MonoBehaviour
         view.fieldOfView = targetFov;
         cameraRoutine = null;
         if (back) RestoreControls();
-        else { ready = true; ShowHeldTool(); Tell("Click a screw, then move the cursor clockwise around it. Escape to leave."); }
+        else
+        {
+            ready = true;
+            ShowHeldTool();
+            string exitKey = interactor != null ? interactor.InteractionKey.ToString() : "F";
+            Tell("Click a screw, then move the cursor clockwise around it. " + exitKey + " to leave.");
+        }
     }
 
     private void Update()
     {
         if (!IsInspecting || returning) return;
-        if (Input.GetKeyDown(KeyCode.Escape)) { Exit(); return; }
+        if (Time.timeScale <= 0f || (pauseMenu != null &&
+            (pauseMenu.IsPaused || pauseMenu.ResumedThisFrame)))
+        {
+            hasPreviousAngle = false;
+            return;
+        }
         if (!ready) return;
+        // Let PauseMenuController own Escape, regardless of script update order.
+        if (Input.GetKeyDown(KeyCode.Escape)) return;
+        if (Input.GetKeyDown(interactor != null ? interactor.InteractionKey : KeyCode.F))
+        {
+            Exit();
+            return;
+        }
         if (activeScrew != null) { UpdateTurning(Input.mousePosition); return; }
         UpdateHover(Input.mousePosition);
         if (!Input.GetMouseButtonDown(0)) return;
@@ -152,6 +186,7 @@ public sealed class VentInspectionController : MonoBehaviour
         outline?.Clear();
         if (heldTool != null) heldTool.SetActive(false);
         attachedTool = MakeTool(screw.transform);
+        WorldAudioOneShot.Play(screwdriverAttachClip, screw.transform.position, ventVolume);
         Tell("Move the cursor clockwise around the screw to loosen it.");
     }
 
@@ -167,7 +202,16 @@ public sealed class VentInspectionController : MonoBehaviour
         if (hasPreviousAngle)
         {
             float delta = Mathf.DeltaAngle(previousAngle, angle);
-            if (Mathf.Abs(delta) <= maximumStepDegrees && activeScrew.Turn(-delta)) FinishScrew();
+            if (Mathf.Abs(delta) <= maximumStepDegrees)
+            {
+                if (delta < -0.5f && Time.unscaledTime >= nextUnscrewTickTime)
+                {
+                    WorldAudioOneShot.Play(unscrewTickClip, activeScrew.transform.position,
+                        ventVolume, Random.Range(unscrewTickPitchRange.x, unscrewTickPitchRange.y));
+                    nextUnscrewTickTime = Time.unscaledTime + unscrewTickInterval;
+                }
+                if (activeScrew.Turn(-delta)) FinishScrew();
+            }
         }
         previousAngle = angle;
         hasPreviousAngle = true;
@@ -176,7 +220,7 @@ public sealed class VentInspectionController : MonoBehaviour
     private void FinishScrew()
     {
         if (attachedTool != null) Destroy(attachedTool);
-        activeScrew.Drop();
+        activeScrew.Drop(screwDetachClip, screwFloorImpactClip, ventVolume);
         activeScrew = null;
         hasPreviousAngle = false;
         ShowHeldTool();
@@ -209,10 +253,14 @@ public sealed class VentInspectionController : MonoBehaviour
         if (coverCollider != null) coverCollider.enabled = false;
         if (coverVisuals != null)
         {
+            WorldAudioOneShot.Play(coverDropClip, coverVisuals.position, ventVolume);
             coverVisuals.SetParent(null, true);
             var body = coverVisuals.gameObject.AddComponent<Rigidbody>();
             body.mass = 1f;
             var collider = coverVisuals.gameObject.AddComponent<BoxCollider>();
+            if (coverFloorImpactClip != null)
+                coverVisuals.gameObject.AddComponent<AudioImpactOnCollision>()
+                    .Configure(coverFloorImpactClip, ventVolume);
             var renderer = coverVisuals.GetComponentInChildren<Renderer>();
             if (renderer != null)
             {
@@ -300,4 +348,11 @@ public sealed class VentInspectionController : MonoBehaviour
     }
 
     private void Tell(string message) { NotificationManager.Instance?.ShowMessage(message); }
+
+    private void OnValidate()
+    {
+        unscrewTickPitchRange.x = Mathf.Clamp(unscrewTickPitchRange.x, 0.1f, 3f);
+        unscrewTickPitchRange.y = Mathf.Clamp(unscrewTickPitchRange.y,
+            unscrewTickPitchRange.x, 3f);
+    }
 }

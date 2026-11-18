@@ -12,6 +12,10 @@ public sealed class VentCoverInteractable : MonoBehaviour
     [SerializeField, Min(0f)] private float shakeAngle = 0.8f;
     [SerializeField, Min(0f)] private float shakeFrequency = 18f;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip shakeClip;
+    [SerializeField, Range(0f, 1f)] private float shakeVolume = 1f;
+
     private Coroutine shakeRoutine;
     private Transform activeShakeTarget;
     private Vector3 restingPosition;
@@ -26,6 +30,7 @@ public sealed class VentCoverInteractable : MonoBehaviour
             return;
         }
 
+        WorldAudioOneShot.Play(shakeClip, transform.position, shakeVolume);
         shakeRoutine = StartCoroutine(Shake());
     }
 

@@ -14,6 +14,10 @@ public class ClothesPileInteractable : MonoBehaviour, IInteractable
     [Tooltip("Optional parent for the spawned shirt. The shirt keeps its world scale when parented.")]
     [SerializeField] private Transform spawnedShirtParent;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip spawnShirtClip;
+    [SerializeField, Range(0f, 1f)] private float spawnShirtVolume = 1f;
+
     [Header("Runtime State (Debug)")]
     [SerializeField] private ShirtFoldingController activeShirt;
 
@@ -60,6 +64,7 @@ public class ClothesPileInteractable : MonoBehaviour, IInteractable
         }
 
         activeShirt.Initialize(this, shirtItem);
+        WorldAudioOneShot.Play(spawnShirtClip, shirtSpawnPoint.position, spawnShirtVolume);
     }
 
     public void NotifyShirtCollected(ShirtFoldingController shirt)

@@ -10,19 +10,12 @@ public class CraftingRecipePanelUI : MonoBehaviour
     private readonly List<CraftingRecipeEntryUI> generatedEntries =
         new List<CraftingRecipeEntryUI>();
 
-    public bool IsOpen => panelRoot != null && panelRoot.activeSelf;
-
     public void SetVisible(bool visible)
     {
         if (panelRoot != null)
         {
             panelRoot.SetActive(visible);
         }
-    }
-
-    public void Toggle()
-    {
-        SetVisible(!IsOpen);
     }
 
     public void Refresh(
@@ -45,7 +38,8 @@ public class CraftingRecipePanelUI : MonoBehaviour
                 recipe,
                 selection,
                 station.IsRecipeUnlocked(recipe),
-                station.ShouldShowNewRecipeBadge(recipe));
+                station.ShouldShowNewRecipeBadge(recipe),
+                station);
             entry.gameObject.SetActive(true);
             generatedEntries.Add(entry);
         }
