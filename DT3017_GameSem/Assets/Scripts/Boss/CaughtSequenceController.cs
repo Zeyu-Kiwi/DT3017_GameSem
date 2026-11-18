@@ -94,6 +94,7 @@ public class CaughtSequenceController : MonoBehaviour
         }
 
         ShowCaughtScreen(reason);
+        GameAudioHub.Instance?.PlayCaughtWarning();
 
         onSequenceStarted?.Invoke();
         displayRoutine = StartCoroutine(DisplayCaughtScreen());

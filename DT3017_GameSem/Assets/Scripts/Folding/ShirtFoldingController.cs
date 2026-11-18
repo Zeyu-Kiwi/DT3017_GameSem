@@ -19,6 +19,12 @@ public class ShirtFoldingController : MonoBehaviour
     [Header("Animation")]
     [SerializeField] private Animator animator;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip foldClip;
+    [SerializeField, Range(0f, 1f)] private float foldVolume = 1f;
+    [Tooltip("A new pitch is picked between X and Y for each successful fold.")]
+    [SerializeField] private Vector2 foldPitchRange = new Vector2(0.9f, 1.1f);
+
     [Header("Interaction")]
     [Tooltip("Allow folding this shirt without sitting in the chair.")]
     [SerializeField] private bool allowWhileStanding;
@@ -109,6 +115,9 @@ public class ShirtFoldingController : MonoBehaviour
         animationPlaying = true;
         animationPart = part;
         RefreshHotspotColliders();
+
+        WorldAudioOneShot.Play(foldClip, transform.position, foldVolume,
+            Random.Range(foldPitchRange.x, foldPitchRange.y));
 
         switch (part)
         {
@@ -283,5 +292,11 @@ public class ShirtFoldingController : MonoBehaviour
         {
             Debug.Log(message, this);
         }
+    }
+
+    private void OnValidate()
+    {
+        foldPitchRange.x = Mathf.Clamp(foldPitchRange.x, 0.1f, 3f);
+        foldPitchRange.y = Mathf.Clamp(foldPitchRange.y, foldPitchRange.x, 3f);
     }
 }

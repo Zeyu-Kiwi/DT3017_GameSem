@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class CraftingStation : MonoBehaviour, IInteractable
 {
@@ -37,6 +38,15 @@ public class CraftingStation : MonoBehaviour, IInteractable
     [SerializeField] private CraftingStationUI stationUI;
     [SerializeField] private CraftingCameraController cameraController;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip hoverDrawerItemClip;
+    [SerializeField] private AudioClip itemToCenterClip;
+    [SerializeField] private AudioClip itemOffCenterClip;
+    [SerializeField] private AudioClip craftItemClip;
+    [SerializeField, Range(0f, 1f)] private float uiInteractionVolume = 1f;
+    [FormerlySerializedAs("interactionVolume")]
+    [SerializeField, Range(0f, 1f)] private float craftItemVolume = 1f;
+
     private readonly Dictionary<ItemData, int> selection =
         new Dictionary<ItemData, int>();
     private readonly List<ItemData> selectionOrder = new List<ItemData>();
@@ -71,6 +81,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
                                (drawerController == null || !drawerController.IsMoving);
     public IReadOnlyDictionary<ItemData, int> Selection => selection;
     public bool IsDrawerOpen => drawerController != null && drawerController.IsDrawerOpen;
+    public bool IsDrawerReadyForInput => isOpen && inputReady && !isClosing;
     public bool IsPlayerInsideWorkstation => isPlayerInsideWorkstation;
 
     private void Awake()
@@ -126,7 +137,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
     {
         RefreshRuntimeState();
 
-        if (!isOpen || !inputReady)
+        if (!isOpen || !inputReady || Time.timeScale <= 0f)
         {
             return;
         }
@@ -134,7 +145,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
         KeyCode interactionKey = playerInteractor != null
             ? playerInteractor.InteractionKey
             : KeyCode.F;
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(interactionKey))
+        if (Input.GetKeyDown(interactionKey))
         {
             CloseCrafting();
             return;
@@ -335,6 +346,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
 
         selection[item]++;
         selectionOrder.Add(item);
+        GameAudioHub.Instance?.PlayUiCue(itemToCenterClip, uiInteractionVolume);
         RefreshDisplays();
         RefreshUI();
     }
@@ -360,6 +372,8 @@ public class CraftingStation : MonoBehaviour, IInteractable
                 break;
             }
         }
+
+        GameAudioHub.Instance?.PlayUiCue(itemOffCenterClip, uiInteractionVolume);
 
         RefreshDisplays();
         RefreshUI();
@@ -602,6 +616,7 @@ public class CraftingStation : MonoBehaviour, IInteractable
         if (hoveredItem != null)
         {
             hoveredItem.SetHovered(true, playerOutlineHighlighter == null);
+            GameAudioHub.Instance?.PlayUiCue(hoverDrawerItemClip, uiInteractionVolume);
         }
 
         playerOutlineHighlighter?.SetTarget(hoveredItem);
@@ -806,6 +821,8 @@ public class CraftingStation : MonoBehaviour, IInteractable
             Debug.LogError("Crafting validation succeeded but the result could not be added.", this);
             return;
         }
+
+        WorldAudioOneShot.Play(craftItemClip, transform.position, craftItemVolume);
 
         discoveredThisSession.Add(recipe);
         eventUnlockedUncraftedRecipes.Remove(recipe);

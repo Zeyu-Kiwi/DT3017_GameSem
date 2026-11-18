@@ -2,11 +2,11 @@ using UnityEngine;
 using UnityEngine.Events;
 
 /// <summary>
-/// Reusable interaction that opens ToolSelectionUI and responds to the selected tool.
+/// Reusable interaction that checks whether the player owns the required tool.
 /// Place this on any escape route or other object that requires a tool.
 /// </summary>
 [DisallowMultipleComponent]
-public sealed class ToolSelectionInteractable : MonoBehaviour, IInteractable, IToolSelectionTarget
+public sealed class ToolSelectionInteractable : MonoBehaviour, IInteractable
 {
     [Header("Interaction")]
     [SerializeField] private bool canInteract = true;
@@ -14,15 +14,9 @@ public sealed class ToolSelectionInteractable : MonoBehaviour, IInteractable, IT
 
     [Header("Messages")]
     [SerializeField, TextArea] private string noToolMessage =
-        "You do not have any tools.";
-    [SerializeField, TextArea] private string wrongToolMessage =
-        "That tool will not work here.";
-    [SerializeField, TextArea] private string correctToolMessage =
-        "That tool should work.";
+        "You need a tool for this.";
 
     [Header("Behaviour")]
-    [Tooltip("When enabled, the tool UI stays open after a wrong tool is selected.")]
-    [SerializeField] private bool keepUIOpenAfterWrongTool = true;
     [Tooltip("Use this for one-use routes. Leave it off if the player may exit and retry a longer interaction.")]
     [SerializeField] private bool disableAfterCorrectTool;
 
@@ -30,7 +24,6 @@ public sealed class ToolSelectionInteractable : MonoBehaviour, IInteractable, IT
     [Tooltip("Passes the player who originally interacted with this object.")]
     [SerializeField] private UnityEvent<GameObject> onCorrectToolUsed =
         new UnityEvent<GameObject>();
-    [SerializeField] private UnityEvent onWrongToolUsed = new UnityEvent();
     [SerializeField] private UnityEvent onNoToolsAvailable = new UnityEvent();
 
     [Tooltip("Optional follow-up interaction, used when it becomes available after completing this tool task.")]
@@ -38,7 +31,6 @@ public sealed class ToolSelectionInteractable : MonoBehaviour, IInteractable, IT
 
     public bool CanInteract => canInteract || (interactionAfterCompletion is IInteractable followUp && followUp.CanInteract);
     public ItemData RequiredTool => requiredTool;
-    public bool KeepSelectionOpenAfterWrongTool => keepUIOpenAfterWrongTool;
 
     public void Interact(GameObject player)
     {
@@ -52,26 +44,27 @@ public sealed class ToolSelectionInteractable : MonoBehaviour, IInteractable, IT
             return;
         }
 
-        ToolSelectionUI toolSelectionUI = ToolSelectionUI.Instance;
-        if (toolSelectionUI == null)
+        if (requiredTool == null)
         {
-            toolSelectionUI = FindFirstObjectByType<ToolSelectionUI>();
-        }
-
-        if (toolSelectionUI == null)
-        {
-            Debug.LogError(
-                "ToolSelectionInteractable could not find a ToolSelectionUI in the scene.",
-                this);
+            Debug.LogError("ToolSelectionInteractable needs a Required Tool.", this);
             return;
         }
 
-        toolSelectionUI.Open(this, player);
-    }
+        InventoryManager inventory = InventoryManager.Instance;
+        if (inventory == null)
+        {
+            Debug.LogError("ToolSelectionInteractable could not find an InventoryManager.", this);
+            return;
+        }
 
-    public bool IsCorrectTool(ItemData selectedTool)
-    {
-        return requiredTool != null && selectedTool == requiredTool;
+        if (inventory.Has(requiredTool, 1))
+        {
+            HandleCorrectTool(player);
+        }
+        else
+        {
+            HandleNoToolsAvailable();
+        }
     }
 
     public void HandleCorrectTool(GameObject player)
@@ -81,14 +74,7 @@ public sealed class ToolSelectionInteractable : MonoBehaviour, IInteractable, IT
             canInteract = false;
         }
 
-        ShowMessage(correctToolMessage);
         onCorrectToolUsed.Invoke(player);
-    }
-
-    public void HandleWrongTool()
-    {
-        ShowMessage(wrongToolMessage);
-        onWrongToolUsed.Invoke();
     }
 
     public void HandleNoToolsAvailable()

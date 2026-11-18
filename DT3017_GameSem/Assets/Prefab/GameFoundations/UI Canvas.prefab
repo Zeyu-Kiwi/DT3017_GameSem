@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 6867821820562337103}
   - component: {fileID: 5569744105287572969}
   - component: {fileID: 1197335581489716167}
+  - component: {fileID: 3784092818745746841}
   m_Layer: 5
   m_Name: UIController
   m_TagString: Untagged
@@ -122,6 +123,26 @@ MonoBehaviour:
   dayManager: {fileID: 0}
   interfaceRoot: {fileID: 752016743666252977}
   timeText: {fileID: 5674793466609965954}
+--- !u!114 &3784092818745746841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376261397621307673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e476e7ca9a9c45129860a1012e91e36c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PauseMenuController
+  pauseKey: 27
+  pauseMenuRoot: {fileID: 265195850012771194}
+  resumeButton: {fileID: 5940817415204007993}
+  playerController: {fileID: 0}
+  playerInteractor: {fileID: 0}
+  playerSeat: {fileID: 0}
+  craftingStation: {fileID: 0}
+  pauseAudio: 1
 --- !u!1 &419785820087210120
 GameObject:
   m_ObjectHideFlags: 0
@@ -1800,6 +1821,7 @@ GameObject:
   - component: {fileID: 4592090068214592640}
   - component: {fileID: 4757815794320816743}
   - component: {fileID: 3163292512944441231}
+  - component: {fileID: 6286921713784334109}
   m_Layer: 5
   m_Name: UI Canvas
   m_TagString: Untagged
@@ -1900,6 +1922,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6286921713784334109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2781879694002840813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3681bed739734d12849962b050d6f0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIAudioRouter
 --- !u!1 &2944594860447818617
 GameObject:
   m_ObjectHideFlags: 0

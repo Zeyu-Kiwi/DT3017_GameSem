@@ -30,8 +30,9 @@ public sealed class VentScrew : MonoBehaviour
         return true;
     }
 
-    public void Drop()
+    public void Drop(AudioClip detachClip, AudioClip floorImpactClip, float volume)
     {
+        WorldAudioOneShot.Play(detachClip, transform.position, volume);
         transform.SetParent(null, true);
         var body = GetComponent<Rigidbody>();
         if (body == null) body = gameObject.AddComponent<Rigidbody>();
@@ -39,6 +40,8 @@ public sealed class VentScrew : MonoBehaviour
         body.isKinematic = false;
         body.useGravity = true;
         body.collisionDetectionMode = CollisionDetectionMode.ContinuousDynamic;
+        if (floorImpactClip != null)
+            gameObject.AddComponent<AudioImpactOnCollision>().Configure(floorImpactClip, volume);
         body.AddForce(transform.forward * 0.25f, ForceMode.VelocityChange);
         body.AddTorque(transform.right * 3f, ForceMode.VelocityChange);
         Destroy(gameObject, 12f);

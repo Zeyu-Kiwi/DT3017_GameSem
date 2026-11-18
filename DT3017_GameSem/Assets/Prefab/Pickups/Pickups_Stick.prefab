@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4ddfa1a5305616c488e4ae3c710fc39a, type: 3}
       propertyPath: m_Name
-      value: Pickups_stick 1
+      value: Pickups_Stick
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 4ddfa1a5305616c488e4ae3c710fc39a, type: 3}
       propertyPath: m_Layer
@@ -93,6 +93,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ItemPickup
   item: {fileID: 11400000, guid: 7ce056aef7bfef34abacbf7a370a24d5, type: 2}
   quantity: 1
+  pickupClip: {fileID: 8300000, guid: 81ce05bf3fd9a9343b70c4f81bbcd574, type: 3}
+  pickupVolume: 0.5
   itemShineEnabled: 0
   useCustomOutlineColor: 0
   outlineColor: {r: 1, g: 0.75, b: 0.15, a: 1}

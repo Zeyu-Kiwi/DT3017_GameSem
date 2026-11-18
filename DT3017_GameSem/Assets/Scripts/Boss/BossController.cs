@@ -73,10 +73,12 @@ public class BossController : MonoBehaviour
     private float inspectionElapsed;
     private Quaternion inspectionStartRotation;
     private bool caughtThisVisit;
+    private bool isWalking;
     private bool caughtSequenceSuppressed;
     private Transform tutorialLookTarget;
 
     public bool IsInRoom => isInRoom;
+    public bool IsWalking => isWalking;
     public bool IsSequencePaused => sequencePaused;
     public string StateName => state.ToString();
 
@@ -543,9 +545,10 @@ public class BossController : MonoBehaviour
 
     private void SetWalking(bool walking)
     {
+        isWalking = walking && !sequencePaused && !escapePaused && isInRoom;
         if (animator != null && !string.IsNullOrEmpty(walkingBoolParameter))
         {
-            animator.SetBool(walkingBoolParameter, walking && !sequencePaused && !escapePaused);
+            animator.SetBool(walkingBoolParameter, isWalking);
         }
     }
 

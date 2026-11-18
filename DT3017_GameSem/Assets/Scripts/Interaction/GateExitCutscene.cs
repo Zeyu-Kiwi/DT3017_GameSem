@@ -10,6 +10,9 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
     [SerializeField] private Transform gatePivot;
     [SerializeField] private float openAngle = -100f;
     [SerializeField, Min(.01f)] private float openDuration = 1f;
+    [Header("Audio")]
+    [SerializeField] private AudioClip gateOpenClip;
+    [SerializeField, Range(0f, 1f)] private float gateOpenVolume = 1f;
     [Header("Player path (standing root positions)")]
     [SerializeField] private Transform walkStartPoint;
     [SerializeField] private Transform walkExitPoint;
@@ -98,6 +101,7 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
         Cursor.visible = false;
 
         stage = "Opening gate";
+        WorldAudioOneShot.Play(gateOpenClip, gatePivot.position, gateOpenVolume);
         Quaternion opened = closedRotation * Quaternion.Euler(0f, openAngle, 0f);
         float elapsed = 0f;
         while (elapsed < openDuration)

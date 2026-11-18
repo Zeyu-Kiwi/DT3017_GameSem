@@ -136,7 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HeadBob
   playerRigidbody: {fileID: 4512642823996778409}
-  bobFrequency: 8
+  bobFrequency: 12
   verticalAmplitude: 0.08
   horizontalAmplitude: 0.025
   movementThreshold: 0.1
@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 2241679284241904182}
   - component: {fileID: 2073505558820027770}
   - component: {fileID: 5289469010873960693}
+  - component: {fileID: 2030147621626057904}
   m_Layer: 0
   m_Name: CharacterController
   m_TagString: Player
@@ -353,6 +354,24 @@ MonoBehaviour:
   seatedCameraOffset: {x: 0, y: 0, z: 0}
   isSeated: 0
   isTransitioning: 0
+--- !u!114 &2030147621626057904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216384262744028943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91cdb9ee3e1b41978c9222c00483f9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerFootstepAudio
+  headBob: {fileID: 3974903480348020908}
+  stepClips:
+  - {fileID: 8300000, guid: 1f0199a4c6005ec4abbb302f71bc036d, type: 3}
+  - {fileID: 8300000, guid: 53e2adf2ac488ef46bb2b4074de9e363, type: 3}
+  volume: 1
+  pitchRange: {x: 0.95, y: 1.05}
 --- !u!1 &8143451555976752454
 GameObject:
   m_ObjectHideFlags: 0
