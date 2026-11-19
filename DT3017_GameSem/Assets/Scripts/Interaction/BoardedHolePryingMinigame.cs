@@ -74,6 +74,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
     private Quaternion attachedRestRotation;
     private FirstPersonController controller;
     private PlayerInteractor interactor;
+    private PauseMenuController pauseMenu;
     private InteractionOutlineHighlighter outline;
     private Camera view;
     private HeadBob[] bobs;
@@ -90,6 +91,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
 
     public bool IsRunning { get; private set; }
     public bool IsComplete { get; private set; }
+    public UnityEvent OnAllPlanksRemoved => onAllPlanksRemoved;
     public int RemovedPlanks => removedPlanks;
     public int TotalPlanks => planks == null ? 0 : planks.Length;
     public int SelectedPlankIndex => selectedPlank;
@@ -103,6 +105,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
 
     private void Awake()
     {
+        pauseMenu = FindFirstObjectByType<PauseMenuController>();
         if (spacebarIcon != null) spacebarOriginalColor = spacebarIcon.color;
         restPositions = new Vector3[TotalPlanks];
         restRotations = new Quaternion[TotalPlanks];
@@ -156,7 +159,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < transitionDuration)
         {
-            elapsed += Time.unscaledDeltaTime;
+            elapsed += Time.deltaTime;
             float t = Mathf.SmoothStep(0, 1, Mathf.Clamp01(elapsed / Mathf.Max(.01f, transitionDuration)));
             view.transform.SetPositionAndRotation(Vector3.Lerp(start, target, t), Quaternion.Slerp(rotation, targetRotation, t));
             view.fieldOfView = Mathf.Lerp(fov, targetFov, t); yield return null;
@@ -198,7 +201,10 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
     {
         UpdateSpacebarFlash();
         if (!IsRunning || stage == PryStage.Returning) return;
-        if (Input.GetKeyDown(KeyCode.Escape) && stage != PryStage.Ripping) { Exit(); return; }
+        if (Time.timeScale <= 0f || (pauseMenu != null && (pauseMenu.IsPaused || pauseMenu.ResumedThisFrame))) return;
+        // Escape belongs to the pause menu, independent of script update order.
+        if (Input.GetKeyDown(KeyCode.Escape)) return;
+        if (Input.GetKeyDown(KeyCode.F) && stage != PryStage.Ripping) { Exit(); return; }
         if (stage == PryStage.ChoosingPlank)
         {
             UpdateHover(Input.mousePosition);
@@ -208,8 +214,8 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
         {
             if (!HasCrowbar()) { Tell("I need a crowbar to continue."); Exit(); return; }
             // Drain according to elapsed time, independent of frame rate or lifetime press count.
-            float elapsedSincePress = Time.unscaledTime - lastMashTime;
-            float drainTime = Mathf.Clamp(elapsedSincePress - decayDelay, 0f, Time.unscaledDeltaTime);
+            float elapsedSincePress = Time.time - lastMashTime;
+            float drainTime = Mathf.Clamp(elapsedSincePress - decayDelay, 0f, Time.deltaTime);
             mashForce = Mathf.Max(0f, mashForce - forceDecayPerSecond * drainTime);
             if (Input.GetKeyDown(pryKey)) TryPry();
             if (stage == PryStage.Prying) UpdatePlankPose();
@@ -235,7 +241,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
 
     public bool SelectPlank(int index, Vector3 contactPoint)
     {
-        if (!IsRunning || stage != PryStage.ChoosingPlank || index < 0 || index >= TotalPlanks || removed[index] || planks[index] == null) return false;
+        if (Time.timeScale <= 0f || !IsRunning || stage != PryStage.ChoosingPlank || index < 0 || index >= TotalPlanks || removed[index] || planks[index] == null) return false;
         selectedPlank = index; hoveredPlank = -1; mashForce = 0f; outline?.Clear();
         headContactLocal = planks[index].InverseTransformPoint(contactPoint + Pull * contactOffset);
         Vector3 handleDirection = (Vector3.down * Mathf.Cos(restingLeanAngle * Mathf.Deg2Rad) + Pull * Mathf.Sin(restingLeanAngle * Mathf.Deg2Rad)).normalized;
@@ -259,22 +265,22 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < toolTravelDuration)
         {
-            elapsed += Time.unscaledDeltaTime; float t = Mathf.SmoothStep(0, 1, Mathf.Clamp01(elapsed / Mathf.Max(.01f, toolTravelDuration)));
+            elapsed += Time.deltaTime; float t = Mathf.SmoothStep(0, 1, Mathf.Clamp01(elapsed / Mathf.Max(.01f, toolTravelDuration)));
             crowbar.transform.SetPositionAndRotation(Vector3.Lerp(start, ContactPosition, t), Quaternion.Slerp(rotation, ContactRotation, t));
             yield return null;
         }
         crowbar.transform.SetParent(planks[selectedPlank], true);
         crowbar.transform.SetPositionAndRotation(ContactPosition, ContactRotation);
-        toolRoutine = null; lastMashTime = Time.unscaledTime; pulseStarted = -100f;
+        toolRoutine = null; lastMashTime = Time.time; pulseStarted = -100f;
         stage = PryStage.Prying; UpdateUI();
         Tell("Press spacebar to remove.");
     }
 
     public bool TryPry()
     {
-        if (!IsRunning || stage != PryStage.Prying || lastPressFrame == Time.frameCount || !HasCrowbar()) return false;
-        lastPressFrame = Time.frameCount; lastMashTime = pulseStarted = Time.unscaledTime;
-        spacebarFlashUntil = Time.unscaledTime + Mathf.Max(.01f, spacebarFlashDuration);
+        if (Time.timeScale <= 0f || !IsRunning || stage != PryStage.Prying || lastPressFrame == Time.frameCount || !HasCrowbar()) return false;
+        lastPressFrame = Time.frameCount; lastMashTime = pulseStarted = Time.time;
+        spacebarFlashUntil = Time.time + Mathf.Max(.01f, spacebarFlashDuration);
         mashForce = Mathf.Min(MashCap, mashForce + forcePerPress); UpdateUI();
         if (mashForce >= MashCap) { stage = PryStage.Ripping; StartCoroutine(RipPlank()); }
         return true;
@@ -283,7 +289,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
     private void UpdatePlankPose()
     {
         var plank = planks[selectedPlank];
-        float t = Mathf.Clamp01((Time.unscaledTime - pulseStarted) / Mathf.Max(.01f, pulseDuration));
+        float t = Mathf.Clamp01((Time.time - pulseStarted) / Mathf.Max(.01f, pulseDuration));
         float pulse = Mathf.Sin(t * Mathf.PI) * (1f - t);
         plank.SetPositionAndRotation(restPositions[selectedPlank] + Pull * (loosenDistance * MashProgress + pulseDistance * pulse), restRotations[selectedPlank]);
     }
@@ -297,10 +303,10 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (!IsRunning || crowbar == null) return;
+        if (!IsRunning || crowbar == null || Time.timeScale <= 0f) return;
         if (stage == PryStage.ChoosingPlank) { ApplyHeldPose(); return; }
         if (selectedPlank < 0 || (stage != PryStage.Prying && stage != PryStage.Ripping)) return;
-        float t = Mathf.Clamp01((Time.unscaledTime - pulseStarted) / Mathf.Max(.01f, pulseDuration));
+        float t = Mathf.Clamp01((Time.time - pulseStarted) / Mathf.Max(.01f, pulseDuration));
         float angle = maximumPryAngle * MashProgress + pryPulseAngle * Mathf.Sin(t * Mathf.PI);
         // The root is the hooked head: rotating this root moves the handle away from the wall.
         crowbar.transform.SetPositionAndRotation(ContactPosition, Quaternion.AngleAxis(angle, LeverAxis) * ContactRotation);
@@ -312,7 +318,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
         Vector3 start = plank.position; Quaternion rotation = plank.rotation; float elapsed = 0f;
         while (elapsed < ripDuration)
         {
-            elapsed += Time.unscaledDeltaTime; float t = Mathf.SmoothStep(0, 1, Mathf.Clamp01(elapsed / Mathf.Max(.01f, ripDuration)));
+            elapsed += Time.deltaTime; float t = Mathf.SmoothStep(0, 1, Mathf.Clamp01(elapsed / Mathf.Max(.01f, ripDuration)));
             plank.SetPositionAndRotation(Vector3.Lerp(start, restPositions[index] + Pull * ripDistance, t), rotation * Quaternion.Euler(0, 0, 18f * t));
             yield return null;
         }
@@ -337,7 +343,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
         {
             IsComplete = true; if (openingBlocker != null) openingBlocker.enabled = false;
             toolInteraction?.SetCanInteract(false); onAllPlanksRemoved.Invoke();
-            Tell("The planks are off. The opening is clear."); Exit();
+            Tell("The planks are off. Press F to crawl through the opening."); Exit();
         }
         else { ShowHeldCrowbar(); UpdateUI(); ShowPlankSelectionInstruction(); }
     }
@@ -405,7 +411,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
         if (spacebarIcon == null) return;
         bool flashing = IsRunning && flashSpacebarIcon
             && (stage == PryStage.Prying || stage == PryStage.Ripping)
-            && Time.unscaledTime < spacebarFlashUntil;
+            && Time.time < spacebarFlashUntil;
         Color color = flashing ? spacebarFlashColor : spacebarOriginalColor;
         color.a = spacebarOriginalColor.a;
         spacebarIcon.color = color;
