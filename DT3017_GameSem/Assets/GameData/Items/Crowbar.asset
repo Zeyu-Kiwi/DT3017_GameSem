@@ -15,4 +15,4 @@ MonoBehaviour:
   itemId: crowbar
   displayName: Crowbar
   stackLimit: 1
-  icon: {fileID: 21300000, guid: 1dc0b604e9613c8488200654a1f8c3b3, type: 3}
+  icon: {fileID: 21300000, guid: 11669db5a89042b4983f3db62e2cf840, type: 3}

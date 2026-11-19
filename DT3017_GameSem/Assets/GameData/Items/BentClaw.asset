@@ -15,4 +15,4 @@ MonoBehaviour:
   itemId: bent_claw
   displayName: Bent Claw
   stackLimit: 1
-  icon: {fileID: 21300000, guid: da8d8db80c3c5964981ac571b130b7e4, type: 3}
+  icon: {fileID: 21300000, guid: 08ffc9016fbdb6a488a9acc31891047e, type: 3}

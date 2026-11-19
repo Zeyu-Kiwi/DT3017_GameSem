@@ -34542,15 +34542,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2679424160716328266, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2679424160716328266, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2679424160716328266, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 2781879694002840813, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_Name
@@ -34646,7 +34646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3740830815021425939, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3784092818745746841, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: playerSeat
@@ -34670,15 +34670,15 @@ PrefabInstance:
       objectReference: {fileID: 7542321580228605103}
     - target: {fileID: 4193124324819065812, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4193124324819065812, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4193124324819065812, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.4
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5923651479408825675, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_Type
