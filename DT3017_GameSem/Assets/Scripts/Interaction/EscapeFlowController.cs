@@ -1,5 +1,11 @@
 using UnityEngine;
 
+public enum EscapeEnding
+{
+    Vent,
+    CarCrash
+}
+
 /// <summary>Stops the day and boss from an escape's first cutscene through its ending UI.</summary>
 [DisallowMultipleComponent]
 public sealed class EscapeFlowController : MonoBehaviour
@@ -15,6 +21,10 @@ public sealed class EscapeFlowController : MonoBehaviour
     [Header("End Game UI")]
     [Tooltip("Assign the artist's inactive end-game panel. Place it with the black screen UI; it moves to the top of its siblings when shown.")]
     [SerializeField] private GameObject endGamePanel;
+    [Tooltip("TypewriterText on the end-game message. If empty, it is found on the panel.")]
+    [SerializeField] private TypewriterText endingMessageText;
+    [SerializeField, TextArea(2, 6)] private string ventEndingMessage = "You escaped through the vent.";
+    [SerializeField, TextArea(2, 6)] private string carCrashEndingMessage = "You made it outside, but a car hit you.";
 
     [Header("Runtime State (Debug)")]
     [SerializeField] private bool escapeStarted;
@@ -59,7 +69,7 @@ public sealed class EscapeFlowController : MonoBehaviour
     }
 
     /// <summary>Show the ending UI once the final gate's screen is fully black.</summary>
-    public void CompleteEscape(GameObject player)
+    public void CompleteEscape(GameObject player, EscapeEnding ending)
     {
         BeginEscape();
         if (endGameShown) return;
@@ -79,6 +89,12 @@ public sealed class EscapeFlowController : MonoBehaviour
 
         if (endGamePanel != null)
         {
+            if (endingMessageText == null)
+                endingMessageText = endGamePanel.GetComponentInChildren<TypewriterText>(true);
+            if (endingMessageText != null)
+                endingMessageText.SetText(ending == EscapeEnding.Vent ? ventEndingMessage : carCrashEndingMessage);
+            else
+                Debug.LogWarning("End Game Panel has no TypewriterText for the ending message.", this);
             endGamePanel.transform.SetAsLastSibling();
             endGamePanel.SetActive(true);
         }

@@ -178,7 +178,7 @@ public sealed class CarCrashCutscene : MonoBehaviour
         yield return screenFade.FadeOutRoutine(0f);
         WorldAudioOneShot.Play(crashClip, view.transform.position, crashVolume);
         stage="Black";HasPlayed=true;sequence=null;
-        escapeFlow?.CompleteEscape(player);
+        escapeFlow?.CompleteEscape(player, EscapeEnding.CarCrash);
         onReachedBlack.Invoke();
     }
 

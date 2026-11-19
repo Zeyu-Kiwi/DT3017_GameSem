@@ -34406,6 +34406,14 @@ PrefabInstance:
       propertyPath: gameplayHudRoot
       value: 
       objectReference: {fileID: 3919338576058649307}
+    - target: {fileID: 8112233445566778899, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: ventEndingMessage
+      value: You made it out.. No one knows what has became of you...
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112233445566778899, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+      propertyPath: carCrashEndingMessage
+      value: You have escaped... But at what cost...
+      objectReference: {fileID: 0}
     - target: {fileID: 9032438460833785045, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -34590,6 +34598,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3230289615006512322, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3740830815021425939, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3784092818745746841, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}

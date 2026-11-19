@@ -130,7 +130,7 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
         while (!reachedBlack) yield return null;
         stage = "Black";
         routine = null;
-        escapeFlow?.CompleteEscape(player);
+        escapeFlow?.CompleteEscape(player, EscapeEnding.Vent);
         onReachedBlack.Invoke();
     }
 

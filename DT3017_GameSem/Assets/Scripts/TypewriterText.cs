@@ -2,13 +2,13 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-/// Put on a TextMeshPro text object. Each time it becomes active
-/// (e.g. when the end game panel is shown), it types out its own text.
+/// Put on a TextMeshPro text object. Each time it becomes active,
+/// it types out the text assigned before the panel is shown.
 [RequireComponent(typeof(TMP_Text))]
 public class TypewriterText : MonoBehaviour
 {
-    [SerializeField] private float charactersPerSecond = 20f;
-    [SerializeField] private float startDelay = 0.5f;
+    [SerializeField, Min(1f)] private float charactersPerSecond = 20f;
+    [SerializeField, Min(0f)] private float startDelay = 0.5f;
     [SerializeField] private bool allowSkip = true;
 
     [Header("Optional")]
@@ -19,12 +19,27 @@ public class TypewriterText : MonoBehaviour
 
     private TMP_Text text;
 
+    public void SetText(string message)
+    {
+        if (text == null) text = GetComponent<TMP_Text>();
+        text.text = message ?? string.Empty;
+        if (isActiveAndEnabled) RestartTyping();
+    }
+
     private void OnEnable()
     {
         if (text == null) text = GetComponent<TMP_Text>();
 
-        foreach (GameObject go in revealAfterTyping)
-            if (go != null) go.SetActive(false);
+        RestartTyping();
+    }
+
+    private void RestartTyping()
+    {
+        StopAllCoroutines();
+
+        if (revealAfterTyping != null)
+            foreach (GameObject go in revealAfterTyping)
+                if (go != null) go.SetActive(false);
 
         StartCoroutine(Type());
     }
@@ -35,7 +50,7 @@ public class TypewriterText : MonoBehaviour
         text.ForceMeshUpdate();
         int total = text.textInfo.characterCount;
 
-        yield return new WaitForSecondsRealtime(startDelay);
+        if (startDelay > 0f) yield return new WaitForSecondsRealtime(startDelay);
 
         float shown = 0f;
         int lastShown = 0;
@@ -44,7 +59,7 @@ public class TypewriterText : MonoBehaviour
             if (allowSkip && (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Space)))
                 shown = total;
             else
-                shown += charactersPerSecond * Time.unscaledDeltaTime;
+                shown += Mathf.Max(1f, charactersPerSecond) * Time.unscaledDeltaTime;
 
             int visible = Mathf.Min(total, Mathf.FloorToInt(shown));
             if (visible != lastShown)
@@ -59,7 +74,8 @@ public class TypewriterText : MonoBehaviour
 
         text.maxVisibleCharacters = total;
 
-        foreach (GameObject go in revealAfterTyping)
-            if (go != null) go.SetActive(true);
+        if (revealAfterTyping != null)
+            foreach (GameObject go in revealAfterTyping)
+                if (go != null) go.SetActive(true);
     }
 }
