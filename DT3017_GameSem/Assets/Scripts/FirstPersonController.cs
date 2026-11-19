@@ -31,6 +31,7 @@ public class FirstPersonController : MonoBehaviour
     public bool IsSprinting { get; private set; }
     private Camera playerCamera;
     private float normalFieldOfView;
+    private float defaultFieldOfView, defaultMouseSensitivity;
 
     [Header("Camera")]
     public Transform cameraTransform;
@@ -54,16 +55,21 @@ public class FirstPersonController : MonoBehaviour
             ? cameraTransform.GetComponentInChildren<Camera>(true)
             : GetComponentInChildren<Camera>(true);
         if (playerCamera != null) normalFieldOfView = playerCamera.fieldOfView;
+        defaultFieldOfView = normalFieldOfView; defaultMouseSensitivity = mouseSensitivity;
+        ApplyPlayerOptions();
     }
 
     private void OnEnable()
     {
+        PlayerOptions.Changed += ApplyPlayerOptions;
+        ApplyPlayerOptions();
         ConversationManager.OnConversationStarted += DisableController;
         ConversationManager.OnConversationEnded += EnableController;
     }
 
     private void OnDisable()
     {
+        PlayerOptions.Changed -= ApplyPlayerOptions;
         ConversationManager.OnConversationStarted -= DisableController;
         ConversationManager.OnConversationEnded -= EnableController;
         ResetSprint();
@@ -88,7 +94,7 @@ public class FirstPersonController : MonoBehaviour
 
     private void Update()
     {
-        if (CanMove && Input.GetKeyDown(jumpKey)) jumpQueued = true;
+        if (CanMove && Input.GetKeyDown(PlayerOptions.GetKey(GameplayAction.Jump, jumpKey))) jumpQueued = true;
 
         if (CanLook)
         {
@@ -98,10 +104,7 @@ public class FirstPersonController : MonoBehaviour
     
     void Move()
     {
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-
-        ApplyMovement(new Vector2(h, v), Input.GetKey(sprintKey));
+        ApplyMovement(PlayerOptions.ReadMovement(), Input.GetKey(PlayerOptions.GetKey(GameplayAction.Sprint, sprintKey)));
     }
 
     private void ApplyMovement(Vector2 input, bool sprintHeld)
@@ -189,6 +192,13 @@ public class FirstPersonController : MonoBehaviour
             Mathf.MoveTowards(playerCamera.fieldOfView, target, sprintFovTransitionSpeed * deltaTime);
     }
 
+    private void ApplyPlayerOptions()
+    {
+        normalFieldOfView = PlayerOptions.FieldOfView(defaultFieldOfView);
+        mouseSensitivity = PlayerOptions.Sensitivity(defaultMouseSensitivity);
+        if (playerCamera != null && !IsSprinting) playerCamera.fieldOfView = normalFieldOfView;
+    }
+
     private void ResetSprint()
     {
         IsSprinting = false;
@@ -202,7 +212,7 @@ public class FirstPersonController : MonoBehaviour
 
         transform.Rotate(0f, mouseX, 0f);
 
-        rotationX -= mouseY;
+        rotationX -= mouseY * (PlayerOptions.InvertMouse ? -1f : 1f);
         rotationX = Mathf.Clamp(rotationX, -maxLookAngle, maxLookAngle);
         cameraTransform.localRotation = Quaternion.Euler(rotationX, 0f, 0f);
     }

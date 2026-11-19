@@ -124,6 +124,7 @@ public class SickNpcProgression : MonoBehaviour
             state.GetInt(noHelpSickStreak) >= daysWithoutHelpBeforeGone)
         {
             state.SetFlag(isSickGone, true);
+            AchievementManager.Unlock(AchievementId.SickCoworkerDied);
             ApplyGoneState();
         }
     }

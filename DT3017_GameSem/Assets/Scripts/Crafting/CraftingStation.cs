@@ -827,6 +827,7 @@ public class CraftingStation : MonoBehaviour, IInteractable, ISeatRestrictedInte
             return;
         }
 
+        AchievementManager.Unlock(AchievementId.CraftItem);
         WorldAudioOneShot.Play(craftItemClip, transform.position, craftItemVolume);
 
         discoveredThisSession.Add(recipe);

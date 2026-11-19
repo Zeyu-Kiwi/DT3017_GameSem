@@ -75,6 +75,8 @@ public sealed class EscapeFlowController : MonoBehaviour
         if (endGameShown) return;
 
         endGameShown = true;
+        AchievementManager.Unlock(ending == EscapeEnding.CarCrash
+            ? AchievementId.CrowbarEscape : AchievementId.ScrewdriverEscape);
         if (player != null)
         {
             lockedPlayer = player.GetComponent<FirstPersonController>();
