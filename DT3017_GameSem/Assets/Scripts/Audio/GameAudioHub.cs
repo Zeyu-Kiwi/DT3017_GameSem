@@ -16,6 +16,8 @@ public sealed class GameAudioHub : MonoBehaviour
 
     [Header("Mixer Groups")]
     [SerializeField] private AudioMixerGroup ambienceGroup;
+    [Tooltip("Optional independent mixer group for the factory-interior loop. Other ambience stays on Ambience Group.")]
+    [SerializeField] private AudioMixerGroup factoryInteriorGroup;
     [SerializeField] private AudioMixerGroup factoryVoicesGroup;
     [SerializeField] private AudioMixerGroup uiGroup;
     [SerializeField] private AudioMixerGroup worldSfxGroup;
@@ -253,6 +255,8 @@ public sealed class GameAudioHub : MonoBehaviour
         AudioSource outgoing = activeAmbience;
         incoming.Stop();
         incoming.clip = clip;
+        incoming.outputAudioMixerGroup = clip == factoryInterior && factoryInteriorGroup != null
+            ? factoryInteriorGroup : ambienceGroup;
         incoming.volume = 0f;
         incoming.Play();
         activeAmbience = incoming;
