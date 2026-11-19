@@ -17,6 +17,11 @@ public sealed class MenuBossWalker : MonoBehaviour
     [Tooltip("Use when the model's forward axis does not match Unity's +Z forward axis.")]
     [SerializeField] private float facingOffsetDegrees;
 
+    [Header("Animation")]
+    [Tooltip("Animator on the boss model. If empty, searches MenuBoss children at runtime.")]
+    [SerializeField] private Animator animator;
+    private static readonly int IsWalkingHash = Animator.StringToHash("IsWalking");
+
     [Header("Footsteps")]
     [SerializeField] private AudioClip[] stepClips;
     [SerializeField, Min(0.05f)] private float stepInterval = 0.75f;
@@ -37,11 +42,13 @@ public sealed class MenuBossWalker : MonoBehaviour
     private void Awake()
     {
         stepSource = GetComponent<AudioSource>();
+        if (animator == null) animator = GetComponentInChildren<Animator>();
         ApplyAudioSettings();
     }
 
     private void Start()
     {
+        SetWalking(false);
         if (waypoints == null || waypoints.Length == 0) return;
         // A first waypoint at the boss's initial position marks the start of the route.
         if (waypoints[0] != null &&
@@ -52,22 +59,33 @@ public sealed class MenuBossWalker : MonoBehaviour
 
     private void Update()
     {
-        if (Time.deltaTime <= 0f || waypoints == null || waypoints.Length == 0 || moveSpeed <= 0f) return;
+        if (Time.deltaTime <= 0f) return;
+        if (waypoints == null || waypoints.Length == 0 || moveSpeed <= 0f)
+        {
+            SetWalking(false);
+            return;
+        }
 
         if (waitTimer > 0f)
         {
+            SetWalking(false);
             waitTimer -= Time.deltaTime;
             stepTimer = 0f;
             return;
         }
 
         Transform waypoint = waypoints[waypointIndex];
-        if (waypoint == null) return;
+        if (waypoint == null)
+        {
+            SetWalking(false);
+            return;
+        }
 
         Vector3 displacement = waypoint.position - transform.position;
         displacement.y = 0f;
         if (displacement.magnitude <= arrivalDistance)
         {
+            SetWalking(false);
             AdvanceWaypoint();
             waitTimer = waitAtWaypoint;
             stepTimer = 0f;
@@ -75,6 +93,7 @@ public sealed class MenuBossWalker : MonoBehaviour
         }
 
         Vector3 heading = displacement.normalized;
+        SetWalking(true);
         transform.position = Vector3.MoveTowards(transform.position,
             new Vector3(waypoint.position.x, transform.position.y, waypoint.position.z),
             moveSpeed * Time.deltaTime);
@@ -87,6 +106,11 @@ public sealed class MenuBossWalker : MonoBehaviour
             PlayFootstep();
             stepTimer = stepInterval;
         }
+    }
+
+    private void SetWalking(bool walking)
+    {
+        if (animator != null) animator.SetBool(IsWalkingHash, walking);
     }
 
     private void AdvanceWaypoint()
