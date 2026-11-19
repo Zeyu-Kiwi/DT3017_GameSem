@@ -15,4 +15,4 @@ MonoBehaviour:
   itemId: cross
   displayName: Cross
   stackLimit: 1
-  icon: {fileID: 21300000, guid: 1dc0b604e9613c8488200654a1f8c3b3, type: 3}
+  icon: {fileID: 21300000, guid: 0572a9984ffbdf248a2694964e4a777d, type: 3}
