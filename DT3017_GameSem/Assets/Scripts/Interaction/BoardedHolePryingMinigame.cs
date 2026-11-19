@@ -1,7 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
-using TMPro;
 
 [DisallowMultipleComponent]
 public sealed class BoardedHolePryingMinigame : MonoBehaviour
@@ -52,8 +51,13 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
     [SerializeField, Min(0f)] private float debrisLifetime = 15f;
     [Header("UI")]
     [SerializeField] private GameObject minigameUI;
-    [SerializeField] private TMP_Text progressText;
     [SerializeField] private UnityEngine.UI.Image progressFill;
+    [SerializeField] private UnityEngine.UI.Image spacebarIcon;
+    [SerializeField] private bool flashSpacebarIcon = true;
+    [SerializeField, Min(.01f)] private float spacebarFlashDuration = .12f;
+    [SerializeField] private Color spacebarFlashColor = Color.yellow;
+    private Color spacebarOriginalColor = Color.white;
+    private float spacebarFlashUntil = float.NegativeInfinity;
     [Header("Events")]
     [SerializeField] private UnityEvent onPlankRemoved = new UnityEvent();
     [SerializeField] private UnityEvent onAllPlanksRemoved = new UnityEvent();
@@ -82,7 +86,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
     private bool savedCursorVisible;
     private int lastPressFrame = -1;
     private GameObject crowbar;
-    private Coroutine cameraRoutine, toolRoutine, toolMessageRoutine;
+    private Coroutine cameraRoutine, toolRoutine;
 
     public bool IsRunning { get; private set; }
     public bool IsComplete { get; private set; }
@@ -99,6 +103,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
 
     private void Awake()
     {
+        if (spacebarIcon != null) spacebarOriginalColor = spacebarIcon.color;
         restPositions = new Vector3[TotalPlanks];
         restRotations = new Quaternion[TotalPlanks];
         removed = new bool[TotalPlanks];
@@ -118,7 +123,6 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
         outline = player.GetComponent<InteractionOutlineHighlighter>();
         view = player.GetComponentInChildren<Camera>();
         if (controller == null || view == null) return;
-        if (toolMessageRoutine != null) { StopCoroutine(toolMessageRoutine); toolMessageRoutine = null; }
         cameraLocalPosition = view.transform.localPosition;
         cameraLocalRotation = view.transform.localRotation;
         cameraFov = view.fieldOfView;
@@ -140,18 +144,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
     public void ShowToolRequiredMessage()
     {
         if (IsRunning) return;
-        if (toolMessageRoutine != null) StopCoroutine(toolMessageRoutine);
-        if (progressText != null) progressText.text = "Crowbar required\nFind a crowbar to pry these planks off.";
-        SetBar(0f);
-        if (minigameUI != null) minigameUI.SetActive(true);
-        toolMessageRoutine = StartCoroutine(HideToolMessage());
-    }
-
-    private IEnumerator HideToolMessage()
-    {
-        yield return new WaitForSecondsRealtime(2.5f);
-        if (!IsRunning && minigameUI != null) minigameUI.SetActive(false);
-        toolMessageRoutine = null;
+        Tell("You need something to pry off these wood planks.");
     }
 
     private IEnumerator MoveCamera(bool back)
@@ -170,7 +163,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
         }
         view.transform.SetPositionAndRotation(target, targetRotation); view.fieldOfView = targetFov; cameraRoutine = null;
         if (back) RestoreControls();
-        else { stage = PryStage.ChoosingPlank; ShowHeldCrowbar(); UpdateUI(); }
+        else { stage = PryStage.ChoosingPlank; ShowHeldCrowbar(); UpdateUI(); ShowPlankSelectionInstruction(); }
     }
 
     private void ShowHeldCrowbar()
@@ -203,6 +196,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
 
     private void Update()
     {
+        UpdateSpacebarFlash();
         if (!IsRunning || stage == PryStage.Returning) return;
         if (Input.GetKeyDown(KeyCode.Escape) && stage != PryStage.Ripping) { Exit(); return; }
         if (stage == PryStage.ChoosingPlank)
@@ -273,12 +267,14 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
         crowbar.transform.SetPositionAndRotation(ContactPosition, ContactRotation);
         toolRoutine = null; lastMashTime = Time.unscaledTime; pulseStarted = -100f;
         stage = PryStage.Prying; UpdateUI();
+        Tell("Press spacebar to remove.");
     }
 
     public bool TryPry()
     {
         if (!IsRunning || stage != PryStage.Prying || lastPressFrame == Time.frameCount || !HasCrowbar()) return false;
         lastPressFrame = Time.frameCount; lastMashTime = pulseStarted = Time.unscaledTime;
+        spacebarFlashUntil = Time.unscaledTime + Mathf.Max(.01f, spacebarFlashDuration);
         mashForce = Mathf.Min(MashCap, mashForce + forcePerPress); UpdateUI();
         if (mashForce >= MashCap) { stage = PryStage.Ripping; StartCoroutine(RipPlank()); }
         return true;
@@ -343,7 +339,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
             toolInteraction?.SetCanInteract(false); onAllPlanksRemoved.Invoke();
             Tell("The planks are off. The opening is clear."); Exit();
         }
-        else { ShowHeldCrowbar(); UpdateUI(); }
+        else { ShowHeldCrowbar(); UpdateUI(); ShowPlankSelectionInstruction(); }
     }
 
     private void SetBar(float progress)
@@ -356,14 +352,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
     private void UpdateUI()
     {
         SetBar(MashProgress);
-        if (progressText == null) return;
-        if (stage == PryStage.ChoosingPlank)
-            progressText.text = "Click a plank to place the crowbar\n" + removedPlanks + "/" + TotalPlanks + " planks removed  ·  Esc to leave";
-        else if (stage == PryStage.Prying)
-            progressText.text = "Mash " + pryKey + " quickly!  " + Mathf.RoundToInt(MashProgress * 100f) + "%\nForce drains when you stop  ·  Esc to leave";
-        else if (stage == PryStage.MovingCrowbar) progressText.text = "Placing crowbar on the plank…";
-        else if (stage == PryStage.Ripping) progressText.text = "Prying plank free…";
-        else progressText.text = "Getting into position…";
+        UpdateSpacebarFlash();
     }
 
     public void Exit()
@@ -401,14 +390,28 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
         Cursor.lockState = savedCursorLock; Cursor.visible = savedCursorVisible;
         if (minigameUI != null) minigameUI.SetActive(false);
         IsRunning = false; stage = PryStage.Inactive;
+        spacebarFlashUntil = float.NegativeInfinity;
+        UpdateSpacebarFlash();
     }
 
     private void OnDisable()
     {
         CancelForExternalSequence();
-        if (toolMessageRoutine != null) StopCoroutine(toolMessageRoutine);
-        toolMessageRoutine = null; if (minigameUI != null) minigameUI.SetActive(false);
+        if (minigameUI != null) minigameUI.SetActive(false);
     }
+
+    private void UpdateSpacebarFlash()
+    {
+        if (spacebarIcon == null) return;
+        bool flashing = IsRunning && flashSpacebarIcon
+            && (stage == PryStage.Prying || stage == PryStage.Ripping)
+            && Time.unscaledTime < spacebarFlashUntil;
+        Color color = flashing ? spacebarFlashColor : spacebarOriginalColor;
+        color.a = spacebarOriginalColor.a;
+        spacebarIcon.color = color;
+    }
+
+    private void ShowPlankSelectionInstruction() => Tell("Click on plank to put the crowbar onto.");
 
     private void Tell(string message) => NotificationManager.Instance?.ShowMessage(message);
 }
