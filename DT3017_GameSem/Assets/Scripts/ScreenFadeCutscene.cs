@@ -28,7 +28,7 @@ public class ScreenFadeCutscene : MonoBehaviour
         return PlayRoutine(atBlack, fadeOutDuration, blackDuration, fadeInDuration);
     }
 
-    public IEnumerator PlayRoutine(System.Action atBlack, float fadeOutSeconds, float holdSeconds, float fadeInSeconds)
+    public IEnumerator PlayRoutine(System.Action atBlack, float fadeOutSeconds, float holdSeconds, float fadeInSeconds, System.Func<bool> readyToReveal = null)
     {
         if (IsPlaying || !isActiveAndEnabled) yield break;
         if (blackScreen == null)
@@ -48,6 +48,8 @@ public class ScreenFadeCutscene : MonoBehaviour
         // Render at least one fully black frame before fading back in.
         yield return null;
         if (holdSeconds > 0f) yield return new WaitForSecondsRealtime(holdSeconds);
+        // Keep asset loading hidden rather than stalling a visible action later.
+        while (readyToReveal != null && !readyToReveal()) yield return null;
         yield return FadeTo(0f, Mathf.Max(0f, fadeInSeconds));
         blackScreen.blocksRaycasts = false;
         IsPlaying = false;

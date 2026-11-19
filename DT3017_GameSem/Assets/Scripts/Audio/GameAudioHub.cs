@@ -46,6 +46,8 @@ public sealed class GameAudioHub : MonoBehaviour
     [SerializeField, Min(0.01f)] private float worldMinDistance = 1f;
     [SerializeField, Min(0.1f)] private float worldMaxDistance = 20f;
 
+    private static readonly Unity.Profiling.ProfilerMarker ExteriorAmbienceProfile =
+        new Unity.Profiling.ProfilerMarker("GameAudioHub.PlayExteriorAmbience");
     private AudioSource activeAmbience;
     private Coroutine fadeRoutine;
     private Coroutine factoryVoicesRoutine;
@@ -129,10 +131,24 @@ public sealed class GameAudioHub : MonoBehaviour
         SwitchAmbience(insideVent);
     }
 
+    /// <summary>Load upcoming escape audio during the black-screen transition, without starting playback.</summary>
+    public void PreloadEscapeAmbience()
+    {
+        if (insideVent != null && insideVent.loadState == AudioDataLoadState.Unloaded) insideVent.LoadAudioData();
+        if (exteriorNight != null && exteriorNight.loadState == AudioDataLoadState.Unloaded) exteriorNight.LoadAudioData();
+    }
+
+    public bool IsEscapeAmbienceReady =>
+        (insideVent == null || insideVent.loadState != AudioDataLoadState.Loading) &&
+        (exteriorNight == null || exteriorNight.loadState != AudioDataLoadState.Loading);
+
     public void PlayExteriorAmbience()
     {
-        SetFactoryVoicesActive(false);
-        SwitchAmbience(exteriorNight);
+        using (ExteriorAmbienceProfile.Auto())
+        {
+            SetFactoryVoicesActive(false);
+            SwitchAmbience(exteriorNight);
+        }
     }
 
     private void SetFactoryVoicesActive(bool active)

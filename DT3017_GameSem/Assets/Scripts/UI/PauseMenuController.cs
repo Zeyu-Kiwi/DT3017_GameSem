@@ -31,6 +31,7 @@ public sealed class PauseMenuController : MonoBehaviour
     [SerializeField] private PlayerSeatController playerSeat;
     [SerializeField] private CraftingStation craftingStation;
     [SerializeField] private VentInspectionController ventInspection;
+    private BoardedHolePryingMinigame boardedHole;
 
     [Header("Audio")]
     [SerializeField] private bool pauseAudio = true;
@@ -269,6 +270,12 @@ public sealed class PauseMenuController : MonoBehaviour
             return false;
         }
 
+        // Board prying also disables the normal controller. Keep its state when paused.
+        if (boardedHole != null && boardedHole.IsRunning)
+        {
+            return true;
+        }
+
         // Crafting disables the player controller while the drawer is open.
         // Only the fully opened, input-ready drawer may be paused.
         if (craftingStation != null && craftingStation.IsDrawerReadyForInput)
@@ -317,6 +324,11 @@ public sealed class PauseMenuController : MonoBehaviour
         if (ventInspection == null)
         {
             ventInspection = FindFirstObjectByType<VentInspectionController>();
+        }
+
+        if (boardedHole == null)
+        {
+            boardedHole = FindFirstObjectByType<BoardedHolePryingMinigame>();
         }
 
         if (dayCycle == null)
