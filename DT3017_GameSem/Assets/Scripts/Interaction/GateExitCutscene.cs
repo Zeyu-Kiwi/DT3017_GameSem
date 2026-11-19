@@ -114,8 +114,16 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
         gatePivot.localRotation = opened;
         HasOpened = true;
         onOpened.Invoke();
-        if (walkStartPoint != null && Vector3.Distance(player.transform.position, walkStartPoint.position) > .05f)
-            yield return WalkTo(walkStartPoint.position, false);
+        if (walkStartPoint != null)
+        {
+            Vector3 exitDirection = walkExitPoint.position - walkStartPoint.position;
+            Vector3 toStart = walkStartPoint.position - player.transform.position;
+            exitDirection.y = toStart.y = 0f;
+            // The player may already be past the entry marker when interacting.
+            // Never turn them backward to revisit that marker before walking out.
+            if (exitDirection.sqrMagnitude > .001f && Vector3.Dot(toStart, exitDirection.normalized) > .05f)
+                yield return WalkTo(walkStartPoint.position, false);
+        }
         yield return WalkTo(walkExitPoint.position, true);
         stage = "Fading out";
         // The fade runs concurrently with walking, then remains opaque until the next sequence.
@@ -134,19 +142,28 @@ public sealed class GateExitCutscene : MonoBehaviour, IInteractable
         direction.y = 0f;
         Quaternion facing = direction.sqrMagnitude > .001f ? Quaternion.LookRotation(direction) : controller.transform.rotation;
         Quaternion initialFacing = controller.transform.rotation;
+        Quaternion initialView = view.transform.rotation;
+        Transform lookPivot = controller.cameraTransform;
+        Quaternion initialPivot = lookPivot != null ? lookPivot.localRotation : Quaternion.identity;
         float elapsed = 0f;
-        while (elapsed < turnDuration)
+        bool needsTurn = Quaternion.Angle(initialFacing, facing) > .5f || Quaternion.Angle(initialView, facing) > .5f;
+        while (needsTurn && elapsed < turnDuration)
         {
             elapsed += Time.unscaledDeltaTime;
-            Quaternion rotation = Quaternion.Slerp(initialFacing, facing, Mathf.SmoothStep(0f, 1f,
-                Mathf.Clamp01(elapsed / Mathf.Max(.001f, turnDuration))));
+            float t = Mathf.Clamp01(elapsed / Mathf.Max(.001f, turnDuration));
+            float blend = t * t * t * (t * (t * 6f - 15f) + 10f);
+            Quaternion rotation = Quaternion.Slerp(initialFacing, facing, blend);
             controller.transform.rotation = rotation;
             body.rotation = rotation;
+            // Settle pitch and roll alongside body yaw, rather than clearing them after the turn.
+            if (lookPivot != null) lookPivot.localRotation = Quaternion.Slerp(initialPivot, Quaternion.identity, blend);
+            view.transform.rotation = Quaternion.Slerp(initialView, facing, blend);
             yield return null;
         }
         controller.transform.rotation = facing;
         body.rotation = facing;
         controller.ResetLook();
+        view.transform.rotation = facing;
         stage = "Walking forward";
         float duration = Vector3.Distance(start, destination) / Mathf.Max(.01f, walkSpeed);
         elapsed = 0f;
