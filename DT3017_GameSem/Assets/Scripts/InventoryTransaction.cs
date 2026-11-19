@@ -20,6 +20,9 @@ public class InventoryTransaction : MonoBehaviour
     [Tooltip("Enable this for trades so costs are not removed unless every reward fits.")]
     [SerializeField] private bool requireSpaceForAllRewards;
 
+    [Tooltip("Unlock the coworker trade achievement after a successful exchange.")]
+    [SerializeField] private bool countsAsCoworkerTrade;
+
     public void Execute()
     {
         InventoryManager inventory = InventoryManager.Instance;
@@ -55,6 +58,7 @@ public class InventoryTransaction : MonoBehaviour
             }
         }
 
+        bool receivedReward = false;
         List<string> changes = new List<string>();
         List<string> capacityMessages = new List<string>();
 
@@ -70,6 +74,7 @@ public class InventoryTransaction : MonoBehaviour
 
             if (added > 0)
             {
+                receivedReward = true;
                 changes.Add("+" + added + " " + reward.Key.DisplayName);
             }
 
@@ -95,6 +100,8 @@ public class InventoryTransaction : MonoBehaviour
             resultMessage += " " + string.Join(" ", capacityMessages);
         }
 
+        if (countsAsCoworkerTrade && combinedCosts.Count > 0 && receivedReward)
+            AchievementManager.Unlock(AchievementId.CoworkerTrade);
         ShowMessage(resultMessage);
     }
 

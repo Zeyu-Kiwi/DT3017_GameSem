@@ -204,7 +204,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
         if (Time.timeScale <= 0f || (pauseMenu != null && (pauseMenu.IsPaused || pauseMenu.ResumedThisFrame))) return;
         // Escape belongs to the pause menu, independent of script update order.
         if (Input.GetKeyDown(KeyCode.Escape)) return;
-        if (Input.GetKeyDown(KeyCode.F) && stage != PryStage.Ripping) { Exit(); return; }
+        if (Input.GetKeyDown(PlayerOptions.GetKey(GameplayAction.Interact, KeyCode.F)) && stage != PryStage.Ripping) { Exit(); return; }
         if (stage == PryStage.ChoosingPlank)
         {
             UpdateHover(Input.mousePosition);
@@ -343,7 +343,7 @@ public sealed class BoardedHolePryingMinigame : MonoBehaviour
         {
             IsComplete = true; if (openingBlocker != null) openingBlocker.enabled = false;
             toolInteraction?.SetCanInteract(false); onAllPlanksRemoved.Invoke();
-            Tell("The planks are off. Press F to crawl through the opening."); Exit();
+            Tell("The planks are off. Press " + PlayerOptions.KeyName(PlayerOptions.GetKey(GameplayAction.Interact)) + " to crawl through the opening."); Exit();
         }
         else { ShowHeldCrowbar(); UpdateUI(); ShowPlankSelectionInstruction(); }
     }
