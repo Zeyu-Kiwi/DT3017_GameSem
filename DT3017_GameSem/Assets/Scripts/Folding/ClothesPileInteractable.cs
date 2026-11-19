@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [DisallowMultipleComponent]
-public class ClothesPileInteractable : MonoBehaviour, IInteractable
+public class ClothesPileInteractable : MonoBehaviour, IInteractable, ISeatRestrictedInteractable
 {
     [Header("Shirt")]
     [SerializeField] private ItemData shirtItem;
@@ -23,6 +23,9 @@ public class ClothesPileInteractable : MonoBehaviour, IInteractable
 
     public bool CanInteract =>
         PlayerSeatController.AllowsInteraction(allowWhileStanding) &&
+        shirtItem != null && shirtPrefab != null && shirtSpawnPoint != null;
+    public bool IsSeatRestrictionBlocking =>
+        !PlayerSeatController.AllowsInteraction(allowWhileStanding) &&
         shirtItem != null && shirtPrefab != null && shirtSpawnPoint != null;
 
     public ShirtFoldingController ActiveShirt => activeShirt;

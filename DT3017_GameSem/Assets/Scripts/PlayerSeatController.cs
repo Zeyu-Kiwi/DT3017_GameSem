@@ -1,6 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
+public interface ISeatRestrictedInteractable
+{
+    bool IsSeatRestrictionBlocking { get; }
+}
+
 /// <summary>Moves the player between the chair and the standing position.</summary>
 [DisallowMultipleComponent]
 [RequireComponent(typeof(FirstPersonController))]

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BedInteractable : MonoBehaviour, IInteractable
+public class BedInteractable : MonoBehaviour, IInteractable, ISeatRestrictedInteractable
 {
     [SerializeField] private DailyQuotaManager quotaManager;
     [SerializeField] private DayCycleManager dayCycleManager;
@@ -17,6 +17,9 @@ public class BedInteractable : MonoBehaviour, IInteractable
     public bool CanInteract => PlayerSeatController.AllowsInteraction(allowWhileStanding) &&
                                dayCycleManager != null &&
                                !dayCycleManager.TransitionRunning;
+    public bool IsSeatRestrictionBlocking => !PlayerSeatController.AllowsInteraction(allowWhileStanding) &&
+                                             dayCycleManager != null &&
+                                             !dayCycleManager.TransitionRunning;
 
     private void Awake()
     {
