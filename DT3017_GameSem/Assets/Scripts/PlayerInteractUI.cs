@@ -7,6 +7,8 @@ public class PlayerInteractUI : MonoBehaviour
     [Tooltip("Text that displays the currently selected interaction key.")]
     [SerializeField] private TMP_Text interactionKeyText;
 
+    public bool IsVisible => containerGameObject != null && containerGameObject.activeInHierarchy;
+
     private void Awake()
     {
         FindKeyTextIfNeeded();

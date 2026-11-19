@@ -73,6 +73,11 @@ public class NotificationManager : MonoBehaviour
         }
 
         container.SetActive(true);
+        if (!entryContainer.gameObject.activeInHierarchy)
+        {
+            Debug.Log(message, this);
+            return;
+        }
 
         int allowedCount = Mathf.Max(1, maximumVisibleMessages);
         while (activeEntries.Count >= allowedCount)
