@@ -44,9 +44,20 @@ public class MenuRoachClickRespawn : MonoBehaviour
         initialRotation = transform.rotation;
     }
 
-    private void OnMouseDown()
+    private void Update()
     {
-        if (dead || PointerIsOnClickableUI()) return;
+        if (dead || !Input.GetMouseButtonDown(0) || PointerIsOnClickableUI()) return;
+
+        // OnMouseDown only sees cameras rendering to the screen. The menu's
+        // world camera renders to a texture, so cast from it explicitly.
+        Camera worldCamera = Camera.main;
+        if (worldCamera == null) return;
+        Ray ray = worldCamera.ScreenPointToRay(Input.mousePosition);
+        if (!Physics.Raycast(ray, out RaycastHit hit, worldCamera.farClipPlane,
+                worldCamera.cullingMask, QueryTriggerInteraction.Collide) ||
+            hit.collider.GetComponentInParent<MenuRoachClickRespawn>() != this)
+            return;
+
         StartCoroutine(DieAndRespawn());
     }
 

@@ -405,7 +405,7 @@ MonoBehaviour:
   insideVent: {fileID: 8300000, guid: 2df4fdd4db2d93d49962d08a5a1f5b7d, type: 3}
   exteriorNight: {fileID: 8300000, guid: 8794e9cd2af468046963160685da268f, type: 3}
   ambienceFadeSeconds: 1
-  ambienceVolume: 0.575
+  ambienceVolume: 1
   factoryVoiceClips:
   - {fileID: 8300000, guid: 5f9262303794bf643b849f9c96c443a1, type: 3}
   - {fileID: 8300000, guid: 837ca9d31d8924f4b8f25de556309c8d, type: 3}
@@ -416,7 +416,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3ec8c291cc1bb2044b30f573b2cde08a, type: 3}
   minimumVoiceInterval: 90
   maximumVoiceInterval: 150
-  factoryVoicesVolume: 1
+  factoryVoicesVolume: 0.527
   factoryVoicesFadeOutSeconds: 0.5
   defaultClick: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
   defaultHover: {fileID: 8300000, guid: f179a7d94d7b43d4bb8b904ef8f2b38a, type: 3}

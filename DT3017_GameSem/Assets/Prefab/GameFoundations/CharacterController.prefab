@@ -295,6 +295,7 @@ MonoBehaviour:
   interactionBlockingLayers:
     serializedVersion: 2
     m_Bits: 256
+  seatRequiredMessage: Sit in the chair to interact with this.
   interactUI: {fileID: 229973187043357576}
 --- !u!114 &2241679284241904182
 MonoBehaviour:
@@ -372,6 +373,37 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 53e2adf2ac488ef46bb2b4074de9e363, type: 3}
   volume: 1
   pitchRange: {x: 0.95, y: 1.05}
+--- !u!1 &5811792261854821087
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2958837640937673630}
+  m_Layer: 0
+  m_Name: CrowbarHeldLocator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2958837640937673630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5811792261854821087}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.51899165, y: -0.21828577, z: -0.13906339, w: 0.8146536}
+  m_LocalPosition: {x: 0.1090067, y: 0.08398658, z: 0.75109226}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3262447379396059503}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8143451555976752454
 GameObject:
   m_ObjectHideFlags: 0
@@ -403,7 +435,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2958837640937673630}
   m_Father: {fileID: 2712240119541926953}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &5834051645622112970
