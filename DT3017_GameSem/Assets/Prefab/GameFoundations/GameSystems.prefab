@@ -185,7 +185,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DailyQuotaManager
   shirtItem: {fileID: 11400000, guid: e40098ebf18e735498a58dc749bc93d4, type: 2}
   defaultQuota: 5
-  maximumQuota: 20
   caughtPenalty: 1
   failureIncreaseIsPermanent: 0
   clearDrawerOnFailedDay: 1

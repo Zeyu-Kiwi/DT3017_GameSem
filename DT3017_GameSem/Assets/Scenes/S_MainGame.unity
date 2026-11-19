@@ -11645,7 +11645,6 @@ GameObject:
   - component: {fileID: 786231130}
   - component: {fileID: 786231129}
   - component: {fileID: 786231133}
-  - component: {fileID: 786231134}
   m_Layer: 3
   m_Name: BoardedHole_root
   m_TagString: Untagged
@@ -11822,34 +11821,6 @@ MonoBehaviour:
   stage: 0
   removedPlanks: 0
   mashForce: 0
---- !u!114 &786231134
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786231128}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 384fe3c1de0d40e0a82a96c868378735, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BoardedHoleAudio
-  minigame: {fileID: 786231133}
-  planks:
-  - {fileID: 129624760}
-  - {fileID: 1307148315}
-  pryKey: 32
-  missingToolClip: {fileID: 8300000, guid: c28af5074cb33054a93d1f716cbb3c3b, type: 3}
-  missingToolVolume: 1
-  crowbarAttachClip: {fileID: 8300000, guid: 491533018c5b3eb45adbd2345d92e1ed, type: 3}
-  crowbarAttachVolume: 1
-  pryingClip: {fileID: 8300000, guid: 365bb5804b956594b9d241ebd6fa438b, type: 3}
-  pryingVolume: 1
-  pryingPitchRange: {x: 0.9, y: 1.1}
-  plankDetachClip: {fileID: 8300000, guid: 0b0f1eb3177c8e246968ae94ffdaaebe, type: 3}
-  plankDetachVolume: 1
-  plankImpactClip: {fileID: 8300000, guid: 019c9805501408d448cf6e6ef4c82a6c, type: 3}
-  plankImpactVolume: 1
 --- !u!4 &790517404 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 86cf5650a8aa3904ca0435a4d7a41e71, type: 3}
