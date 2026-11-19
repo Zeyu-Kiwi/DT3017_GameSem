@@ -581,6 +581,8 @@ MonoBehaviour:
   crouchClip: {fileID: 8300000, guid: df49938a1860650418b6d5654ed436be, type: 3}
   enterVentClip: {fileID: 8300000, guid: e6709cc34e1daa54f9d575a452e0f64e, type: 3}
   crawlClip: {fileID: 8300000, guid: d14974009383c5741b62c7489066d876, type: 3}
+  crawlSoundsPerBobCycle: 1
+  crawlPitchRange: {x: 0.9, y: 1.1}
   playerFallClip: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
   landingClip: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
   standUpClip: {fileID: 8300000, guid: df49938a1860650418b6d5654ed436be, type: 3}

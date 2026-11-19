@@ -3,7 +3,7 @@ using UnityEngine.Events;
 
 /// <summary>Repeatable F interaction for a crafted table decoration.</summary>
 [DisallowMultipleComponent]
-public sealed class CraftedDecorationInteractable : MonoBehaviour, IInteractable
+public sealed class CraftedDecorationInteractable : MonoBehaviour, IInteractable, ISeatRestrictedInteractable
 {
     [Header("Interaction")]
     [SerializeField] private bool canInteract = true;
@@ -19,6 +19,8 @@ public sealed class CraftedDecorationInteractable : MonoBehaviour, IInteractable
 
     public bool CanInteract => canInteract &&
         PlayerSeatController.AllowsInteraction(allowWhileStanding);
+    public bool IsSeatRestrictionBlocking => canInteract &&
+        !PlayerSeatController.AllowsInteraction(allowWhileStanding);
 
     public void Interact(GameObject player)
     {

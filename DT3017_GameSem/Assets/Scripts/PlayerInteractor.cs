@@ -14,8 +14,12 @@ public class PlayerInteractor : MonoBehaviour
     [Tooltip("Solid layers that stop interaction rays. Trigger colliders on these layers are ignored.")]
     [SerializeField] private LayerMask interactionBlockingLayers = 1 << 7;
 
+    [Header("Seat feedback")]
+    [SerializeField] private string seatRequiredMessage = "Sit in the chair to interact with this.";
+
     [SerializeField] private PlayerInteractUI interactUI;
     private IInteractable currentInteractable;
+    private bool seatRestrictedTarget;
     private InteractionOutlineHighlighter outlineHighlighter;
     private bool interactionEnabled = true;
     private readonly System.Collections.Generic.HashSet<object> interactionLocks =
@@ -27,6 +31,7 @@ public class PlayerInteractor : MonoBehaviour
     {
         if (owner == null) throw new System.ArgumentNullException(nameof(owner));
         interactionLocks.Add(owner);
+        seatRestrictedTarget = false;
         SetCurrentInteractable(null);
     }
 
@@ -68,10 +73,12 @@ public class PlayerInteractor : MonoBehaviour
 
         FindInteractable();
 
-        if (currentInteractable != null &&
-            Input.GetKeyDown(interactionKey))
+        if (Input.GetKeyDown(interactionKey))
         {
-            InteractCurrent();
+            if (currentInteractable != null)
+                InteractCurrent();
+            else if (seatRestrictedTarget)
+                NotificationManager.Instance?.ShowMessage(seatRequiredMessage);
         }
     }
 
@@ -93,6 +100,7 @@ public class PlayerInteractor : MonoBehaviour
     private void FindInteractable()
     {
         IInteractable detectedInteractable = null;
+        seatRestrictedTarget = false;
 
         Ray ray = new Ray(
             playerCamera.transform.position,
@@ -127,6 +135,8 @@ public class PlayerInteractor : MonoBehaviour
             if (detectedInteractable != null &&
                 !detectedInteractable.CanInteract)
             {
+                seatRestrictedTarget = detectedInteractable is ISeatRestrictedInteractable restricted &&
+                                       restricted.IsSeatRestrictionBlocking;
                 detectedInteractable = null;
             }
         }
@@ -156,6 +166,7 @@ public class PlayerInteractor : MonoBehaviour
     private void DisableInteraction()
     {
         interactionEnabled = false;
+        seatRestrictedTarget = false;
         SetCurrentInteractable(null);
     }
 

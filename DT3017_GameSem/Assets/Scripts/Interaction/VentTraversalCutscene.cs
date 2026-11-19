@@ -80,6 +80,9 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
     [SerializeField] private AudioClip crouchClip;
     [SerializeField] private AudioClip enterVentClip;
     [SerializeField] private AudioClip crawlClip;
+    [Tooltip("Short crawl sounds per camera bob cycle.")]
+    [SerializeField, Min(1)] private int crawlSoundsPerBobCycle = 1;
+    [SerializeField] private Vector2 crawlPitchRange = new Vector2(.9f, 1.1f);
     [SerializeField] private AudioClip playerFallClip;
     [SerializeField] private AudioClip landingClip;
     [SerializeField] private AudioClip standUpClip;
@@ -118,6 +121,8 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
     private Coroutine sequence;
     private Coroutine entryCrawlRoutine;
     private Coroutine secondCrawlRoutine;
+    private Coroutine crawlAudioRoutine;
+    private AudioSource crawlAudioSource;
     private bool stateCaptured;
     private bool startedEscapeFlow;
 
@@ -183,6 +188,8 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
         yield return MoveView(view.transform.position-Vector3.up*crouchDrop, facing, crouchDuration);
         stage="Entering vent";
         WorldAudioOneShot.Play(enterVentClip, firstVentPoint.position, cutsceneVolume);
+        GameAudioHub.Instance?.PlayVentAmbience();
+        StartCrawlAudio();
         float entrySeconds = walkOutInsteadOfFalling
             ? Vector3.Distance(view.transform.position, firstVentPoint.position) / Mathf.Max(.01f, crawlSpeed)
             : enterDuration;
@@ -207,6 +214,8 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
             while (secondCrawlRoutine != null) yield return null;
         }
         else yield return CrawlThroughSecondVent();
+
+        StopCrawlAudio();
 
         if (!walkOutInsteadOfFalling)
         {
@@ -300,8 +309,6 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
 
     private IEnumerator CrawlThroughSecondVent()
     {
-        GameAudioHub.Instance?.PlayVentAmbience();
-        WorldAudioOneShot.Play(crawlClip, view.transform.position, cutsceneVolume);
         for (int i = 0; i < crawlPoints.Length; i++)
         {
             var point = crawlPoints[i];
@@ -311,6 +318,54 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
                 Vector3.Distance(view.transform.position, point.position) / Mathf.Max(.01f, crawlSpeed), true);
         }
         secondCrawlRoutine = null;
+    }
+
+    private void StartCrawlAudio()
+    {
+        StopCrawlAudio();
+        if (crawlClip == null) return;
+        var host = new GameObject("Traversal Crawl Audio");
+        host.transform.SetParent(view.transform, false);
+        crawlAudioSource = host.AddComponent<AudioSource>();
+        crawlAudioSource.playOnAwake = false;
+        crawlAudioSource.spatialBlend = 1f;
+        crawlAudioSource.rolloffMode = AudioRolloffMode.Logarithmic;
+        crawlAudioSource.volume = cutsceneVolume;
+        crawlAudioSource.clip = crawlClip;
+        var hub = GameAudioHub.Instance;
+        if (hub != null)
+        {
+            crawlAudioSource.outputAudioMixerGroup = hub.WorldSfxGroup;
+            crawlAudioSource.minDistance = hub.WorldMinDistance;
+            crawlAudioSource.maxDistance = hub.WorldMaxDistance;
+        }
+        crawlAudioRoutine = StartCoroutine(PlayCrawlAudio());
+    }
+
+    private IEnumerator PlayCrawlAudio()
+    {
+        while (true)
+        {
+            float pitch = Random.Range(Mathf.Min(crawlPitchRange.x, crawlPitchRange.y),
+                Mathf.Max(crawlPitchRange.x, crawlPitchRange.y));
+            crawlAudioSource.pitch = Mathf.Clamp(pitch, .1f, 3f);
+            crawlAudioSource.Play();
+            float interval = 1f / (Mathf.Max(.01f, crawlBobFrequency) *
+                Mathf.Max(1, crawlSoundsPerBobCycle));
+            yield return new WaitForSecondsRealtime(interval);
+        }
+    }
+
+    private void StopCrawlAudio()
+    {
+        if (crawlAudioRoutine != null) StopCoroutine(crawlAudioRoutine);
+        crawlAudioRoutine = null;
+        if (crawlAudioSource != null)
+        {
+            crawlAudioSource.Stop();
+            Destroy(crawlAudioSource.gameObject);
+            crawlAudioSource = null;
+        }
     }
 
     private IEnumerator CrawlToVentEdge(Transform point)
@@ -448,6 +503,7 @@ public sealed class VentTraversalCutscene : MonoBehaviour, IInteractable
 
     private void Restore(bool returnToEntry)
     {
+        StopCrawlAudio();
         StopEntryCrawl();
         if (secondCrawlRoutine != null) StopCoroutine(secondCrawlRoutine);
         secondCrawlRoutine = null;

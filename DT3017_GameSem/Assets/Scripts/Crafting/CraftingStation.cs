@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
-public class CraftingStation : MonoBehaviour, IInteractable
+public class CraftingStation : MonoBehaviour, IInteractable, ISeatRestrictedInteractable
 {
     [Header("Configuration")]
     [SerializeField] private bool canInteract = true;
@@ -79,6 +79,11 @@ public class CraftingStation : MonoBehaviour, IInteractable
                                isPlayerInsideWorkstation &&
                                !isOpen &&
                                (drawerController == null || !drawerController.IsMoving);
+    public bool IsSeatRestrictionBlocking => canInteract &&
+                                             !PlayerSeatController.AllowsInteraction(allowWhileStanding) &&
+                                             dayPlanInteractionEnabled &&
+                                             !isOpen &&
+                                             (drawerController == null || !drawerController.IsMoving);
     public IReadOnlyDictionary<ItemData, int> Selection => selection;
     public bool IsDrawerOpen => drawerController != null && drawerController.IsDrawerOpen;
     public bool IsDrawerReadyForInput => isOpen && inputReady && !isClosing;
