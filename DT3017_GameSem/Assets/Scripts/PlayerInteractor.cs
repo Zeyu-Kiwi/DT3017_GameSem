@@ -25,7 +25,7 @@ public class PlayerInteractor : MonoBehaviour
     private readonly System.Collections.Generic.HashSet<object> interactionLocks =
         new System.Collections.Generic.HashSet<object>();
 
-    public KeyCode InteractionKey => interactionKey;
+    public KeyCode InteractionKey => PlayerOptions.GetKey(GameplayAction.Interact, interactionKey);
 
     public void LockInteraction(object owner)
     {
@@ -43,7 +43,7 @@ public class PlayerInteractor : MonoBehaviour
     private void Awake()
     {
         interactUI = GetComponent<PlayerInteractUI>();
-        interactUI?.SetInteractionKey(interactionKey);
+        interactUI?.SetInteractionKey(InteractionKey);
         outlineHighlighter = GetComponent<InteractionOutlineHighlighter>();
         if (outlineHighlighter == null) outlineHighlighter = gameObject.AddComponent<InteractionOutlineHighlighter>();
 
@@ -55,6 +55,8 @@ public class PlayerInteractor : MonoBehaviour
 
     private void OnEnable()
     {
+        PlayerOptions.Changed += RefreshInteractionKey;
+        RefreshInteractionKey();
         ConversationManager.OnConversationStarted += DisableInteraction;
         ConversationManager.OnConversationEnded += EnableInteraction;
     }
@@ -62,8 +64,14 @@ public class PlayerInteractor : MonoBehaviour
     private void OnDisable()
     {
         SetCurrentInteractable(null);
+        PlayerOptions.Changed -= RefreshInteractionKey;
         ConversationManager.OnConversationStarted -= DisableInteraction;
         ConversationManager.OnConversationEnded -= EnableInteraction;
+    }
+
+    private void RefreshInteractionKey()
+    {
+        if (interactUI != null) interactUI.SetInteractionKey(InteractionKey);
     }
 
     private void Update()
@@ -73,7 +81,7 @@ public class PlayerInteractor : MonoBehaviour
 
         FindInteractable();
 
-        if (Input.GetKeyDown(interactionKey))
+        if (Input.GetKeyDown(InteractionKey))
         {
             if (currentInteractable != null)
                 InteractCurrent();
@@ -182,6 +190,6 @@ public class PlayerInteractor : MonoBehaviour
             interactUI = GetComponent<PlayerInteractUI>();
         }
 
-        interactUI?.SetInteractionKey(interactionKey);
+        interactUI?.SetInteractionKey(InteractionKey);
     }
 }

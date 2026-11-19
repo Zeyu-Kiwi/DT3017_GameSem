@@ -341,6 +341,8 @@ namespace DialogueEditor
 
         public override eNodeType NodeType { get { return eNodeType.Option; } }
 
+        [DataMember] public bool PlaceLast;
+
 
         /// <summary> Deprecated as of V1.1 </summary>
         public EditableSpeechNode Speech;

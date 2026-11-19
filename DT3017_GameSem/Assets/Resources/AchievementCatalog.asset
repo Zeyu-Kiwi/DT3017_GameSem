@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47c9ba1bdc0ecb54ca35ba8c53166d54, type: 3}
+  m_Name: AchievementCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::AchievementCatalog
+  achievements:
+  - id: 1
+    title: Look Twice Before Crossing
+    description: Escape the factory using the crowbar. (Ending 02)
+    icon: {fileID: 2800000, guid: a1d3d85fc91ceee43b53fcc4a079e436, type: 3}
+  - id: 2
+    title: Hasta La Vista!
+    description: Escape the factory using the screwdriver. (Ending 01)
+    icon: {fileID: 2800000, guid: e99c96cb5ffb7b64eb662ec884300baa, type: 3}
+  - id: 3
+    title: Built This in a Cave with a Box of Scraps!
+    description: Craft an item.
+    icon: {fileID: 2800000, guid: 9003872940e291643aeb8f6f005e53c8, type: 3}
+  - id: 4
+    title: Children Together Stronger
+    description: Trade with one of your coworkers.
+    icon: {fileID: 2800000, guid: 70274c3a827f51441b430be878eb9b97, type: 3}
+  - id: 5
+    title: Death Comes for Us All
+    description: Not help out one of your coworkers.
+    icon: {fileID: 2800000, guid: c9f21b2fe4514bb4a929ee9b96443cd5, type: 3}
+  - id: 6
+    title: Survivor
+    description: Survive for 4 days.
+    icon: {fileID: 2800000, guid: d4d4c82ea225eff44be1ae40a19d9bad, type: 3}

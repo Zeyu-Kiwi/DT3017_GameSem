@@ -287,6 +287,7 @@ public class DayCycleManager : MonoBehaviour
         }
 
         currentDay++;
+        if (currentDay == 5) AchievementManager.Unlock(AchievementId.SurviveFourDays);
         if (dayPlanManager != null) dayPlanManager.ApplyDay(currentDay);
         else ResetDailyTimer();
         RefreshDayUI();

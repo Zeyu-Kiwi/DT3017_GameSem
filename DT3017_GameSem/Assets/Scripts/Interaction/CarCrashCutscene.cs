@@ -241,7 +241,9 @@ public sealed class CarCrashCutscene : MonoBehaviour
     public void CancelForExternalSequence()
     {
         if(!captured)return;
-        StopAllCoroutines();sequence=null;screenFade?.CancelCutscene();
+        StopAllCoroutines();sequence=null;
+        // Unity objects can be destroyed before this component during scene unload.
+        if(screenFade!=null)screenFade.CancelCutscene();
         if(honkSource!=null)honkSource.Stop();
         if(controller!=null)controller.transform.SetPositionAndRotation(originalPosition,originalRotation);
         if(body!=null){body.position=originalPosition;body.rotation=originalRotation;}
@@ -249,7 +251,7 @@ public sealed class CarCrashCutscene : MonoBehaviour
         if(controller!=null && view!=null)controller.FaceWorldPosition(view.transform.position+originalLook*Vector3.forward);
         if(car!=null){car.SetPositionAndRotation(originalCarPosition,originalCarRotation);car.gameObject.SetActive(carWasActive);}
         RestoreControls();
-        if(startedEscape)escapeFlow?.CancelEscape();
+        if(startedEscape && escapeFlow!=null)escapeFlow.CancelEscape();
         startedEscape=false;HasPlayed=false;mustLeaveTrigger=true;stage="Cancelled";
     }
 
@@ -263,7 +265,8 @@ public sealed class CarCrashCutscene : MonoBehaviour
         if(body!=null)body.isKinematic=bodyKinematic;
         if(controller!=null){controller.enabled=controllerEnabled;controller.UnlockMovement(this);}
         if(interactor!=null)interactor.UnlockInteraction(this);
-        dayCycle?.SetSequenceTimerPaused(this,false);Cursor.lockState=cursorLock;Cursor.visible=cursorVisible;
+        if(dayCycle!=null)dayCycle.SetSequenceTimerPaused(this,false);
+        Cursor.lockState=cursorLock;Cursor.visible=cursorVisible;
         captured=false;IsPlaying=false;Physics.SyncTransforms();
     }
 
