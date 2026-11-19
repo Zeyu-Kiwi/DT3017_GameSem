@@ -877,7 +877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 3
-  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":380.5,"yPos":101},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"You
+  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":283,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"You
     ain''t going anywhere until you get your job done!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: Boss
@@ -1041,10 +1041,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 3
-  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":202,"yPos":49},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Alright
+  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":283,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Alright
     Kido, I spent big money to get you into the factory, so you better shows some
-    value.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":2}],"EditorInfo":{"isRoot":false,"xPos":206.199951,"yPos":210.200012},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Your
-    job is simple. Fold the shirt, meet the quota, then you can sleep.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":202.199951,"yPos":365.400024},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"This
+    value.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":2}],"EditorInfo":{"isRoot":false,"xPos":287.199951,"yPos":183.200012},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"Your
+    job is simple. Fold the shirt, meet the quota, then you can sleep.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":283.199951,"yPos":338.400024},"ID":2,"ParamActions":[],"TMPFontGUID":null,"Text":"This
     is your first day, I will make sure you finish your work before I leave. Don''t
     try to play tricks.","parentUIDs":[1],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
@@ -1387,7 +1387,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 1
-  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":340.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Focus
+  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[],"EditorInfo":{"isRoot":true,"xPos":283,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Focus
     on your work, maggot!","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: 
@@ -1568,7 +1568,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2187084453427099624}
+  - {fileID: 3453749119223647861}
   - {fileID: 7854341546077882630}
   - {fileID: 2500102731981546974}
   m_Father: {fileID: 838067659737958308}
@@ -2842,10 +2842,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DialogueEditor.NPCConversation
   CurrentIDCounter: 2
-  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":340.5,"yPos":22},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Not
+  json: '{"Options":[],"Parameters":[],"SpeechNodes":[{"Connections":[{"__type":"EditableSpeechConnection:#DialogueEditor","Conditions":[],"NodeUID":1}],"EditorInfo":{"isRoot":true,"xPos":5.399994,"yPos":41.1999969},"ID":0,"ParamActions":[],"TMPFontGUID":null,"Text":"Not
     to bad on your first day. Just a reminder, don''t waste your time on escaping,
-    no one made it home alive.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":340.9,"yPos":152.8},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"I''m
-    not a demon, so fell free to sleep and start a new day after your work. Good
+    no one made it home alive.","parentUIDs":[],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0},{"Connections":[],"EditorInfo":{"isRoot":false,"xPos":4.99996948,"yPos":172},"ID":1,"ParamActions":[],"TMPFontGUID":null,"Text":"I''m
+    not a demon, so feel free to sleep and start a new day after your work. Good
     night.","parentUIDs":[0],"AdvanceDialogueAutomatically":false,"AudioGUID":null,"AutoAdvanceShouldDisplayOption":false,"IconGUID":null,"Name":"Boss","OptionUIDs":null,"SpeechUID":0,"TimeUntilAdvance":0,"Volume":0}]}'
   saveVersion: 110
   DefaultName: Boss
@@ -2931,7 +2931,7 @@ MonoBehaviour:
   workstationVisionArea: {fileID: 0}
   workstation: {fileID: 0}
   caughtSequence: {fileID: 0}
-  animator: {fileID: 0}
+  animator: {fileID: 8722912083632002063}
   walkingBoolParameter: IsWalking
   state: 0
   sequencePaused: 0
@@ -2961,7 +2961,7 @@ MonoBehaviour:
   pitchRange: {x: 0.95, y: 1.05}
   bossFootstepsGroup: {fileID: -7922517242184966869, guid: 2f88bf210d425b34fadf302a6464db2c, type: 2}
   minDistance: 5
-  maxDistance: 17
+  maxDistance: 30
 --- !u!1 &8737660987865582146
 GameObject:
   m_ObjectHideFlags: 0
@@ -3067,7 +3067,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BossPatrolLocator
   canBeRoamingTarget: 1
   connectedLocators: []
---- !u!1001 &1860176605980151811
+--- !u!1001 &2910618363683776926
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -3075,57 +3075,70 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 574241769897969110}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+    - target: {fileID: -8679921383154817045, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: d0313287f6ff950418d051417389f4cb, type: 3}
+    - target: {fileID: 919132149155446097, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
       propertyPath: m_Name
-      value: boss_2_test
+      value: boss_test_3_t_pose
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5b0090c2a92de104fae16621ec8ea952, type: 2}
+    - target: {fileID: 5866666021909216657, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d0313287f6ff950418d051417389f4cb, type: 3}
---- !u!4 &2187084453427099624 stripped
+  m_SourcePrefab: {fileID: 100100000, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
+--- !u!4 &3453749119223647861 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d0313287f6ff950418d051417389f4cb, type: 3}
-  m_PrefabInstance: {fileID: 1860176605980151811}
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
+  m_PrefabInstance: {fileID: 2910618363683776926}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8722912083632002063 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: b0b869c8127d71c409f1da71a8db3303, type: 3}
+  m_PrefabInstance: {fileID: 2910618363683776926}
   m_PrefabAsset: {fileID: 0}

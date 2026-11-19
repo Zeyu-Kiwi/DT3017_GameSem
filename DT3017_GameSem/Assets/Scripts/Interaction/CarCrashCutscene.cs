@@ -25,6 +25,13 @@ public sealed class CarCrashCutscene : MonoBehaviour
     [SerializeField, Range(0f, 1f)] private float honkVolume = 1f;
     [SerializeField, Min(0f)] private float reactionDelay = .15f;
     [SerializeField, Min(.01f)] private float lookTurnDuration = .65f;
+    [Header("Walk and crash audio")]
+    [SerializeField] private AudioClip[] walkStepClips;
+    [SerializeField, Range(0f, 1f)] private float walkStepVolume = 1f;
+    [SerializeField, Min(.05f)] private float walkStepInterval = .45f;
+    [SerializeField] private Vector2 walkStepPitchRange = new Vector2(.95f, 1.05f);
+    [SerializeField] private AudioClip crashClip;
+    [SerializeField, Range(0f, 1f)] private float crashVolume = 1f;
     [Header("Systems")]
     [SerializeField] private ScreenFadeCutscene screenFade;
     [SerializeField] private EscapeFlowController escapeFlow;
@@ -169,7 +176,9 @@ public sealed class CarCrashCutscene : MonoBehaviour
         view.transform.localPosition=cameraLocalPosition;
         // Hard cut; keep both the player and car frozen before physical contact.
         yield return screenFade.FadeOutRoutine(0f);
+        WorldAudioOneShot.Play(crashClip, view.transform.position, crashVolume);
         stage="Black";HasPlayed=true;sequence=null;
+        escapeFlow?.CompleteEscape(player);
         onReachedBlack.Invoke();
     }
 
@@ -189,15 +198,30 @@ public sealed class CarCrashCutscene : MonoBehaviour
         controller.transform.rotation=facing;body.rotation=facing;controller.ResetLook();view.transform.localRotation=cameraLocalRotation;
         float duration=Vector3.Distance(start,destination)/Mathf.Max(.01f,walkSpeed);
         elapsed=0;
+        float nextStepAt=0f;
         while(elapsed<duration)
         {
             elapsed+=Time.unscaledDeltaTime;float t=Mathf.Clamp01(elapsed/Mathf.Max(.001f,duration));
             Vector3 position=Vector3.Lerp(start,destination,t);controller.transform.position=position;body.position=position;
+            if(elapsed>=nextStepAt)
+            {
+                PlayWalkStep(position);
+                nextStepAt+=Mathf.Max(.05f,walkStepInterval);
+            }
             float envelope=Mathf.Min(1,Mathf.Min(elapsed,duration-elapsed)/.2f);
             view.transform.localPosition=cameraLocalPosition+Vector3.up*(Mathf.Sin(elapsed*walkBobFrequency*Mathf.PI*2)*walkBobAmount*Mathf.Max(0,envelope));
             yield return null;
         }
         controller.transform.position=destination;body.position=destination;view.transform.localPosition=cameraLocalPosition;
+    }
+
+    private void PlayWalkStep(Vector3 position)
+    {
+        if(walkStepClips==null || walkStepClips.Length==0)return;
+        AudioClip clip=walkStepClips[Random.Range(0,walkStepClips.Length)];
+        float pitch=Random.Range(Mathf.Min(walkStepPitchRange.x,walkStepPitchRange.y),
+            Mathf.Max(walkStepPitchRange.x,walkStepPitchRange.y));
+        WorldAudioOneShot.Play(clip,position,walkStepVolume,pitch);
     }
 
     private Bounds CarBounds()

@@ -551,6 +551,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VentTraversalCutscene
   inspection: {fileID: 6474078771208941174}
+  boardedHole: {fileID: 0}
+  walkOutInsteadOfFalling: 0
   screenFade: {fileID: 0}
   openingCollider: {fileID: 5524442522265142818}
   escapeFlow: {fileID: 0}
@@ -565,22 +567,161 @@ MonoBehaviour:
   hiddenClimbDuration: 0.5
   fadeInDuration: 0.65
   crawlSpeed: 1.4
-  fallDuration: 0.8
+  fallDuration: 0.9
   faceDownDuration: 1
   standUpDuration: 1.6
+  crawlDuringEntryFade: 0
+  crawlDuringFadeIn: 0
+  entryCrawlBeforeFade: 1
   crouchDrop: 0.75
   crawlBobAmount: 0.015
   crawlBobFrequency: 2
-  faceDownEyeHeight: 0.18
-  faceDownAngles: {x: 78, y: 0, z: 12}
+  faceDownEyeHeight: 0.32
+  faceDownAngles: {x: 24, y: 0, z: 18}
+  naturalStandUp: 0
+  standRiseCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.12
+      value: -0.025
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.28
+      value: 0.08
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.6
+      value: 0.78
+      inSlope: 1.6
+      outSlope: 1.6
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.82
+      value: 1.035
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  standLookDownCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.18
+      value: 14
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.4
+      value: 12
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.72
+      value: 3
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.88
+      value: -1.5
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  standForwardLean: 0.045
+  standNoisePosition: 0.006
+  standNoiseAngle: 0.35
+  standNoiseFrequency: 2.2
+  edgeTipDistance: 0.65
+  edgeTipPitch: 22
+  edgeTipRoll: 4
+  edgeTipDrop: 0.12
+  initialFallSpeed: 0.65
+  landingImpactLead: 0.12
+  landingCompression: 0.05
+  landingImpactPitch: -10
+  landingImpactRoll: 10
   landingShakeEnabled: 1
-  landingShakeDuration: 0.35
-  landingShakeDistance: 0.025
-  landingShakeAngle: 2.5
-  landingShakeFrequency: 24
+  landingShakeDuration: 0.65
+  landingShakeDistance: 0.055
+  landingShakeAngle: 4.5
+  landingShakeFrequency: 7
   crouchClip: {fileID: 8300000, guid: df49938a1860650418b6d5654ed436be, type: 3}
   enterVentClip: {fileID: 8300000, guid: e6709cc34e1daa54f9d575a452e0f64e, type: 3}
-  crawlClip: {fileID: 8300000, guid: d14974009383c5741b62c7489066d876, type: 3}
+  crawlClip: {fileID: 8300000, guid: 0b59628bf91755843bf641c7c88964da, type: 3}
+  crawlSoundsPerBobCycle: 1
+  crawlPitchRange: {x: 0.9, y: 1.1}
   playerFallClip: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
   landingClip: {fileID: 8300000, guid: 942019cf9ecd5854ebeb343b12b7f779, type: 3}
   standUpClip: {fileID: 8300000, guid: df49938a1860650418b6d5654ed436be, type: 3}
