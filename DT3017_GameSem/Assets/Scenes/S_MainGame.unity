@@ -34528,6 +34528,10 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 7542321580228605087}
+    - target: {fileID: 1363380552747700538, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1371962574025596076, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_Color.a
       value: 0
