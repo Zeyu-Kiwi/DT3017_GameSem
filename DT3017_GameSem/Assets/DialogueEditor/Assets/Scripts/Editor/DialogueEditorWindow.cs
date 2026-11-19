@@ -789,6 +789,9 @@ namespace DialogueEditor
                         node.Text = GUILayout.TextArea(node.Text);
                         EditorGUILayout.Space();
 
+                        node.PlaceLast = EditorGUILayout.ToggleLeft("Place Last (bottom of option list)", node.PlaceLast);
+                        EditorGUILayout.Space();
+
                         GUILayout.Label("TMP Font", EditorStyles.boldLabel);
                         node.TMPFont = (TMPro.TMP_FontAsset)EditorGUILayout.ObjectField(node.TMPFont, typeof(TMPro.TMP_FontAsset), false);
                         EditorGUILayout.Space();

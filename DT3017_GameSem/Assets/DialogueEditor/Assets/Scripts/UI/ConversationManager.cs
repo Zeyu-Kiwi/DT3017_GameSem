@@ -717,11 +717,15 @@ namespace DialogueEditor
             // Display new options
             if (m_currentSpeech.ConnectionType == Connection.eConnectionType.Option)
             {
-                for (int i = 0; i < m_currentSpeech.Connections.Count; i++)
+                // Preserve connection order within each group, with marked options last.
+                for (int pass = 0; pass < 2; pass++)
                 {
-                    OptionConnection connection = m_currentSpeech.Connections[i] as OptionConnection;
-                    if (ConditionsMet(connection))
+                    for (int i = 0; i < m_currentSpeech.Connections.Count; i++)
                     {
+                        OptionConnection connection = m_currentSpeech.Connections[i] as OptionConnection;
+                        if (connection.OptionNode.PlaceLast != (pass == 1) || !ConditionsMet(connection))
+                            continue;
+
                         UIConversationButton uiOption = CreateButton();
                         uiOption.SetupButton(UIConversationButton.eButtonType.Option, connection.OptionNode);
                     }

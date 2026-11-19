@@ -79,6 +79,8 @@ namespace DialogueEditor
     {
         public override eNodeType NodeType { get { return eNodeType.Option; } }
 
+        public bool PlaceLast;
+
         /// <summary> UnityEvent, to betriggered when this Option is chosen. </summary>
         public UnityEngine.Events.UnityEvent Event;
     }
