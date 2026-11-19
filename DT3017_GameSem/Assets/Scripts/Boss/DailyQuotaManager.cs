@@ -9,8 +9,6 @@ public class DailyQuotaManager : MonoBehaviour
     [Header("Quota")]
     [SerializeField] private ItemData shirtItem;
     [SerializeField, Min(1)] private int defaultQuota = 5;
-    [Tooltip("Highest required shirt quota, including missed-day increases and caught penalties.")]
-    [SerializeField, Min(1)] private int maximumQuota = 20;
     [SerializeField, Min(0)] private int caughtPenalty = 5;
     [Tooltip("When enabled, quota increases caused by failed days remain permanently. When disabled, completing a day resets the following day to Default Quota.")]
     [SerializeField] private bool failureIncreaseIsPermanent = true;
@@ -32,7 +30,6 @@ public class DailyQuotaManager : MonoBehaviour
     public int DisplayedQuotaAmount => currentInventoryShirts;
     public int CurrentRequiredQuota => currentRequiredQuota;
     public int CurrentDailyBaseQuota => currentDailyBaseQuota;
-    public int MaximumQuota => Mathf.Max(1, maximumQuota);
     public int MissingShirts => Mathf.Max(
         0,
         currentRequiredQuota - currentInventoryShirts);
@@ -50,7 +47,7 @@ public class DailyQuotaManager : MonoBehaviour
         }
 
         Instance = this;
-        currentDailyBaseQuota = Mathf.Clamp(defaultQuota, 1, MaximumQuota);
+        currentDailyBaseQuota = Mathf.Max(1, defaultQuota);
         StartNewDay();
     }
 
@@ -127,8 +124,9 @@ public class DailyQuotaManager : MonoBehaviour
 
         // Boss penalties increase today's required amount, but do not directly
         // become part of the daily base. Only the amount still missing carries on.
-        currentDailyBaseQuota = Mathf.Clamp(currentDailyBaseQuota, 1, MaximumQuota);
-        currentDailyBaseQuota += Mathf.Min(missingShirts, MaximumQuota - currentDailyBaseQuota);
+        currentDailyBaseQuota = Mathf.Max(
+            1,
+            currentDailyBaseQuota + missingShirts);
         nextDailyBaseQuota = currentDailyBaseQuota;
         return true;
     }
@@ -140,17 +138,17 @@ public class DailyQuotaManager : MonoBehaviour
 
     public void AddPenalty(int amount)
     {
-        currentRequiredQuota = Mathf.Clamp(currentRequiredQuota, 1, MaximumQuota);
-        currentRequiredQuota += Mathf.Min(Mathf.Max(0, amount), MaximumQuota - currentRequiredQuota);
+        currentRequiredQuota += Mathf.Max(0, amount);
         RefreshFromInventory();
     }
 
     public void StartNewDay()
     {
-        currentDailyBaseQuota = Mathf.Clamp(
-            currentDailyBaseQuota <= 0 ? defaultQuota : currentDailyBaseQuota,
-            1,
-            MaximumQuota);
+        if (currentDailyBaseQuota <= 0)
+        {
+            currentDailyBaseQuota = Mathf.Max(1, defaultQuota);
+        }
+
         currentRequiredQuota = currentDailyBaseQuota;
         RefreshFromInventory();
     }
@@ -159,7 +157,7 @@ public class DailyQuotaManager : MonoBehaviour
     {
         if (!failureIncreaseIsPermanent)
         {
-            currentDailyBaseQuota = Mathf.Clamp(defaultQuota, 1, MaximumQuota);
+            currentDailyBaseQuota = Mathf.Max(1, defaultQuota);
         }
     }
 
@@ -207,7 +205,6 @@ public class DailyQuotaManager : MonoBehaviour
     private void OnValidate()
     {
         defaultQuota = Mathf.Max(1, defaultQuota);
-        maximumQuota = Mathf.Max(1, maximumQuota);
         caughtPenalty = Mathf.Max(0, caughtPenalty);
     }
 }
