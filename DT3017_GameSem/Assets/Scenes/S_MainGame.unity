@@ -34782,6 +34782,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd940a231210fd347af1391a15391532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScreenFadeCutscene
+--- !u!82 &3870596984072605438 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 6488864997937275725, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
+  m_PrefabInstance: {fileID: 3870596984072605436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &3870596984072605440 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1195738970806064272, guid: 7f4d0350d076246488afae4dfc770078, type: 3}
@@ -34840,6 +34845,22 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 7542321580228605087}
+    - target: {fileID: 900819557123401763, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: typeClip
+      value: 
+      objectReference: {fileID: 8300000, guid: c73a17b7db45b1640bd8c911cab48c8c, type: 3}
+    - target: {fileID: 900819557123401763, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: allowSkip
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 900819557123401763, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: typeAudio
+      value: 
+      objectReference: {fileID: 3870596984072605438}
+    - target: {fileID: 900819557123401763, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
+      propertyPath: charactersPerSecond
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1363380552747700538, guid: d9b256d095df0724e91fe9ff93a2c95f, type: 3}
       propertyPath: m_Color.a
       value: 0
